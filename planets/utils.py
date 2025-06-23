@@ -1,6 +1,6 @@
 from urllib.parse import quote_plus
 
-git a
+
 def build_nasa_tap_url(table, columns, format='csv'):
     if not columns:
         raise ValueError("columns cannot be empty")
