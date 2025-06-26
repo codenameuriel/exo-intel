@@ -46,10 +46,10 @@ class Planet(models.Model):
     orbital_period = models.FloatField(null=True, blank=True, help_text="Orbital period in days")
     radius_earth = models.FloatField(null=True, blank=True, help_text="Radius in Earth radii")
     mass_earth = models.FloatField(null=True, blank=True, help_text="Mass in Earth masses")
-    equilibrium_temperature = models.IntegerField(null=True, blank=True, help_text="Temperature in Kelvin")
+    equilibrium_temperature = models.FloatField(null=True, blank=True, help_text="Temperature in Kelvin")
     semi_major_axis = models.FloatField(null=True, blank=True, help_text="Distance from star in AU")
     insolation_flux = models.FloatField(null=True, blank=True, help_text="Flux relative to Earth = 1.0")
-    discovery = models.ForeignKey(PlanetDiscovery, on_delete=models.CASCADE, help_text="Planet discovery")
+    discovery = models.ForeignKey(PlanetDiscovery, on_delete=models.CASCADE, help_text="Planet discovery", null=True, blank=True)
 
     def __str__(self):
         return f"{self.name} (orbits {self.host_star.name})"
