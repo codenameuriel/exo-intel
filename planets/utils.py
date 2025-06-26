@@ -1,13 +1,19 @@
-from urllib.parse import quote_plus
-
+from decouple import config, UndefinedValueError
 
 def build_nasa_tap_url(table, columns, format='csv'):
     if not columns:
         raise ValueError("columns cannot be empty")
 
-    query = f"select {','.join(columns)} from {table}"
-    encoded_query = quote_plus(query)
-    return f"https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query={encoded_query}&format={format}"
+    try:
+        base_url = config("NASA_TAP_BASE_URL")
+    except UndefinedValueError:
+        raise UndefinedValueError("NASA_TAP_BASE_URL is not configured in the .env file")
+
+    query_columns = ",".join(columns)
+
+    query_param_value = f"select {query_columns} from {table}".replace(" ", "+")
+
+    return f"{base_url}?query={query_param_value}&format={format}"
 
 def try_float(val):
     try:
