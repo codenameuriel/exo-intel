@@ -47,6 +47,7 @@ class Command(BaseCommand):
                 dry_run=dry_run,
                 logger=command_logger
             )
+
             self.stdout.write(self.style.SUCCESS(f"Final result: {result}"))
         except Exception as e:
             raise CommandError(f"An unexpected error occurred: {e}")

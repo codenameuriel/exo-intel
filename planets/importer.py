@@ -180,7 +180,9 @@ def run_import(nasa_table, app_table, dry_run=False, logger=print):
         logger(f"An error occurred during the database transaction: {e}")
         return f"Import failed: Transaction error. {e}"
 
-    logger(f"\nImporting complete! Created: {created_count}, Updated: {updated_count}, Skipped: {skipped_count}")
+    result_message = f"\nImporting complete! Created: {created_count}, Updated: {updated_count}, Skipped: {skipped_count}"
+    logger(result_message)
+    return result_message
 
 def _build_defaults(self, row, field_map):
     """Builds a dictionary of model fields from the API row data"""
