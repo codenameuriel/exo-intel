@@ -184,11 +184,11 @@ def run_import(nasa_table, app_table, dry_run=False, logger=print):
     logger(result_message)
     return result_message
 
-def _build_defaults(self, row, field_map):
+def _build_defaults(row, field_map):
     """Builds a dictionary of model fields from the API row data"""
     return {model_field: row.get(api_field) for api_field, model_field in field_map.items()}
 
-def _build_lookup(self, defaults, meta):
+def _build_lookup(defaults, meta):
     """Builds the lookup dictionary and checks for identifiers."""
     is_identifier_present = True
     if isinstance(meta['unique_on'], list):
@@ -203,7 +203,7 @@ def _build_lookup(self, defaults, meta):
             is_identifier_present = False
     return is_identifier_present, lookup
 
-def _add_related_objects_to_defaults(self, app_table, defaults, row):
+def _add_related_objects_to_defaults(app_table, defaults, row):
     """Fetches/creates related objects and adds them to the defaults. ONLY RUNS ON NON-DRY RUNS."""
     if app_table == 'star':
         system_name = row.get('sy_name')
