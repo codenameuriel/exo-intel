@@ -1,8 +1,22 @@
-from celery import shared_task
+from celery import shared_task, chain
 from planets.importer import run_import
 
 @shared_task
-def import_nasa_data(nasa_table, app_table):
+def full_nightly_import():
+    """
+    A master task that runs the full import pipeline in the correct order
+    """
+    import_chain = chain(
+        import_nasa_data_task.s('stellarhosts', 'starsystem'),
+        import_nasa_data_task.s('stellarhosts', 'star'),
+        import_nasa_data_task.s('planetdiscovery', 'ps'),
+        import_nasa_data_task.s('planet', 'ps'),
+    )
+
+    import_chain()
+
+@shared_task
+def import_nasa_data_task(nasa_table, app_table):
     """
     A Celery task to fetch data from NASA TAP API and populate the database
     """
