@@ -18,7 +18,8 @@ class PlanetSerializer(serializers.ModelSerializer):
             'radius_earth',
             'orbital_period',
             'equilibrium_temperature',
-            'discovery'
+            'discovery',
+            'habitability_score',
         ]
 
 class StarSystemSerializer(serializers.ModelSerializer):
