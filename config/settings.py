@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,4 +126,19 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Celery settings
-CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:63790')
+CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:6379/0')
+
+# schedule file storage locatioin
+CELERY_BEAT_SCHEDULE_FILENAME = 'run/celerybeat-schedule'
+
+CELERY_BEAT_SCHEDULE = {
+    'run-full-nightly-import-pipeline-daily': {
+        'task': 'planets.tasks.full_nightly_import',
+        'schedule': crontab(hour=0, minute=0),
+    },
+    'test-run-full-nightly-import-pipeline-daily': {
+        'task': 'planets.tasks.full_nightly_import',
+        # # Schedule to run daily at 15:50 UTC (11:50 AM EDT).
+        'schedule': crontab(hour=15, minute=52),
+    }
+}
