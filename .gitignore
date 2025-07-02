@@ -2,15 +2,24 @@
 __pycache__/
 *.pyc
 
-# Django
-*.log
-db.sqlite3
-
 # Environment
 .env
 venv/
 .venv/
 
+# Database
+db.sqlite3
+db.sqlite3-journal
+
 # IDEs
 .idea/
 .vscode/
+
+# Log files
+logs/
+
+# Temporary files
+run/
+
+# Celery runtime files
+celerybeat-schedule
