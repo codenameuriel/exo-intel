@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Planet, StarSystem, Star
 from .serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
 
@@ -9,6 +10,9 @@ class PlanetViewSet(viewsets.ModelViewSet):
     """
     queryset = Planet.objects.select_related('host_star').order_by('name')
     serializer_class = PlanetSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'host_star__name']
+    filterset_fields = ['discovery__method', 'discovery__locale']
 
 class StarSystemViewSet(viewsets.ModelViewSet):
     """
@@ -16,6 +20,9 @@ class StarSystemViewSet(viewsets.ModelViewSet):
     """
     queryset = StarSystem.objects.all().order_by('name')
     serializer_class = StarSystemSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name']
+    filterset_fields = ['num_stars', 'num_planets']
 
 class StarSerialier(viewsets.ModelViewSet):
     """
@@ -23,13 +30,15 @@ class StarSerialier(viewsets.ModelViewSet):
     """
     queryset = Star.objects.select_related('system').order_by('name')
     serializer_class = StarSerializer
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'system__name']
+    filterset_fields = ['spect_type', 'system__name']
 
 def planets(request):
     """
     A view to display a list of all planets in the database
     """
     planets = Planet.objects.select_related('host_star').order_by('name')
-
     context = {
         'planets': planets
     }
