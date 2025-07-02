@@ -128,7 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Celery settings
 CELERY_BROKER_URL = config('CELERY_BROKER_URL', default='redis://localhost:6379/0')
 
-# schedule file storage locatioin
+# schedule file storage location
 CELERY_BEAT_SCHEDULE_FILENAME = 'run/celerybeat-schedule'
 
 CELERY_BEAT_SCHEDULE = {
@@ -139,6 +139,6 @@ CELERY_BEAT_SCHEDULE = {
     'test-run-full-nightly-import-pipeline-daily': {
         'task': 'planets.tasks.full_nightly_import',
         # # Schedule to run daily at 15:50 UTC (11:50 AM EDT).
-        'schedule': crontab(hour=15, minute=52),
+        'schedule': crontab(hour=17, minute=7),
     }
 }
