@@ -38,7 +38,7 @@ class PlanetDiscovery(models.Model):
         verbose_name_plural = "Planet Discoveries"
 
     def __str__(self):
-        return f"{self.method} @ {self.facility} ({self.facility})"
+        return f"Via {self.method} @ {self.facility}"
 
 class Planet(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text="Name of the planet")
@@ -50,41 +50,6 @@ class Planet(models.Model):
     semi_major_axis = models.FloatField(null=True, blank=True, help_text="Distance from star in AU")
     insolation_flux = models.FloatField(null=True, blank=True, help_text="Flux relative to Earth = 1.0")
     discovery = models.ForeignKey(PlanetDiscovery, on_delete=models.CASCADE, help_text="Planet discovery", null=True, blank=True)
-
-    @property
-    def density(self):
-        if self.mass_earth is None or self.radius_earth is None or self.radius_earth == 0:
-            return None
-
-        # density = mass / volume (relative to earth)
-        return self.mass_earth / (self.radius_earth ** 3)
-
-    @property
-    def habitability_score(self):
-        temp_score = 0
-        if self.equilibrium_temperature is not None:
-            # ideal temperature is earth-like (around 255 K)
-            temp_diff = abs(self.equilibrium_temperature - 255)
-            # for every 5 degrees off, subtract a point from 100 score
-            temp_score = max(0, 100 - (temp_diff / 5))
-
-        density_score = 0
-        planet_density = self.density
-        if planet_density is not None:
-            if planet_density >= 0.75:
-                density_score = 100 # likely rocky
-            elif planet_density >= 0.5:
-                density_score = 50 # ocean world
-            else:
-                density_score = 0 # gas giant
-
-        if self.equilibrium_temperature is None or planet_density is None:
-            return None
-
-        # 60% temperature, 40% density
-        final_score = (temp_score * 0.6) + (density_score * 0.4)
-        return round(final_score)
-
 
     def __str__(self):
         return f"{self.name} (orbits {self.host_star.name})"
