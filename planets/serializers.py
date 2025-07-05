@@ -7,6 +7,8 @@ class PlanetSerializer(serializers.ModelSerializer):
     """
 
     host_star = serializers.StringRelatedField()
+    discovery = serializers.StringRelatedField()
+    habitability_score = serializers.IntegerField(read_only=True, allow_null=True)
 
     class Meta:
         model = Planet
