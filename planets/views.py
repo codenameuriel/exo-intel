@@ -3,16 +3,17 @@ from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Planet, StarSystem, Star
 from .serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
+from .filters import PlanetFilter
 
 class PlanetViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows planets to be viewed or edited.
     """
-    queryset = Planet.objects.select_related('host_star').order_by('name')
+    queryset = Planet.objects.select_related('host_star', 'discovery').order_by('name')
     serializer_class = PlanetSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ['name', 'host_star__name']
-    filterset_fields = ['discovery__method', 'discovery__locale']
+    filterset_class = PlanetFilter
 
 class StarSystemViewSet(viewsets.ModelViewSet):
     """
@@ -24,7 +25,7 @@ class StarSystemViewSet(viewsets.ModelViewSet):
     search_fields = ['name']
     filterset_fields = ['num_stars', 'num_planets']
 
-class StarSerialier(viewsets.ModelViewSet):
+class StarViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows stars to be viewed.
     """
