@@ -143,11 +143,7 @@ CELERY_BEAT_SCHEDULE_FILENAME = 'run/celerybeat-schedule'
 CELERY_BEAT_SCHEDULE = {
     'run-full-nightly-import-pipeline-daily': {
         'task': 'planets.tasks.full_nightly_import',
+        # schedule to run at midnight
         'schedule': crontab(hour=0, minute=0),
-    },
-    'test-run-full-nightly-import-pipeline-daily': {
-        'task': 'planets.tasks.full_nightly_import',
-        # # Schedule to run daily at 15:50 UTC (11:50 AM EDT).
-        'schedule': crontab(hour=17, minute=7),
     }
 }
