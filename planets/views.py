@@ -5,7 +5,7 @@ from .models import Planet, StarSystem, Star
 from .serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
 from .filters import PlanetFilter
 
-class PlanetViewSet(viewsets.ModelViewSet):
+class PlanetViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows planets to be viewed or edited.
     """
@@ -15,7 +15,7 @@ class PlanetViewSet(viewsets.ModelViewSet):
     search_fields = ['name', 'host_star__name']
     filterset_class = PlanetFilter
 
-class StarSystemViewSet(viewsets.ModelViewSet):
+class StarSystemViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows star systems to be viewed.
     """
@@ -25,7 +25,7 @@ class StarSystemViewSet(viewsets.ModelViewSet):
     search_fields = ['name']
     filterset_fields = ['num_stars', 'num_planets']
 
-class StarViewSet(viewsets.ModelViewSet):
+class StarViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows stars to be viewed.
     """
