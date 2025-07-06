@@ -3,6 +3,18 @@ from django.db.models import F, Case, When, Value, FloatField, IntegerField, Q, 
 from django.db.models.functions import Abs, Round
 from .models import Planet
 
+# Morgan-Keenan stellar classification
+# hottest (O type) to coolest (M type)
+SPECTRAL_TYPE_CHOICES = [
+    ('O', 'O-type'),
+    ('B', 'B-type'),
+    ('A', 'A-type'),
+    ('F', 'F-type'),
+    ('G', 'G-type (Sun-like)'),
+    ('K', 'K-type'),
+    ('M', 'M-type (Red Dwarf'),
+]
+
 class PlanetFilter(filters.FilterSet):
     """
     Custom filterset for the Planet model.
@@ -15,7 +27,32 @@ class PlanetFilter(filters.FilterSet):
     # ?habitability_score_min=80&habitability_score_max=100
     habitability_score = filters.RangeFilter(
         label="Habitability Score",
-        method='filter_by_habitability_score',
+    )
+
+    # ?radius_earth_max=1.5
+    radius_earth = filters.RangeFilter(label='Radius (Earth Radii')
+    # ?mass_earth_min=0.5&mass_earth_max=2.0
+    mass_earth = filters.RangeFilter(label='Mass (Earth Masses')
+    # ?orbital_period_min=365
+    orbital_period = filters.RangeFilter(label='Orbital Period (Days)')
+
+    # use host_star__spect_type__startswith to match the main letter (e.g., 'G' matches 'G2V')
+    # ?host_star_type=G
+    host_star_type = filters.ChoiceFilter(
+        label="Host Star's Spectral Type",
+        field_name='host_star__spect_type',
+        lookup_expr='startswith',
+        choices=SPECTRAL_TYPE_CHOICES
+    )
+
+    # ?ordering=habitability_score
+    ordering = filters.OrderingFilter(
+        fields=(
+            ('habitability_score', 'habitability_score'),
+            ('radius_earth', 'radius_earth'),
+            ('mass_earth', 'mass_earth'),
+            ('orbital_period', 'orbital_period'),
+        )
     )
 
     class Meta:
@@ -24,51 +61,3 @@ class PlanetFilter(filters.FilterSet):
             'discovery__method': ['exact'],
             'discovery__locale': ['exact'],
         }
-
-    def filter_by_habitability_score(self, queryset, name, value):
-        """
-        Custom filter method for filtering by habitability score.
-        """
-
-        # Database-level calculation
-
-        # ideal temperature is earth-like (around 255 K)
-        # for every 5 degrees off, subtract a point from 100 score
-        density = ExpressionWrapper(
-            F('mass_earth') / (F('radius_earth') ** 3),
-            output_field=FloatField()
-        )
-        annotated_queryset = queryset.annotate(density=density)
-
-        density_score = Case(
-            When(density__gte=0.75, then=Value(100.0)),
-            When(density__gte=0.5, then=Value(50.0)),
-            default=Value(0.0),
-            output_field=FloatField()
-        )
-        # 60% temperature, 40% density
-        temp_score = 100.0 - (Abs(F('equilibrium_temperature') - 255) / 5.0)
-        habitability_score = (temp_score * 0.6) + (density_score * 0.4)
-
-        # explicitly handle NULLs
-        # calculations are performed only when field values are not NULL
-        annotated_queryset = annotated_queryset.annotate(
-            habitability_score=Case(
-                When(
-                    Q(equilibrium_temperature__isnull=False) &
-                    Q(mass_earth__isnull=False) &
-                    Q(radius_earth__isnull=False) &
-                    Q(radius_earth__gt=0),
-                    then=Round(habitability_score)
-                ),
-                default=Value(None),
-                output_field=IntegerField()
-            )
-        )
-
-        if value.start is not None:
-            annotated_queryset = annotated_queryset.filter(habitability_score__gte=value.start)
-        if value.stop is not None:
-            annotated_queryset = annotated_queryset.filter(habitability_score__lte=value.stop)
-
-        return annotated_queryset
