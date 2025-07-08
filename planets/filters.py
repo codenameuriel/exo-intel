@@ -1,7 +1,6 @@
 from django_filters import rest_framework as filters
-from django.db.models import F, Case, When, Value, FloatField, IntegerField, Q, ExpressionWrapper
-from django.db.models.functions import Abs, Round
 from .models import Planet
+from .widgets import LabeledRangeWidget
 
 # Morgan-Keenan stellar classification
 # hottest (O type) to coolest (M type)
@@ -27,14 +26,24 @@ class PlanetFilter(filters.FilterSet):
     # ?habitability_score_min=80&habitability_score_max=100
     habitability_score = filters.RangeFilter(
         label="Habitability Score",
+        widget=LabeledRangeWidget(min_placeholder='min score', max_placeholder='max score')
     )
 
     # ?radius_earth_max=1.5
-    radius_earth = filters.RangeFilter(label='Radius (Earth Radii')
+    radius_earth = filters.RangeFilter(
+        label='Radius (Earth Radii)',
+        widget=LabeledRangeWidget(min_placeholder='min radius', max_placeholder='max radius')
+    )
     # ?mass_earth_min=0.5&mass_earth_max=2.0
-    mass_earth = filters.RangeFilter(label='Mass (Earth Masses')
+    mass_earth = filters.RangeFilter(
+        label='Mass (Earth Masses)',
+        widget=LabeledRangeWidget(min_placeholder='min mass', max_placeholder='max mass')
+    )
     # ?orbital_period_min=365
-    orbital_period = filters.RangeFilter(label='Orbital Period (Days)')
+    orbital_period = filters.RangeFilter(
+        label='Orbital Period (Days)',
+        widget=LabeledRangeWidget(min_placeholder='min period', max_placeholder='max period')
+    )
 
     # use host_star__spect_type__startswith to match the main letter (e.g., 'G' matches 'G2V')
     # ?host_star_type=G
