@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'planets',
     'rest_framework',
     'django_filters',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -146,4 +147,9 @@ CELERY_BEAT_SCHEDULE = {
         # schedule to run at midnight
         'schedule': crontab(hour=0, minute=0),
     }
+}
+
+# Graphene-Django settings
+GRAPHENE = {
+    'SCHEMA': 'config.schema.schema',
 }
