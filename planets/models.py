@@ -1,4 +1,5 @@
 from django.db import models
+from .managers import PlanetManager
 
 class StarSystem(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text="Name of the system")
@@ -50,6 +51,8 @@ class Planet(models.Model):
     semi_major_axis = models.FloatField(null=True, blank=True, help_text="Distance from star in AU")
     insolation_flux = models.FloatField(null=True, blank=True, help_text="Flux relative to Earth = 1.0")
     discovery = models.ForeignKey(PlanetDiscovery, on_delete=models.CASCADE, help_text="Planet discovery", null=True, blank=True)
+
+    objects = PlanetManager()
 
     def __str__(self):
         return f"{self.name} (orbits {self.host_star.name})"
