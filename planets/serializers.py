@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Planet, StarSystem, Star
 
+
 class PlanetSerializer(serializers.ModelSerializer):
     """
     Serializer for the Planet model.
@@ -13,16 +14,17 @@ class PlanetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planet
         fields = [
-            'id',
-            'name',
-            'host_star',
-            'mass_earth',
-            'radius_earth',
-            'orbital_period',
-            'equilibrium_temperature',
-            'discovery',
-            'habitability_score',
+            "id",
+            "name",
+            "host_star",
+            "mass_earth",
+            "radius_earth",
+            "orbital_period",
+            "equilibrium_temperature",
+            "discovery",
+            "habitability_score",
         ]
+
 
 class StarSystemSerializer(serializers.ModelSerializer):
     """
@@ -32,15 +34,16 @@ class StarSystemSerializer(serializers.ModelSerializer):
     class Meta:
         model = StarSystem
         fields = [
-            'id',
-            'name',
-            'num_stars',
-            'num_planets',
-            'num_moons',
-            'distance',
-            'ra',
-            'dec'
+            "id",
+            "name",
+            "num_stars",
+            "num_planets",
+            "num_moons",
+            "distance",
+            "ra",
+            "dec",
         ]
+
 
 class StarSerializer(serializers.ModelSerializer):
     """
@@ -51,12 +54,4 @@ class StarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Star
-        fields = [
-            'id',
-            'name',
-            'system',
-            'spect_type',
-            'mass',
-            'radius',
-            'temperature'
-        ]
+        fields = ["id", "name", "system", "spect_type", "mass", "radius", "temperature"]

@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('planets', '0002_alter_planet_discovery'),
+        ("planets", "0002_alter_planet_discovery"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='planet',
-            name='equilibrium_temperature',
-            field=models.FloatField(blank=True, help_text='Temperature in Kelvin', null=True),
+            model_name="planet",
+            name="equilibrium_temperature",
+            field=models.FloatField(
+                blank=True, help_text="Temperature in Kelvin", null=True
+            ),
         ),
     ]

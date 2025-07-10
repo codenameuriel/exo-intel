@@ -5,14 +5,15 @@ from .widgets import LabeledRangeWidget
 # Morgan-Keenan stellar classification
 # hottest (O type) to coolest (M type)
 SPECTRAL_TYPE_CHOICES = [
-    ('O', 'O-type'),
-    ('B', 'B-type'),
-    ('A', 'A-type'),
-    ('F', 'F-type'),
-    ('G', 'G-type (Sun-like)'),
-    ('K', 'K-type'),
-    ('M', 'M-type (Red Dwarf'),
+    ("O", "O-type"),
+    ("B", "B-type"),
+    ("A", "A-type"),
+    ("F", "F-type"),
+    ("G", "G-type (Sun-like)"),
+    ("K", "K-type"),
+    ("M", "M-type (Red Dwarf"),
 ]
+
 
 class PlanetFilter(filters.FilterSet):
     """
@@ -26,47 +27,55 @@ class PlanetFilter(filters.FilterSet):
     # ?habitability_score_min=80&habitability_score_max=100
     habitability_score = filters.RangeFilter(
         label="Habitability Score",
-        widget=LabeledRangeWidget(min_placeholder='min score', max_placeholder='max score')
+        widget=LabeledRangeWidget(
+            min_placeholder="min score", max_placeholder="max score"
+        ),
     )
 
     # ?radius_earth_max=1.5
     radius_earth = filters.RangeFilter(
-        label='Radius (Earth Radii)',
-        widget=LabeledRangeWidget(min_placeholder='min radius', max_placeholder='max radius')
+        label="Radius (Earth Radii)",
+        widget=LabeledRangeWidget(
+            min_placeholder="min radius", max_placeholder="max radius"
+        ),
     )
     # ?mass_earth_min=0.5&mass_earth_max=2.0
     mass_earth = filters.RangeFilter(
-        label='Mass (Earth Masses)',
-        widget=LabeledRangeWidget(min_placeholder='min mass', max_placeholder='max mass')
+        label="Mass (Earth Masses)",
+        widget=LabeledRangeWidget(
+            min_placeholder="min mass", max_placeholder="max mass"
+        ),
     )
     # ?orbital_period_min=365
     orbital_period = filters.RangeFilter(
-        label='Orbital Period (Days)',
-        widget=LabeledRangeWidget(min_placeholder='min period', max_placeholder='max period')
+        label="Orbital Period (Days)",
+        widget=LabeledRangeWidget(
+            min_placeholder="min period", max_placeholder="max period"
+        ),
     )
 
     # use host_star__spect_type__startswith to match the main letter (e.g., 'G' matches 'G2V')
     # ?host_star_type=G
     host_star_type = filters.ChoiceFilter(
         label="Host Star's Spectral Type",
-        field_name='host_star__spect_type',
-        lookup_expr='startswith',
-        choices=SPECTRAL_TYPE_CHOICES
+        field_name="host_star__spect_type",
+        lookup_expr="startswith",
+        choices=SPECTRAL_TYPE_CHOICES,
     )
 
     # ?ordering=habitability_score
     ordering = filters.OrderingFilter(
         fields=(
-            ('habitability_score', 'habitability_score'),
-            ('radius_earth', 'radius_earth'),
-            ('mass_earth', 'mass_earth'),
-            ('orbital_period', 'orbital_period'),
+            ("habitability_score", "habitability_score"),
+            ("radius_earth", "radius_earth"),
+            ("mass_earth", "mass_earth"),
+            ("orbital_period", "orbital_period"),
         )
     )
 
     class Meta:
         model = Planet
         fields = {
-            'discovery__method': ['exact'],
-            'discovery__locale': ['exact'],
+            "discovery__method": ["exact"],
+            "discovery__locale": ["exact"],
         }
