@@ -1,38 +1,63 @@
-from graphene_django.views import GraphQLView
-from django.views.generic import TemplateView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from rest_framework.views import APIView
-from rest_framework.authentication import SessionAuthentication
-from api_keys.authentication import APIKeyAuthentication
-from api_keys.permissions import IsAuthenticatedOrPublic
+from django.contrib import messages
+from api_keys.models import APIKey
 
 
-class PortalDashboardView(LoginRequiredMixin, TemplateView):
-    """ "
+class PortalDashboardView(LoginRequiredMixin, View):
+    """
     This view serves as the main landing page for a developer
     after they have successfully logged in.
     """
 
     template_name = "portal/dashboard.html"
 
-
-class PrivateGraphQLView(APIView):
-    """
-    A wrapper view that applies DRF's security to the GraphQL endpoint.
-    """
-
-    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrPublic]
-
-    is_public_resource = False
-
     def get(self, request, *args, **kwargs):
         """
-        Handles GET requests which are used by the GraphiQL interface.
+        Handle GET requests. Fetches the user's existing API keys
+        and renders the dashboard template with them.
         """
-        self.check_permissions(request)
-        return GraphQLView.as_view(graphiql=True)(request, *args, **kwargs)
+        api_keys = APIKey.objects.filter(user=request.user)
+        context = {
+            "api_keys": api_keys,
+            "api_key_count": api_keys.count(),
+        }
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
-        self.check_permissions(request)
-        return GraphQLView.as_view()(request, *args, **kwargs)
+        """
+        Handle POST requests from the api key generation form.
+        Creates a new API key for the logged-in user.
+        """
+        if APIKey.objects.filter(user=request.user).count() >= 3:
+            messages.error(request, "You have reached the API key limit of 3")
+            return redirect("portal:dashboard")
+
+        key_name = request.POST.get("key_name")
+        if key_name:
+            APIKey.objects.create(user=request.user, name=key_name)
+            messages.success(request, f"Successfully created new API key: '{key_name}'")
+        else:
+            messages.error(request, "API key name cannot be empty")
+
+        return redirect("portal:dashboard")
+
+
+class APIKeyDeleteView(LoginRequiredMixin, View):
+    """
+    Handles the deletion of an API key.
+    """
+
+    def post(self, request, *args, **kwargs):
+        # get primary key from the URL
+        pk = kwargs.get("pk")
+
+        # filter by user to ensure they can only delete their key
+        api_key = get_object_or_404(APIKey, pk=pk, user=request.user)
+
+        api_key.delete()
+
+        messages.success(request, f"Successfully deleted API key: '{api_key.name}'")
+
+        return redirect("portal:dashboard")
