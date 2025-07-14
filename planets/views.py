@@ -15,7 +15,7 @@ class PlanetViewSet(viewsets.ReadOnlyModelViewSet):
     This is the "freemium" resource.
     """
 
-    authentication_classes = [APIKeyAuthentication]
+    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticatedOrPublic]
     is_public_resource = True
 
