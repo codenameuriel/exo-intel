@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from rest_framework import viewsets, filters
+from rest_framework import filters
+from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Planet, StarSystem, Star
 from .serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
@@ -7,9 +9,11 @@ from .filters import PlanetFilter
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
 from rest_framework.authentication import SessionAuthentication
+from graphene_django.views import GraphQLView
+from .parsers import GraphQLParser
 
 
-class PlanetViewSet(viewsets.ReadOnlyModelViewSet):
+class PlanetViewSet(ReadOnlyModelViewSet):
     """
     Read-only API endpoint for planets.
     This is the "freemium" resource.
@@ -40,7 +44,7 @@ class PlanetViewSet(viewsets.ReadOnlyModelViewSet):
     ]
 
 
-class StarSystemViewSet(viewsets.ReadOnlyModelViewSet):
+class StarSystemViewSet(ReadOnlyModelViewSet):
     """
     Read-only API endpoint for star systems.
     This a private resource.
@@ -57,7 +61,7 @@ class StarSystemViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ["num_stars", "num_planets"]
 
 
-class StarViewSet(viewsets.ReadOnlyModelViewSet):
+class StarViewSet(ReadOnlyModelViewSet):
     """
     Read-only API endpoint for stars.
     This is a private resource.
@@ -82,3 +86,31 @@ def planets(request):
     context = {"planets": planets}
 
     return render(request, "planets/planets.html", context)
+
+
+class PrivateGraphQLView(APIView):
+    """
+    A wrapper view that applies DRF's security to the GraphQL endpoint.
+    """
+
+    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrPublic]
+    is_public_resource = False
+
+    # overriding DRF APIView parser to prevent it from consuming the request body before it gets to the
+    # GraphQLView, which solves the "cannot access body after reading" error.
+    parser_classes = [GraphQLParser]
+
+    def get(self, request, *args, **kwargs):
+        """
+        Handles browser GET requests which are used to render the GraphiQL interface
+        """
+        self.check_permissions(request)
+        return GraphQLView.as_view(graphiql=True)(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handles programmatic client POST requests which are used to simply return JSON.
+        """
+        self.check_permissions(request)
+        return GraphQLView.as_view()(request, *args, **kwargs)
