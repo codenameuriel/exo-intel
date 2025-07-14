@@ -1,0 +1,69 @@
+{% extends "rest_framework/base.html" %}
+
+{% block branding %}
+    <a class="navbar-brand" href="/portal/">
+        🪐 ExoIntel Developer Portal
+    </a>
+{% endblock %}
+
+{% block userlinks %}
+    <div class="navbar-right-flex">
+        <div class="user-links">
+            {% if user.is_authenticated %}
+                <span class="welcome-text">{{ user.username }}</span>
+                <form method="post" action="{% url 'portal:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-link logout-link">Log Out</button>
+                </form>
+            {% else %}
+                <a href="{% url 'portal:login' %}" class="login-link">Login</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block style %}
+    {{ block.super }}
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .navbar-inverse {
+            background-color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .navbar-inverse .navbar-brand {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        ul.nav {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .user-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .navbar-inverse .navbar-brand,
+        .user-links .welcome-text,
+        .user-links .logout-link,
+        .user-links .login-link {
+            color: #1e293b;
+        }
+        .user-links .logout-link,
+        .user-links .login-link {
+            padding: 0!important;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.15s ease-in-out;
+        }
+        .navbar-inverse .navbar-brand:hover,
+        .user-links .logout-link:hover,
+        .user-links .login-link:hover {
+            color: #475569;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
