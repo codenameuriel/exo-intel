@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from django.views.decorators.csrf import csrf_exempt
 from . import views
+from .views import APIKeyDeleteView
 
 app_name = "portal"
 
@@ -13,5 +13,9 @@ urlpatterns = [
         name="login",
     ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
-    path("graphql/", csrf_exempt(views.PrivateGraphQLView.as_view()), name="graphql"),
+    path(
+        "api-key/delete/<int:pk>/",
+        APIKeyDeleteView.as_view(),
+        name="api-key-delete",
+    ),
 ]
