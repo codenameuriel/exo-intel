@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # local apps
     "planets.apps.PlanetsConfig",
     "api_keys.apps.ApiKeysConfig",
+    "portal.apps.PortalConfig",
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -130,6 +131,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+LOGIN_URL = "/portal/login/"
+LOGIN_REDIRECT_URL = "/portal/dashboard/"
+LOGOUT_REDIRECT_URL = "/portal/login/"
+
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 25,
@@ -149,8 +154,8 @@ REST_FRAMEWORK = {
     ],
     # defines scopes and their rate limits
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "1/day",  # 100 requests per day for anonymous users
-        "user": "2/day",  # 1000 requests per day for users with an API key or session
+        "anon": "25/day",  # 25 requests per day for anonymous users
+        "user": "100/day",  # 100 requests per day for users with an API key or session
     },
 }
 
