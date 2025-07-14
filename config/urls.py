@@ -20,9 +20,10 @@ from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 
+# from django.contrib.auth.decorators import login_required
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("planets/", include("planets.urls")),
-    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
-    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("portal/", include("portal.urls")),
 ]
