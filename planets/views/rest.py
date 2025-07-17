@@ -1,16 +1,12 @@
-from django.shortcuts import render
 from rest_framework import filters
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Planet, StarSystem, Star
-from .serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
-from .filters import PlanetFilter
+from planets.models import Planet, StarSystem, Star
+from planets.serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
+from planets.filters import PlanetFilter
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
 from rest_framework.authentication import SessionAuthentication
-from graphene_django.views import GraphQLView
-from .parsers import GraphQLParser
 
 
 class PlanetViewSet(ReadOnlyModelViewSet):
@@ -76,41 +72,3 @@ class StarViewSet(ReadOnlyModelViewSet):
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ["name", "system__name"]
     filterset_fields = ["spect_type", "system__name"]
-
-
-def planets(request):
-    """
-    A view to display a list of all planets in the database
-    """
-    planets = Planet.objects.select_related("host_star").order_by("name")
-    context = {"planets": planets}
-
-    return render(request, "planets/planets.html", context)
-
-
-class PrivateGraphQLView(APIView):
-    """
-    A wrapper view that applies DRF's security to the GraphQL endpoint.
-    """
-
-    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrPublic]
-    is_public_resource = False
-
-    # overriding DRF APIView parser to prevent it from consuming the request body before it gets to the
-    # GraphQLView, which solves the "cannot access body after reading" error.
-    parser_classes = [GraphQLParser]
-
-    def get(self, request, *args, **kwargs):
-        """
-        Handles browser GET requests which are used to render the GraphiQL interface
-        """
-        self.check_permissions(request)
-        return GraphQLView.as_view(graphiql=True)(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        """
-        Handles programmatic client POST requests which are used to simply return JSON.
-        """
-        self.check_permissions(request)
-        return GraphQLView.as_view()(request, *args, **kwargs)
