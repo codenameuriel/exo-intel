@@ -1,18 +1,23 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from . import views
 from django.views.decorators.csrf import csrf_exempt
+from .views import web, rest, graphql, simulations
 
 app_name = "planets"
 
 router = DefaultRouter()
 
-router.register(r"planets", views.PlanetViewSet, basename="planet")
-router.register(r"starsystems", views.StarSystemViewSet, basename="starsystem")
-router.register(r"stars", views.StarViewSet, basename="star")
+router.register(r"planets", rest.PlanetViewSet, basename="planet")
+router.register(r"starsystems", rest.StarSystemViewSet, basename="starsystem")
+router.register(r"stars", rest.StarViewSet, basename="star")
 
 urlpatterns = [
-    path("", views.planets, name="planets"),
+    path("", web.planets, name="planets"),
     path("api/", include(router.urls)),
-    path("graphql/", csrf_exempt(views.PrivateGraphQLView.as_view()), name="graphql"),
+    path("graphql/", csrf_exempt(graphql.PrivateGraphQLView.as_view()), name="graphql"),
+    path(
+        "api/simulations/travel-time/",
+        simulations.TravelTimeSimulationView.as_view(),
+        name="simulation-travel-time",
+    ),
 ]
