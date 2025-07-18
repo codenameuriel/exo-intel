@@ -162,8 +162,16 @@ REST_FRAMEWORK = {
 # Celery settings
 CELERY_BROKER_URL = config("CELERY_BROKER_URL", default="redis://localhost:6379/0")
 
+# configure where to store the status and results of completed tasks
+# use Redis database #1
+CELERY_RESULT_BACKEND = config(
+    "CELERY_RESULT_BACKEND", default="redis://localhost:6379/1"
+)
+
 # schedule file storage location
-CELERY_BEAT_SCHEDULE_FILENAME = "run/celerybeat-schedule"
+CELERY_BEAT_SCHEDULE_FILENAME = config(
+    "CELERY_BEAT_SCHEDULE_FILENAME", default="run/celerybeat-schedule"
+)
 
 CELERY_BEAT_SCHEDULE = {
     "run-full-nightly-import-pipeline-daily": {
