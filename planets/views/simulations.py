@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from celery.result import AsyncResult
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,7 +6,7 @@ from rest_framework.authentication import SessionAuthentication
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
 from planets.models import StarSystem
-from planets.simulations import SimulationEngine
+from planets.tasks import travel_time_simulation_task
 
 
 class TravelTimeSimulationView(APIView):
@@ -32,33 +32,55 @@ class TravelTimeSimulationView(APIView):
             )
 
         try:
+            system_id = int(system_id)
             speed_percentage = float(speed_percentage)
-        except ValueError:
+            if not (0 < speed_percentage <= 100):
+                raise ValueError()
+        except (ValueError, TypeError):
             return Response(
-                {"error": "'speed_percentage' must be a valid number."},
+                {
+                    "error": "'star_system_id' must be an integer and 'speed_percentage' must be a valid number between 1 and 100."
+                },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        star_system = get_object_or_404(StarSystem, pk=system_id)
-
-        try:
-            travel_time = SimulationEngine.calculate_travel_time(
-                star_system, speed_percentage
+        if not StarSystem.objects.filter(id=system_id).exists():
+            return Response(
+                {"error": f"StarSystem with id {system_id} not found."},
+                status=status.HTTP_404_NOT_FOUND,
             )
-            if travel_time is None:
-                return Response(
-                    {
-                        "error": "The travel time could not be calculated. The star system may be missing distance data"
-                    },
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-        except ValueError as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+        task = travel_time_simulation_task.delay(system_id, speed_percentage)
 
         response_data = {
-            "star_system_name": star_system.name,
-            "travel_speed_percentage_c": speed_percentage,
-            "travel_time_years": travel_time,
+            "message": "Simulation task has been started.",
+            "task_id": task.id,
+        }
+
+        return Response(response_data, status=status.HTTP_202_ACCEPTED)
+
+
+class TaskStatusView(APIView):
+    """
+    An API endpoint to check the status of a background task.
+    """
+
+    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrPublic]
+    is_public_resource = False
+
+    def get(self, request, task_id, *args, **kwargs):
+        """
+        Handles GET request to check the status of a background task.
+        """
+
+        # get task state and result from Celery result backend
+        task_result = AsyncResult(task_id)
+
+        response_data = {
+            "task_id": task_id,
+            "status": task_result.status,
+            "result": task_result.result if task_result.ready() else None,
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
