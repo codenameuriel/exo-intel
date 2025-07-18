@@ -20,4 +20,9 @@ urlpatterns = [
         simulations.TravelTimeSimulationView.as_view(),
         name="simulation-travel-time",
     ),
+    path(
+        "api/simulations/task-status/<str:task_id>/",
+        simulations.TaskStatusView.as_view(),
+        name="simulation-task-status",
+    ),
 ]
