@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "planets.apps.PlanetsConfig",
     "api_keys.apps.ApiKeysConfig",
     "portal.apps.PortalConfig",
+    "tasks.apps.TasksConfig",
+    "simulations.apps.SimulationsConfig",
 ]
 
 MIDDLEWARE = [
@@ -175,7 +177,7 @@ CELERY_BEAT_SCHEDULE_FILENAME = config(
 
 CELERY_BEAT_SCHEDULE = {
     "run-full-nightly-import-pipeline-daily": {
-        "task": "planets.tasks.full_nightly_import",
+        "task": "tasks.tasks.full_nightly_import",
         # schedule to run at midnight
         "schedule": crontab(hour=0, minute=0),
     }

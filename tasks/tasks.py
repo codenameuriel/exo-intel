@@ -2,7 +2,7 @@ import time
 from celery import shared_task, chain
 from planets.importer import run_import
 from planets.models import StarSystem
-from planets.simulations import SimulationEngine
+from simulations.engine import SimulationEngine
 
 
 @shared_task

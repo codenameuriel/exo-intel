@@ -17,13 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.views.decorators.csrf import csrf_exempt
-from graphene_django.views import GraphQLView
 
-# from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("planets/", include("planets.urls")),
     path("portal/", include("portal.urls")),
+    path("tasks/", include("tasks.urls")),
+    path("simulations/", include("simulations.urls")),
 ]
