@@ -25,22 +25,10 @@ class TaskStatusView(APIView):
         # get task state and result from Celery result backend
         task_result = AsyncResult(task_id)
 
-        final_result = None
-
-        if task_result.ready():
-            # handle result error if the task was created with an old worker configuration
-            if isinstance(task_result.result, NotRegistered):
-                final_result = {
-                    "error": "Task not found in the current worker's registry.",
-                    "detail": f"The task name '{task_result.result}' is unknown. This can happen after a code refactor. Please try creating a new task."
-                }
-            else:
-                final_result = task_result
-
         response_data = {
             "task_id": task_id,
-            "status": final_result.status,
-            "result": final_result.result if final_result.ready() else None,
+            "status": task_result.status,
+            "result": task_result.result if task_result.ready() else None,
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
