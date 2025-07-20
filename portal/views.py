@@ -3,6 +3,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from api_keys.models import APIKey
+from planets.models import StarSystem
 
 
 class PortalDashboardView(LoginRequiredMixin, View):
@@ -19,9 +20,13 @@ class PortalDashboardView(LoginRequiredMixin, View):
         and renders the dashboard template with them.
         """
         api_keys = APIKey.objects.filter(user=request.user)
+        star_systems = StarSystem.objects.filter(distance__isnull=False).order_by(
+            "name"
+        )
         context = {
             "api_keys": api_keys,
             "api_key_count": api_keys.count(),
+            "star_systems": star_systems,
         }
         return render(request, self.template_name, context)
 
