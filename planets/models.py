@@ -36,6 +36,10 @@ class Star(models.Model):
     temperature = models.FloatField(
         null=True, blank=True, help_text="Effective temperature (K)"
     )
+    luminosity = models.FloatField(
+        null=True, blank=True, help_text="Amount of energy emitted"
+    )
+    age = models.FloatField(null=True, blank=True, help_text="Age")
 
     def __str__(self):
         return self.name
@@ -79,6 +83,9 @@ class Planet(models.Model):
     )
     insolation_flux = models.FloatField(
         null=True, blank=True, help_text="Flux relative to Earth = 1.0"
+    )
+    orbital_eccentricity = models.FloatField(
+        null=True, blank=True, help_text="Orbital deviation from a circle"
     )
     discovery = models.ForeignKey(
         PlanetDiscovery,

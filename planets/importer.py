@@ -28,6 +28,8 @@ COLUMN_MAPPING = {
             "st_mass": "mass",
             "st_rad": "radius",
             "st_teff": "temperature",
+            "st_lum": "luminosity",
+            "st_age": "age",
         },
     },
     "planetdiscovery": {
@@ -50,8 +52,9 @@ COLUMN_MAPPING = {
             "pl_rade": "radius_earth",
             "pl_masse": "mass_earth",
             "pl_eqt": "equilibrium_temperature",
-            "pl_orbsmax": "semi_major_axis",
+            "pl_orbsmax": "orbit_semi_major_axis",
             "pl_insol": "insolation_flux",
+            "pl_orbeccen": "orbital_eccentricity",
         },
     },
 }
@@ -67,6 +70,7 @@ TABLE_COLUMNS = {
             "pl_eqt",  # equilibrium temperature (K)
             "pl_orbsmax",  # orbit semi-major-axis (longest radius of elliptic orbit)
             "pl_insol",  # insolation flux (Earth flux)
+            "pl_orbeccen",  # orbital eccentricity (how much orbit deviates from a circle)
             "discoverymethod",
             "disc_year",
             "disc_locale",
@@ -96,6 +100,8 @@ TABLE_COLUMNS = {
             "st_mass",  # solar mass - amount of mass contained in star
             "st_rad",  # solar radius - length from center of star to surface
             "st_teff",  # effective temperature (K) - temperature of star
+            "st_lum",  # amount of energy emitted by a star
+            "st_age",  # age of star
         ],
     },
 }
