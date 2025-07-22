@@ -25,10 +25,20 @@ class TaskStatusView(APIView):
         # get task state and result from Celery result backend
         task_result = AsyncResult(task_id)
 
+        result_data = None
+        if task_result.ready():
+            if task_result.failed():
+                result_data = {
+                    "error": True,
+                    "message": str(task_result.result),
+                }
+            else:
+                result_data = task_result.result
+
         response_data = {
             "task_id": task_id,
             "status": task_result.status,
-            "result": task_result.result if task_result.ready() else None,
+            "result": result_data,
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
