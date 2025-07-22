@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.db.models import Q
 from api_keys.models import APIKey
-from planets.models import StarSystem
+from planets.models import StarSystem, Planet
 
 
 class PortalDashboardView(LoginRequiredMixin, View):
@@ -20,13 +21,31 @@ class PortalDashboardView(LoginRequiredMixin, View):
         and renders the dashboard template with them.
         """
         api_keys = APIKey.objects.filter(user=request.user)
+
+        # simulation data models
         star_systems = StarSystem.objects.filter(distance__isnull=False).order_by(
             "name"
         )
+        planets = (
+            Planet.objects.filter(
+                Q(host_star__luminosity__isnull=False)
+                | (
+                    Q(host_star__radius__isnull=False)
+                    & Q(host_star__temperature__isnull=False)
+                ),
+                semi_major_axis__isnull=False,
+                orbital_eccentricity__isnull=False,
+            )
+            .select_related("host_star")
+            .order_by("name")
+            .distinct()
+        )
+
         context = {
             "api_keys": api_keys,
             "api_key_count": api_keys.count(),
             "star_systems": star_systems,
+            "planets": planets,
         }
         return render(request, self.template_name, context)
 
