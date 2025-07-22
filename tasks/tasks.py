@@ -1,8 +1,7 @@
 import time
 from celery import shared_task, chain
 from planets.importer import run_import
-from planets.models import StarSystem
-from simulations.engine import SimulationEngine
+from simulations.engine import SimulationEngine, SimulationError
 
 
 @shared_task
@@ -25,7 +24,6 @@ def import_nasa_data_task(nasa_table, app_table):
     """
     A Celery task to fetch data from NASA TAP API and populate the database
     """
-
     print(f"Starting background import for '{app_table}'...")
 
     result = run_import(nasa_table=nasa_table, app_table=app_table, logger=print)
@@ -43,32 +41,36 @@ def travel_time_simulation_task(star_system_id, speed_percentage):
     print(f"Starting travel time simulation for start system ID: {star_system_id}...")
 
     try:
-        star_system = StarSystem.objects.get(pk=star_system_id)
-
-        print(f"Simulation in progress...")
+        print("Simulation in progress...")
         time.sleep(10)
 
-        travel_time = SimulationEngine.calculate_travel_time(
-            star_system, speed_percentage
+        result = SimulationEngine.calculate_travel_time(
+            star_system_id, speed_percentage
         )
-
-        if travel_time is None:
-            result = {
-                "error": "Could not calculate travel time. Missing distance data."
-            }
-        else:
-            result = {
-                "star_system_name": star_system.name,
-                "travel_speed_percentage_c": speed_percentage,
-                "travel_time_years": travel_time,
-            }
 
         print("Simulation complete.")
         return result
+    except SimulationError as e:
+        print(f"ERROR: Simulation failed with a known error: {e}")
+        # raise the error to mark task as FAILURE
+        raise e
 
-    except StarSystem.DoesNotExist:
-        print(f"ERROR: StarSystem with ID {star_system_id} not found.")
-        return {"error": f"StarSystem with ID {star_system_id} not found."}
-    except ValueError as e:
-        print(f"ERROR: Invalid input for simulation. {e}")
-        return {"error": str(e)}
+
+@shared_task
+def seasonal_temps_simulation_task(planet_id):
+    """
+    A Celery task to run the seasonal temperatures simulation in the background
+    """
+    print(f"Starting seasonal temperatures simulation for planet ID: {planet_id}...")
+
+    try:
+        print("Simulation in progress...")
+        time.sleep(10)
+
+        result = SimulationEngine.calculate_seasonal_temperatures(planet_id)
+
+        print("Simulation complete.")
+        return result
+    except SimulationError as e:
+        print(f"ERROR: Simulation failed with a known error: {e}")
+        raise e
