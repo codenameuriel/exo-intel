@@ -14,53 +14,71 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    const simForm = document.getElementById('simulation-form');
-    const statusDisplay = document.getElementById('status-display');
     let statusInterval;
 
-    simForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    const simForms = document.querySelectorAll('.simulation-form');
 
-        // Clear any previous status checks
-        if (statusInterval) {
-            clearInterval(statusInterval);
-        }
-
-        const formData = new FormData(simForm);
-        const data = {
-            star_system_id: formData.get('star_system_id'),
-            speed_percentage: formData.get('speed_percentage'),
-        };
-
-        const csrfToken = simForm.dataset.csrfToken;
-
-        statusDisplay.textContent = 'Starting simulation...';
-
-        // Send the asynchronous POST request to our API endpoint
-        fetch('/simulations/travel-time/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken,
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.task_id) {
-                statusDisplay.textContent = `Task started! ID: ${data.task_id}. Checking status...`;
-                // Start polling the status endpoint
-                checkTaskStatus(data.task_id);
-            } else {
-                statusDisplay.textContent = `Error: ${data.error || 'Unknown error'}`;
-            }
-        })
-        .catch(error => {
-            statusDisplay.textContent = `Request failed: ${error}`;
-        });
+    simForms.forEach(form => {
+        console.log("simForm: ", form);
+        form.addEventListener('submit', handleSimSubmit);
     });
 
-    function checkTaskStatus(taskId) {
+    function handleSimSubmit(event) {
+        event.preventDefault();
+
+        if (statusInterval) clearInterval(statusInterval);
+
+        const form = event.target;
+
+        const statusDisplay = form.nextElementSibling.querySelector('.status-display');
+
+        console.log('statusDisplay', statusDisplay);
+
+        const endpoint = form.dataset.apiEndpoint;
+        const simType = form.dataset.simType;
+        const csrfToken = form.dataset.csrfToken;
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        statusDisplay.textContent = `Starting ${simType} simulation...`;
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.task_id) {
+                    statusDisplay.textContent = `Task started! ID: ${data.task_id}. Checking status...`;
+                    checkTaskStatus(data.task_id, statusDisplay, simType);
+                } else {
+                    statusDisplay.textContent = `Error: ${data.error || 'Unknown error'}`;
+                }
+            })
+            .catch(error => {
+                statusDisplay.textContent = `Request failed: ${error}`;
+            })
+    }
+
+     const resultRenderers = {
+        'travel': (result) => `
+            <strong>Status:</strong> SUCCESS <br>
+            <strong>Destination:</strong> ${result.star_system_name} <br>
+            <strong>Travel Time:</strong> ${result.travel_time_years} years
+        `,
+        'season': (result) => `
+            <strong>Status:</strong> SUCCESS <br>
+            <strong>Planet:</strong> ${result.planet_name} <br>
+            <strong>Hottest Temp (Periastron):</strong> ${result.periastron_temp_k} K <br>
+            <strong>Coldest Temp (Apoastron):</strong> ${result.apoastron_temp_k} K <br>
+            <strong>Seasonal Difference:</strong> ${result.seasonal_temp_difference_k} K
+        `,
+        'default': (result) => `Task finished with an unknown result type.`
+    };
+
+    function checkTaskStatus(taskId, displayElement, simType) {
         statusInterval = setInterval(() => {
             fetch(`/tasks/status/${taskId}/`)
                 .then(response => response.json())
@@ -68,21 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (data.status === 'SUCCESS') {
                         clearInterval(statusInterval);
                         const result = data.result;
-                        statusDisplay.innerHTML = `
-                            <strong>Status:</strong> SUCCESS <br>
-                            <strong>Destination:</strong> ${result.star_system_name} <br>
-                            <strong>Travel Time:</strong> ${result.travel_time_years} years
-                        `;
+                        const renderer = resultRenderers[simType] || resultRenderers['default'];
+                        displayElement.innerHTML = renderer(result);
                     } else if (data.status === 'FAILURE') {
                         clearInterval(statusInterval);
-                        statusDisplay.textContent = `Task Failed: ${data.result.error || 'Unknown error'}`;
+                        displayElement.textContent = `Task Failed: ${data.result.message || 'Unknown error'}`;
                     } else {
-                        statusDisplay.textContent = `Task ID: ${taskId} | Status: ${data.status}...`;
+                        displayElement.textContent = `Task ID: ${taskId} | Status: ${data.status}...`;
                     }
                 })
                 .catch(error => {
                     clearInterval(statusInterval);
-                    statusDisplay.textContent = `Failed to check status: ${error}`;
+                    displayElement.textContent = `Failed to check status: ${error}`;
                 });
         }, 3000); // Check every 3 seconds
     }
