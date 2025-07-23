@@ -94,3 +94,23 @@ def tidal_locking_simulation_task(planet_id):
     except SimulationError as e:
         print(f"ERROR: Simulation failed with a known error: {e}")
         raise e
+
+
+@shared_task
+def star_lifetime_simulation_task(star_id):
+    """
+    A Celery task to run the star lifetime simulation in the background
+    """
+    print(f"Starting star lifetime simulation for star ID: {star_id}...")
+
+    try:
+        print("Simulation in progress...")
+        time.sleep(10)
+
+        result = SimulationEngine.calculate_star_lifetime(star_id)
+
+        print("Simulation complete.")
+        return result
+    except SimulationError as e:
+        print(f"ERROR: Simulation failed with a known error: {e}")
+        raise e
