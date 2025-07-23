@@ -1,5 +1,5 @@
 import math
-from planets.models import Planet, StarSystem
+from planets.models import Planet, StarSystem, Star
 
 
 class SimulationError(Exception):
@@ -14,7 +14,7 @@ class SimulationEngine:
     # 1 parsec to light year
     PARSEC_TO_LIGHT_YEAR = 3.26156
     # total energy radiated to absolute temperature
-    STEFAN_BOLTZMANN_CONSTANT = 5.670374e-8  # W⋅m−2⋅K−4
+    STEFAN_BOLTZMANN_CONSTANT = 5.670374e-8
     # total energy radiated of the Sun
     SOLAR_LUMINOSITY = 3.828e26  # Watts
     # astronomical Unit (average distance from Earth to the Sun) in meters
@@ -29,6 +29,8 @@ class SimulationEngine:
     EARTH_MASS_KG = 5.972e24
     # earth radius in meters
     EARTH_RADIUS_METERS = 6.371e6
+    # earth sun lifespan in Giga-years (billions)
+    SUN_LIFETIME_GYR = 10.0
 
     @staticmethod
     def calculate_travel_time(star_system_id, speed_percentage):
@@ -164,6 +166,49 @@ class SimulationEngine:
             "is_likely_tidally_locked": is_locked,
             "locking_timescale_years": round(timescale_years),
             "star_age_years": round(star_age_years),
+            "conclusion": conclusion,
+        }
+
+    @staticmethod
+    def calculate_star_lifetime(star_id):
+        """
+        Estimate the total and remaining main-sequence lifetime of a star.
+        """
+        try:
+            star = Star.objects.get(pk=star_id)
+        except Star.DoesNotExist:
+            raise SimulationError(f"Star with ID {star_id} not found.")
+
+        if star.mass is None or star.age is None:
+            raise SimulationError("Star is missing required data (mass or age).")
+
+        if star.mass <= 0:
+            raise SimulationError("Star mass must be a positive number.")
+
+        # lifetime
+        total_lifetime_gyr = SimulationEngine.SUN_LIFETIME_GYR / (star.mass**2.5)
+
+        remaining_lifetime_gyr = total_lifetime_gyr - star.age
+
+        percent_lifespan_complete = (star.age / total_lifetime_gyr) * 100
+
+        conclusion = "Unknown"
+        if percent_lifespan_complete < 30:
+            conclusion = "Young and stable."
+        elif percent_lifespan_complete < 80:
+            conclusion = "Middle-aged and stable."
+        elif percent_lifespan_complete <= 100:
+            conclusion = "Nearing the end of its main-sequence life."
+        else:
+            conclusion = "Has likely left the main sequence."
+
+        return {
+            "star_name": star.name,
+            "star_mass_solar": star.mass,
+            "star_age_gyr": star.age,
+            "estimated_total_lifetime_gyr": round(total_lifetime_gyr, 2),
+            "estimated_remaining_lifetime_gyr": round(remaining_lifetime_gyr, 2),
+            "percent_lifespan_complete": round(percent_lifespan_complete, 2),
             "conclusion": conclusion,
         }
 
