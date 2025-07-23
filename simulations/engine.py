@@ -21,6 +21,14 @@ class SimulationEngine:
     AU_TO_METERS = 1.496e11
     # radius of the sun in meters
     SOLAR_RADIUS_METERS = 6.957e8
+    # Years in a Giga-year
+    YEARS_PER_GYR = 1e9
+    # sun mass in kg
+    SOLAR_MASS_KG = 1.989e30
+    # earth mass in kg
+    EARTH_MASS_KG = 5.972e24
+    # earth radius in meters
+    EARTH_RADIUS_METERS = 6.371e6
 
     @staticmethod
     def calculate_travel_time(star_system_id, speed_percentage):
@@ -98,6 +106,65 @@ class SimulationEngine:
             "periastron_temp_k": max_temp,
             "apoastron_temp_k": min_temp,
             "seasonal_temp_difference_k": max_temp - min_temp,
+        }
+
+    @staticmethod
+    def estimate_tidal_locking(planet_id):
+        """
+        Estimates if a planet is likely to be tidally locked to its star
+        using the tidal locking timescale formula.
+        """
+        try:
+            planet = Planet.objects.select_related("host_star").get(pk=planet_id)
+        except Planet.DoesNotExist:
+            raise SimulationError(f"Planet with ID {planet_id} not found.")
+
+        star = planet.host_star
+        required_fields = {
+            "planet": [planet.mass_earth, planet.radius_earth, planet.semi_major_axis],
+            "star": [star.mass, star.age],
+        }
+
+        if any(
+            val is None for val in required_fields["planet"] + required_fields["star"]
+        ):
+            raise SimulationError(
+                "Planet or star is missing required data (orbital distance, earth mass, earth radius, star mass, or star age)."
+            )
+
+        # simplified version of the tidal locking timescale formula
+        orbital_distance_m = planet.semi_major_axis * SimulationEngine.AU_TO_METERS
+        planet_mass_kg = planet.mass_earth * SimulationEngine.EARTH_MASS_KG
+        star_mass_kg = star.mass * SimulationEngine.SOLAR_MASS_KG
+        planet_radius_m = planet.radius_earth * SimulationEngine.EARTH_RADIUS_METERS
+
+        # simplified lumped constant for the formula, assuming Earth-like rigidity
+        k_constant = 6e10
+
+        timescale_years = (
+            k_constant
+            * (orbital_distance_m**6)
+            * planet_mass_kg
+            / (star_mass_kg**2 * planet_radius_m**3)
+        )
+
+        # star's age in given in Giga-years (billions of years)
+        star_age_years = star.st_age * SimulationEngine.YEARS_PER_GYR
+
+        is_locked = timescale_years < star_age_years
+
+        if is_locked:
+            conclusion = f"The planet is likely tidally locked. The calculated locking time ({timescale_years:,.0f} years) is less than the star's age ({star_age_years:,.0f} years)."
+        else:
+            conclusion = f"The planet is likely NOT tidally locked. The calculated locking time ({timescale_years:,.0f} years) is greater than the star's age ({star_age_years:,.0f} years)."
+
+        return {
+            "planet_name": planet.name,
+            "star_name": star.name,
+            "is_likely_tidally_locked": is_locked,
+            "locking_timescale_years": round(timescale_years),
+            "star_age_years": round(star_age_years),
+            "conclusion": conclusion,
         }
 
     @staticmethod
