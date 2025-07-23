@@ -23,10 +23,11 @@ class PortalDashboardView(LoginRequiredMixin, View):
         api_keys = APIKey.objects.filter(user=request.user)
 
         # simulation data models
-        star_systems = StarSystem.objects.filter(distance__isnull=False).order_by(
-            "name"
-        )
-        planets = (
+        travel_sim_star_systems = StarSystem.objects.filter(
+            distance__isnull=False
+        ).order_by("name")
+
+        seasonality_sim_planets = (
             Planet.objects.filter(
                 Q(host_star__luminosity__isnull=False)
                 | (
@@ -41,11 +42,24 @@ class PortalDashboardView(LoginRequiredMixin, View):
             .distinct()
         )
 
+        tidal_locking_sim_planets = (
+            Planet.objects.filter(
+                Q(host_star__mass__isnull=False) & Q(host_star__age__isnull=False),
+                mass_earth__isnull=False,
+                radius_earth__isnull=False,
+                semi_major_axis__isnull=False,
+            )
+            .select_related("host_star")
+            .order_by("name")
+            .distinct()
+        )
+
         context = {
             "api_keys": api_keys,
             "api_key_count": api_keys.count(),
-            "star_systems": star_systems,
-            "planets": planets,
+            "travel_sim_star_systems": travel_sim_star_systems,
+            "seasonality_sim_planets": seasonality_sim_planets,
+            "tidal_locking_sim_planets": tidal_locking_sim_planets,
         }
         return render(request, self.template_name, context)
 
