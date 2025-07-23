@@ -149,7 +149,7 @@ class SimulationEngine:
         )
 
         # star's age in given in Giga-years (billions of years)
-        star_age_years = star.st_age * SimulationEngine.YEARS_PER_GYR
+        star_age_years = star.age * SimulationEngine.YEARS_PER_GYR
 
         is_locked = timescale_years < star_age_years
 
