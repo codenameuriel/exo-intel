@@ -1,5 +1,4 @@
 from celery.result import AsyncResult
-from celery.exceptions import NotRegistered
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
