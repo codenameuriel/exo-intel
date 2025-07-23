@@ -85,12 +85,9 @@ class TidalLockingSimulationView(APIView):
         """
         Handles POST request to run the simulation.
         """
-        print("request.data", request.data)
         serializer = TidalLockingInputSerializer(data=request.data)
 
         serializer.is_valid(raise_exception=True)
-
-        print("serializer.validated_data", serializer.validated_data)
 
         task = tidal_locking_simulation_task.delay(**serializer.validated_data)
 
