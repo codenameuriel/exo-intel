@@ -74,3 +74,23 @@ def seasonal_temps_simulation_task(planet_id):
     except SimulationError as e:
         print(f"ERROR: Simulation failed with a known error: {e}")
         raise e
+
+
+@shared_task
+def tidal_locking_simulation_task(planet_id):
+    """
+    A Celery task to run the tidal locking simulation in the background
+    """
+    print(f"Starting tidal locking simulation for planet ID: {planet_id}...")
+
+    try:
+        print("Simulation in progress...")
+        time.sleep(10)
+
+        result = SimulationEngine.estimate_tidal_locking(planet_id)
+
+        print("Simulation complete.")
+        return result
+    except SimulationError as e:
+        print(f"ERROR: Simulation failed with a known error: {e}")
+        raise e
