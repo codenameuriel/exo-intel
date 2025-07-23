@@ -24,3 +24,11 @@ class TidalLockingInputSerializer(serializers.Serializer):
     """
 
     planet_id = serializers.IntegerField()
+
+
+class StarLifetimeInputSerializer(serializers.Serializer):
+    """
+    A class to serialize input data for validation
+    """
+
+    star_id = serializers.IntegerField()

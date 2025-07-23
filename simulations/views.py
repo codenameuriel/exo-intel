@@ -8,11 +8,13 @@ from simulations.serializers import (
     TravelTimeInputSerializer,
     SeasonalTempInputSerializer,
     TidalLockingInputSerializer,
+    StarLifetimeInputSerializer,
 )
 from tasks.tasks import (
     travel_time_simulation_task,
     seasonal_temps_simulation_task,
     tidal_locking_simulation_task,
+    star_lifetime_simulation_task,
 )
 
 
@@ -90,6 +92,35 @@ class TidalLockingSimulationView(APIView):
         serializer.is_valid(raise_exception=True)
 
         task = tidal_locking_simulation_task.delay(**serializer.validated_data)
+
+        return Response(
+            {
+                "message": "Simulation task has been started.",
+                "task_id": task.id,
+            },
+            status=status.HTTP_202_ACCEPTED,
+        )
+
+
+class StarLifetimeSimulationView(APIView):
+    """
+    An "action" API endpoint to estimate the lifetime of a star.
+    """
+
+    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrPublic]
+    is_public_resource = False
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handles POST request to run the simulation.
+        """
+
+        serializer = StarLifetimeInputSerializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+
+        task = star_lifetime_simulation_task.delay(**serializer.validated_data)
 
         return Response(
             {
