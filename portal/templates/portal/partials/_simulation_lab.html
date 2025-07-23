@@ -61,7 +61,7 @@
     </div>
 
     <!-- Tidal Locking Simulation -->
-    <div>
+    <div class="border-b border-gray-200 pb-8 mb-8">
         <h3 class="text-lg font-semibold text-slate-600 mb-4">Planetary Tidal Locking Simulator</h3>
         <form class="simulation-form"
               data-api-endpoint="/simulations/tidal-locking/"
@@ -77,6 +77,33 @@
                     </select>
                 </div>
                 <button type="submit" class="px-6 py-2 font-semibold text-white bg-gray-800 rounded-md hover:bg-black">Run Tidal Locking Sim</button>
+            </div>
+        </form>
+        <div class="mt-4">
+            <h4 class="text-sm font-medium text-slate-600 mb-1">Status:</h4>
+            <div class="status-display p-4 bg-gray-50 rounded-md text-gray-600 font-mono text-sm">
+                Awaiting simulation...
+            </div>
+        </div>
+    </div>
+
+    <!-- Star Lifetime Simulation -->
+    <div>
+        <h3 class="text-lg font-semibold text-slate-600 mb-4">Star Lifetime Simulator</h3>
+        <form class="simulation-form"
+              data-api-endpoint="/simulations/star-lifetime/"
+              data-csrf-token="{{ csrf_token }}"
+              data-sim-type="lifetime">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                <div class="md:col-span-2">
+                    <label for="lifetime-star-select" class="block text-sm font-medium text-gray-700">Select Star</label>
+                    <select id="lifetime-star-select" name="star_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                        {% for star in star_lifetime_sim_stars %}
+                            <option value="{{ star.pk }}">{{ star.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="px-6 py-2 font-semibold text-white bg-gray-800 rounded-md hover:bg-black">Run Star Lifetime Sim</button>
             </div>
         </form>
         <div class="mt-4">

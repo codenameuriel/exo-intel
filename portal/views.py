@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import Q
 from api_keys.models import APIKey
-from planets.models import StarSystem, Planet
+from planets.models import StarSystem, Planet, Star
 
 
 class PortalDashboardView(LoginRequiredMixin, View):
@@ -54,12 +54,18 @@ class PortalDashboardView(LoginRequiredMixin, View):
             .distinct()
         )
 
+        star_lifetime_sim_stars = Star.objects.filter(
+            mass__isnull=False,
+            age__isnull=False,
+        ).order_by("name")
+
         context = {
             "api_keys": api_keys,
             "api_key_count": api_keys.count(),
             "travel_sim_star_systems": travel_sim_star_systems,
             "seasonality_sim_planets": seasonality_sim_planets,
             "tidal_locking_sim_planets": tidal_locking_sim_planets,
+            "star_lifetime_sim_stars": star_lifetime_sim_stars,
         }
         return render(request, self.template_name, context)
 

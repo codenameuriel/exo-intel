@@ -32,8 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const statusDisplay = form.nextElementSibling.querySelector('.status-display');
 
-        console.log('statusDisplay', statusDisplay);
-
         const endpoint = form.dataset.apiEndpoint;
         const simType = form.dataset.simType;
         const csrfToken = form.dataset.csrfToken;
@@ -82,6 +80,16 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Is Likely Tidally Locked:</strong> ${result.is_locked ? 'True' : 'False'} <br>
             <strong>Locking Timescale Years:</strong> ${result.locking_timescale_years} <br>
             <strong>Star Age Years:</strong> ${result.star_age_years} <br>
+            <strong>Conclusion:</strong> ${result.conclusion}
+         `,
+         'lifetime': (result) => `
+            <strong>Status:</strong> SUCCESS <br>
+            <strong>Star:</strong> ${result.star_name} <br>
+            <strong>Star Solar Mass:</strong> ${result.star_mass_solar} <br>
+            <strong>Star Age:</strong> ${result.star_age_gyr} GYR <br>
+            <strong>Estimated Total Lifetime:</strong> ${result.estimated_total_lifetime_gyr} GYR <br>
+            <strong>Estimated Remaining Lifetime:</strong> ${result.estimated_remaining_lifetime_gyr} GYR <br>
+            <strong>Percent Lifespan Complete:</strong> ${result.percent_lifespan_complete} % <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
          'default': (result) => `Task finished with an unknown result type.`
