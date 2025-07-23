@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import TravelTimeSimulationView, SeasonalTempsSimulationView
+from .views import (
+    TravelTimeSimulationView,
+    SeasonalTempsSimulationView,
+    TidalLockingSimulationView,
+)
 
 app_name = "simulations"
 
@@ -13,5 +17,10 @@ urlpatterns = [
         "seasonal-temps/",
         SeasonalTempsSimulationView.as_view(),
         name="simulation-seasonal-temps",
+    ),
+    path(
+        "tidal-locking/",
+        TidalLockingSimulationView.as_view(),
+        name="simulation-tidal-locking",
     ),
 ]
