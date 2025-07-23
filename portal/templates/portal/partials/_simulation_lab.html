@@ -11,9 +11,9 @@
               data-sim-type="travel">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
                 <div>
-                    <label for="travel-system-select" class="block text-sm font-medium text-gray-700">Destination System</label>
+                    <label for="travel-system-select" class="block text-sm font-medium text-gray-700">Destination Star System</label>
                     <select id="travel-system-select" name="star_system_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
-                        {% for system in star_systems %}
+                        {% for system in travel_sim_star_systems %}
                             <option value="{{ system.pk }}">{{ system.name }}</option>
                         {% endfor %}
                     </select>
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Planetary Seasonality Simulation -->
-    <div>
+    <div class="border-b border-gray-200 pb-8 mb-8">
         <h3 class="text-lg font-semibold text-slate-600 mb-4">Planetary Seasonality Simulator</h3>
         <form class="simulation-form"
               data-api-endpoint="/simulations/seasonal-temps/"
@@ -44,12 +44,39 @@
                 <div class="md:col-span-2">
                     <label for="season-planet-select" class="block text-sm font-medium text-gray-700">Select Planet</label>
                     <select id="season-planet-select" name="planet_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
-                        {% for planet in planets %}
+                        {% for planet in seasonality_sim_planets %}
                             <option value="{{ planet.pk }}">{{ planet.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <button type="submit" class="px-6 py-2 font-semibold text-white bg-gray-800 rounded-md hover:bg-black">Run Season Sim</button>
+            </div>
+        </form>
+        <div class="mt-4">
+            <h4 class="text-sm font-medium text-slate-600 mb-1">Status:</h4>
+            <div class="status-display p-4 bg-gray-50 rounded-md text-gray-600 font-mono text-sm">
+                Awaiting simulation...
+            </div>
+        </div>
+    </div>
+
+    <!-- Tidal Locking Simulation -->
+    <div>
+        <h3 class="text-lg font-semibold text-slate-600 mb-4">Planetary Tidal Locking Simulator</h3>
+        <form class="simulation-form"
+              data-api-endpoint="/simulations/tidal-locking/"
+              data-csrf-token="{{ csrf_token }}"
+              data-sim-type="tidal">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                <div class="md:col-span-2">
+                    <label for="tidal-planet-select" class="block text-sm font-medium text-gray-700">Select Planet</label>
+                    <select id="tidal-planet-select" name="planet_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                        {% for planet in tidal_locking_sim_planets %}
+                            <option value="{{ planet.pk }}">{{ planet.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="px-6 py-2 font-semibold text-white bg-gray-800 rounded-md hover:bg-black">Run Tidal Locking Sim</button>
             </div>
         </form>
         <div class="mt-4">

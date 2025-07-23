@@ -75,7 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Coldest Temp (Apoastron):</strong> ${result.apoastron_temp_k} K <br>
             <strong>Seasonal Difference:</strong> ${result.seasonal_temp_difference_k} K
         `,
-        'default': (result) => `Task finished with an unknown result type.`
+         'tidal': (result) => `
+            <strong>Status:</strong> SUCCESS <br>
+            <strong>Planet:</strong> ${result.planet_name} <br>
+            <strong>Star:</strong> ${result.star_name} <br>
+            <strong>Is Likely Tidally Locked:</strong> ${result.is_locked ? 'True' : 'False'} <br>
+            <strong>Locking Timescale Years:</strong> ${result.locking_timescale_years} <br>
+            <strong>Star Age Years:</strong> ${result.star_age_years} <br>
+            <strong>Conclusion:</strong> ${result.conclusion}
+         `,
+         'default': (result) => `Task finished with an unknown result type.`
     };
 
     function checkTaskStatus(taskId, displayElement, simType) {
