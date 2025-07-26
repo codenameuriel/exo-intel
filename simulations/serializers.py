@@ -1,4 +1,26 @@
 from rest_framework import serializers
+from simulations.models import SimulationRun
+
+
+class SimulationRunSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the SimulationRun model.
+    """
+
+    user = serializers.StringRelatedField()
+
+    class Meta:
+        model = SimulationRun
+        fields = [
+            "id",
+            "user",
+            "status",
+            "simulation_type",
+            "result",
+            "input_parameters",
+            "created_at",
+            "completed_at",
+        ]
 
 
 class TravelTimeInputSerializer(serializers.Serializer):
