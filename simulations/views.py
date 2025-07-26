@@ -1,9 +1,11 @@
 from rest_framework import status
+from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
+from .models import SimulationRun
 from simulations.serializers import (
     TravelTimeInputSerializer,
     SeasonalTempInputSerializer,
@@ -16,6 +18,21 @@ from tasks.tasks import (
     tidal_locking_simulation_task,
     star_lifetime_simulation_task,
 )
+
+
+class SimulationHistoryView(ListAPIView):
+    """
+    A read-only view for simulation history.
+    """
+
+    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrPublic]
+    is_public_resource = False
+
+    def get_queryset(self):
+        return SimulationRun.objects.filter(user=self.request.user).order_by(
+            "-created_at"
+        )
 
 
 class TravelTimeSimulationView(APIView):
@@ -120,7 +137,9 @@ class StarLifetimeSimulationView(APIView):
 
         serializer.is_valid(raise_exception=True)
 
-        task = star_lifetime_simulation_task.delay(**serializer.validated_data)
+        task = star_lifetime_simulation_task.delay(
+            user_id=request.user.id, **serializer.validated_data
+        )
 
         return Response(
             {
