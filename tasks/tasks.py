@@ -1,7 +1,12 @@
 import time
 from celery import shared_task, chain
+from django.db.models.functions import Now
+from django.contrib.auth.models import User
+
 from planets.importer import run_import
+from simulations.models import SimulationRun
 from simulations.engine import SimulationEngine, SimulationError
+from .exceptions import TaskError
 
 
 @shared_task
@@ -96,21 +101,51 @@ def tidal_locking_simulation_task(planet_id):
         raise e
 
 
-@shared_task
-def star_lifetime_simulation_task(star_id):
+@shared_task(bind=True)
+def star_lifetime_simulation_task(self, user_id, star_id):
     """
     A Celery task to run the star lifetime simulation in the background
     """
-    print(f"Starting star lifetime simulation for star ID: {star_id}...")
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        print(
+            f"[TASKERR]: Could not start simulation. User with ID '{user_id}' not found."
+        )
+        raise TaskError(f"User with ID '{user_id}' not found.")
 
     try:
+        run = SimulationRun.objects.create(
+            user=user,
+            task_id=self.request.id,
+            status=SimulationRun.Status.PENDING,
+            simulation_type=SimulationRun.SimulationType.STELLAR_LIFETIME,
+            input_parameters={"star_id": star_id},
+        )
+    except Exception as e:
+        print(f"[TASKERR]: Could not create SimulationRun history record: {e}")
+        raise TaskError(f"Failed to initialize history record: {e}")
+
+    try:
+        print(f"Starting star lifetime simulation for star ID: {star_id}...")
         print("Simulation in progress...")
         time.sleep(10)
 
         result = SimulationEngine.calculate_star_lifetime(star_id)
 
+        run.status = SimulationRun.Status.SUCCESS
+        run.result = result
         print("Simulation complete.")
+
         return result
     except SimulationError as e:
-        print(f"ERROR: Simulation failed with a known error: {e}")
+        print(f"[SIMULATIONERR]: Simulation failed: {e}")
+        run.status = SimulationRun.Status.FAILURE
+        run.result = {"error": str(e)}
         raise e
+    finally:
+        SimulationRun.objects.filter(pk=run.pk).update(
+            status=run.status,
+            result=run.result,
+            completed_at=Now(),
+        )
