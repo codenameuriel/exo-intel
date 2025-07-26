@@ -4,6 +4,7 @@ from .views import (
     SeasonalTempsSimulationView,
     TidalLockingSimulationView,
     StarLifetimeSimulationView,
+    SimulationHistoryView,
 )
 
 app_name = "simulations"
@@ -29,4 +30,5 @@ urlpatterns = [
         StarLifetimeSimulationView.as_view(),
         name="simulation-star-lifetime",
     ),
+    path("history/", SimulationHistoryView.as_view(), name="simulation-history"),
 ]
