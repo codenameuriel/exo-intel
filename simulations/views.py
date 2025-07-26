@@ -11,6 +11,7 @@ from simulations.serializers import (
     SeasonalTempInputSerializer,
     TidalLockingInputSerializer,
     StarLifetimeInputSerializer,
+    SimulationRunSerializer,
 )
 from tasks.tasks import (
     travel_time_simulation_task,
@@ -28,6 +29,8 @@ class SimulationHistoryView(ListAPIView):
     authentication_classes = [APIKeyAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticatedOrPublic]
     is_public_resource = False
+
+    serializer_class = SimulationRunSerializer
 
     def get_queryset(self):
         return SimulationRun.objects.filter(user=self.request.user).order_by(
