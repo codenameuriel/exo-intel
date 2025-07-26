@@ -1,9 +1,6 @@
 import math
 from planets.models import Planet, StarSystem, Star
-
-
-class SimulationError(Exception):
-    pass
+from .exceptions import SimulationError
 
 
 class SimulationEngine:
