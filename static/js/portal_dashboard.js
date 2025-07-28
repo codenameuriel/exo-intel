@@ -14,66 +14,152 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
 
-    let statusInterval;
-
     const simForms = document.querySelectorAll('.simulation-form');
+    const historyTableBody = document.getElementById('history-table-body');
 
     simForms.forEach(form => {
-        console.log("simForm: ", form);
         form.addEventListener('submit', handleSimSubmit);
     });
 
     function handleSimSubmit(event) {
         event.preventDefault();
 
-        if (statusInterval) clearInterval(statusInterval);
-
         const form = event.target;
+        const errorDisplay = document.querySelector('.form-error-display');
+        errorDisplay.innerHTML = '';
 
-        const statusDisplay = form.nextElementSibling.querySelector('.status-display');
 
         const endpoint = form.dataset.apiEndpoint;
+
+        // MAKE USE OF SIM TYPE
         const simType = form.dataset.simType;
+
         const csrfToken = form.dataset.csrfToken;
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-
-        statusDisplay.textContent = `Starting ${simType} simulation...`;
 
         fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
             body: JSON.stringify(data),
         })
-            .then(response => response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+
+                return response.json().then(apiError=> {
+                    throw apiError;
+                });
+            })
             .then(data => {
                 if (data.task_id) {
-                    statusDisplay.textContent = `Task started! ID: ${data.task_id}. Checking status...`;
-                    checkTaskStatus(data.task_id, statusDisplay, simType);
+                    updateHistoryTable();
                 } else {
-                    statusDisplay.textContent = `Error: ${data.error || 'Unknown error'}`;
+                    // unlikely fallback
+                    displayError(errorDisplay, { details: 'An unknown error occurred.' });
                 }
             })
             .catch(error => {
-                statusDisplay.textContent = `Request failed: ${error}`;
-            })
+                // network error, fetch fails, api errors
+                displayError(errorDisplay, error);
+            });
     }
 
-     const resultRenderers = {
-        'travel': (result) => `
+    function displayError(element, error) {
+        let errorHtml = '<div class="p-4 rounded-md bg-red-100 text-red-800 mb-8" role="alert">';
+
+        // api error
+        if (error && error.details) {
+            if (typeof error.details === 'object') {
+                for (const [field, messages] of Object.entries(error.details)) {
+                    const fieldName = field.charAt(0).toUpperCase() + field.slice(1).replace(/_/g, ' ');
+                    errorHtml += `<p><strong>${fieldName}:</strong> ${messages.join(', ')}</p>`;
+                }
+            } else {
+                errorHtml += `<p>${error.details}</p>`;
+            }
+        } else {
+            // unexpected errors, network failures
+            errorHtml += `<p>An unexpected error occurred: ${error.message}. Please try again.</p>`;
+        }
+
+        errorHtml += '</div>';
+        element.innerHTML = errorHtml;
+
+        setTimeout(() => {
+            element.innerHTML = '';
+        }, 7000);
+    }
+
+    function formatResult(simType, resultData) {
+        if (!resultData) return 'N/A';
+        if (resultData.error) {
+            return `<span class="text-red-600">${resultData.error}</span>`;
+        }
+        const renderer = resultRenderers[simType] || resultRenderers['default'];
+        return renderer(resultData);
+    }
+
+    function updateHistoryTable() {
+        fetch('/simulations/history/')
+            .then(response => response.json())
+            .then(data => {
+                if (!historyTableBody || !data) return;
+
+                if (data.results.length === 0) {
+                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">No simulation history found.</td></tr>`;
+                    return;
+                }
+
+                let tableHtml = '';
+                let isTaskPending = false;
+                data.results.forEach(run => {
+                    tableHtml += `
+                        <tr class="text-sm">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">${run.simulation_type}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                    ${run.status === 'SUCCESS' ? 'bg-green-100 text-green-800' : ''}
+                                    ${run.status === 'PENDING' ? 'bg-yellow-100 text-yellow-800' : ''}
+                                    ${run.status === 'FAILURE' ? 'bg-red-100 text-red-800' : ''}">
+                                    ${run.status}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-gray-500">${formatResult(run.simulation_type, run.result)}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">${new Date(run.created_at).toLocaleString()}</td>
+                        </tr>
+                    `;
+                });
+                historyTableBody.innerHTML= tableHtml;
+
+
+            })
+            .catch(error => {
+                if (historyTableBody) {
+                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-red-500">Error loading history. Are you logged in?</td></tr>`;
+                }
+            });
+    }
+
+    updateHistoryTable();
+    setInterval(updateHistoryTable, 5000);
+
+    const resultRenderers = {
+        'TRAVEL_TIME': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Destination:</strong> ${result.star_system_name} <br>
             <strong>Travel Time:</strong> ${result.travel_time_years} years
         `,
-        'season': (result) => `
+        'SEASONAL_TEMPS': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Hottest Temp (Periastron):</strong> ${result.periastron_temp_k} K <br>
             <strong>Coldest Temp (Apoastron):</strong> ${result.apoastron_temp_k} K <br>
             <strong>Seasonal Difference:</strong> ${result.seasonal_temp_difference_k} K
         `,
-         'tidal': (result) => `
+         'TIDAL_LOCKING': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Star:</strong> ${result.star_name} <br>
@@ -82,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Star Age Years:</strong> ${result.star_age_years} <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
-         'lifetime': (result) => `
+         'STELLAR_LIFETIME': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Star:</strong> ${result.star_name} <br>
             <strong>Star Solar Mass:</strong> ${result.star_mass_solar} <br>
