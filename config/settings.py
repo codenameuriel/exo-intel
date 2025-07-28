@@ -145,6 +145,7 @@ LOGIN_REDIRECT_URL = "/portal/dashboard/"
 LOGOUT_REDIRECT_URL = "/portal/login/"
 
 REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "config.exception_handler.custom_exception_handler",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 25,
     "DEFAULT_FILTER_BACKENDS": [
@@ -164,7 +165,7 @@ REST_FRAMEWORK = {
     # defines scopes and their rate limits
     "DEFAULT_THROTTLE_RATES": {
         "anon": "25/day",  # 25 requests per day for anonymous users
-        "user": "100/day",  # 100 requests per day for users with an API key or session
+        "user": "5000/day",  # 100 requests per day for users with an API key or session
     },
 }
 
