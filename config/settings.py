@@ -164,8 +164,8 @@ REST_FRAMEWORK = {
     ],
     # defines scopes and their rate limits
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "25/day",  # 25 requests per day for anonymous users
-        "user": "5000/day",  # 100 requests per day for users with an API key or session
+        "anon": "5/day",  # 5 requests per day for anonymous users
+        "user": "100/day",  # 100 requests per day for users with an API key or session
     },
 }
 

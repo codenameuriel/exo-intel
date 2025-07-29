@@ -32,6 +32,9 @@ class SimulationHistoryView(ListAPIView):
 
     serializer_class = SimulationRunSerializer
 
+    # disable throttling
+    throttle_classes = []
+
     def get_queryset(self):
         return SimulationRun.objects.filter(user=self.request.user).order_by(
             "-created_at"
