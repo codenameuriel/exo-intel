@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const simForms = document.querySelectorAll('.simulation-form');
     const historyTableBody = document.getElementById('history-table-body');
+    const simMessageDisplay = document.getElementById('simulation-message-display');
 
     simForms.forEach(form => {
         form.addEventListener('submit', handleSimSubmit);
@@ -27,8 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
         const form = event.target;
-        const errorDisplay = document.querySelector('.form-error-display');
-        errorDisplay.innerHTML = '';
+        simMessageDisplay.innerHTML = '';
 
         const endpoint = form.dataset.apiEndpoint;
         const csrfToken = form.dataset.csrfToken;
@@ -51,15 +51,16 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.task_id) {
+                    displaySimulationMessage(`Simulation started successfully! Task ID: ${data.task_id}`, 'success');
                     startPolling();
                 } else {
                     // unlikely fallback
-                    displayError(errorDisplay, { details: 'An unknown error occurred.' });
+                    displaySimulationMessage('An unknown error occurred.', 'error');
                 }
             })
             .catch(error => {
                 // network error, fetch fails, api errors
-                displayError(errorDisplay, error);
+                displaySimulationMessage(error, 'error');
             });
     }
 
@@ -131,30 +132,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function displayError(element, error) {
-        let errorHtml = '<div class="p-4 rounded-md bg-red-100 text-red-800 mb-8" role="alert">';
+    function displaySimulationMessage(data, level) {
+        if (!simMessageDisplay) return;
 
-        // api error
-        if (error && error.details) {
-            if (typeof error.details === 'object') {
-                for (const [field, messages] of Object.entries(error.details)) {
+        let messageHtml = '';
+        const bgColor = level === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+
+        let messageContent = '';
+
+        // Handle API errors
+        if (level === 'error' && data && data.details) {
+            const details = data.details;
+            if (typeof details === 'object' && details !== null) {
+                let detailMessages = [];
+                for (const [field, messages] of Object.entries(details)) {
                     const fieldName = field.charAt(0).toUpperCase() + field.slice(1).replace(/_/g, ' ');
-                    errorHtml += `<p><strong>${fieldName}:</strong> ${messages.join(', ')}</p>`;
+                    detailMessages.push(`<strong>${fieldName}:</strong> ${messages.join(', ')}`);
                 }
+                messageContent = detailMessages.join('<br>');
             } else {
-                errorHtml += `<p>${error.details}</p>`;
+                messageContent = details;
             }
+        } else if (level === 'success') {
+            messageContent = data;
         } else {
-            // unexpected errors, network failures
-            errorHtml += `<p>An unexpected error occurred: ${error.message}. Please try again.</p>`;
+            messageContent = 'An unexpected error occurred. Please try again.';
         }
 
-        errorHtml += '</div>';
-        element.innerHTML = errorHtml;
+        messageHtml = `<div class="p-4 rounded-md ${bgColor}" role="alert">${messageContent}</div>`;
+        simMessageDisplay.innerHTML = messageHtml;
 
         setTimeout(() => {
-            element.innerHTML = '';
-        }, 7000);
+            if (simMessageDisplay) simMessageDisplay.innerHTML = '';
+        }, 4000);
     }
 
     function formatResult(simType, resultData) {
