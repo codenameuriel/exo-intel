@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', handleSimSubmit);
     });
 
-    let intervalId;
+    let pollingIntervalId = null;
 
     function handleSimSubmit(event) {
         event.preventDefault();
@@ -51,8 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.task_id) {
-                    updateHistoryTable(true);
-                    intervalId = setInterval(updateHistoryTable, 5000);
+                    startPolling();
                 } else {
                     // unlikely fallback
                     displayError(errorDisplay, { details: 'An unknown error occurred.' });
@@ -62,6 +61,74 @@ document.addEventListener('DOMContentLoaded', function() {
                 // network error, fetch fails, api errors
                 displayError(errorDisplay, error);
             });
+    }
+
+    function updateHistoryTable() {
+        fetch('/simulations/history/')
+            .then(response => {
+                if (!response.ok) return null;
+                return response.json()
+            })
+            .then(data => {
+                if (!historyTableBody || !data) return;
+
+                if (data.results.length === 0) {
+                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">No simulation history found.</td></tr>`;
+                    return;
+                }
+
+                let isAnySimRunning = false;
+
+                let tableHtml = '';
+                data.results.forEach(run => {
+                    if (run.status === 'PENDING') {
+                        isAnySimRunning = true;
+                    }
+                    tableHtml += `
+                        <tr class="text-sm">
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">${run.simulation_type}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                    ${run.status === 'SUCCESS' ? 'bg-green-100 text-green-800' : ''}
+                                    ${run.status === 'PENDING' ? 'bg-yellow-100 text-yellow-800' : ''}
+                                    ${run.status === 'FAILURE' ? 'bg-red-100 text-red-800' : ''}">
+                                    ${run.status}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-gray-500">${formatResult(run.simulation_type, run.result)}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">${new Date(run.created_at).toLocaleString()}</td>
+                        </tr>
+                    `;
+                });
+                historyTableBody.innerHTML= tableHtml;
+
+                if (isAnySimRunning) {
+                    startPolling();
+                } else {
+                    stopPolling();
+                }
+            })
+            .catch(error => {
+                if (historyTableBody) {
+                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-red-500">Error loading history. Are you logged in?</td></tr>`;
+                }
+                stopPolling();
+            });
+    }
+
+    updateHistoryTable();
+
+    function startPolling() {
+        if (!pollingIntervalId) {
+            pollingIntervalId = setInterval(updateHistoryTable, 2000);
+        }
+    }
+
+    function stopPolling() {
+        if (pollingIntervalId) {
+            clearInterval(pollingIntervalId);
+            pollingIntervalId = null;
+        }
     }
 
     function displayError(element, error) {
@@ -98,55 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const renderer = resultRenderers[simType] || resultRenderers['default'];
         return renderer(resultData);
     }
-
-    function updateHistoryTable(simulationTriggered) {
-        fetch('/simulations/history/')
-            .then(response => response.json())
-            .then(data => {
-                if (!historyTableBody || !data) return;
-
-                if (data.results.length === 0) {
-                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">No simulation history found.</td></tr>`;
-                    return;
-                }
-
-                // stop polling
-                if (!simulationTriggered) {
-                    const latestSimulationRun = data.results[0];
-
-                    if (latestSimulationRun.status !== 'PENDING' && intervalId) {
-                        clearInterval(intervalId)
-                    }
-                }
-
-                let tableHtml = '';
-                data.results.forEach(run => {
-                    tableHtml += `
-                        <tr class="text-sm">
-                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">${run.simulation_type}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                    ${run.status === 'SUCCESS' ? 'bg-green-100 text-green-800' : ''}
-                                    ${run.status === 'PENDING' ? 'bg-yellow-100 text-yellow-800' : ''}
-                                    ${run.status === 'FAILURE' ? 'bg-red-100 text-red-800' : ''}">
-                                    ${run.status}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 text-gray-500">${formatResult(run.simulation_type, run.result)}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">${new Date(run.created_at).toLocaleString()}</td>
-                        </tr>
-                    `;
-                });
-                historyTableBody.innerHTML= tableHtml;
-            })
-            .catch(error => {
-                if (historyTableBody) {
-                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-red-500">Error loading history. Are you logged in?</td></tr>`;
-                }
-            });
-    }
-
-    updateHistoryTable();
 
     const resultRenderers = {
         'TRAVEL_TIME': (result) => `
