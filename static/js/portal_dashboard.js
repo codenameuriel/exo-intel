@@ -23,6 +23,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let pollingIntervalId = null;
+    let historyPrevUrl = null;
+    let historyNextUrl = null;
+    const initialHistoryUrl = '/simulations/history/';
+
+    const prevButtons = document.querySelectorAll('.history-prev-btn');
+    const nextButtons = document.querySelectorAll('.history-next-btn');
+    const pageInfoSpans = document.querySelectorAll('.history-page-info');
+
+    prevButtons.forEach(btn => btn.addEventListener('click', () => {
+        if (historyPrevUrl) {
+            updateHistoryTable(historyPrevUrl);
+        }
+    }));
+
+    nextButtons.forEach(btn => btn.addEventListener('click', () => {
+        if (historyNextUrl) {
+            updateHistoryTable(historyNextUrl);
+        }
+    }));
 
     function handleSimSubmit(event) {
         event.preventDefault();
@@ -64,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    function updateHistoryTable() {
-        fetch('/simulations/history/')
+    function updateHistoryTable(url = initialHistoryUrl) {
+        fetch(url)
             .then(response => {
                 if (!response.ok) return null;
                 return response.json()
@@ -77,6 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">No simulation history found.</td></tr>`;
                     return;
                 }
+
+                historyPrevUrl = data.previous;
+                historyNextUrl = data.next;
+                updatePaginationControls(data);
 
                 let isAnySimRunning = false;
 
@@ -118,6 +141,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateHistoryTable();
+
+    function updatePaginationControls(data) {
+        const totalItems = data.count;
+        const pageSize = 25; // DRF pagination setting
+        const totalPages = Math.ceil(totalItems / pageSize);
+
+        let currentPage = 1;
+        if (data.previous) {
+            const urlParams = new URLSearchParams(new URL(data.previous).search);
+            currentPage = parseInt(urlParams.get('page') || '1') + 1;
+        } else if (data.next) {
+            currentPage = 1;
+        } else if (totalItems > 0) {
+            currentPage = 1;
+        }
+
+        pageInfoSpans.forEach(span => {
+            if (totalItems > 0) {
+                span.textContent = `Page ${currentPage} of ${totalPages}`;
+            } else {
+                span.textContent = '';
+            }
+        });
+
+        prevButtons.forEach(btn => btn.disabled = !data.previous);
+        nextButtons.forEach(btn => btn.disabled = !data.next);
+    }
 
     function startPolling() {
         if (!pollingIntervalId) {
