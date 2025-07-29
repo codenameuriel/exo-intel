@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         form.addEventListener('submit', handleSimSubmit);
     });
 
+    let intervalId;
+
     function handleSimSubmit(event) {
         event.preventDefault();
 
@@ -28,14 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorDisplay = document.querySelector('.form-error-display');
         errorDisplay.innerHTML = '';
 
-
         const endpoint = form.dataset.apiEndpoint;
-
-        // MAKE USE OF SIM TYPE
-        const simType = form.dataset.simType;
-
         const csrfToken = form.dataset.csrfToken;
-
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
@@ -55,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.task_id) {
-                    updateHistoryTable();
+                    updateHistoryTable(true);
+                    intervalId = setInterval(updateHistoryTable, 5000);
                 } else {
                     // unlikely fallback
                     displayError(errorDisplay, { details: 'An unknown error occurred.' });
@@ -102,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return renderer(resultData);
     }
 
-    function updateHistoryTable() {
+    function updateHistoryTable(simulationTriggered) {
         fetch('/simulations/history/')
             .then(response => response.json())
             .then(data => {
@@ -113,8 +110,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
 
+                // stop polling
+                if (!simulationTriggered) {
+                    const latestSimulationRun = data.results[0];
+
+                    if (latestSimulationRun.status !== 'PENDING' && intervalId) {
+                        clearInterval(intervalId)
+                    }
+                }
+
                 let tableHtml = '';
-                let isTaskPending = false;
                 data.results.forEach(run => {
                     tableHtml += `
                         <tr class="text-sm">
@@ -133,8 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                 });
                 historyTableBody.innerHTML= tableHtml;
-
-
             })
             .catch(error => {
                 if (historyTableBody) {
@@ -144,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     updateHistoryTable();
-    setInterval(updateHistoryTable, 5000);
 
     const resultRenderers = {
         'TRAVEL_TIME': (result) => `
@@ -180,28 +182,4 @@ document.addEventListener('DOMContentLoaded', function() {
          `,
          'default': (result) => `Task finished with an unknown result type.`
     };
-
-    function checkTaskStatus(taskId, displayElement, simType) {
-        statusInterval = setInterval(() => {
-            fetch(`/tasks/status/${taskId}/`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'SUCCESS') {
-                        clearInterval(statusInterval);
-                        const result = data.result;
-                        const renderer = resultRenderers[simType] || resultRenderers['default'];
-                        displayElement.innerHTML = renderer(result);
-                    } else if (data.status === 'FAILURE') {
-                        clearInterval(statusInterval);
-                        displayElement.textContent = `Task Failed: ${data.result.message || 'Unknown error'}`;
-                    } else {
-                        displayElement.textContent = `Task ID: ${taskId} | Status: ${data.status}...`;
-                    }
-                })
-                .catch(error => {
-                    clearInterval(statusInterval);
-                    displayElement.textContent = `Failed to check status: ${error}`;
-                });
-        }, 3000); // Check every 3 seconds
-    }
 });
