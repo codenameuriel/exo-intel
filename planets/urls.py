@@ -14,9 +14,5 @@ router.register(r"stars", rest.StarViewSet, basename="star")
 urlpatterns = [
     path("", web.planets, name="planets"),
     path("api/", include(router.urls)),
-    path(
-        "graphql/",
-        csrf_exempt(graphql.PrivateGraphQLView.as_view()),
-        name="graphql"
-    ),
+    path("graphql/", csrf_exempt(graphql.PrivateGraphQLView.as_view()), name="graphql"),
 ]
