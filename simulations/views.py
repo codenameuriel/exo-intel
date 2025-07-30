@@ -58,7 +58,9 @@ class TravelTimeSimulationView(APIView):
 
         serializer.is_valid(raise_exception=True)
 
-        task = travel_time_simulation_task.delay(**serializer.validated_data)
+        task = travel_time_simulation_task.delay(
+            user_id=request.user.id, **serializer.validated_data
+        )
 
         return Response(
             {
@@ -86,7 +88,9 @@ class SeasonalTempsSimulationView(APIView):
 
         serializer.is_valid(raise_exception=True)
 
-        task = seasonal_temps_simulation_task.delay(**serializer.validated_data)
+        task = seasonal_temps_simulation_task.delay(
+            user_id=request.user.id, **serializer.validated_data
+        )
 
         return Response(
             {
@@ -114,7 +118,9 @@ class TidalLockingSimulationView(APIView):
 
         serializer.is_valid(raise_exception=True)
 
-        task = tidal_locking_simulation_task.delay(**serializer.validated_data)
+        task = tidal_locking_simulation_task.delay(
+            user_id=request.user.id, **serializer.validated_data
+        )
 
         return Response(
             {

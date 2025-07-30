@@ -38,14 +38,38 @@ def import_nasa_data_task(nasa_table, app_table):
     return result
 
 
-@shared_task
-def travel_time_simulation_task(star_system_id, speed_percentage):
+@shared_task(bind=True)
+def travel_time_simulation_task(self, user_id, star_system_id, speed_percentage):
     """
     A Celery task to run the travel time simulation in the background
     """
-    print(f"Starting travel time simulation for start system ID: {star_system_id}...")
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        print(
+            f"[TASKERR]: Could not start simulation. User with ID '{user_id}' not found."
+        )
+        raise TaskError(f"User with ID '{user_id}' not found.")
 
     try:
+        run = SimulationRun.objects.create(
+            user=user,
+            task_id=self.request.id,
+            status=SimulationRun.Status.PENDING,
+            simulation_type=SimulationRun.SimulationType.TRAVEL_TIME,
+            input_parameters={
+                "star_system_id": star_system_id,
+                "speed_percentage": speed_percentage,
+            },
+        )
+    except Exception as e:
+        print(f"[TASKERR]: Could not create SimulationRun history record: {e}")
+        raise TaskError(f"Failed to initialize history record: {e}")
+
+    try:
+        print(
+            f"Starting travel time simulation for start system ID: {star_system_id}..."
+        )
         print("Simulation in progress...")
         time.sleep(10)
 
@@ -53,52 +77,122 @@ def travel_time_simulation_task(star_system_id, speed_percentage):
             star_system_id, speed_percentage
         )
 
+        run.status = SimulationRun.Status.SUCCESS
+        run.result = result
         print("Simulation complete.")
         return result
     except SimulationError as e:
         print(f"ERROR: Simulation failed with a known error: {e}")
+        run.status = SimulationRun.Status.FAILURE
+        run.result = {"error": str(e)}
         # raise the error to mark task as FAILURE
         raise e
+    finally:
+        SimulationRun.objects.filter(pk=run.pk).update(
+            status=run.status,
+            result=run.result,
+            completed_at=Now(),
+        )
 
 
-@shared_task
-def seasonal_temps_simulation_task(planet_id):
+@shared_task(bind=True)
+def seasonal_temps_simulation_task(self, user_id, planet_id):
     """
     A Celery task to run the seasonal temperatures simulation in the background
     """
-    print(f"Starting seasonal temperatures simulation for planet ID: {planet_id}...")
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        print(
+            f"[TASKERR]: Could not start simulation. User with ID '{user_id}' not found."
+        )
+        raise TaskError(f"User with ID '{user_id}' not found.")
 
     try:
+        run = SimulationRun.objects.create(
+            user=user,
+            task_id=self.request.id,
+            status=SimulationRun.Status.PENDING,
+            simulation_type=SimulationRun.SimulationType.SEASONAL_TEMPS,
+            input_parameters={"planet_id": planet_id},
+        )
+    except Exception as e:
+        print(f"[TASKERR]: Could not create SimulationRun history record: {e}")
+        raise TaskError(f"Failed to initialize history record: {e}")
+
+    try:
+        print(
+            f"Starting seasonal temperatures simulation for planet ID: {planet_id}..."
+        )
         print("Simulation in progress...")
         time.sleep(10)
 
         result = SimulationEngine.calculate_seasonal_temperatures(planet_id)
 
+        run.status = SimulationRun.Status.SUCCESS
+        run.result = result
         print("Simulation complete.")
         return result
     except SimulationError as e:
         print(f"ERROR: Simulation failed with a known error: {e}")
+        run.status = SimulationRun.Status.FAILURE
+        run.result = {"error": str(e)}
         raise e
+    finally:
+        SimulationRun.objects.filter(pk=run.pk).update(
+            status=run.status,
+            result=run.result,
+            completed_at=Now(),
+        )
 
 
-@shared_task
-def tidal_locking_simulation_task(planet_id):
+@shared_task(bind=True)
+def tidal_locking_simulation_task(self, user_id, planet_id):
     """
     A Celery task to run the tidal locking simulation in the background
     """
-    print(f"Starting tidal locking simulation for planet ID: {planet_id}...")
+    try:
+        user = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        print(
+            f"[TASKERR]: Could not start simulation. User with ID '{user_id}' not found."
+        )
+        raise TaskError(f"User with ID '{user_id}' not found.")
 
     try:
+        run = SimulationRun.objects.create(
+            user=user,
+            task_id=self.request.id,
+            status=SimulationRun.Status.PENDING,
+            simulation_type=SimulationRun.SimulationType.TIDAL_LOCKING,
+            input_parameters={"planet_id": planet_id},
+        )
+    except Exception as e:
+        print(f"[TASKERR]: Could not create SimulationRun history record: {e}")
+        raise TaskError(f"Failed to initialize history record: {e}")
+
+    try:
+        print(f"Starting tidal locking simulation for planet ID: {planet_id}...")
         print("Simulation in progress...")
         time.sleep(10)
 
         result = SimulationEngine.estimate_tidal_locking(planet_id)
 
+        run.status = SimulationRun.Status.SUCCESS
+        run.result = result
         print("Simulation complete.")
         return result
     except SimulationError as e:
         print(f"ERROR: Simulation failed with a known error: {e}")
+        run.status = SimulationRun.Status.FAILURE
+        run.result = {"error": str(e)}
         raise e
+    finally:
+        SimulationRun.objects.filter(pk=run.pk).update(
+            status=run.status,
+            result=run.result,
+            completed_at=Now(),
+        )
 
 
 @shared_task(bind=True)
