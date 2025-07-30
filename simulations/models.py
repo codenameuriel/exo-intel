@@ -16,7 +16,7 @@ class SimulationRun(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     task_id = models.CharField(max_length=255, unique=True)
-    simulation_type = models.CharField(max_length=50)
+    simulation_type = models.CharField(max_length=50, choices=SimulationType.choices)
     input_parameters = models.JSONField(null=True, blank=True)
     status = models.CharField(
         max_length=10, choices=Status.choices, default=Status.PENDING
