@@ -12,7 +12,7 @@ class SimulationRun(models.Model):
         TRAVEL_TIME = "TRAVEL_TIME", "Travel Time"
         SEASONAL_TEMPS = "SEASONAL_TEMPS", "Seasonal Temperatures"
         TIDAL_LOCKING = "TIDAL_LOCKING", "Tidal Locking"
-        STELLAR_LIFETIME = "STELLAR_LIFETIME", "Stellar Lifetime"
+        STAR_LIFETIME = "STAR_LIFETIME", "Star Lifetime"
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     task_id = models.CharField(max_length=255, unique=True)
