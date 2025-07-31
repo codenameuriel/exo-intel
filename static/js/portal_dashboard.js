@@ -69,13 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             })
             .then(data => {
-                if (data.task_id) {
-                    displaySimulationMessage(`Simulation started successfully! Task ID: ${data.task_id}`, 'success');
-                    startPolling();
-                } else {
-                    // unlikely fallback
-                    displaySimulationMessage('An unknown error occurred.', 'error');
-                }
+                displaySimulationMessage(`Simulation started successfully! Task ID: ${data.task_id}`, 'success');
+                startPolling();
             })
             .catch(error => {
                 // network error, fetch fails, api errors
@@ -248,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Star Age Years:</strong> ${result.star_age_years} <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
-         'STELLAR_LIFETIME': (result) => `
+         'STAR_LIFETIME': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Star:</strong> ${result.star_name} <br>
             <strong>Star Solar Mass:</strong> ${result.star_mass_solar} <br>
