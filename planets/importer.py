@@ -52,7 +52,7 @@ COLUMN_MAPPING = {
             "pl_rade": "radius_earth",
             "pl_masse": "mass_earth",
             "pl_eqt": "equilibrium_temperature",
-            "pl_orbsmax": "orbit_semi_major_axis",
+            "pl_orbsmax": "semi_major_axis",
             "pl_insol": "insolation_flux",
             "pl_orbeccen": "orbital_eccentricity",
         },
