@@ -8,6 +8,13 @@ from simulations.models import SimulationRun
 from simulations.engine import SimulationEngine, SimulationError
 from .exceptions import TaskError
 
+SIMULATION_DISPATCHER = {
+    SimulationRun.SimulationType.TRAVEL_TIME: SimulationEngine.calculate_travel_time,
+    SimulationRun.SimulationType.SEASONAL_TEMPS: SimulationEngine.calculate_seasonal_temperatures,
+    SimulationRun.SimulationType.TIDAL_LOCKING: SimulationEngine.estimate_tidal_locking,
+    SimulationRun.SimulationType.STAR_LIFETIME: SimulationEngine.calculate_star_lifetime,
+}
+
 
 @shared_task
 def full_nightly_import():
@@ -62,31 +69,25 @@ def run_simulation_task(self, user_id, simulation_type, input_parameters):
         raise TaskError(f"Failed to initialize history record: {e}")
 
     try:
+        simulation_func = SIMULATION_DISPATCHER[simulation_type]
+    except KeyError:
+        print(f"[TASKERR]: Unknown simulation type '{simulation_type}'", flush=True)
+        raise TaskError(f"Unknown simulation type '{simulation_type}'")
+
+    try:
         print(
             f"Dispatching simulation '{simulation_type}' with inputs: {input_parameters}",
             flush=True,
         )
         time.sleep(10)  # simulate long-running process
 
-        # dispatcher
-        result = None
-        if simulation_type == SimulationRun.SimulationType.TRAVEL_TIME:
-            result = SimulationEngine.calculate_travel_time(**input_parameters)
-        elif simulation_type == SimulationRun.SimulationType.SEASONAL_TEMPS:
-            result = SimulationEngine.calculate_seasonal_temperatures(
-                **input_parameters
-            )
-        elif simulation_type == SimulationRun.SimulationType.TIDAL_LOCKING:
-            result = SimulationEngine.estimate_tidal_locking(**input_parameters)
-        elif simulation_type == SimulationRun.SimulationType.STAR_LIFETIME:
-            result = SimulationEngine.calculate_star_lifetime(**input_parameters)
-        else:
-            print(f"[TASKERR]: Unknown simulation type '{simulation_type}'", flush=True)
-            raise TaskError(f"Unknown simulation type: {simulation_type}")
+        result = simulation_func(**input_parameters)
 
         run.status = SimulationRun.Status.SUCCESS
         run.result = result
+
         print("Simulation complete.", flush=True)
+
         return result
     except (SimulationError, TaskError) as e:
         run.status = SimulationRun.Status.FAILURE
