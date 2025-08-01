@@ -13,12 +13,7 @@ from simulations.serializers import (
     StarLifetimeInputSerializer,
     SimulationRunSerializer,
 )
-from tasks.tasks import (
-    travel_time_simulation_task,
-    seasonal_temps_simulation_task,
-    tidal_locking_simulation_task,
-    star_lifetime_simulation_task,
-)
+from tasks.tasks import run_simulation_task
 
 
 class SimulationHistoryView(ListAPIView):
@@ -55,11 +50,12 @@ class TravelTimeSimulationView(APIView):
         Handles POST request to run the simulation.
         """
         serializer = TravelTimeInputSerializer(data=request.data)
-
         serializer.is_valid(raise_exception=True)
 
-        task = travel_time_simulation_task.delay(
-            user_id=request.user.id, **serializer.validated_data
+        task = run_simulation_task.delay(
+            user_id=request.user.id,
+            simulation_type=SimulationRun.SimulationType.TRAVEL_TIME,
+            input_parameters=serializer.validated_data,
         )
 
         return Response(
@@ -85,11 +81,12 @@ class SeasonalTempsSimulationView(APIView):
         Handles POST request to run the simulation.
         """
         serializer = SeasonalTempInputSerializer(data=request.data)
-
         serializer.is_valid(raise_exception=True)
 
-        task = seasonal_temps_simulation_task.delay(
-            user_id=request.user.id, **serializer.validated_data
+        task = run_simulation_task.delay(
+            user_id=request.user.id,
+            simulation_type="SEASONS",
+            input_parameters=serializer.validated_data,
         )
 
         return Response(
@@ -115,11 +112,12 @@ class TidalLockingSimulationView(APIView):
         Handles POST request to run the simulation.
         """
         serializer = TidalLockingInputSerializer(data=request.data)
-
         serializer.is_valid(raise_exception=True)
 
-        task = tidal_locking_simulation_task.delay(
-            user_id=request.user.id, **serializer.validated_data
+        task = run_simulation_task.delay(
+            user_id=request.user.id,
+            simulation_type=SimulationRun.SimulationType.TIDAL_LOCKING,
+            input_parameters=serializer.validated_data,
         )
 
         return Response(
@@ -146,11 +144,12 @@ class StarLifetimeSimulationView(APIView):
         """
 
         serializer = StarLifetimeInputSerializer(data=request.data)
-
         serializer.is_valid(raise_exception=True)
 
-        task = star_lifetime_simulation_task.delay(
-            user_id=request.user.id, **serializer.validated_data
+        task = run_simulation_task.delay(
+            user_id=request.user.id,
+            simulation_type=SimulationRun.SimulationType.STAR_LIFETIME,
+            input_parameters=serializer.validated_data,
         )
 
         return Response(
