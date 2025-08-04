@@ -17,17 +17,3 @@ def build_nasa_tap_url(table, columns, format="csv"):
     query_param_value = f"select {query_columns} from {table}".replace(" ", "+")
 
     return f"{base_url}?query={query_param_value}&format={format}"
-
-
-def try_float(val):
-    try:
-        return float(val)
-    except (TypeError, ValueError):
-        return None
-
-
-def try_int(val):
-    try:
-        return int(val)
-    except (TypeError, ValueError):
-        return None
