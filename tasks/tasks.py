@@ -22,10 +22,10 @@ def full_nightly_import():
     A master task that runs the full import pipeline in the correct order
     """
     import_chain = chain(
-        import_nasa_data_task.si("stellarhosts", "starsystem"),
-        import_nasa_data_task.si("stellarhosts", "star"),
-        import_nasa_data_task.si("ps", "planetdiscovery"),
-        import_nasa_data_task.si("ps", "planet"),
+        import_nasa_data_task.si("stellarhosts", "star_systems"),
+        import_nasa_data_task.si("stellarhosts", "stars"),
+        import_nasa_data_task.si("ps", "planet_discoveries"),
+        import_nasa_data_task.si("ps", "planets"),
     )
 
     import_chain()
