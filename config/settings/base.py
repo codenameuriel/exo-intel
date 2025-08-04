@@ -16,7 +16,7 @@ from celery.schedules import crontab
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 STATIC_URL = "static/"
 
@@ -133,16 +133,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Authentication and Session Configuration
 LOGIN_URL = "/portal/login/"
 LOGIN_REDIRECT_URL = "/portal/dashboard/"
 LOGOUT_REDIRECT_URL = "/portal/login/"
+# defaults to 2 weeks, set to 1 hour
+SESSION_COOKIE_AGE = 60 * 60
+# reset on every request while not expired
+SESSION_SAVE_EVERY_REQUEST = True
+# defaults to false, persist session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "config.exception_handler.custom_exception_handler",
@@ -179,8 +184,8 @@ CELERY_RESULT_BACKEND = config(
 )
 
 # schedule file storage location
-CELERY_BEAT_SCHEDULE_FILENAME = config(
-    "CELERY_BEAT_SCHEDULE_FILENAME", default="run/celerybeat-schedule"
+CELERY_BEAT_SCHEDULE_FILE = config(
+    "CELERY_BEAT_SCHEDULE_FILE", default="run/celerybeat-schedule"
 )
 
 CELERY_BEAT_SCHEDULE = {
@@ -195,13 +200,3 @@ CELERY_BEAT_SCHEDULE = {
 GRAPHENE = {
     "SCHEMA": "config.schema.schema",
 }
-
-# Session Configuration
-# defaults to 2 weeks, set to 1 hour
-SESSION_COOKIE_AGE = 60 * 60
-
-# reset on every request while not expired
-SESSION_SAVE_EVERY_REQUEST = True
-
-# defaults to false, persist session
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False

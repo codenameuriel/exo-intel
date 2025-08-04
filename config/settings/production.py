@@ -1,4 +1,5 @@
 from .base import *
+import dj_database_url
 
 DEBUG = False
 
@@ -12,3 +13,11 @@ ALLOWED_HOSTS = config(
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config("DATABASE_URL"),
+        # keep connection alive for 10 minutes
+        conn_max_age=600
+    )
+}
