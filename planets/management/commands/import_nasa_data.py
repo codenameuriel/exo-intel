@@ -17,7 +17,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--app-table",
             type=str,
-            choices=["planet", "planetdiscovery", "starsystem", "star"],
+            choices=["planets", "planet_discoveries", "star_systems", "stars"],
             required=True,
             help="Which app table to import into",
         )

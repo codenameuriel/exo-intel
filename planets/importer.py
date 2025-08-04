@@ -6,7 +6,7 @@ from .models import StarSystem, Star, PlanetDiscovery, Planet
 from .utils import build_nasa_tap_url
 
 COLUMN_MAPPING = {
-    "starsystem": {
+    "star_systems": {
         "model": StarSystem,
         "unique_on": "name",
         "map": {
@@ -19,7 +19,7 @@ COLUMN_MAPPING = {
             "dec": "dec",
         },
     },
-    "star": {
+    "stars": {
         "model": Star,
         "unique_on": "name",
         "map": {
@@ -32,7 +32,7 @@ COLUMN_MAPPING = {
             "st_age": "age",
         },
     },
-    "planetdiscovery": {
+    "planet_discoveries": {
         "model": PlanetDiscovery,
         # A combination of fields makes this unique
         "unique_on": ["method", "year", "locale", "facility"],
@@ -43,7 +43,7 @@ COLUMN_MAPPING = {
             "disc_facility": "facility",
         },
     },
-    "planet": {
+    "planets": {
         "model": Planet,
         "unique_on": "name",
         "map": {
@@ -61,7 +61,7 @@ COLUMN_MAPPING = {
 
 TABLE_COLUMNS = {
     "ps": {
-        "planet": [
+        "planets": [
             "pl_name",  # planet name
             "hostname",  # star name
             "pl_orbper",  # orbital period in days (orbit around star)
@@ -76,7 +76,7 @@ TABLE_COLUMNS = {
             "disc_locale",
             "disc_facility",
         ],
-        "planetdiscovery": [
+        "planet_discoveries": [
             "DISTINCT discoverymethod",  # discovery method
             "disc_year",  # discovery year
             "disc_locale",  # location of planet observation (ground or space)
@@ -84,7 +84,7 @@ TABLE_COLUMNS = {
         ],
     },
     "stellarhosts": {
-        "starsystem": [
+        "star_systems": [
             "sy_name",  # system name
             "sy_snum",  # num of stars in system
             "sy_pnum",  # num of planets in system
@@ -93,7 +93,7 @@ TABLE_COLUMNS = {
             "ra",  # right ascension of system (longitude)
             "dec",  # declination of system (latitude)
         ],
-        "star": [
+        "stars": [
             "hostname",  # star name
             "sy_name",  # star system name
             "st_spectype",  # spectral type
@@ -231,13 +231,13 @@ def _build_lookup(defaults, meta):
 
 def _add_related_objects_to_defaults(app_table, defaults, row):
     """Fetches/creates related objects and adds them to the defaults. ONLY RUNS ON NON-DRY RUNS."""
-    if app_table == "star":
+    if app_table == "stars":
         system_name = row.get("sy_name")
         if system_name:
             system = StarSystem.objects.get(name=system_name)
             defaults["system"] = system
 
-    if app_table == "planet":
+    if app_table == "planets":
         star_name = row.get("hostname")
         if star_name:
             star = Star.objects.get(name=star_name)
