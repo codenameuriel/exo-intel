@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:6.2-alpine
+
+  web:
+    build: .
+    command: >
+      sh -c "python3 manage.py migrate &&
+              gunicorn -c gunicorn.conf.py config.wsgi:application"
+    volumes:
+      - staticfiles_volume:/app/staticfiles
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    build: .
+    command: >
+      sh -c "mkdir -p logs &&
+              celery -A config worker --loglevel=info > ${CELERY_WORKER_LOG_FILE} 2>&1"
+    volumes:
+      - ./logs:/app/logs
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  beat:
+    build: .
+    command: >
+      sh -c "mkdir -p logs run &&
+              celery -A config beat --loglevel=info --schedule=${CELERY_BEAT_SCHEDULE_FILE} > ${CELERY_BEAT_LOG_FILE} 2>&1"
+    volumes:
+      - ./logs:/app/logs
+      - ./run:/app/run
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  postgres_data:
+  staticfiles_volume:
