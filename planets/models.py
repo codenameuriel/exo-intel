@@ -16,6 +16,7 @@ class StarSystem(models.Model):
     dec = models.FloatField(null=True, blank=True, help_text="Declination")
 
     class Meta:
+        db_table = "star_systems"
         verbose_name = "Star System"
         verbose_name_plural = "Star Systems"
 
@@ -41,6 +42,9 @@ class Star(models.Model):
     )
     age = models.FloatField(null=True, blank=True, help_text="Age")
 
+    class Meta:
+        db_table = "stars"
+
     def __str__(self):
         return self.name
 
@@ -54,6 +58,7 @@ class PlanetDiscovery(models.Model):
     facility = models.CharField(max_length=100, help_text="Name of facility")
 
     class Meta:
+        db_table = "planet_discoveries"
         verbose_name = "Planet Discovery"
         verbose_name_plural = "Planet Discoveries"
 
@@ -96,6 +101,9 @@ class Planet(models.Model):
     )
 
     objects = PlanetManager()
+
+    class Meta:
+        db_table = "planets"
 
     def __str__(self):
         return f"{self.name} (orbits {self.host_star.name})"
