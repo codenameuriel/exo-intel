@@ -2,14 +2,19 @@ from django.core.management.base import BaseCommand, CommandError
 from planets.importer import run_import
 
 
+NASA_TABLES = ["stellarhosts", "ps"]
+APP_TABLES = ["star_systems", "stars", "planet_discoveries", "planets"]
+
+
 class Command(BaseCommand):
     help = "Fetch data from NASA TAP service and populate database"
+
 
     def add_arguments(self, parser):
         parser.add_argument(
             "--nasa-table",
             type=str,
-            choices=["ps", "stellarhosts"],
+            choices=NASA_TABLES,
             required=True,
             help="Which NASA table to import from",
         )
@@ -17,7 +22,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--app-table",
             type=str,
-            choices=["planets", "planet_discoveries", "star_systems", "stars"],
+            choices=APP_TABLES,
             required=True,
             help="Which app table to import into",
         )
@@ -28,27 +33,29 @@ class Command(BaseCommand):
             help="Print actions without modifying the database",
         )
 
+
     def handle(self, *args, **kwargs):
         nasa_table = kwargs["nasa_table"]
         app_table = kwargs["app_table"]
         dry_run = kwargs["dry_run"]
-
-        def command_logger(message):
-            if "ERROR" in message or "FATAL" in message:
-                self.stdout.write(self.style.ERROR(message))
-            elif "WARNING" in message:
-                self.stdout.write(self.style.WARNING(message))
-            else:
-                self.stdout.write(self.style.SUCCESS(message))
 
         try:
             result = run_import(
                 nasa_table=nasa_table,
                 app_table=app_table,
                 dry_run=dry_run,
-                logger=command_logger,
+                logger=self._command_logger,
             )
 
             self.stdout.write(self.style.SUCCESS(f"Final result: {result}"))
         except Exception as e:
             raise CommandError(f"An unexpected error occurred: {e}")
+
+
+    def _command_logger(self, message):
+        if "ERROR" in message or "FATAL" in message:
+            self.stdout.write(self.style.ERROR(message))
+        elif "WARNING" in message:
+            self.stdout.write(self.style.WARNING(message))
+        else:
+            self.stdout.write(self.style.SUCCESS(message))
