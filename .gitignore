@@ -4,6 +4,7 @@ __pycache__/
 
 # Environment
 .env
+.env.*
 venv/
 .venv/
 
@@ -20,6 +21,3 @@ logs/
 
 # Temporary files
 run/
-
-# Celery runtime files
-celerybeat-schedule
