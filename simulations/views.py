@@ -85,7 +85,7 @@ class SeasonalTempsSimulationView(APIView):
 
         task = run_simulation_task.delay(
             user_id=request.user.id,
-            simulation_type="SEASONS",
+            simulation_type="SEASONAL_TEMPS",
             input_parameters=serializer.validated_data,
         )
 
