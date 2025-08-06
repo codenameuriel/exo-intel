@@ -72,6 +72,11 @@ def run_simulation_task(self, user_id, simulation_type, input_parameters):
         simulation_func = SIMULATION_DISPATCHER[simulation_type]
     except KeyError:
         print(f"[TASKERR]: Unknown simulation type '{simulation_type}'", flush=True)
+        SimulationRun.objects.filter(pk=run.pk).update(
+            status=SimulationRun.Status.FAILURE,
+            result={"error": "Unknown simulation type"},
+            completed_at=Now(),
+        )
         raise TaskError(f"Unknown simulation type '{simulation_type}'")
 
     try:
