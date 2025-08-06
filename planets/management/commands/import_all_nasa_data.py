@@ -24,7 +24,7 @@ class Command(BaseCommand):
                     logger=self._command_logger,
                 )
 
-                self._command_logger(f"Successfully populated {app_table} table.")
+                self._command_logger(f"Successfully populated {app_table} table.\n")
             except Exception as e:
                 raise CommandError(f"Failed to populate {app_table} table. ERROR: {e}")
 
