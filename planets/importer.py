@@ -5,6 +5,7 @@ from django.db import transaction
 from .models import StarSystem, Star, PlanetDiscovery, Planet
 from .utils import build_nasa_tap_url
 
+
 COLUMN_MAPPING = {
     "star_systems": {
         "model": StarSystem,
@@ -112,7 +113,7 @@ def run_import(nasa_table, app_table, dry_run=False, logger=print):
     A Celery task to fetch data from NASA and populate the database
     """
 
-    logger(f"Starting background import for '{app_table}'...")
+    logger(f"Starting import for '{app_table}'...")
 
     try:
         columns = TABLE_COLUMNS[nasa_table][app_table]
@@ -201,7 +202,7 @@ def run_import(nasa_table, app_table, dry_run=False, logger=print):
         logger(f"An error occurred during the database transaction: {e}")
         return f"Import failed: Transaction error. {e}"
 
-    result_message = f"\nImporting complete! Created: {created_count}, Updated: {updated_count}, Skipped: {skipped_count}"
+    result_message = f"Importing complete! Created: {created_count}, Updated: {updated_count}, Skipped: {skipped_count}"
     logger(result_message)
     return result_message
 
