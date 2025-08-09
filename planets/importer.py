@@ -1,10 +1,11 @@
 import csv
-import requests
 from io import StringIO
-from django.db import transaction
-from .models import StarSystem, Star, PlanetDiscovery, Planet
-from .utils import build_nasa_tap_url
 
+import requests
+from django.db import transaction
+
+from .models import Planet, PlanetDiscovery, Star, StarSystem
+from .utils import build_nasa_tap_url
 
 COLUMN_MAPPING = {
     "star_systems": {

@@ -1,5 +1,7 @@
 import math
-from planets.models import Planet, StarSystem, Star
+
+from planets.models import Planet, Star, StarSystem
+
 from .exceptions import SimulationError
 
 

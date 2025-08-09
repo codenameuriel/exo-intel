@@ -1,4 +1,4 @@
-from decouple import config, UndefinedValueError
+from decouple import UndefinedValueError, config
 
 
 def build_nasa_tap_url(table, columns, format="csv"):

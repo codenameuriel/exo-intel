@@ -1,9 +1,6 @@
+from rest_framework.exceptions import (NotAuthenticated, PermissionDenied,
+                                       ValidationError)
 from rest_framework.views import exception_handler
-from rest_framework.exceptions import (
-    NotAuthenticated,
-    PermissionDenied,
-    ValidationError,
-)
 
 
 def custom_exception_handler(exc, context):

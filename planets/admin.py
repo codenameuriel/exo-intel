@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import StarSystem, Star, PlanetDiscovery, Planet
+from .models import Planet, PlanetDiscovery, Star, StarSystem
 
 
 class ReadOnlyAdmin(admin.ModelAdmin):

@@ -1,11 +1,8 @@
 from django.urls import path
-from .views import (
-    TravelTimeSimulationView,
-    SeasonalTempsSimulationView,
-    TidalLockingSimulationView,
-    StarLifetimeSimulationView,
-    SimulationHistoryView,
-)
+
+from .views import (SeasonalTempsSimulationView, SimulationHistoryView,
+                    StarLifetimeSimulationView, TidalLockingSimulationView,
+                    TravelTimeSimulationView)
 
 app_name = "simulations"
 

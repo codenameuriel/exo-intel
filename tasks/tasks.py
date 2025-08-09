@@ -1,11 +1,13 @@
 import time
-from celery import shared_task, chain
-from django.db.models.functions import Now
+
+from celery import chain, shared_task
 from django.contrib.auth.models import User
+from django.db.models.functions import Now
 
 from planets.importer import run_import
-from simulations.models import SimulationRun
 from simulations.engine import SimulationEngine, SimulationError
+from simulations.models import SimulationRun
+
 from .exceptions import TaskError
 
 SIMULATION_DISPATCHER = {

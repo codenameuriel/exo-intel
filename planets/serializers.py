@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Planet, StarSystem, Star
+
+from .models import Planet, Star, StarSystem
 
 
 class PlanetSerializer(serializers.ModelSerializer):

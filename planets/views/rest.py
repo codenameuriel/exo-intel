@@ -1,12 +1,14 @@
-from rest_framework import filters
-from rest_framework.viewsets import ReadOnlyModelViewSet
 from django_filters.rest_framework import DjangoFilterBackend
-from planets.models import Planet, StarSystem, Star
-from planets.serializers import PlanetSerializer, StarSystemSerializer, StarSerializer
-from planets.filters import PlanetFilter
+from rest_framework import filters
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.viewsets import ReadOnlyModelViewSet
+
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
-from rest_framework.authentication import SessionAuthentication
+from planets.filters import PlanetFilter
+from planets.models import Planet, Star, StarSystem
+from planets.serializers import (PlanetSerializer, StarSerializer,
+                                 StarSystemSerializer)
 
 
 class PlanetViewSet(ReadOnlyModelViewSet):

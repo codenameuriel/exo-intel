@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
 from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
 from django.views.generic import CreateView
 from rest_framework.reverse import reverse_lazy
 
 from api_keys.models import APIKey
-from planets.models import StarSystem, Planet, Star
+from planets.models import Planet, Star, StarSystem
 from portal.forms import SignupForm
 
 

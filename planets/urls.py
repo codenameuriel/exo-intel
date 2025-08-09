@@ -1,7 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
-from .views import web, rest, graphql
+from rest_framework.routers import DefaultRouter
+
+from .views import graphql, rest, web
 
 app_name = "planets"
 
