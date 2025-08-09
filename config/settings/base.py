@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
-from celery.schedules import crontab
 
+from celery.schedules import crontab
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -24,15 +24,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+SECRET_KEY = config("DEV_SECRET_KEY")
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("SECRET_KEY")
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", default=True, cast=bool)
+DEBUG = config("DEV_DEBUG", default=True, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -175,12 +169,12 @@ REST_FRAMEWORK = {
 }
 
 # Celery settings
-CELERY_BROKER_URL = config("CELERY_BROKER_URL", default="redis://localhost:6379/0")
+CELERY_BROKER_URL = config("DEV_CELERY_BROKER_URL", default="redis://localhost:6379/0")
 
 # configure where to store the status and results of completed tasks
 # use Redis database #1
 CELERY_RESULT_BACKEND = config(
-    "CELERY_RESULT_BACKEND", default="redis://localhost:6379/1"
+    "DEV_CELERY_RESULT_BACKEND", default="redis://localhost:6379/1"
 )
 
 # schedule file storage location

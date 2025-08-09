@@ -1,15 +1,11 @@
-from .base import *
 import dj_database_url
 
+from .base import *
 
 ALLOWED_HOSTS = config(
-    "ALLOWED_HOSTS",
+    "PROD_ALLOWED_HOSTS",
     cast=lambda v: [s.strip() for s in v.split(",")],
 )
-
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -18,3 +14,9 @@ DATABASES = {
         conn_max_age=600
     )
 }
+
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+
+SECRET_KEY = config("PROD_SECRET_KEY")
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
