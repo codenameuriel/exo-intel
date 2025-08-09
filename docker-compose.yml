@@ -3,12 +3,9 @@ services:
     image: postgres:16
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
+    env_file: .env
 
   redis:
     image: redis:6.2-alpine
@@ -23,8 +20,7 @@ services:
       - .:/app
     ports:
       - "8000:8000"
-    env_file:
-      - .env.docker
+    env_file: .env
     depends_on:
       - db
       - redis
@@ -37,8 +33,7 @@ services:
     volumes:
       - ./logs:/app/logs
       - .:/app
-    env_file:
-      - .env.docker
+    env_file: .env
     depends_on:
       - db
       - redis
@@ -52,8 +47,7 @@ services:
       - ./logs:/app/logs
       - ./run:/app/run
       - .:/app
-    env_file:
-      - .env.docker
+    env_file: .env
     depends_on:
       - db
       - redis
