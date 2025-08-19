@@ -1,31 +1,35 @@
 #!/bin/bash
-
-# a script to start both the Celery worker and the Celery Beat scheduler
+set -euo pipefail
 
 echo "--- Starting Celery Development Workers ---"
 
-#load .env vars into terminal session
-if [ -f .env ]; then
-  export $(cat .env | sed 's/#.*//g' | xargs)
-fi
-
 # create directories if they don't exist
-mkdir -p logs
-mkdir -p run
+mkdir -p logs run
 
-# activate the virtual environment
-source .venv/bin/activate
+# defaults
+#: "${CELERY_WORKER_LOG_FILE:=logs/celery_worker.log}"
+#: "${CELERY_BEAT_LOG_FILE:=logs/celery_beat.log}"
+#: "${CELERY_BEAT_SCHEDULE_FILE:=run/celerybeat-schedule}"
+#: "${DJANGO_SETTINGS_MODULE:?DJANGO_SETTINGS_MODULE must be set (put it in your .env.*)}"
 
 # start the Celery worker in the background
 echo "Starting Celery worker...(log at ${CELERY_WORKER_LOG_FILE})"
-celery -A config worker --loglevel=info > "${CELERY_WORKER_LOG_FILE}" 2>&1 &
-# save worker pid
-echo $! > run/celery_worker.pid
+
+celery -A config worker --loglevel=info \
+  --pidfile=run/celery_worker.pid \
+  &>>"${CELERY_WORKER_LOG_FILE}" &
+
+WORKER_PID=$!
 
 # start the Celery Beat scheduler in the background
 echo "Starting Celery Beat scheduler...(log at ${CELERY_BEAT_LOG_FILE})"
-celery -A config beat --loglevel=info --schedule="${CELERY_BEAT_SCHEDULE_FILE}" > "${CELERY_BEAT_LOG_FILE}" 2>&1 &
-echo $! > run/celery_beat.pid
+
+celery -A config beat --loglevel=info \
+  --schedule="${CELERY_BEAT_SCHEDULE_FILE}" \
+  --pidfile=run/celery_beat.pid \
+  &>>"${CELERY_BEAT_LOG_FILE}" &
+
+BEAT_PID=$!
 
 echo ""
 echo "Celery worker and beat scheduler are now running in the background."
