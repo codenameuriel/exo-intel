@@ -1,7 +1,0 @@
-services:
-  web:
-    # override the 'command' for the 'web' service
-    # add the --reload flag for automatic code reloading
-    command: >
-      sh -c "python manage.py migrate && 
-             gunicorn -c gunicorn.conf.py --reload config.wsgi:application"
