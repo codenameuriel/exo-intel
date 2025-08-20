@@ -1,4 +1,4 @@
-from decouple import UndefinedValueError, config
+from django.conf import settings
 
 
 def build_nasa_tap_url(table, columns, format="csv"):
@@ -6,10 +6,10 @@ def build_nasa_tap_url(table, columns, format="csv"):
         raise ValueError("columns cannot be empty")
 
     try:
-        base_url = config("NASA_TAP_BASE_URL")
-    except UndefinedValueError:
-        raise UndefinedValueError(
-            "NASA_TAP_BASE_URL is not configured in the .env file"
+        base_url = settings.NASA_TAP_BASE_URL
+    except AttributeError:
+        raise AttributeError(
+            "NASA_TAP_BASE_URL is not configured in the settings. Ensure that is is defined in the correct .env file."
         )
 
     query_columns = ",".join(columns)
