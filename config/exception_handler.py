@@ -1,5 +1,8 @@
-from rest_framework.exceptions import (NotAuthenticated, PermissionDenied,
-                                       ValidationError)
+from rest_framework.exceptions import (
+    NotAuthenticated,
+    PermissionDenied,
+    ValidationError,
+)
 from rest_framework.views import exception_handler
 
 

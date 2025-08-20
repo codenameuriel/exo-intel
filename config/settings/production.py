@@ -1,8 +1,7 @@
-import environ
 import dj_database_url
+import environ
 
 from .base import *
-
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -15,6 +14,7 @@ environ.Env.read_env(
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
+DJANGO_ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
 
 DATABASES = {
     "default": dj_database_url.config(

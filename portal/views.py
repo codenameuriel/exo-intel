@@ -14,6 +14,7 @@ from portal.forms import SignupForm
 
 class SignUpView(CreateView):
     """Handles user registration."""
+
     form_class = SignupForm
     template_name = "portal/signup.html"
     success_url = reverse_lazy("portal:dashboard")
@@ -26,6 +27,7 @@ class SignUpView(CreateView):
         # self.object is the created user set by the parent CreateView form_valid method
         login(self.request, self.object)
         return response
+
 
 class PortalDashboardView(LoginRequiredMixin, View):
     """

@@ -9,7 +9,6 @@ APP_TABLES = ["star_systems", "stars", "planet_discoveries", "planets"]
 class Command(BaseCommand):
     help = "Fetch data from NASA TAP service and populate database"
 
-
     def add_arguments(self, parser):
         parser.add_argument(
             "--nasa-table",
@@ -33,7 +32,6 @@ class Command(BaseCommand):
             help="Print actions without modifying the database",
         )
 
-
     def handle(self, *args, **kwargs):
         nasa_table = kwargs["nasa_table"]
         app_table = kwargs["app_table"]
@@ -50,7 +48,6 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Final result: {result}"))
         except Exception as e:
             raise CommandError(f"An unexpected error occurred: {e}")
-
 
     def _command_logger(self, message):
         if "ERROR" in message or "FATAL" in message:

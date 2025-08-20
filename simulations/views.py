@@ -6,11 +6,13 @@ from rest_framework.views import APIView
 
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
-from simulations.serializers import (SeasonalTempInputSerializer,
-                                     SimulationRunSerializer,
-                                     StarLifetimeInputSerializer,
-                                     TidalLockingInputSerializer,
-                                     TravelTimeInputSerializer)
+from simulations.serializers import (
+    SeasonalTempInputSerializer,
+    SimulationRunSerializer,
+    StarLifetimeInputSerializer,
+    TidalLockingInputSerializer,
+    TravelTimeInputSerializer,
+)
 from tasks.tasks import run_simulation_task
 
 from .models import SimulationRun

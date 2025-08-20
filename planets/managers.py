@@ -1,6 +1,14 @@
 from django.db import models
-from django.db.models import (Case, ExpressionWrapper, F, FloatField,
-                              IntegerField, Q, Value, When)
+from django.db.models import (
+    Case,
+    ExpressionWrapper,
+    F,
+    FloatField,
+    IntegerField,
+    Q,
+    Value,
+    When,
+)
 from django.db.models.functions import Abs, Round
 
 
