@@ -1,32 +1,33 @@
 import environ
 import dj_database_url
-
 from .base import *
 
 
 env = environ.Env(
-    DEBUG=(bool, False),
+    DEBUG=(bool, True),
 )
 
-environ.Env.read_env(
-    BASE_DIR / f".env.{env('DJANGO_ENV', default='docker.production')}"
-)
+# read process environment variable or set to default
+environ.Env.read_env(BASE_DIR / f".env.{env('DJANGO_ENV', default='local')}")
 
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
 DATABASES = {
     "default": dj_database_url.config(
         default=env("DATABASE_URL"),
-        # keep connection alive for 10 minutes
         conn_max_age=600,
     )
 }
-
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
-
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 CELERY_BROKER_URL = env("CELERY_BROKER_URL")
 

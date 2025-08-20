@@ -9,30 +9,16 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from celery.schedules import crontab
-from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-STATIC_URL = "static/"
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
-SECRET_KEY = config("DEV_SECRET_KEY")
-
-DEBUG = config("DEV_DEBUG", default=True, cast=bool)
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -80,56 +66,35 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
+ASGI_APPLICATION = "config.asgi.application"
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
-
 USE_I18N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Authentication and Session Configuration
@@ -143,6 +108,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 # defaults to false, persist session
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
+# Django Rest Framework Settings
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "config.exception_handler.custom_exception_handler",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
@@ -169,19 +135,6 @@ REST_FRAMEWORK = {
 }
 
 # Celery settings
-CELERY_BROKER_URL = config("DEV_CELERY_BROKER_URL", default="redis://localhost:6379/0")
-
-# configure where to store the status and results of completed tasks
-# use Redis database #1
-CELERY_RESULT_BACKEND = config(
-    "DEV_CELERY_RESULT_BACKEND", default="redis://localhost:6379/1"
-)
-
-# schedule file storage location
-CELERY_BEAT_SCHEDULE_FILE = config(
-    "CELERY_BEAT_SCHEDULE_FILE", default="run/celerybeat-schedule"
-)
-
 CELERY_BEAT_SCHEDULE = {
     "run-full-nightly-import-pipeline-daily": {
         "task": "tasks.tasks.full_nightly_import",
