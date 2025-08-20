@@ -1,0 +1,28 @@
+services:
+  redis:
+    image: redis:6.2-alpine
+
+  web:
+    build: { context: ., args: { ENVIRONMENT: local } }
+    volumes: [ .:/app ]
+    ports: ["8000:8000"]
+    env_file: .env.docker.local
+    depends_on: [ redis ]
+
+  worker:
+    build: { context: ., args: { ENVIRONMENT: local } }
+    entrypoint: ["sh", "-c"] # override image ENTRYPOINT
+    command:
+      - mkdir -p /app/logs && exec poetry run celery -A config worker --loglevel=info
+    volumes: [ .:/app ]
+    env_file: .env.docker.local
+    depends_on: [ redis ]
+
+  beat:
+    build: { context: ., args: { ENVIRONMENT: local } }
+    entrypoint: ["sh", "-c"]
+    command:
+      - mkdir -p /app/logs /app/run &&  exec poetry run celery -A config beat --loglevel=info --schedule="$CELERY_BEAT_SCHEDULE_FILE"
+    volumes: [ .:/app ]
+    env_file: .env.docker.local
+    depends_on: [ redis ]

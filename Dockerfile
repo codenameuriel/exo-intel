@@ -1,25 +1,36 @@
 FROM python:3.10-slim
-LABEL authors="urielrodriguez"
 
-# don't compile to bytecode
-ENV PYTHONDONTWRITEBYTECODE=1
-# don't buffer print statement, log in real-time
-ENV PYTHONUNBUFFERED=1
+# default build argument
+ARG ENVIRONMENT=local
 
-ENV DJANGO_SETTINGS_MODULE=config.settings.production
+ENV ENVIRONMENT=${ENVIRONMENT} \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    POETRY_VERSION=2.1.4 \
+    POETRY_NO_INTERACTION=1 \
+    POETRY_VIRTUALENVS_IN_PROJECT=0 \
+    POETRY_VIRTUALENVS_PATH=/venv \
+    DJANGO_SETTINGS_MODULE=config.settings.${ENVIRONMENT}
 
 WORKDIR /app
+RUN pip install --no-cache-dir "poetry==${POETRY_VERSION}"
 
-COPY requirements.txt .
-
-RUN pip install  --no-cache-dir -r requirements.txt
+COPY pyproject.toml poetry.lock ./
+RUN if [ "$ENVIRONMENT" = "production" ]; then \
+      poetry install --only main --no-root --no-ansi; \
+    else \
+      poetry install --no-root --no-ansi; \
+    fi
 
 COPY . .
 
-# gather all static files for WhiteNoise
-RUN python manage.py collectstatic --noinput
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-# port application is listening on
-EXPOSE 8000
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-CMD ["gunicorn", "-c", "gunicorn.conf.py", "config.wsgi:application"]
+# collect static files at build time
+RUN if [ "$ENVIRONMENT" = "production" ]; then \
+      poetry run python3 manage.py collectstatic --noinput; \
+    fi
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
