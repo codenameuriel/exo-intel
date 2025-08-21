@@ -84,8 +84,10 @@ shell = "tail -f logs/celery_worker.log logs/celery_beat.log"
 [tool.poe.tasks]
 runserver = "python3 manage.py runserver 0.0.0.0:7000"
 
+makemigrations = "python3 manage.py makemigrations"
+
 migrate = "python3 manage.py migrate"
 
-superuser = "python3 manage.py createsuperuser"
+createsuperuser = "python3 manage.py createsuperuser"
 
-populate_db = "python3 manage.py import_all_nasa_data"
+import_all_nasa_data = "python3 manage.py import_all_nasa_data"

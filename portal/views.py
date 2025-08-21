@@ -8,7 +8,7 @@ from django.views.generic import CreateView
 from rest_framework.reverse import reverse_lazy
 
 from api_keys.models import APIKey
-from planets.models import Planet, Star, StarSystem
+from api.models import Planet, Star, StarSystem
 from portal.forms import SignupForm
 
 

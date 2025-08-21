@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
-from planets.parsers import GraphQLParser
+from api.parsers import GraphQLParser
 
 
 class PrivateGraphQLView(APIView):

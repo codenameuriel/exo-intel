@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from planets.importer import run_import
+from api.importer import run_import
 
 NASA_TABLES = ["stellarhosts", "ps"]
 APP_TABLES = ["star_systems", "stars", "planet_discoveries", "planets"]

@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "django_filters",
     "graphene_django",
     # local apps
-    "planets.apps.PlanetsConfig",
+    "api.apps.ApiConfig",
     "api_keys.apps.ApiKeysConfig",
     "portal.apps.PortalConfig",
     "tasks.apps.TasksConfig",

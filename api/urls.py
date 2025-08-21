@@ -4,7 +4,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import graphql, rest, web
 
-app_name = "planets"
+app_name = "api"
 
 router = DefaultRouter()
 
@@ -14,6 +14,6 @@ router.register(r"stars", rest.StarViewSet, basename="star")
 
 urlpatterns = [
     path("", web.planets, name="planets"),
-    path("api/", include(router.urls)),
+    path("rest/", include(router.urls)),
     path("graphql/", csrf_exempt(graphql.PrivateGraphQLView.as_view()), name="graphql"),
 ]

@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from planets.importer import run_import
+from api.importer import run_import
 
 
 class Command(BaseCommand):

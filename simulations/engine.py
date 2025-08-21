@@ -1,6 +1,6 @@
 import math
 
-from planets.models import Planet, Star, StarSystem
+from api.models import Planet, Star, StarSystem
 
 from .exceptions import SimulationError
 

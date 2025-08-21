@@ -4,7 +4,7 @@ from celery import chain, shared_task
 from django.contrib.auth.models import User
 from django.db.models.functions import Now
 
-from planets.importer import run_import
+from api.importer import run_import
 from simulations.engine import SimulationEngine, SimulationError
 from simulations.models import SimulationRun
 

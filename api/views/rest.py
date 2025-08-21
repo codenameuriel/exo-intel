@@ -5,9 +5,9 @@ from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from api_keys.authentication import APIKeyAuthentication
 from api_keys.permissions import IsAuthenticatedOrPublic
-from planets.filters import PlanetFilter
-from planets.models import Planet, Star, StarSystem
-from planets.serializers import PlanetSerializer, StarSerializer, StarSystemSerializer
+from api.filters import PlanetFilter
+from api.models import Planet, Star, StarSystem
+from api.serializers import PlanetSerializer, StarSerializer, StarSystemSerializer
 
 
 class PlanetViewSet(ReadOnlyModelViewSet):

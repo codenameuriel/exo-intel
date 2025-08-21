@@ -1,11 +1,11 @@
 import graphene
 
-import planets.schema
+import api.schema
 
 
 # Root Query for entire project
-class Query(planets.schema.Query, graphene.ObjectType):
-    # inherit all fields from planets schema query
+class Query(api.schema.Query, graphene.ObjectType):
+    # inherit all fields from api schema query
     pass
 
 
