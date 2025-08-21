@@ -9,7 +9,7 @@
     </div>
 
     {% if api_key_count < 3 %}
-        <form method="post" class="flex items-center space-x-4 mb-8">
+        <form method="post" action="{% url  'portal:api-key-create' %}" class="flex items-center space-x-4 mb-8">
             {% csrf_token %}
             <input type="text" name="key_name" placeholder="New Key Name (e.g., 'My Data Script')" class="flex-grow px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-black focus:border-black sm:text-sm">
             <button type="submit" class="px-6 py-2 font-semibold text-white bg-gray-800 rounded-md hover:bg-black">Generate Key</button>

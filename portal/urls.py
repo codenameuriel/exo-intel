@@ -2,7 +2,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 
 from . import views
-from .views import APIKeyDeleteView, SignUpView
+from .views import APIKeyCreateView, APIKeyDeleteView, SignUpView
 
 app_name = "portal"
 
@@ -18,6 +18,7 @@ urlpatterns = [
         name="login",
     ),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path("api-key/create/", APIKeyCreateView.as_view(), name="api-key-create"),
     path(
         "api-key/delete/<int:pk>/",
         APIKeyDeleteView.as_view(),

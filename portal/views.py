@@ -89,13 +89,17 @@ class PortalDashboardView(LoginRequiredMixin, View):
             "tidal_locking_sim_planets": tidal_locking_sim_planets,
             "star_lifetime_sim_stars": star_lifetime_sim_stars,
         }
+
         return render(request, self.template_name, context)
 
+
+class APIKeyCreateView(LoginRequiredMixin, View):
+    """
+    Handle POST requests from the api key generation form.
+    Creates a new API key for the logged-in user.
+    """
+
     def post(self, request, *args, **kwargs):
-        """
-        Handle POST requests from the api key generation form.
-        Creates a new API key for the logged-in user.
-        """
         if APIKey.objects.filter(user=request.user).count() >= 3:
             messages.error(request, "You have reached the API key limit of 3")
             return redirect("portal:dashboard")
