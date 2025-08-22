@@ -42,6 +42,10 @@ class PortalDashboardView(LoginRequiredMixin, View):
         Handle GET requests. Fetches the user's existing API keys
         and renders the dashboard template with them.
         """
+        raise Exception(
+            "This view is deprecated. Please use the APIKeyListView instead."
+        )
+
         api_keys = APIKey.objects.filter(user=request.user)
 
         # simulation data models

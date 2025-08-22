@@ -10,7 +10,13 @@ timeout = 120
 # wait for requests
 keepalive = 5
 
-loglevel = "debug"
+loglevel = "info"
 
 # send error logs to stderr
 errorlog = "-"
+
+# send access logs to stdout
+accesslog = "-"
+
+# funnel application prints into error log
+capture_output = True

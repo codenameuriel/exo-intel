@@ -1,3 +1,4 @@
+import os
 import dj_database_url
 import environ
 
@@ -10,6 +11,30 @@ env = environ.Env(
 environ.Env.read_env(
     BASE_DIR / f".env.{env('DJANGO_ENV', default='docker.production')}"
 )
+
+DJANGO_LOG_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "INFO")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        }
+    },
+    "root": {"level": DJANGO_LOG_LEVEL, "handlers": ["console"]},
+    "django.security": {
+        "level": "ERROR",
+        "handlers": ["console"],
+        "propagate": False,
+    },
+}
 
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
