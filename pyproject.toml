@@ -60,10 +60,9 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.group.dev.dependencies]
-black = "^25.1.0"
-isort = "^6.0.1"
 celery-types = "^0.23.0"
 poethepoet = "^0.37.0"
+ruff = "^0.12.10"
 
 [tool.poetry]
 package-mode = false
@@ -82,6 +81,8 @@ shell = "kill $(cat run/celery_worker.pid) $(cat run/celery_beat.pid) || true"
 shell = "tail -f logs/celery_worker.log logs/celery_beat.log"
 
 [tool.poe.tasks]
+lint = "ruff check . --fix"
+
 runserver = "python3 manage.py runserver 0.0.0.0:7000"
 
 makemigrations = "python3 manage.py makemigrations"
