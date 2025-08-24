@@ -35,6 +35,13 @@ LOGGING = {
     },
 }
 
+# enable fingerprinting, hashed filenames for improved caching and smaller asset files
+STORAGES = {
+  "staticfiles": {
+    "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+  }
+}
+
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])

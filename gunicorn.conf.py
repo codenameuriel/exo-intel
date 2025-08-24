@@ -1,6 +1,9 @@
+import os
+
+
 # configuration file for the Gunicorn web server
 
-bind = "0.0.0.0:9000"
+bind = f"0.0.0.0:{os.getenv('PORT', '9000')}"
 
 workers = 3
 

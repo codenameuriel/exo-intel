@@ -1,28 +1,36 @@
 services:
   redis:
     image: redis:6.2-alpine
+    restart: unless-stopped
 
   web:
     build: { context: ., args: { ENVIRONMENT: local } }
+    env_file: .env.docker.local
+    environment:
+      PROCESS_TYPE: web
+      PORT: 8000
     volumes: [ .:/app ]
     ports: ["8000:8000"]
-    env_file: .env.docker.local
-    depends_on: [ redis ]
+    depends_on: [redis]
+    restart: unless-stopped
 
   worker:
     build: { context: ., args: { ENVIRONMENT: local } }
-    entrypoint: ["sh", "-c"] # override image ENTRYPOINT
-    command:
-      - mkdir -p /app/logs && exec poetry run celery -A config worker --loglevel=info
-    volumes: [ .:/app ]
     env_file: .env.docker.local
-    depends_on: [ redis ]
+    environment:
+      PROCESS_TYPE: worker
+    volumes: [ .:/app ]
+    depends_on: [redis]
+    stop_grace_period: 60s
+    restart: unless-stopped
 
   beat:
     build: { context: ., args: { ENVIRONMENT: local } }
-    entrypoint: ["sh", "-c"]
-    command:
-      - mkdir -p /app/logs /app/run &&  exec poetry run celery -A config beat --loglevel=info --schedule="$CELERY_BEAT_SCHEDULE_FILE"
-    volumes: [ .:/app ]
     env_file: .env.docker.local
-    depends_on: [ redis ]
+    environment:
+      PROCESS_TYPE: beat
+      CELERY_BEAT_SCHEDULE_FILE: /app/run/celerybeat-schedule
+    volumes: [ .:/app ]
+    depends_on: [redis]
+    stop_grace_period: 60s
+    restart: unless-stopped

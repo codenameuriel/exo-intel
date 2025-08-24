@@ -1,41 +1,43 @@
 services:
   db:
     image: postgres:16
+    env_file: .env.docker.production
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    ports:
-      - "5432:5432"
-    env_file: .env.docker.production
+    ports: ["127.0.0.1:5432:5432"]
+    restart: unless-stopped
 
   redis:
     image: redis:6.2-alpine
 
   web:
     build: { context: ., args: { ENVIRONMENT: production } }
-    volumes:
-      - staticfiles_volume:/app/staticfiles
-    ports: ["9000:9000"]
     env_file: .env.docker.production
-    depends_on: [ redis ]
+    environment:
+      PROCESS_TYPE: web
+      PORT: 9000
+    ports: ["9000:9000"]
+    depends_on: [db, redis]
+    restart: unless-stopped
 
   worker:
       build: { context: ., args: { ENVIRONMENT: production } }
-      entrypoint: ["sh", "-c"]
-      command:
-        - mkdir -p /app/logs && exec poetry run celery -A config worker --loglevel=info
       env_file: .env.docker.production
-      depends_on: [ redis ]
+      environment:
+        PROCESS_TYPE: worker
+      depends_on: [db, redis]
       stop_grace_period: 60s
+      restart: unless-stopped
 
   beat:
     build: { context: ., args: { ENVIRONMENT: production } }
-    entrypoint: ["sh", "-c"]
-    command:
-      - mkdir -p /app/logs /app/run &&  exec poetry run celery -A config beat --loglevel=info --schedule="$CELERY_BEAT_SCHEDULE_FILE"
     env_file: .env.docker.production
-    depends_on: [ redis ]
+    environment:
+      PROCESS_TYPE: beat
+      CELERY_BEAT_SCHEDULE_FILE: /app/run/celerybeat-schedule
+    depends_on: [db, redis]
     stop_grace_period: 60s
+    restart: unless-stopped
 
 volumes:
   postgres_data:
-  staticfiles_volume:
