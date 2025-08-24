@@ -7,8 +7,10 @@ env = environ.Env(
     DEBUG=(bool, True),
 )
 
-# read process environment variable or set to default
-environ.Env.read_env(BASE_DIR / f".env.{env('DJANGO_ENV', default='local')}")
+suffix = env("ENVIRONMENT", default="local")
+env_path = BASE_DIR / f".env.{suffix}"
+if env_path.exists():
+    environ.Env.read_env(env_path)
 
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")

@@ -7,9 +7,10 @@ env = environ.Env(
     DEBUG=(bool, False),
 )
 
-environ.Env.read_env(
-    BASE_DIR / f".env.{env('DJANGO_ENV', default='docker.production')}"
-)
+suffix = env("ENVIRONMENT", default="docker.production")
+env_path = BASE_DIR / f".env.{suffix}"
+if env_path.exists():
+    environ.Env.read_env(env_path)
 
 DJANGO_LOG_LEVEL = os.getenv("DJANGO_LOG_LEVEL", "INFO")
 
