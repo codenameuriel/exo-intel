@@ -1,0 +1,130 @@
+services:
+  - type: web
+    name: exo-intel-web
+    runtime: docker
+    branch: main
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health/
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.production
+      - key: ENVIRONMENT
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DJANGO_LOG_LEVEL
+        value: INFO
+      - key: DJANGO_ADMIN_URL
+        value: "by-the-sun/admin/"
+      - key: NASA_TAP_BASE_URL
+        value: "https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://*.onrender.com"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: exo-intel-db
+          property: connectionString
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: exo-intel-redis
+          type: keyvalue
+          property: connectionString
+      - key: CELERY_RESULT_BACKEND
+        fromService:
+          name: exo-intel-redis
+          type: keyvalue
+          property: connectionString
+    preDeployCommand: >
+      poetry run python3 manage.py migrate --noinput &&
+      poetry run python3 manage.py import_all_nasa_data
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+      targetCPUPercent: 60
+
+  - type: worker
+    name: exo-intel-celery
+    numInstances: 1
+    runtime: docker
+    branch: main
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: PROCESS_TYPE
+        value: worker
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.production
+      - key: ENVIRONMENT
+        value: production
+      - key: SECRET_KEY
+        fromService:
+          name: exo-intel-web
+          type: web
+          envVarKey: SECRET_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: exo-intel-db
+          property: connectionString
+      - key: CELERY_TIMEZONE
+        value: "America/New_York"
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: exo-intel-redis
+          type: keyvalue
+          property: connectionString
+      - key: CELERY_RESULT_BACKEND
+        fromService:
+          name: exo-intel-redis
+          type: keyvalue
+          property: connectionString
+
+
+  - type: worker
+    name: exo-intel-beat
+    numInstances: 1
+    runtime: docker
+    branch: main
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: PROCESS_TYPE
+        value: beat
+      - key: CELERY_BEAT_SCHEDULE_FILE
+        value: /app/run/celerybeat-schedule
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.production
+      - key: ENVIRONMENT
+        value: production
+      - key: SECRET_KEY
+        fromService:
+          name: exo-intel-web
+          type: web
+          envVarKey: SECRET_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: exo-intel-db
+          property: connectionString
+      - key: CELERY_TIMEZONE
+        value: "America/New_York"
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: exo-intel-redis
+          type: keyvalue
+          property: connectionString
+      - key: CELERY_RESULT_BACKEND
+        fromService:
+          name: exo-intel-redis
+          type: keyvalue
+          property: connectionString
+
+  - type: keyvalue
+    name: exo-intel-redis
+    plan: starter
+    ipAllowList: [ ]
+
+databases:
+  - name: exo-intel-db
+    plan: starter
