@@ -1,6 +1,7 @@
 services:
   - type: web
-    name: exo-intel-web
+    name: exo-intel
+    region: virginia
     runtime: docker
     branch: main
     autoDeploy: true
@@ -21,7 +22,7 @@ services:
       - key: ALLOWED_HOSTS
         value: ".onrender.com"
       - key: CSRF_TRUSTED_ORIGINS
-        value: "https://*.onrender.com"
+        value: "https://exo-intel.onrender.com,https://*.onrender.com"
       - key: DATABASE_URL
         fromDatabase:
           name: exo-intel-db
@@ -40,7 +41,8 @@ services:
       /bin/bash -c poetry run python3 manage.py migrate --noinput && poetry run python3 manage.py import_all_nasa_data
 
   - type: worker
-    name: exo-intel-celery
+    name: exo-intel-celery-worker
+    region: virginia
     numInstances: 1
     runtime: docker
     branch: main
@@ -76,7 +78,8 @@ services:
 
 
   - type: worker
-    name: exo-intel-beat
+    name: exo-intel-celery-beat
+    region: virginia
     numInstances: 1
     runtime: docker
     branch: main
@@ -114,9 +117,10 @@ services:
 
   - type: keyvalue
     name: exo-intel-redis
+    region: virginia
     ipAllowList: [ ]
 
 databases:
-  - name: exo-intel-db
+  - name: exo-intel-postgres-db
     region: virginia
     postgresMajorVersion: 16

@@ -47,6 +47,7 @@ SECRET_KEY = env("SECRET_KEY", default="__build_placeholder__")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 DJANGO_ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
 DATABASES = {
     "default": dj_database_url.config(
