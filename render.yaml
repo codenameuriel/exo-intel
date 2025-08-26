@@ -3,7 +3,6 @@ services:
     name: exo-intel-web
     runtime: docker
     branch: main
-    plan: starter
     autoDeploy: true
     healthCheckPath: /health/
     envVars:
@@ -50,7 +49,6 @@ services:
     numInstances: 1
     runtime: docker
     branch: main
-    plan: starter
     autoDeploy: true
     envVars:
       - key: PROCESS_TYPE
@@ -87,7 +85,6 @@ services:
     numInstances: 1
     runtime: docker
     branch: main
-    plan: starter
     autoDeploy: true
     envVars:
       - key: PROCESS_TYPE
