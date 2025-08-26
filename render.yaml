@@ -39,10 +39,6 @@ services:
     preDeployCommand: >
       poetry run python3 manage.py migrate --noinput &&
       poetry run python3 manage.py import_all_nasa_data
-    scaling:
-      minInstances: 1
-      maxInstances: 3
-      targetCPUPercent: 60
 
   - type: worker
     name: exo-intel-celery
