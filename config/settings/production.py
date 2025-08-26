@@ -60,6 +60,9 @@ MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# configure timezone for celery tasks
+CELERY_TIMEZONE = env("CELERY_TIMEZONE", default="UTC")
+
 CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://redis:6379/0")
 
 # configure where to store the status and results of completed tasks

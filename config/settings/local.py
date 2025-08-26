@@ -32,6 +32,8 @@ DATABASES = {
     )
 }
 
+CELERY_TIMEZONE = env("CELERY_TIMEZONE", default="UTC")
+
 CELERY_BROKER_URL = env("CELERY_BROKER_URL")
 
 # configure where to store the status and results of completed tasks
