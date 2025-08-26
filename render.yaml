@@ -119,7 +119,6 @@ services:
 
   - type: keyvalue
     name: exo-intel-redis
-    plan: starter
     ipAllowList: [ ]
 
 databases:
