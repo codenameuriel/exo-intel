@@ -37,7 +37,7 @@ services:
           type: keyvalue
           property: connectionString
     preDeployCommand: >
-      poetry run python3 manage.py migrate --noinput; poetry run python3 manage.py import_all_nasa_data
+      /bin/sh -lc "set -e; poetry run python manage.py migrate --noinput && poetry run python manage.py import_all_nasa_data"
 
   - type: worker
     name: exo-intel-celery
