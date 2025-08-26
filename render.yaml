@@ -127,4 +127,5 @@ services:
 
 databases:
   - name: exo-intel-db
-    plan: starter
+    region: virginia
+    postgresMajorVersion: 16
