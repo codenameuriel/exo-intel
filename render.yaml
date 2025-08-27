@@ -50,6 +50,8 @@ services:
     envVars:
       - key: PROCESS_TYPE
         value: worker
+      - key: CELERY_PROFILE
+        value: Render
       - key: DJANGO_SETTINGS_MODULE
         value: config.settings.production
       - key: ENVIRONMENT
@@ -75,7 +77,6 @@ services:
           name: exo-intel-redis
           type: keyvalue
           property: connectionString
-
 
   - type: worker
     name: exo-intel-celery-beat

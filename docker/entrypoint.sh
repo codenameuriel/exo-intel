@@ -19,7 +19,13 @@ case "$ROLE" in
     fi
     ;;
   worker)
-    exec poetry run celery -A config worker --loglevel=info
+    # lean worker configuration for small RAM plan in Render
+    if [ "${CELERY_PROFILE:-}" = "Render" ]; then
+      exec poetry run celery -A config worker --loglevel=info \
+      --pool=solo -Ofair --without-gossip --without-mingle --without-heartbeat
+    else
+      exec poetry run celery -A config worker --loglevel=info
+    fi
     ;;
   beat)
     exec poetry run celery -A config beat --loglevel=info --schedule="${CELERY_BEAT_SCHEDULE_FILE}"
