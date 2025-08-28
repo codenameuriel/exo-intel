@@ -14,7 +14,7 @@
 </head>
 <body class="min-h-screen bg-gray-100 text-gray-800 flex items-center justify-center px-4 py-10">
 <main class="w-full max-w-sm sm:max-w-md">
-    <section class="w-full rounded-lg bg-white p-6 sm:p-8 border border-gray-200">
+    <section class="w-full rounded-md bg-white p-6 sm:p-8">
         <header class="mb-6 text-center">
             <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">🪐 ExoIntel Developer Portal</h1>
         </header>
@@ -26,7 +26,7 @@
         {% endif %}
 
         {% if form.errors and not form.non_field_errors %}
-            <div class="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+            <div class="mb-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
                 Your username and password didn’t match. Please try again.
             </div>
         {% endif %}
@@ -43,7 +43,7 @@
                         autocomplete="username"
                         autocapitalize="none"
                         spellcheck="false"
-                        class="mt-1 w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-3 outline-none focus:border-black"
+                        class="mt-1 w-full rounded-md border border-gray-200 bg-gray-50 px-3 py-3 outline-none focus:border-black"
                         {% if form.username.errors %}
                         aria-invalid="true"
                         aria-describedby="username-error"
@@ -63,7 +63,7 @@
                             name="password"
                             id="id_password"
                             autocomplete="current-password"
-                            class="w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-3 pr-12 outline-none focus:border-black"
+                            class="w-full rounded-md border border-gray-200 bg-gray-50 px-3 py-3 pr-12 outline-none focus:border-black"
                             {% if form.password.errors %}
                             aria-invalid="true"
                             aria-describedby="password-error"
@@ -101,7 +101,7 @@
             </div>
 
             <button type="submit"
-                    class="w-full h-11 rounded-md bg-gray-900 text-white font-semibold hover:bg-black focus:outline-none focus:ring-2 focus:ring-gray-900/20 transition">
+                    class="w-full h-11 rounded-md bg-gray-900 text-white font-semibold hover:bg-black">
                 Log In
             </button>
         </form>
