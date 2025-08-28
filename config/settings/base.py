@@ -108,8 +108,6 @@ SESSION_SAVE_EVERY_REQUEST = True
 # defaults to false, persist session
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 
 # Django Rest Framework Settings
 REST_FRAMEWORK = {

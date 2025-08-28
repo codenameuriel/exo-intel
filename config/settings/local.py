@@ -16,15 +16,12 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 DJANGO_ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS",
+                                default=["http://localhost:8000", "http://127.0.0.1:8000", "http://192.168.1.152:8000"])
+SECURE_COOKIES = env("SECURE_COOKIES", default=not DEBUG)
+SESSION_COOKIE_SECURE = SECURE_COOKIES
+CSRF_COOKIE_SECURE = SECURE_COOKIES
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
 DATABASES = {
     "default": dj_database_url.config(
         default=env("DATABASE_URL"),
