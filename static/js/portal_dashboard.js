@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // auto-hiding messages
     const messageContainer = document.getElementById('message-container');
     if (messageContainer) {
         // Wait for 3 seconds (3000 milliseconds)
-        setTimeout(function() {
+        setTimeout(function () {
             // Start fading the message out
             messageContainer.style.opacity = '0';
 
             // After the fade-out transition (500ms), hide it completely
-            setTimeout(function() {
+            setTimeout(function () {
                 messageContainer.style.display = 'none';
             }, 500);
         }, 3000);
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetch(endpoint, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
+            headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrfToken},
             body: JSON.stringify(data),
         })
             .then(response => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
                 }
 
-                return response.json().then(apiError=> {
+                return response.json().then(apiError => {
                     throw apiError;
                 });
             })
@@ -114,12 +114,22 @@ document.addEventListener('DOMContentLoaded', function() {
                                     ${run.status}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 text-gray-500">${formatResult(run.simulation_type, run.result)}</td>
+                            <td class="px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-700">
+                                <div
+                                    class="max-w-full overflow-x-auto sm:overflow-visible whitespace-nowrap sm:whitespace-normal"
+                                    role="region"
+                                    aria-label="Result (scroll horizontally on mobile)"
+                                    tabindex="0"
+                                    style="-webkit-overflow-scrolling: touch;"
+                                  >
+                                    <span class="font-mono">${formatResult(run.simulation_type, run.result)}</span>
+                                </div>
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-gray-500">${new Date(run.created_at).toLocaleString()}</td>
                         </tr>
                     `;
                 });
-                historyTableBody.innerHTML= tableHtml;
+                historyTableBody.innerHTML = tableHtml;
 
                 if (isAnySimRunning) {
                     startPolling();
@@ -234,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Coldest Temp (Apoastron):</strong> ${result.apoastron_temp_k} K <br>
             <strong>Seasonal Difference:</strong> ${result.seasonal_temp_difference_k} K
         `,
-         'TIDAL_LOCKING': (result) => `
+        'TIDAL_LOCKING': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Star:</strong> ${result.star_name} <br>
@@ -243,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Star Age Years:</strong> ${result.star_age_years} <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
-         'STAR_LIFETIME': (result) => `
+        'STAR_LIFETIME': (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Star:</strong> ${result.star_name} <br>
             <strong>Star Solar Mass:</strong> ${result.star_mass_solar} <br>
@@ -253,6 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>Percent Lifespan Complete:</strong> ${result.percent_lifespan_complete} % <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
-         'default': (result) => `Task finished with an unknown result type.`
+        'default': (result) => `Task finished with an unknown result type.`
     };
 });
