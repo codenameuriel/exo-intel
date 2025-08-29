@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-import os
 from pathlib import Path
 
 from celery.schedules import crontab
@@ -30,6 +29,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "graphene_django",
+    "drf_spectacular",
     # local apps
     "api.apps.ApiConfig",
     "api_keys.apps.ApiKeysConfig",
@@ -114,6 +114,7 @@ REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "config.exception_handler.custom_exception_handler",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 25,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
     ],
@@ -133,6 +134,13 @@ REST_FRAMEWORK = {
         "anon": "5/day",  # 5 requests per day for anonymous users
         "user": "100/day",  # 100 requests per day for users with an API key or session
     },
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "ExoIntel API",
+    "DESCRIPTION": "A comprehensive API for exploring exoplanet data, running astrophysical simulations, and managing API access.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 # Celery settings

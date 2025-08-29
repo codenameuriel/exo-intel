@@ -51,7 +51,8 @@ dependencies = [
     "vine (==5.1.0)",
     "wcwidth (==0.2.13)",
     "whitenoise (==6.9.0)",
-    "django-environ (>=0.12.0,<0.13.0)"
+    "django-environ (>=0.12.0,<0.13.0)",
+    "drf-spectacular (>=0.28.0,<0.29.0)"
 ]
 
 
