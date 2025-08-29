@@ -23,22 +23,25 @@
 <body class="bg-gray-50 text-gray-900">
 <nav class="bg-white">
     <div class="mx-auto w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div class="flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between">
-            <h1 class="text-lg sm:text-xl font-bold text-slate-800">🪐 ExoIntel Developer Portal</h1>
+        <div class="flex items-center justify-between py-3">
+            <h1 class="text-lg sm:text-xl font-bold text-slate-800">🪐</h1>
 
-            <div class="flex items-center justify-between sm:justify-end gap-3">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
                 {% if user.is_authenticated %}
-                    <span class="text-slate-800 text-sm truncate max-w-[50vw] sm:max-w-none">{{ user.username }}</span>
-                    <form method="post" action="{% url 'portal:logout' %}">
+                    <span
+                            class="inline-block max-w-[55vw] sm:max-w-none truncate px-2.5 py-1 rounded-md bg-slate-100 text-slate-900 font-bold text-md sm:text-sm"
+                            title="{{ user.username }}"
+
+                    >
+                      {{ user.username }}
+                    </span>
+
+                    <form method="post" action="{% url 'portal:logout' %}" class="shrink-0">
                         {% csrf_token %}
-                        <button type="submit" class="btn-link text-sm font-semibold hover:text-slate-600">
+                        <button type="submit" class="btn-link text-sm font-semibold hover:black underline">
                             Log Out
                         </button>
                     </form>
-                {% else %}
-                    <a href="{% url 'portal:login' %}" class="text-slate-800 hover:underline font-semibold text-sm">
-                        Developer Login
-                    </a>
                 {% endif %}
             </div>
         </div>
@@ -59,7 +62,12 @@
             {% endfor %}
         </div>
     {% endif %}
-
+    <header class="mb-6 sm:mb-8">
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+            Dashboard
+        </h1>
+        <div class="mt-2 h-px bg-gradient-to-r from-gray-200 via-gray-100 to-transparent"></div>
+    </header>
     <main class="space-y-8 sm:space-y-10">
         {% include 'portal/partials/_api_key_manager.html' %}
         {% include 'portal/partials/_rest_api_graphql.html' %}
