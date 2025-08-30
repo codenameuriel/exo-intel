@@ -16,11 +16,22 @@ class SpectralTypeEnum(graphene.Enum):
     M = "M"
 
 
+class CustomConnection(graphene.Connection):
+    class Meta:
+        abstract = True
+
+    total_count = graphene.Int()
+
+    def resolve_total_count(self, info, **kwargs):
+        return self.iterable.count()
+
+
 class StarSystemType(DjangoObjectType):
     class Meta:
         model = StarSystem
         fields = "__all__"
         interfaces = (graphene.relay.Node,)
+        connection_class = CustomConnection
 
 
 class StarType(DjangoObjectType):
@@ -28,13 +39,12 @@ class StarType(DjangoObjectType):
         model = Star
         fields = "__all__"
         interfaces = (graphene.relay.Node,)
+        connection_class = CustomConnection
 
 
 class PlanetDiscoveryType(DjangoObjectType):
     class Meta:
         model = PlanetDiscovery
-        fields = "__all__"
-        interfaces = (graphene.relay.Node,)
 
 
 class PlanetType(DjangoObjectType):
@@ -45,6 +55,7 @@ class PlanetType(DjangoObjectType):
         model = Planet
         fields = "__all__"
         interfaces = (graphene.relay.Node,)
+        connection_class = CustomConnection
 
     def resolve_habitability_score(self, info):
         return getattr(self, "habitability_score", None)

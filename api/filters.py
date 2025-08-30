@@ -24,6 +24,12 @@ class PlanetFilter(filters.FilterSet):
     which is a calculated field provided by the PlanetViewSet's queryset.
     """
 
+    # ensure consistent filtering results between REST and GraphQL
+    discovery__year = filters.NumberFilter(
+        field_name="discovery__year",
+        lookup_expr="exact",
+    )
+
     # This creates a filter that can be used with query parameters like:
     # ?habitability_score_min=80&habitability_score_max=100
     habitability_score = filters.RangeFilter(
@@ -79,7 +85,7 @@ class PlanetFilter(filters.FilterSet):
         fields = {
             "name": ["exact"],
             "host_star__name": ["exact"],
-            "discovery__year": ["exact"],
+            # "discovery__year": ["exact"],
             "discovery__method": ["exact"],
             "discovery__locale": ["exact"],
         }
