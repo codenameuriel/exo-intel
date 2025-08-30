@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import ListAPIView
@@ -14,10 +15,14 @@ from simulations.serializers import (
     TravelTimeInputSerializer,
 )
 from tasks.tasks import run_simulation_task
-
 from .models import SimulationRun
 
 
+@extend_schema(
+    summary="[INTERNAL] Get the user's history of simulation runs.",
+    description="**Warning:** This is an internal endpoint. "
+                "It is documented here for informational purposes. Direct use is not recommended.",
+)
 class SimulationHistoryView(ListAPIView):
     """
     A read-only view for simulation history.
