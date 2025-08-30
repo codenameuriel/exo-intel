@@ -3,11 +3,11 @@ from rest_framework import filters
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from api_keys.authentication import APIKeyAuthentication
-from api_keys.permissions import IsAuthenticatedOrPublic
-from api.filters import PlanetFilter
+from api.filters import PlanetFilter, StarFilter, StarSystemFilter
 from api.models import Planet, Star, StarSystem
 from api.serializers import PlanetSerializer, StarSerializer, StarSystemSerializer
+from api_keys.authentication import APIKeyAuthentication
+from api_keys.permissions import IsAuthenticatedOrPublic
 
 
 class PlanetViewSet(ReadOnlyModelViewSet):
@@ -55,7 +55,7 @@ class StarSystemViewSet(ReadOnlyModelViewSet):
     serializer_class = StarSystemSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ["name"]
-    filterset_fields = ["num_stars", "num_planets"]
+    filterset_class = StarSystemFilter
 
 
 class StarViewSet(ReadOnlyModelViewSet):
@@ -72,4 +72,4 @@ class StarViewSet(ReadOnlyModelViewSet):
     serializer_class = StarSerializer
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     search_fields = ["name", "system__name"]
-    filterset_fields = ["spect_type", "system__name"]
+    filterset_class = StarFilter

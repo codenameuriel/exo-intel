@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 
-from .models import Planet
+from .models import Planet, Star, StarSystem
 from .widgets import LabeledRangeWidget
 
 # Morgan-Keenan stellar classification
@@ -77,6 +77,36 @@ class PlanetFilter(filters.FilterSet):
     class Meta:
         model = Planet
         fields = {
+            "name": ["exact"],
+            "host_star__name": ["exact"],
+            "discovery__year": ["exact"],
             "discovery__method": ["exact"],
             "discovery__locale": ["exact"],
+        }
+
+
+class StarFilter(filters.FilterSet):
+    """
+    Custom filterset for the Star model.
+    """
+
+    class Meta:
+        model = Star
+        fields = {
+            "name": ["exact"],
+        }
+
+
+class StarSystemFilter(filters.FilterSet):
+    """
+    Custom filterset for the StarSystem model.
+    """
+
+    class Meta:
+        model = StarSystem
+        fields = {
+            "name": ["exact"],
+            "num_stars": ["exact"],
+            "num_planets": ["exact"],
+            "num_moons": ["exact"],
         }
