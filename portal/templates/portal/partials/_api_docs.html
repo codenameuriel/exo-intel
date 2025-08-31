@@ -1,0 +1,27 @@
+<div class="bg-white p-6 rounded-md col-span-1 md:col-span-2">
+    <h2 class="text-2xl font-semibold text-slate-700 mb-4">API Documentation</h2>
+    <p class="text-gray-600 mb-6">
+        Explore the REST API using the auto-generated, interactive documentation. Choose the interface that best suits
+        your needs.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <h3 class="text-xl font-semibold text-slate-600">Swagger UI</h3>
+            <p class="text-sm text-gray-500 mt-1 mb-3">A powerful, interactive interface for making live API calls
+                directly from your browser. Perfect for testing and development.</p>
+            <a href="{% url 'swagger-ui' %}" target="_blank"
+               class="inline-block px-5 py-2 text-md font-semibold text-white bg-gray-900 rounded-md hover:bg-black">
+                Launch Swagger UI
+            </a>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold text-slate-600">ReDoc UI</h3>
+            <p class="text-sm text-gray-500 mt-1 mb-3">A clean, modern, and highly readable three-pane layout. The best
+                way to browse and understand the API's structure and data models.</p>
+            <a href="{% url 'redoc' %}" target="_blank"
+               class="inline-block px-5 py-2 text-md font-semibold text-white bg-gray-900 rounded-md hover:bg-black">
+                Launch ReDoc UI
+            </a>
+        </div>
+    </div>
+</div>
