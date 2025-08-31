@@ -1,5 +1,5 @@
-from drf_spectacular.utils import extend_schema
-from rest_framework import status
+from drf_spectacular.utils import extend_schema, OpenApiResponse, inline_serializer
+from rest_framework import status, serializers
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -21,7 +21,7 @@ from .models import SimulationRun
 @extend_schema(
     summary="[INTERNAL] Get the user's history of simulation runs.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended.",
+                "It is documented here for informational purposes. Direct use is not recommended."
 )
 class SimulationHistoryView(ListAPIView):
     """
@@ -43,6 +43,22 @@ class SimulationHistoryView(ListAPIView):
         )
 
 
+@extend_schema(
+    summary="[INTERNAL] Run a simulation.",
+    description="**Warning:** This is an internal endpoint. "
+                "It is documented here for informational purposes. Direct use is not recommended.",
+    responses={
+        202: OpenApiResponse(
+            response=inline_serializer(
+                name='SimulationRunResponse',
+                fields={
+                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
+                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
+                }
+            )
+        )
+    }
+)
 class TravelTimeSimulationView(APIView):
     """
     An "action" API endpoint to calculate the travel time to a star system.
@@ -74,6 +90,22 @@ class TravelTimeSimulationView(APIView):
         )
 
 
+@extend_schema(
+    summary="[INTERNAL] Run a simulation.",
+    description="**Warning:** This is an internal endpoint. "
+                "It is documented here for informational purposes. Direct use is not recommended.",
+    responses={
+        202: OpenApiResponse(
+            response=inline_serializer(
+                name='SimulationRunResponse',
+                fields={
+                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
+                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
+                }
+            )
+        )
+    }
+)
 class SeasonalTempsSimulationView(APIView):
     """
     An "action" API endpoint to calculate the seasonal temperatures for a planet.
@@ -105,6 +137,22 @@ class SeasonalTempsSimulationView(APIView):
         )
 
 
+@extend_schema(
+    summary="[INTERNAL] Run a simulation.",
+    description="**Warning:** This is an internal endpoint. "
+                "It is documented here for informational purposes. Direct use is not recommended.",
+    responses={
+        202: OpenApiResponse(
+            response=inline_serializer(
+                name='SimulationRunResponse',
+                fields={
+                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
+                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
+                }
+            )
+        )
+    }
+)
 class TidalLockingSimulationView(APIView):
     """
     An "action" API endpoint to estimate the probability that a planet is tidally locked.
@@ -136,6 +184,22 @@ class TidalLockingSimulationView(APIView):
         )
 
 
+@extend_schema(
+    summary="[INTERNAL] Run a simulation.",
+    description="**Warning:** This is an internal endpoint. "
+                "It is documented here for informational purposes. Direct use is not recommended.",
+    responses={
+        202: OpenApiResponse(
+            response=inline_serializer(
+                name='SimulationRunResponse',
+                fields={
+                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
+                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
+                }
+            )
+        )
+    }
+)
 class StarLifetimeSimulationView(APIView):
     """
     An "action" API endpoint to estimate the lifetime of a star.
