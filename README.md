@@ -129,4 +129,7 @@ poetry run poe import_all_nasa_data
 ```
 
 📜 License
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+This project is under a proprietary license. You are welcome to view the source code and run the application locally for
+personal and educational purposes. However, you are not permitted to modify, redistribute, or use the code for any
+commercial purpose. Please see the `LICENSE.md` file for full details.
