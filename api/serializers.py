@@ -20,8 +20,8 @@ class PlanetSerializer(serializers.ModelSerializer):
             "host_star",
             "mass_earth",
             "radius_earth",
-            "orbital_period",
-            "equilibrium_temperature",
+            "orbital_period_days",
+            "equilibrium_temperature_k",
             "discovery",
             "habitability_score",
         ]
@@ -40,7 +40,7 @@ class StarSystemSerializer(serializers.ModelSerializer):
             "num_stars",
             "num_planets",
             "num_moons",
-            "distance",
+            "distance_parsecs",
             "ra",
             "dec",
         ]
@@ -55,4 +55,4 @@ class StarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Star
-        fields = ["id", "name", "system", "spect_type", "mass", "radius", "temperature"]
+        fields = ["id", "name", "system", "spectral_type", "mass_sun", "radius_sun", "effective_temperature_k"]

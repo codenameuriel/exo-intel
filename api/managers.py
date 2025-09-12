@@ -36,9 +36,10 @@ class PlanetQuerySet(models.QuerySet):
             default=Value(0.0),
             output_field=FloatField(),
         )
+
         # ideal temperature is earth-like (around 255 K)
         # for every 5 degrees off, subtract a point from 100 score
-        temp_score = 100.0 - (Abs(F("equilibrium_temperature") - 255) / 5.0)
+        temp_score = 100.0 - (Abs(F("equilibrium_temperature_k") - 255) / 5.0)
         # 60% temperature, 40% density
         habitability_score = (temp_score * 0.6) + (density_score * 0.4)
 
@@ -47,7 +48,7 @@ class PlanetQuerySet(models.QuerySet):
         return queryset_with_density.annotate(
             habitability_score=Case(
                 When(
-                    Q(equilibrium_temperature__isnull=False)
+                    Q(equilibrium_temperature_k__isnull=False)
                     & Q(mass_earth__isnull=False)
                     & Q(radius_earth__isnull=False)
                     & Q(radius_earth__gt=0),

@@ -4,13 +4,13 @@ from .managers import PlanetManager
 
 
 class StarSystem(models.Model):
-    name = models.CharField(max_length=100, unique=True, help_text="Name of the system")
+    name = models.CharField(max_length=100, unique=True, help_text="Name of the star system")
     num_stars = models.IntegerField(null=True, blank=True, help_text="Number of stars")
     num_planets = models.IntegerField(
         null=True, blank=True, help_text="Number of planets"
     )
     num_moons = models.IntegerField(null=True, blank=True, help_text="Number of moons")
-    distance = models.FloatField(
+    distance_parsecs = models.FloatField(
         null=True, blank=True, help_text="Distance from Earth in parsecs"
     )
     ra = models.FloatField(null=True, blank=True, help_text="Right Ascension")
@@ -28,20 +28,20 @@ class StarSystem(models.Model):
 class Star(models.Model):
     name = models.CharField(max_length=100, unique=True, help_text="Name of the star")
     system = models.ForeignKey(
-        StarSystem, on_delete=models.CASCADE, help_text="The system"
+        StarSystem, on_delete=models.CASCADE, help_text="The host star system"
     )
-    spect_type = models.CharField(
+    spectral_type = models.CharField(
         max_length=30, null=True, blank=True, help_text="Spectral type"
     )
-    mass = models.FloatField(null=True, blank=True, help_text="Mass in solar masses")
-    radius = models.FloatField(null=True, blank=True, help_text="Radius in solar radii")
-    temperature = models.FloatField(
+    mass_sun = models.FloatField(null=True, blank=True, help_text="Mass in solar masses")
+    radius_sun = models.FloatField(null=True, blank=True, help_text="Radius in solar radii")
+    effective_temperature_k = models.FloatField(
         null=True, blank=True, help_text="Effective temperature (K)"
     )
-    luminosity = models.FloatField(
+    luminosity_sun = models.FloatField(
         null=True, blank=True, help_text="Amount of energy emitted"
     )
-    age = models.FloatField(null=True, blank=True, help_text="Age")
+    age_gya = models.FloatField(null=True, blank=True, help_text="Age in Giga Years")
 
     class Meta:
         db_table = "stars"
@@ -72,7 +72,7 @@ class Planet(models.Model):
     host_star = models.ForeignKey(
         Star, on_delete=models.CASCADE, help_text="The host star"
     )
-    orbital_period = models.FloatField(
+    orbital_period_days = models.FloatField(
         null=True, blank=True, help_text="Orbital period in days"
     )
     radius_earth = models.FloatField(
@@ -81,13 +81,13 @@ class Planet(models.Model):
     mass_earth = models.FloatField(
         null=True, blank=True, help_text="Mass in Earth masses"
     )
-    equilibrium_temperature = models.FloatField(
+    equilibrium_temperature_k = models.FloatField(
         null=True, blank=True, help_text="Temperature in Kelvin"
     )
-    semi_major_axis = models.FloatField(
+    semi_major_axis_au = models.FloatField(
         null=True, blank=True, help_text="Distance from star in AU"
     )
-    insolation_flux = models.FloatField(
+    insolation_flux_earth = models.FloatField(
         null=True, blank=True, help_text="Flux relative to Earth = 1.0"
     )
     orbital_eccentricity = models.FloatField(

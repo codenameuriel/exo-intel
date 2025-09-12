@@ -7,8 +7,8 @@ from django.views import View
 from django.views.generic import CreateView
 from rest_framework.reverse import reverse_lazy
 
-from api_keys.models import APIKey
 from api.models import Planet, Star, StarSystem
+from api_keys.models import APIKey
 from portal.forms import SignupForm
 
 
@@ -46,17 +46,17 @@ class PortalDashboardView(LoginRequiredMixin, View):
 
         # simulation data models
         travel_sim_star_systems = StarSystem.objects.filter(
-            distance__isnull=False
+            distance_parsecs__isnull=False
         ).order_by("name")
 
         seasonality_sim_planets = (
             Planet.objects.filter(
-                Q(host_star__luminosity__isnull=False)
+                Q(host_star__luminosity_sun__isnull=False)
                 | (
-                    Q(host_star__radius__isnull=False)
-                    & Q(host_star__temperature__isnull=False)
+                        Q(host_star__radius_sun__isnull=False)
+                        & Q(host_star__effective_temperature_k__isnull=False)
                 ),
-                semi_major_axis__isnull=False,
+                semi_major_axis_au__isnull=False,
                 orbital_eccentricity__isnull=False,
             )
             .select_related("host_star")
@@ -66,10 +66,10 @@ class PortalDashboardView(LoginRequiredMixin, View):
 
         tidal_locking_sim_planets = (
             Planet.objects.filter(
-                Q(host_star__mass__isnull=False) & Q(host_star__age__isnull=False),
+                Q(host_star__mass_sun__isnull=False) & Q(host_star__age_gya__isnull=False),
                 mass_earth__isnull=False,
                 radius_earth__isnull=False,
-                semi_major_axis__isnull=False,
+                semi_major_axis_au__isnull=False,
             )
             .select_related("host_star")
             .order_by("name")
@@ -77,8 +77,8 @@ class PortalDashboardView(LoginRequiredMixin, View):
         )
 
         star_lifetime_sim_stars = Star.objects.filter(
-            mass__isnull=False,
-            age__isnull=False,
+            mass_sun__isnull=False,
+            age_gya__isnull=False,
         ).order_by("name")
 
         context = {

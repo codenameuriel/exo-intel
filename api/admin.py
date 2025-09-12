@@ -26,7 +26,7 @@ class StarSystemAdmin(ReadOnlyAdmin):
         "num_stars",
         "num_planets",
         "num_moons",
-        "distance",
+        "distance_parsecs",
         "ra",
         "dec",
     )
@@ -37,10 +37,10 @@ class StarSystemAdmin(ReadOnlyAdmin):
 
 @admin.register(Star)
 class StarAdmin(ReadOnlyAdmin):
-    list_display = ("name", "system", "spect_type", "mass", "radius", "temperature")
+    list_display = ("name", "system", "spectral_type", "mass_sun", "radius_sun", "effective_temperature_k")
     ordering = ("name",)
     search_fields = ("name", "system__name")
-    list_filter = ("system", "spect_type")
+    list_filter = ("system", "spectral_type")
 
 
 @admin.register(PlanetDiscovery)
@@ -56,12 +56,12 @@ class PlanetAdmin(ReadOnlyAdmin):
     list_display = (
         "name",
         "host_star",
-        "orbital_period",
+        "orbital_period_days",
         "radius_earth",
         "mass_earth",
-        "equilibrium_temperature",
-        "semi_major_axis",
-        "insolation_flux",
+        "equilibrium_temperature_k",
+        "semi_major_axis_au",
+        "insolation_flux_earth",
     )
     ordering = ("name",)
     search_fields = ("name", "host_star__name")

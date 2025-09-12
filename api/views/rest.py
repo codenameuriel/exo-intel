@@ -37,7 +37,7 @@ class PlanetViewSet(ReadOnlyModelViewSet):
         "habitability_score",
         "mass_earth",
         "radius_earth",
-        "orbital_period",
+        "orbital_period_days",
     ]
 
 

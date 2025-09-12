@@ -31,7 +31,7 @@ class StarSystemType(DjangoObjectType):
 
     class Meta:
         model = StarSystem
-        fields = ("id", "name", "distance", "num_moons", "num_planets", "num_stars")
+        fields = ("id", "name", "distance_parsecs", "num_moons", "num_planets", "num_stars")
         interfaces = (graphene.relay.Node,)
         connection_class = CustomConnection
 
@@ -48,7 +48,8 @@ class StarType(DjangoObjectType):
 
     class Meta:
         model = Star
-        fields = ("id", "name", "mass", "radius", "luminosity", "temperature", "age", "spect_type")
+        fields = ("id", "name", "mass_sun", "radius_sun", "luminosity_sun", "effective_temperature_k", "age_gya",
+                  "spectral_type")
         interfaces = (graphene.relay.Node,)
         connection_class = CustomConnection
 
@@ -71,8 +72,8 @@ class PlanetType(DjangoObjectType):
 
     class Meta:
         model = Planet
-        fields = ("id", "name", "orbital_period", "radius_earth", "mass_earth", "equilibrium_temperature",
-                  "semi_major_axis", "insolation_flux", "orbital_eccentricity")
+        fields = ("id", "name", "orbital_period_days", "radius_earth", "mass_earth", "equilibrium_temperature_k",
+                  "semi_major_axis_au", "insolation_flux_earth", "orbital_eccentricity")
         interfaces = (graphene.relay.Node,)
         connection_class = CustomConnection
 

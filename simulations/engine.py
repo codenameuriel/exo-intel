@@ -1,7 +1,6 @@
 import math
 
 from api.models import Planet, Star, StarSystem
-
 from .exceptions import SimulationError
 
 
@@ -48,7 +47,7 @@ class SimulationEngine:
             )
 
         distance_in_light_years = (
-            star_system.distance * SimulationEngine.PARSEC_TO_LIGHT_YEAR
+                star_system.distance_parsecs * SimulationEngine.PARSEC_TO_LIGHT_YEAR
         )
         # c = speed of light
         speed_as_fraction_of_c = speed_percentage / 100.0
@@ -72,7 +71,7 @@ class SimulationEngine:
         except Planet.DoesNotExist:
             raise SimulationError(f"Planet with ID {planet_id} not found.")
 
-        if planet.semi_major_axis is None or planet.orbital_eccentricity is None:
+        if planet.semi_major_axis_au is None or planet.orbital_eccentricity is None:
             raise SimulationError("Planet is missing required orbital data.")
 
         # get stellar luminosity
@@ -82,11 +81,11 @@ class SimulationEngine:
 
         # calculate orbital distances
         periastron_m = (
-            planet.semi_major_axis * (1 - planet.orbital_eccentricity)
-        ) * SimulationEngine.AU_TO_METERS
+                               planet.semi_major_axis_au * (1 - planet.orbital_eccentricity)
+                       ) * SimulationEngine.AU_TO_METERS
         apoastron_m = (
-            planet.semi_major_axis * (1 + planet.orbital_eccentricity)
-        ) * SimulationEngine.AU_TO_METERS
+                              planet.semi_major_axis_au * (1 + planet.orbital_eccentricity)
+                      ) * SimulationEngine.AU_TO_METERS
 
         # calculate temperatures
         flux_at_periastron = SimulationEngine._calculate_flux(
@@ -103,7 +102,7 @@ class SimulationEngine:
             "planet_name": planet.name,
             "star_name": planet.host_star.name,
             "orbital_eccentricity": planet.orbital_eccentricity,
-            "semi_major_axis_au": planet.semi_major_axis,
+            "semi_major_axis_au": planet.semi_major_axis_au,
             "periastron_temp_k": max_temp,
             "apoastron_temp_k": min_temp,
             "seasonal_temp_difference_k": max_temp - min_temp,
@@ -122,49 +121,49 @@ class SimulationEngine:
 
         star = planet.host_star
         required_fields = {
-            "planet": [planet.mass_earth, planet.radius_earth, planet.semi_major_axis],
-            "star": [star.mass, star.age],
+            "planet": [planet.mass_earth, planet.radius_earth, planet.semi_major_axis_au],
+            "star": [star.mass_sun, star.age_gya],
         }
 
         if any(
-            val is None for val in required_fields["planet"] + required_fields["star"]
+                val is None for val in required_fields["planet"] + required_fields["star"]
         ):
             raise SimulationError(
                 "Planet or star is missing required data (orbital distance, earth mass, earth radius, star mass, or star age)."
             )
 
         # simplified version of the tidal locking timescale formula
-        orbital_distance_m = planet.semi_major_axis * SimulationEngine.AU_TO_METERS
+        orbital_distance_m = planet.semi_major_axis_au * SimulationEngine.AU_TO_METERS
         planet_mass_kg = planet.mass_earth * SimulationEngine.EARTH_MASS_KG
-        star_mass_kg = star.mass * SimulationEngine.SOLAR_MASS_KG
+        star_mass_kg = star.mass_sun * SimulationEngine.SOLAR_MASS_KG
         planet_radius_m = planet.radius_earth * SimulationEngine.EARTH_RADIUS_METERS
 
         # simplified lumped constant for the formula, assuming Earth-like rigidity
         k_constant = 6e10
 
         timescale_years = (
-            k_constant
-            * (orbital_distance_m**6)
-            * planet_mass_kg
-            / (star_mass_kg**2 * planet_radius_m**3)
+                k_constant
+                * (orbital_distance_m ** 6)
+                * planet_mass_kg
+                / (star_mass_kg ** 2 * planet_radius_m ** 3)
         )
 
         # star's age in given in Giga-years (billions of years)
-        star_age_years = star.age * SimulationEngine.YEARS_PER_GYR
+        star_age_gya = star.age_gya * SimulationEngine.YEARS_PER_GYR
 
-        is_locked = timescale_years < star_age_years
+        is_locked = timescale_years < star_age_gya
 
         if is_locked:
-            conclusion = f"The planet is likely tidally locked. The calculated locking time ({timescale_years:,.0f} years) is less than the star's age ({star_age_years:,.0f} years)."
+            conclusion = f"The planet is likely tidally locked. The calculated locking time ({timescale_years:,.0f} years) is less than the star's age ({star_age_gya:,.0f} gya)."
         else:
-            conclusion = f"The planet is likely NOT tidally locked. The calculated locking time ({timescale_years:,.0f} years) is greater than the star's age ({star_age_years:,.0f} years)."
+            conclusion = f"The planet is likely NOT tidally locked. The calculated locking time ({timescale_years:,.0f} years) is greater than the star's age ({star_age_gya:,.0f} gya)."
 
         return {
             "planet_name": planet.name,
             "star_name": star.name,
             "is_likely_tidally_locked": is_locked,
             "locking_timescale_years": round(timescale_years),
-            "star_age_years": round(star_age_years),
+            "star_age_gya": round(star_age_gya),
             "conclusion": conclusion,
         }
 
@@ -178,18 +177,18 @@ class SimulationEngine:
         except Star.DoesNotExist:
             raise SimulationError(f"Star with ID {star_id} not found.")
 
-        if star.mass is None or star.age is None:
+        if star.mass_sun is None or star.age_gya is None:
             raise SimulationError("Star is missing required data (mass or age).")
 
-        if star.mass <= 0:
+        if star.mass_sun <= 0:
             raise SimulationError("Star mass must be a positive number.")
 
         # lifetime
-        total_lifetime_gyr = SimulationEngine.SUN_LIFETIME_GYR / (star.mass**2.5)
+        total_lifetime_gya = SimulationEngine.SUN_LIFETIME_GYR / (star.mass_sun ** 2.5)
 
-        remaining_lifetime_gyr = total_lifetime_gyr - star.age
+        remaining_lifetime_gya = total_lifetime_gya - star.age_gya
 
-        percent_lifespan_complete = (star.age / total_lifetime_gyr) * 100
+        percent_lifespan_complete = (star.age_gya / total_lifetime_gya) * 100
 
         conclusion = "Unknown"
         if percent_lifespan_complete < 30:
@@ -203,10 +202,10 @@ class SimulationEngine:
 
         return {
             "star_name": star.name,
-            "star_mass_solar": star.mass,
-            "star_age_gyr": star.age,
-            "estimated_total_lifetime_gyr": round(total_lifetime_gyr, 2),
-            "estimated_remaining_lifetime_gyr": round(remaining_lifetime_gyr, 2),
+            "star_mass_solar": star.mass_sun,
+            "star_age_gya": star.age_gya,
+            "estimated_total_lifetime_gya": round(total_lifetime_gya, 2),
+            "estimated_remaining_lifetime_gya": round(remaining_lifetime_gya, 2),
             "percent_lifespan_complete": round(percent_lifespan_complete, 2),
             "conclusion": conclusion,
         }
@@ -218,7 +217,7 @@ class SimulationEngine:
         """
         if distance_m <= 0:
             return float("inf")
-        return luminosity_watts / (4 * math.pi * (distance_m**2))
+        return luminosity_watts / (4 * math.pi * (distance_m ** 2))
 
     @staticmethod
     def _convert_flux_to_temp(flux, albedo=0.3):
@@ -227,10 +226,9 @@ class SimulationEngine:
         """
         if flux == float("inf"):
             return float("inf")
+
         # T = ( (Flux * (1 - albedo)) / (4 * sigma) ) ^ 0.25
-        temperature = (
-            (flux * (1 - albedo)) / (4 * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT)
-        ) ** 0.25
+        temperature = ((flux * (1 - albedo)) / (4 * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT)) ** 0.25
         return round(temperature)
 
     @staticmethod
@@ -238,18 +236,18 @@ class SimulationEngine:
         """
         Determines a star's luminosity in Watts.
         """
-        if star.luminosity is not None:
-            return (10**star.luminosity) * SimulationEngine.SOLAR_LUMINOSITY
+        if star.luminosity_sun is not None:
+            return (10 ** star.luminosity_sun) * SimulationEngine.SOLAR_LUMINOSITY
         elif star.radius is not None and star.temperature is not None:
             # fallback: calculate from radius and temperature
-            star_radius_m = star.radius * SimulationEngine.SOLAR_RADIUS_METERS
-            star_temp_k = star.temperature
+            star_radius_m = star.radius_sun * SimulationEngine.SOLAR_RADIUS_METERS
+            star_temp_k = star.effective_temperature_k
             return (
-                4
-                * math.pi
-                * (star_radius_m**2)
-                * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT
-                * (star_temp_k**4)
+                    4
+                    * math.pi
+                    * (star_radius_m ** 2)
+                    * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT
+                    * (star_temp_k ** 4)
             )
         else:
             return None

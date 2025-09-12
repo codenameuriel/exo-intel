@@ -53,8 +53,8 @@ class PlanetFilter(filters.FilterSet):
             min_placeholder="min mass", max_placeholder="max mass"
         ),
     )
-    # ?orbital_period_min=365
-    orbital_period = filters.RangeFilter(
+    # ?orbital_period_days_min=365
+    orbital_period_days = filters.RangeFilter(
         label="Orbital Period (Days)",
         widget=LabeledRangeWidget(
             min_placeholder="min period", max_placeholder="max period"
@@ -65,7 +65,7 @@ class PlanetFilter(filters.FilterSet):
     # ?host_star_type=G
     host_star_type = filters.ChoiceFilter(
         label="Host Star's Spectral Type",
-        field_name="host_star__spect_type",
+        field_name="host_star__spectral_type",
         lookup_expr="startswith",
         choices=SPECTRAL_TYPE_CHOICES,
     )
@@ -76,7 +76,7 @@ class PlanetFilter(filters.FilterSet):
             ("habitability_score", "habitability_score"),
             ("radius_earth", "radius_earth"),
             ("mass_earth", "mass_earth"),
-            ("orbital_period", "orbital_period"),
+            ("orbital_period_days", "orbital_period_days"),
         )
     )
 
