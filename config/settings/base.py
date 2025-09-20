@@ -103,8 +103,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "/portal/login/"
 LOGIN_REDIRECT_URL = "/portal/dashboard/"
 LOGOUT_REDIRECT_URL = "/portal/login/"
-# defaults to 2 weeks, set to 1 hour
-SESSION_COOKIE_AGE = 60 * 60
+# defaults to 2 weeks, set to 8 hours
+SESSION_COOKIE_AGE = 8 * 60 * 60
 # reset on every request while not expired
 SESSION_SAVE_EVERY_REQUEST = True
 # defaults to false, persist session
@@ -133,7 +133,7 @@ REST_FRAMEWORK = {
     ],
     # defines scopes and their rate limits
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "5/day",  # 5 requests per day for anonymous users
+        "anon": "10/day",  # 5 requests per day for anonymous users
         "user": "100/day",  # 100 requests per day for users with an API key or session
     },
 }
@@ -147,9 +147,13 @@ SPECTACULAR_SETTINGS = {
 
 # Celery settings
 CELERY_BEAT_SCHEDULE = {
-    "run-full-nightly-import-pipeline-daily": {
-        "task": "tasks.tasks.full_nightly_import",
-        # schedule to run at midnight
+    # "run-full-nightly-import": {
+    #     "task": "tasks.tasks.full_nightly_import",
+    #     # schedule to run at midnight
+    #     "schedule": crontab(hour=0, minute=0),
+    # },
+    "run-full-nightly-canonical-import": {
+        "task": "tasks.tasks.full_nightly_canonical_import",
         "schedule": crontab(hour=0, minute=0),
     }
 }
