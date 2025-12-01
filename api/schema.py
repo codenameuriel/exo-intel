@@ -91,6 +91,8 @@ class Query(graphene.ObjectType):
     star_system_by_name = graphene.Field(lambda: StarSystemType, name=graphene.String())
     all_star_systems = DjangoFilterConnectionField(StarSystemType, filterset_class=StarSystemFilter)
 
+    search_star_systems = graphene.List(graphene.String, query=graphene.String(required=True))
+
     def resolve_planet_by_name(self, info, name):
         return Planet.objects.filter(name=name).first()
 
@@ -99,6 +101,20 @@ class Query(graphene.ObjectType):
 
     def resolve_star_system_by_name(self, info, name):
         return StarSystem.objects.filter(name=name).first()
+
+    def resolve_search_star_systems(self, info, query):
+        """
+        Search endpoint for star systems.
+        """
+        if not query:
+            return []
+
+        queryset = (
+            StarSystem.objects.filter(name__istartswith=query)
+            .values_list("name", flat=True)[:10]
+        )
+
+        return list(queryset)
 
 
 schema = graphene.Schema(query=Query)
