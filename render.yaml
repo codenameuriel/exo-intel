@@ -37,8 +37,7 @@ services:
           name: exo-intel-redis
           type: keyvalue
           property: connectionString
-    preDeployCommand: >
-      /bin/bash -c poetry run python3 manage.py migrate --noinput && poetry run python3 manage.py import_canonical_data
+    preDeployCommand: /usr/local/bin/prepare.sh
 
   - type: worker
     name: exo-intel-celery-worker

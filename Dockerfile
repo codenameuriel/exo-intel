@@ -25,8 +25,9 @@ RUN if [ "$ENVIRONMENT" = "production" ]; then \
 COPY . .
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY docker/prepare.sh /usr/local/bin/prepare.sh
 
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/prepare.sh
 
 # collect static files at build time
 RUN if [ "$ENVIRONMENT" = "production" ]; then \

@@ -5,10 +5,30 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports: ["127.0.0.1:5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
     restart: unless-stopped
 
   redis:
     image: redis:6.2-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  prepare:
+    build: { context: ., args: { ENVIRONMENT: production } }
+    env_file: .env.docker.production
+    environment:
+      PROCESS_TYPE: prepare
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
 
   web:
     build: { context: ., args: { ENVIRONMENT: production } }
@@ -17,17 +37,29 @@ services:
       PROCESS_TYPE: web
       PORT: 9000
     ports: ["9000:9000"]
-    depends_on: [db, redis]
+    depends_on:
+      db:
+        condition: service_healthy
+      prepare:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
     restart: unless-stopped
 
   worker:
-      build: { context: ., args: { ENVIRONMENT: production } }
-      env_file: .env.docker.production
-      environment:
-        PROCESS_TYPE: worker
-      depends_on: [db, redis]
-      stop_grace_period: 60s
-      restart: unless-stopped
+    build: { context: ., args: { ENVIRONMENT: production } }
+    env_file: .env.docker.production
+    environment:
+      PROCESS_TYPE: worker
+    depends_on:
+      db:
+        condition: service_healthy
+      prepare:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    stop_grace_period: 60s
+    restart: unless-stopped
 
   beat:
     build: { context: ., args: { ENVIRONMENT: production } }
@@ -35,7 +67,13 @@ services:
     environment:
       PROCESS_TYPE: beat
       CELERY_BEAT_SCHEDULE_FILE: /app/run/celerybeat-schedule
-    depends_on: [db, redis]
+    depends_on:
+      db:
+        condition: service_healthy
+      prepare:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
     stop_grace_period: 60s
     restart: unless-stopped
 

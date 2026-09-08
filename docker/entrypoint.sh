@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Allow Docker and deployment platforms to override the image command.
+if [ "$#" -gt 0 ]; then
+  exec "$@"
+fi
+
 # default to web
-ROLE="${PROCESS_TYPE:-web}"             # web | worker | beat
+ROLE="${PROCESS_TYPE:-web}"             # web | worker | beat | migrate | prepare
 ENVIRONMENT="${ENVIRONMENT:-local}"     # local | production
 CELERY_BEAT_SCHEDULE_FILE="${CELERY_BEAT_SCHEDULE_FILE:-/app/run/celerybeat-schedule}"
 
@@ -29,6 +34,12 @@ case "$ROLE" in
     ;;
   beat)
     exec poetry run celery -A config beat --loglevel=info --schedule="${CELERY_BEAT_SCHEDULE_FILE}"
+    ;;
+  migrate)
+    exec poetry run python3 manage.py migrate --noinput
+    ;;
+  prepare)
+    exec /usr/local/bin/prepare.sh
     ;;
   *)
     echo "Unknown PROCESS_TYPE: $ROLE" >&2

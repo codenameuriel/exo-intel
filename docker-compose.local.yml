@@ -1,7 +1,20 @@
 services:
   redis:
     image: redis:6.2-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     restart: unless-stopped
+
+  migrate:
+    build: { context: ., args: { ENVIRONMENT: local } }
+    env_file: .env.docker.local
+    environment:
+      PROCESS_TYPE: migrate
+    volumes: [ .:/app ]
+    restart: "no"
 
   web:
     build: { context: ., args: { ENVIRONMENT: local } }
@@ -11,7 +24,11 @@ services:
       PORT: 8000
     volumes: [ .:/app ]
     ports: ["8000:8000"]
-    depends_on: [redis]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
     restart: unless-stopped
 
   worker:
@@ -20,7 +37,11 @@ services:
     environment:
       PROCESS_TYPE: worker
     volumes: [ .:/app ]
-    depends_on: [redis]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
     stop_grace_period: 60s
     restart: unless-stopped
 
@@ -31,6 +52,10 @@ services:
       PROCESS_TYPE: beat
       CELERY_BEAT_SCHEDULE_FILE: /app/run/celerybeat-schedule
     volumes: [ .:/app ]
-    depends_on: [redis]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
     stop_grace_period: 60s
     restart: unless-stopped

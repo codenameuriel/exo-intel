@@ -7,10 +7,10 @@ echo "--- Starting Celery Development Workers ---"
 mkdir -p logs run
 
 # defaults
-#: "${CELERY_WORKER_LOG_FILE:=logs/celery_worker.log}"
-#: "${CELERY_BEAT_LOG_FILE:=logs/celery_beat.log}"
-#: "${CELERY_BEAT_SCHEDULE_FILE:=run/celerybeat-schedule}"
-#: "${DJANGO_SETTINGS_MODULE:?DJANGO_SETTINGS_MODULE must be set (put it in your .env.*)}"
+: "${CELERY_WORKER_LOG_FILE:=logs/celery_worker.log}"
+: "${CELERY_BEAT_LOG_FILE:=logs/celery_beat.log}"
+: "${CELERY_BEAT_SCHEDULE_FILE:=run/celerybeat-schedule}"
+: "${DJANGO_SETTINGS_MODULE:?DJANGO_SETTINGS_MODULE must be set (put it in your .env.*)}"
 
 # start the Celery worker in the background
 echo "Starting Celery worker...(log at ${CELERY_WORKER_LOG_FILE})"

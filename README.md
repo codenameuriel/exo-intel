@@ -59,73 +59,94 @@ an asynchronous simulation engine.
 * **Dependency Management:** Poetry
 * **Server:** Gunicorn
 
-## ⚙️ Local Docker Setup & Installation
+## Local Docker setup
 
-This project is fully containerized and can be run on any machine with Docker and Docker Compose installed.
+Docker Compose runs Django, Redis, a Celery worker, and Celery Beat. Django uses SQLite locally. You do not need Poetry installed on the host.
 
-**1. Clone the repository via SSH:**
+1. Create the local environment file on a fresh checkout:
 
 ```bash
-git clone git@github.com:codenameuriel/exo-intel.git
+cp .env.example .env.docker.local
+python3 -c 'import secrets; print(secrets.token_urlsafe(50))'
 ```
 
-**2. Install the Project Dependencies:**
+Put the generated value in `SECRET_KEY` inside `.env.docker.local`. This file is ignored by Git.
+
+2. Build and start the stack:
 
 ```bash
+docker compose -f docker-compose.local.yml -p exo-intel-local up --build
+```
+
+The migration service runs before the web and Celery services. When startup finishes, open http://localhost:8000/.
+
+3. Create an administrator in another terminal:
+
+```bash
+docker compose -f docker-compose.local.yml -p exo-intel-local exec web \
+  poetry run python3 manage.py createsuperuser
+```
+
+4. Load the bundled canonical NASA data if you want a populated API:
+
+```bash
+docker compose -f docker-compose.local.yml -p exo-intel-local exec web \
+  poetry run python3 manage.py import_canonical_data
+```
+
+The portal is at http://localhost:8000/portal/login/ and the default admin is at http://localhost:8000/admin/.
+
+Useful local commands:
+
+```bash
+# Follow logs
+docker compose -f docker-compose.local.yml -p exo-intel-local logs -f
+
+# Open a shell in the web container
+docker compose -f docker-compose.local.yml -p exo-intel-local exec web bash
+
+# Stop and remove the containers
+docker compose -f docker-compose.local.yml -p exo-intel-local down
+```
+
+## Host development setup
+
+Host development requires Python 3.10 or newer, Poetry, and Redis. The web server and Celery use `.env.local`.
+
+```bash
+cp .env.local.example .env.local
 poetry install
-```
-
-**3. Create the Local Environment File:**
-
-* Create a file named **.env.docker.local** and copy the contents of **.env.example** into it.
-* To fill in the **SECRET_KEY** environment variable, you can generate one with the following command:
-
-```bash
-poetry shell
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
-
-copy and paste the **SECRET_KEY** into the **.env.docker.local** file and enter **exit** to exit the poetry shell.
-
-**3. Build and Run the Application:**
-
-Use Docker Compose to build the images (only needed the first time) and start all services.
-
-```bash
-docker compose -f docker-compose.local.yml -p exo-intel-local build
-```
-
-The application will be available at http://localhost:8000/
-
-**4. Enter the Docker Container Shell:**
-
-While the application is running, open a new terminal window to run this command
-
-```bash
-docker compose -p exo-intel-local exec -it web bash
-```
-
-**5. Migrate the database (while in the container shell):**
-
-```bash
 poetry run poe migrate
+poetry run poe runserver
 ```
 
-**6. Create a superuser account (while in the container shell):**
+The host web server listens at http://localhost:7000/. Start the Celery worker and Beat in another terminal:
 
 ```bash
-poetry run poe createsuperuser
+poetry run poe celery:start
 ```
 
-Now you can:
+Use `poetry run poe celery:logs` and `poetry run poe celery:stop` to inspect or stop those background processes.
 
-* log into the developer portal http://localhost:8000/portal/login/
-* log into the admin panel http://localhost:8000/admin/
+## Production Docker setup
 
-**7. Populate the database with NASA data (while in the container shell):**
+The production stack runs PostgreSQL, Redis, Gunicorn, a Celery worker, and Celery Beat. Its one-shot preparation service waits for PostgreSQL, applies migrations, and imports the bundled canonical data before the application starts.
 
 ```bash
-poetry run poe import_all_nasa_data
+cp .env.docker.production.example .env.docker.production
+python3 -c 'import secrets; print(f"SECRET_KEY={secrets.token_urlsafe(50)}"); print(f"DATABASE_PASSWORD={secrets.token_urlsafe(32)}")'
+```
+
+Put the generated `SECRET_KEY` value in `SECRET_KEY`. Put the generated URL-safe database password in both `POSTGRES_PASSWORD` and `DATABASE_URL`. Before exposing the service publicly, set the real hostnames and HTTPS origins and change `SECURE_COOKIES` to `True`. Then start it:
+
+```bash
+docker compose -f docker-compose.production.yml up --build -d
+```
+
+Gunicorn listens at http://localhost:9000/. Stop the stack without deleting PostgreSQL data with:
+
+```bash
+docker compose -f docker-compose.production.yml down
 ```
 
 📜 License
