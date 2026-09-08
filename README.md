@@ -11,37 +11,37 @@ an asynchronous simulation engine.
 ## ✨ Key Features
 
 * **Dual API Paradigms:**
-    * A fully-featured, read-only **REST API** with advanced filtering, searching, and pagination.
-    * A powerful, paginated **GraphQL API** for precise, client-driven data queries.
+  * A fully-featured, read-only **REST API** with advanced filtering, searching, and pagination.
+  * A powerful, paginated **GraphQL API** for precise, client-driven data queries.
 
 * **Professional API Security:**
-    * Tiered access model with **API Key authentication** for programmatic use and **Session authentication** for the
+  * Tiered access model with **API Key authentication** for programmatic use and **Session authentication** for the
       developer portal.
-    * **Dynamic, tiered rate limiting** to protect resources, with different limits for anonymous and authenticated
+  * **Dynamic, tiered rate limiting** to protect resources, with different limits for anonymous and authenticated
       users.
 
 * **Asynchronous Simulation Engine:**
-    * A robust simulation engine for running complex, long-running scientific calculations (e.g., interstellar travel
+  * A robust simulation engine for running complex, long-running scientific calculations (e.g., interstellar travel
       time, planetary seasonality, tidal locking probability).
-    * Powered by a **Celery and Redis** background task queue for non-blocking execution.
+  * Powered by a **Celery and Redis** background task queue for non-blocking execution.
 
 * **Real-Time Task Tracking:**
-    * A persistent, database-backed **simulation history tracker**.
-    * A developer dashboard with a **real-time polling UI** to monitor the status of pending and completed jobs.
+  * A persistent, database-backed **simulation history tracker**.
+  * A developer dashboard with a **real-time polling UI** to monitor the status of pending and completed jobs.
 
 * **Developer Portal & Tools:**
-    * A custom-styled developer portal with a secure login/signup flow and dashboard.
-    * A self-service interface for developers to **create and manage their own API keys**.
+  * A custom-styled developer portal with a secure login/signup flow and dashboard.
+  * A self-service interface for developers to **create and manage their own API keys**.
 
 * **Production-Ready Architecture:**
-    * **Containerized** with **Docker** using a `Dockerfile`, ensuring a consistent and reproducible environment.
-    * Orchestrated with **Docker Compose** to manage the multi-service application (web, database, cache, workers) for
+  * **Containerized** with **Docker** using a `Dockerfile`, ensuring a consistent and reproducible environment.
+  * Orchestrated with **Docker Compose** to manage the multi-service application (web, database, cache, workers) for
       local development and
       production environments.
-    * **Cloud-Native Deployment** with PaaS provider Render, using a declarative configuration approach via
+  * **Cloud-Native Deployment** with PaaS provider Render, using a declarative configuration approach via
       `render.yaml` file
-    * Professional dependency management with **Poetry**.
-    * Environment-specific configurations for seamless local, Docker, and production workflows using `django-environ`.
+  * Professional dependency management with **Poetry**.
+  * Environment-specific configurations for seamless local, Docker, and production workflows using `django-environ`.
 
 ## 🚀 Live Demo & Documentation
 
@@ -72,29 +72,29 @@ python3 -c 'import secrets; print(secrets.token_urlsafe(50))'
 
 Put the generated value in `SECRET_KEY` inside `.env.docker.local`. This file is ignored by Git.
 
-2. Build and start the stack:
+1. Build and start the stack:
 
 ```bash
 docker compose -f docker-compose.local.yml -p exo-intel-local up --build
 ```
 
-The migration service runs before the web and Celery services. When startup finishes, open http://localhost:8000/.
+The migration service runs before the web and Celery services. When startup finishes, open <http://localhost:8000/>.
 
-3. Create an administrator in another terminal:
+1. Create an administrator in another terminal:
 
 ```bash
 docker compose -f docker-compose.local.yml -p exo-intel-local exec web \
   poetry run python3 manage.py createsuperuser
 ```
 
-4. Load the bundled canonical NASA data if you want a populated API:
+1. Load the bundled canonical NASA data if you want a populated API:
 
 ```bash
 docker compose -f docker-compose.local.yml -p exo-intel-local exec web \
   poetry run python3 manage.py import_canonical_data
 ```
 
-The portal is at http://localhost:8000/portal/login/ and the default admin is at http://localhost:8000/admin/.
+The portal is at <http://localhost:8000/portal/login/> and the default admin is at <http://localhost:8000/admin/>.
 
 Useful local commands:
 
@@ -120,7 +120,7 @@ poetry run poe migrate
 poetry run poe runserver
 ```
 
-The host web server listens at http://localhost:7000/. Start the Celery worker and Beat in another terminal:
+The host web server listens at <http://localhost:7000/>. Start the Celery worker and Beat in another terminal:
 
 ```bash
 poetry run poe celery:start
@@ -143,7 +143,7 @@ Put the generated `SECRET_KEY` value in `SECRET_KEY`. Put the generated URL-safe
 docker compose -f docker-compose.production.yml up --build -d
 ```
 
-Gunicorn listens at http://localhost:9000/. Stop the stack without deleting PostgreSQL data with:
+Gunicorn listens at <http://localhost:9000/>. Stop the stack without deleting PostgreSQL data with:
 
 ```bash
 docker compose -f docker-compose.production.yml down
