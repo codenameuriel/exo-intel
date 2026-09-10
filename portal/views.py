@@ -30,21 +30,25 @@ class SignUpView(CreateView):
 
 
 class PortalDashboardView(LoginRequiredMixin, View):
-    """
-    This view serves as the main landing page for a developer
-    after they have successfully logged in.
-    """
+    """Main developer portal overview."""
 
     template_name = "portal/dashboard.html"
 
     def get(self, request, *args, **kwargs):
-        """
-        Handle GET requests. Fetches the user's existing API keys
-        and renders the dashboard template with them.
-        """
         api_keys = APIKey.objects.filter(user=request.user)
+        context = {
+            "api_keys": api_keys,
+            "api_key_count": api_keys.count(),
+        }
+        return render(request, self.template_name, context)
 
-        # simulation data models
+
+class PortalSimulationsView(LoginRequiredMixin, View):
+    """Dedicated simulation workspace."""
+
+    template_name = "portal/simulations.html"
+
+    def get(self, request, *args, **kwargs):
         travel_sim_star_systems = StarSystem.objects.filter(
             distance_parsecs__isnull=False
         ).order_by("name")
@@ -53,8 +57,8 @@ class PortalDashboardView(LoginRequiredMixin, View):
             Planet.objects.filter(
                 Q(host_star__luminosity_sun__isnull=False)
                 | (
-                        Q(host_star__radius_sun__isnull=False)
-                        & Q(host_star__effective_temperature_k__isnull=False)
+                    Q(host_star__radius_sun__isnull=False)
+                    & Q(host_star__effective_temperature_k__isnull=False)
                 ),
                 semi_major_axis_au__isnull=False,
                 orbital_eccentricity__isnull=False,
@@ -66,7 +70,8 @@ class PortalDashboardView(LoginRequiredMixin, View):
 
         tidal_locking_sim_planets = (
             Planet.objects.filter(
-                Q(host_star__mass_sun__isnull=False) & Q(host_star__age_gya__isnull=False),
+                Q(host_star__mass_sun__isnull=False)
+                & Q(host_star__age_gya__isnull=False),
                 mass_earth__isnull=False,
                 radius_earth__isnull=False,
                 semi_major_axis_au__isnull=False,
@@ -82,14 +87,11 @@ class PortalDashboardView(LoginRequiredMixin, View):
         ).order_by("name")
 
         context = {
-            "api_keys": api_keys,
-            "api_key_count": api_keys.count(),
             "travel_sim_star_systems": travel_sim_star_systems,
             "seasonality_sim_planets": seasonality_sim_planets,
             "tidal_locking_sim_planets": tidal_locking_sim_planets,
             "star_lifetime_sim_stars": star_lifetime_sim_stars,
         }
-
         return render(request, self.template_name, context)
 
 
