@@ -1,10 +1,17 @@
-<div>
-    <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Travel Time Calculator</h3>
-    <form class="simulation-form"
+<article class="simulation-card" data-simulation="travel-time">
+    <header class="simulation-card__header">
+        <p class="simulation-card__category">Travel</p>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-600">Travel Time Calculator</h3>
+        <p class="simulation-card__description text-sm text-gray-600">
+            Estimate travel time to a known star system at a selected percentage of light speed.
+        </p>
+    </header>
+
+    <form class="simulation-form simulation-card__form"
           data-api-endpoint="/simulations/travel-time/"
           data-csrf-token="{{ csrf_token }}"
           data-sim-type="travel">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div class="simulation-card__controls grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div>
                 <label for="travel-system-select" class="block text-sm font-medium text-gray-700">Destination Star System</label>
                 <select id="travel-system-select" name="star_system_id"
@@ -19,10 +26,13 @@
                 <input type="number" name="speed_percentage" id="speed-percentage" value="100" min="1" max="100"
                        class="mt-1 block w-full px-3 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm">
             </div>
+        </div>
+
+        <footer class="simulation-card__actions mt-4">
             <button type="submit"
-                    class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="w-full px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed">
                 Run Travel Sim
             </button>
-        </div>
+        </footer>
     </form>
-</div>
+</article>
