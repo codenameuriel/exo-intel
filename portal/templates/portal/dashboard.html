@@ -25,25 +25,27 @@
             --error-text: #991b1b;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --icon-size: 1.5rem;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --brand-primary: #f1f5f9;
-                --brand-primary-hover: #ffffff;
+                --brand-primary: #e2e8f0;
+                --brand-primary-hover: #f1f5f9;
                 --brand-bg: #0f172a;
-                --brand-border: #1e293b;
-                --surface-bg: #1e293b;
-                --surface-border: #334155;
-                --user-bg: #1e293b;
-                --user-text: #f1f5f9;
+                --brand-border: #334155;
+                --surface-bg: #111827;
+                --surface-border: #374151;
+                --user-bg: #1f2937;
+                --user-text: #e5e7eb;
                 --focus-ring: 0 0 0 3px rgba(148, 163, 184, 0.4);
-                --success-bg: #14532d;
-                --success-text: #bbf7d0;
+                --success-bg: #064e3b;
+                --success-text: #6ee7b7;
                 --error-bg: #7f1d1d;
                 --error-text: #fca5a5;
                 --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
                 --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+                --icon-size: 1.5rem;
             }
         }
 
@@ -95,6 +97,32 @@
         .text-green-800 { color: var(--success-text) !important; }
         .text-red-800 { color: var(--error-text) !important; }
         .border-gray-200 { border-color: var(--brand-border) !important; }
+
+        /* Brand icon sizing */
+        .brand-icon {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            flex-shrink: 0;
+            stroke-width: 2;
+        }
+
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--brand-primary);
+        }
+
+        .brand-link:hover {
+            color: var(--brand-primary-hover);
+        }
+
+        .brand-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+        }
     </style>
 </head>
 
