@@ -1,22 +1,24 @@
-<section class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-    <div class="bg-white p-4 sm:p-6 rounded-md">
-        <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 mb-2 sm:mb-4">REST API</h2>
-        <p class="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
+<section class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-5 sm:p-6">
+        <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cyan-300/65">Interface</p>
+        <h2 class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">REST API</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-500">
             Use the browsable REST API to explore planets, stars, and systems.
         </p>
         <a href="/api/rest/" target="_blank" rel="noopener"
-           class="inline-block w-full sm:w-auto text-center px-5 sm:px-6 py-3 text-base sm:text-lg font-semibold text-white bg-gray-900 rounded-md hover:bg-black">
+           class="mt-5 inline-flex w-full items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.06] px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:w-auto">
             Launch REST API
         </a>
     </div>
 
-    <div class="bg-white p-4 sm:p-6 rounded-md">
-        <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 mb-2 sm:mb-4">GraphQL IDE</h2>
-        <p class="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
-            Craft precise queries to get exactly the data you need.
+    <div class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-5 sm:p-6">
+        <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cyan-300/65">Interface</p>
+        <h2 class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">GraphQL IDE</h2>
+        <p class="mt-2 text-sm leading-6 text-slate-500">
+            Craft precise queries to retrieve exactly the data you need.
         </p>
         <a href="{% url 'api:graphql' %}" target="_blank" rel="noopener"
-           class="inline-block w-full sm:w-auto text-center px-5 sm:px-6 py-3 text-base sm:text-lg font-semibold text-white bg-gray-900 rounded-md hover:bg-black">
+           class="mt-5 inline-flex w-full items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.06] px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:w-auto">
             Launch GraphQL
         </a>
     </div>
