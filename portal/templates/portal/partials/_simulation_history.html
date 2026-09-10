@@ -1,40 +1,46 @@
-<section id="simulation-history" class="bg-white p-4 sm:p-6 rounded-md">
-    <h2 class="text-lg sm:text-xl font-semibold text-slate-600 mb-3 sm:mb-4">Simulation History</h2>
+<section id="simulation-history" class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+    <div class="flex flex-col gap-4 border-b border-slate-200 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Activity Log</p>
+            <h2 class="mt-2 text-xl font-semibold text-slate-800">Simulation History</h2>
+            <p class="mt-2 text-sm text-slate-600">Track recent simulation jobs, their status, and returned results.</p>
+        </div>
 
-    <div class="history-pagination mb-3 sm:mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 sm:justify-between">
-        <button class="history-prev-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-            &larr; Previous
-        </button>
-        <span class="history-page-info text-center sm:text-left text-sm text-gray-600 px-1"></span>
-        <button class="history-next-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
-            Next &rarr;
-        </button>
+        <div class="history-pagination flex items-center gap-2 self-start lg:self-auto">
+            <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
+                &larr; Previous
+            </button>
+            <span class="history-page-info min-w-24 text-center text-xs font-medium text-slate-500"></span>
+            <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
+                Next &rarr;
+            </button>
+        </div>
     </div>
 
     <div class="overflow-x-auto">
-        <table class="min-w-full bg-white min-w-[720px]">
-            <thead class="bg-gray-50">
-            <tr>
-                <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">Result</th>
-                <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted</th>
+        <table class="min-w-[760px] w-full border-collapse">
+            <thead class="bg-slate-50/80">
+            <tr class="border-b border-slate-200">
+                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Type</th>
+                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Status</th>
+                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Result</th>
+                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Submitted</th>
             </tr>
             </thead>
-            <tbody id="history-table-body" class="divide-y divide-gray-200">
+            <tbody id="history-table-body" class="divide-y divide-slate-100 bg-white">
             <tr>
-                <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">Loading history...</td>
+                <td colspan="4" class="px-6 py-10 text-center text-sm text-slate-500">Loading simulation history...</td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="history-pagination mt-3 sm:mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 sm:justify-between">
-        <button class="history-prev-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+    <div class="history-pagination flex flex-col gap-3 border-t border-slate-200 bg-slate-50/50 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
             &larr; Previous
         </button>
-        <span class="history-page-info text-center sm:text-left text-sm text-gray-600 px-1"></span>
-        <button class="history-next-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+        <span class="history-page-info text-center text-xs font-medium text-slate-500"></span>
+        <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
             Next &rarr;
         </button>
     </div>
