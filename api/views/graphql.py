@@ -1,4 +1,4 @@
-from drf_spectacular.utils import extend_schema, OpenApiExample, OpenApiResponse, inline_serializer
+from drf_spectacular.utils import OpenApiExample, OpenApiResponse, extend_schema, inline_serializer
 from graphene_django.views import GraphQLView
 from rest_framework import serializers
 from rest_framework.authentication import SessionAuthentication
@@ -14,13 +14,13 @@ class PrivateGraphQLView(APIView):
     A wrapper view that applies DRF's security to the GraphQL endpoint.
     """
 
-    authentication_classes = [APIKeyAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticatedOrPublic]
+    authentication_classes = (APIKeyAuthentication, SessionAuthentication)
+    permission_classes = (IsAuthenticatedOrPublic,)
     is_public_resource = False
 
     # overriding DRF APIView parser to prevent it from consuming the request body before it gets to the
     # GraphQLView, which solves the "cannot access body after reading" error.
-    parser_classes = [GraphQLParser]
+    parser_classes = (GraphQLParser,)
 
     @extend_schema(
         description=(
