@@ -265,22 +265,38 @@
         </nav>
 
         {% if user.is_authenticated %}
-            <div class="border-t border-cyan-300/10 px-4 py-4 sm:px-6">
-                <div class="mb-3 flex items-center justify-between gap-3">
-                    <div>
-                        <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-slate-600">System Status</p>
-                        <p class="mt-1 flex items-center gap-2 text-xs font-medium text-emerald-300/80">
-                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(110,231,183,0.5)]"></span>
-                            Authenticated
-                        </p>
-                    </div>
+            <div class="border-t border-cyan-300/10 px-4 py-4 sm:px-5">
+                <div class="mb-3">
+                    <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-slate-600">System Status</p>
+                    <p class="mt-1 flex items-center gap-2 text-xs font-medium text-emerald-300/80">
+                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(110,231,183,0.5)]"></span>
+                        Authenticated
+                    </p>
                 </div>
-                <div class="flex items-center justify-between gap-3 border-t border-cyan-300/[0.07] pt-3">
-                    <span class="min-w-0 truncate text-sm font-medium text-slate-400" title="{{ user.username }}">{{ user.username }}</span>
-                    <form method="post" action="{% url 'portal:logout' %}" class="shrink-0">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-link exo-mono text-[10px] font-medium uppercase tracking-wider">Log Out</button>
-                    </form>
+
+                <div class="rounded-lg border border-cyan-300/10 bg-cyan-300/[0.025] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.015)]">
+                    <div class="flex items-center gap-2.5">
+                        <div class="exo-mono flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/[0.055] text-xs font-semibold uppercase text-cyan-200 shadow-[inset_0_0_14px_rgba(34,211,238,0.035)]" aria-hidden="true">
+                            {{ user.username|slice:":1" }}
+                        </div>
+
+                        <div class="min-w-0 flex-1">
+                            <p class="exo-mono text-[9px] font-medium uppercase tracking-[0.18em] text-slate-600">Operator</p>
+                            <p class="truncate text-sm font-semibold text-slate-300" title="{{ user.username }}">{{ user.username }}</p>
+                        </div>
+
+                        <form method="post" action="{% url 'portal:logout' %}" class="shrink-0">
+                            {% csrf_token %}
+                            <button type="submit"
+                                    class="group flex h-8 w-8 items-center justify-center rounded-md border border-transparent text-slate-600 transition hover:border-red-300/15 hover:bg-red-300/[0.04] hover:text-red-300 focus:outline-none focus:ring-1 focus:ring-red-300/25"
+                                    aria-label="Log out"
+                                    title="Log out">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 8l4 4-4 4m4-4H8m3 7H6.75A1.75 1.75 0 015 17.25V6.75C5 5.784 5.784 5 6.75 5H11"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         {% endif %}
