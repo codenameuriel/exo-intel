@@ -1,33 +1,34 @@
-<article class="simulation-card" data-simulation="star-lifetime">
-    <header class="simulation-card__header">
-        <p class="simulation-card__category">Stellar Evolution</p>
-        <h3 class="text-base sm:text-lg font-semibold text-slate-600">Star Lifetime Simulator</h3>
-        <p class="simulation-card__description text-sm text-gray-600">
-            Estimate a star's total and remaining main-sequence lifetime from its observed properties.
+<article class="simulation-card flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50/70 p-5 transition hover:border-slate-300 hover:bg-white hover:shadow-sm">
+    <header class="mb-5">
+        <div class="mb-3 flex items-center justify-between gap-3">
+            <span class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Stellar</span>
+            <span class="rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-500">Lifetime</span>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-800">Star Lifetime</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
+            Estimate a star's total and remaining main-sequence lifetime from its mass and current age.
         </p>
     </header>
 
-    <form class="simulation-form simulation-card__form"
+    <form class="simulation-form flex flex-1 flex-col"
           data-api-endpoint="/simulations/star-lifetime/"
           data-csrf-token="{{ csrf_token }}"
           data-sim-type="lifetime">
-        <div class="simulation-card__controls grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <div class="sm:col-span-2">
-                <label for="lifetime-star-select" class="block text-sm font-medium text-gray-700">Select Star</label>
-                <select id="lifetime-star-select" name="star_id"
-                        class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
-                    {% for star in star_lifetime_sim_stars %}
-                        <option value="{{ star.pk }}">{{ star.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+        <div>
+            <label for="lifetime-star-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Star</label>
+            <select id="lifetime-star-select" name="star_id"
+                    class="mt-2 block w-full rounded-md border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                {% for star in star_lifetime_sim_stars %}
+                    <option value="{{ star.pk }}">{{ star.name }}</option>
+                {% endfor %}
+            </select>
         </div>
 
-        <footer class="simulation-card__actions mt-4">
+        <div class="mt-auto pt-6">
             <button type="submit"
-                    class="w-full px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
-                Run Star Lifetime Sim
+                    class="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                Run Star Lifetime Simulation
             </button>
-        </footer>
+        </div>
     </form>
 </article>
