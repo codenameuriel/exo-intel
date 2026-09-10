@@ -1,6 +1,7 @@
 import math
 
 from api.models import Planet, Star, StarSystem
+
 from .exceptions import SimulationError
 
 
@@ -47,7 +48,7 @@ class SimulationEngine:
             )
 
         distance_in_light_years = (
-                star_system.distance_parsecs * SimulationEngine.PARSEC_TO_LIGHT_YEAR
+            star_system.distance_parsecs * SimulationEngine.PARSEC_TO_LIGHT_YEAR
         )
         # c = speed of light
         speed_as_fraction_of_c = speed_percentage / 100.0
@@ -81,11 +82,11 @@ class SimulationEngine:
 
         # calculate orbital distances
         periastron_m = (
-                               planet.semi_major_axis_au * (1 - planet.orbital_eccentricity)
-                       ) * SimulationEngine.AU_TO_METERS
+            planet.semi_major_axis_au * (1 - planet.orbital_eccentricity)
+        ) * SimulationEngine.AU_TO_METERS
         apoastron_m = (
-                              planet.semi_major_axis_au * (1 + planet.orbital_eccentricity)
-                      ) * SimulationEngine.AU_TO_METERS
+            planet.semi_major_axis_au * (1 + planet.orbital_eccentricity)
+        ) * SimulationEngine.AU_TO_METERS
 
         # calculate temperatures
         flux_at_periastron = SimulationEngine._calculate_flux(
@@ -121,12 +122,16 @@ class SimulationEngine:
 
         star = planet.host_star
         required_fields = {
-            "planet": [planet.mass_earth, planet.radius_earth, planet.semi_major_axis_au],
+            "planet": [
+                planet.mass_earth,
+                planet.radius_earth,
+                planet.semi_major_axis_au,
+            ],
             "star": [star.mass_sun, star.age_gya],
         }
 
         if any(
-                val is None for val in required_fields["planet"] + required_fields["star"]
+            val is None for val in required_fields["planet"] + required_fields["star"]
         ):
             raise SimulationError(
                 "Planet or star is missing required data (orbital distance, earth mass, earth radius, star mass, or star age)."
@@ -142,10 +147,10 @@ class SimulationEngine:
         k_constant = 6e10
 
         timescale_years = (
-                k_constant
-                * (orbital_distance_m ** 6)
-                * planet_mass_kg
-                / (star_mass_kg ** 2 * planet_radius_m ** 3)
+            k_constant
+            * (orbital_distance_m**6)
+            * planet_mass_kg
+            / (star_mass_kg**2 * planet_radius_m**3)
         )
 
         # star's age in given in Giga-years (billions of years)
@@ -184,7 +189,7 @@ class SimulationEngine:
             raise SimulationError("Star mass must be a positive number.")
 
         # lifetime
-        total_lifetime_gya = SimulationEngine.SUN_LIFETIME_GYR / (star.mass_sun ** 2.5)
+        total_lifetime_gya = SimulationEngine.SUN_LIFETIME_GYR / (star.mass_sun**2.5)
 
         remaining_lifetime_gya = total_lifetime_gya - star.age_gya
 
@@ -217,7 +222,7 @@ class SimulationEngine:
         """
         if distance_m <= 0:
             return float("inf")
-        return luminosity_watts / (4 * math.pi * (distance_m ** 2))
+        return luminosity_watts / (4 * math.pi * (distance_m**2))
 
     @staticmethod
     def _convert_flux_to_temp(flux, albedo=0.3):
@@ -228,7 +233,9 @@ class SimulationEngine:
             return float("inf")
 
         # T = ( (Flux * (1 - albedo)) / (4 * sigma) ) ^ 0.25
-        temperature = ((flux * (1 - albedo)) / (4 * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT)) ** 0.25
+        temperature = (
+            (flux * (1 - albedo)) / (4 * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT)
+        ) ** 0.25
         return round(temperature)
 
     @staticmethod
@@ -237,17 +244,17 @@ class SimulationEngine:
         Determines a star's luminosity in Watts.
         """
         if star.luminosity_sun is not None:
-            return (10 ** star.luminosity_sun) * SimulationEngine.SOLAR_LUMINOSITY
+            return (10**star.luminosity_sun) * SimulationEngine.SOLAR_LUMINOSITY
         elif star.radius is not None and star.temperature is not None:
             # fallback: calculate from radius and temperature
             star_radius_m = star.radius_sun * SimulationEngine.SOLAR_RADIUS_METERS
             star_temp_k = star.effective_temperature_k
             return (
-                    4
-                    * math.pi
-                    * (star_radius_m ** 2)
-                    * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT
-                    * (star_temp_k ** 4)
+                4
+                * math.pi
+                * (star_radius_m**2)
+                * SimulationEngine.STEFAN_BOLTZMANN_CONSTANT
+                * (star_temp_k**4)
             )
         else:
             return None

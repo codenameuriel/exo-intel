@@ -10,54 +10,54 @@ an asynchronous simulation engine.
 
 ## ✨ Key Features
 
-* **Dual API Paradigms:**
-  * A fully-featured, read-only **REST API** with advanced filtering, searching, and pagination.
-  * A powerful, paginated **GraphQL API** for precise, client-driven data queries.
+- **Dual API Paradigms:**
+  - A fully-featured, read-only **REST API** with advanced filtering, searching, and pagination.
+  - A powerful, paginated **GraphQL API** for precise, client-driven data queries.
 
-* **Professional API Security:**
-  * Tiered access model with **API Key authentication** for programmatic use and **Session authentication** for the
-      developer portal.
-  * **Dynamic, tiered rate limiting** to protect resources, with different limits for anonymous and authenticated
-      users.
+- **Professional API Security:**
+  - Tiered access model with **API Key authentication** for programmatic use and **Session authentication** for the
+    developer portal.
+  - **Dynamic, tiered rate limiting** to protect resources, with different limits for anonymous and authenticated
+    users.
 
-* **Asynchronous Simulation Engine:**
-  * A robust simulation engine for running complex, long-running scientific calculations (e.g., interstellar travel
-      time, planetary seasonality, tidal locking probability).
-  * Powered by a **Celery and Redis** background task queue for non-blocking execution.
+- **Asynchronous Simulation Engine:**
+  - A robust simulation engine for running complex, long-running scientific calculations (e.g., interstellar travel
+    time, planetary seasonality, tidal locking probability).
+  - Powered by a **Celery and Redis** background task queue for non-blocking execution.
 
-* **Real-Time Task Tracking:**
-  * A persistent, database-backed **simulation history tracker**.
-  * A developer dashboard with a **real-time polling UI** to monitor the status of pending and completed jobs.
+- **Real-Time Task Tracking:**
+  - A persistent, database-backed **simulation history tracker**.
+  - A developer dashboard with a **real-time polling UI** to monitor the status of pending and completed jobs.
 
-* **Developer Portal & Tools:**
-  * A custom-styled developer portal with a secure login/signup flow and dashboard.
-  * A self-service interface for developers to **create and manage their own API keys**.
+- **Developer Portal & Tools:**
+  - A custom-styled developer portal with a secure login/signup flow and dashboard.
+  - A self-service interface for developers to **create and manage their own API keys**.
 
-* **Production-Ready Architecture:**
-  * **Containerized** with **Docker** using a `Dockerfile`, ensuring a consistent and reproducible environment.
-  * Orchestrated with **Docker Compose** to manage the multi-service application (web, database, cache, workers) for
-      local development and
-      production environments.
-  * **Cloud-Native Deployment** with PaaS provider Render, using a declarative configuration approach via
-      `render.yaml` file
-  * Professional dependency management with **Poetry**.
-  * Environment-specific configurations for seamless local, Docker, and production workflows using `django-environ`.
+- **Production-Ready Architecture:**
+  - **Containerized** with **Docker** using a `Dockerfile`, ensuring a consistent and reproducible environment.
+  - Orchestrated with **Docker Compose** to manage the multi-service application (web, database, cache, workers) for
+    local development and
+    production environments.
+  - **Cloud-Native Deployment** with PaaS provider Render, using a declarative configuration approach via
+    `render.yaml` file
+  - Professional dependency management with **Poetry**.
+  - Environment-specific configurations for seamless local, Docker, and production workflows using `django-environ`.
 
 ## 🚀 Live Demo & Documentation
 
-* **Live Portal:** [exo-intel.onrender.com/portal/signup](exo-intel.onrender.com/portal/signup/)
-* **REST API Docs (Swagger):** [exo-intel.onrender.com/api/docs](exo-intel.onrender.com/api/docs/)
-* **REST API Docs (ReDoc):** [exo-intel.onrender.com/api/redoc](exo-intel.onrender.com/api/redoc/)
+- **Live Portal:** [exo-intel.onrender.com/portal/signup](exo-intel.onrender.com/portal/signup/)
+- **REST API Docs (Swagger):** [exo-intel.onrender.com/api/docs](exo-intel.onrender.com/api/docs/)
+- **REST API Docs (ReDoc):** [exo-intel.onrender.com/api/redoc](exo-intel.onrender.com/api/redoc/)
 
 ## 🛠️ Tech Stack
 
-* **Backend:** Python, Django, Django REST Framework
-* **Database:** PostgreSQL (production), SQLite (local)
-* **Async Tasks:** Celery, Redis
-* **GraphQL:** Graphene-Django
-* **Containerization:** Docker, Docker Compose
-* **Dependency Management:** Poetry
-* **Server:** Gunicorn
+- **Backend:** Python, Django, Django REST Framework
+- **Database:** PostgreSQL (production), SQLite (local)
+- **Async Tasks:** Celery, Redis
+- **GraphQL:** Graphene-Django
+- **Containerization:** Docker, Docker Compose
+- **Dependency Management:** Poetry
+- **Server:** Gunicorn
 
 ## Local Docker setup
 
