@@ -1,10 +1,17 @@
-<div>
-    <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Planetary Seasonality Simulator</h3>
-    <form class="simulation-form"
+<article class="simulation-card" data-simulation="seasonality">
+    <header class="simulation-card__header">
+        <p class="simulation-card__category">Climate</p>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-600">Planetary Seasonality Simulator</h3>
+        <p class="simulation-card__description text-sm text-gray-600">
+            Estimate seasonal temperature variation for a planet using its orbital characteristics.
+        </p>
+    </header>
+
+    <form class="simulation-form simulation-card__form"
           data-api-endpoint="/simulations/seasonal-temps/"
           data-csrf-token="{{ csrf_token }}"
           data-sim-type="season">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div class="simulation-card__controls grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div class="sm:col-span-2">
                 <label for="season-planet-select" class="block text-sm font-medium text-gray-700">Select Planet</label>
                 <select id="season-planet-select" name="planet_id"
@@ -14,10 +21,13 @@
                     {% endfor %}
                 </select>
             </div>
+        </div>
+
+        <footer class="simulation-card__actions mt-4">
             <button type="submit"
-                    class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="w-full px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
                 Run Season Sim
             </button>
-        </div>
+        </footer>
     </form>
-</div>
+</article>
