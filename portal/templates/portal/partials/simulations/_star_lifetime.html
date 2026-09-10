@@ -1,33 +1,29 @@
-<article class="simulation-card flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50/70 p-5 transition hover:border-slate-300 hover:bg-white hover:shadow-sm">
+<article class="simulation-card group flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50/70 p-5 transition duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white hover:shadow-sm motion-reduce:transform-none">
     <header class="mb-5">
         <div class="mb-3 flex items-center justify-between gap-3">
-            <span class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Stellar</span>
+            <div class="flex items-center gap-2.5">
+                <span class="flex h-8 w-8 items-center justify-center rounded-md border border-cyan-300/15 bg-cyan-300/[0.04] text-cyan-200 transition duration-200 group-hover:border-cyan-300/30 group-hover:bg-cyan-300/[0.08] motion-reduce:transition-none" aria-hidden="true">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.2 2.2M16.5 16.5l2.2 2.2M18.7 5.3l-2.2 2.2M7.5 16.5l-2.2 2.2"/></svg>
+                </span>
+                <span class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Stellar</span>
+            </div>
             <span class="rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-500">Lifetime</span>
         </div>
         <h3 class="text-lg font-semibold text-slate-800">Star Lifetime</h3>
-        <p class="mt-2 text-sm leading-6 text-slate-600">
-            Estimate a star's total and remaining main-sequence lifetime from its mass and current age.
-        </p>
+        <p class="mt-2 text-sm leading-6 text-slate-600">Estimate a star's total and remaining main-sequence lifetime from its mass and current age.</p>
     </header>
 
-    <form class="simulation-form flex flex-1 flex-col"
-          data-api-endpoint="/simulations/star-lifetime/"
-          data-csrf-token="{{ csrf_token }}"
-          data-sim-type="lifetime">
+    <form class="simulation-form flex flex-1 flex-col" data-api-endpoint="/simulations/star-lifetime/" data-csrf-token="{{ csrf_token }}" data-sim-type="lifetime">
         <div>
             <label for="lifetime-star-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Star</label>
-            <select id="lifetime-star-select" name="star_id"
-                    class="mt-2 block w-full rounded-md border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
-                {% for star in star_lifetime_sim_stars %}
-                    <option value="{{ star.pk }}">{{ star.name }}</option>
-                {% endfor %}
+            <select id="lifetime-star-select" name="star_id" class="mt-2 block w-full rounded-md border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                {% for star in star_lifetime_sim_stars %}<option value="{{ star.pk }}">{{ star.name }}</option>{% endfor %}
             </select>
         </div>
-
         <div class="mt-auto pt-6">
-            <button type="submit"
-                    class="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            <button type="submit" class="group/action flex w-full items-center justify-center gap-2 rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
                 Run Star Lifetime Simulation
+                <span class="transition-transform duration-200 group-hover/action:translate-x-0.5 motion-reduce:transform-none" aria-hidden="true">→</span>
             </button>
         </div>
     </form>
