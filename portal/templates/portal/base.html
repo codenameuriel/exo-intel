@@ -21,7 +21,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
 <div class="min-h-screen lg:flex">
-    <aside class="border-b border-gray-200 bg-white lg:w-64 lg:border-b-0 lg:border-r">
+    <aside class="flex flex-col border-b border-gray-200 bg-white lg:min-h-screen lg:w-64 lg:border-b-0 lg:border-r">
         <div class="px-4 py-5 sm:px-6">
             <a href="{% url 'portal:dashboard' %}" class="flex items-center gap-3 text-slate-800">
                 <span class="flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 text-xs font-bold" aria-hidden="true">
@@ -34,7 +34,7 @@
             </a>
         </div>
 
-        <nav class="px-3 pb-5" aria-label="Portal navigation">
+        <nav class="flex-1 px-3 pb-5" aria-label="Portal navigation">
             <ul class="space-y-1">
                 <li>
                     <a href="{% url 'portal:dashboard' %}"
@@ -73,23 +73,28 @@
                 </ul>
             </div>
         </nav>
-    </aside>
 
-    <div class="min-w-0 flex-1">
-        <header class="border-b border-gray-200 bg-white">
-            <div class="flex items-center justify-end gap-3 px-4 py-3 sm:px-6 lg:px-8">
-                {% if user.is_authenticated %}
-                    <span class="truncate text-sm font-semibold text-slate-700" title="{{ user.username }}">
+        {% if user.is_authenticated %}
+            <div class="border-t border-gray-200 px-4 py-4 sm:px-6">
+                <div class="mb-3">
+                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Session</p>
+                    <p class="mt-1 text-sm font-medium text-slate-700">Authenticated</p>
+                </div>
+
+                <div class="flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-sm font-semibold text-slate-700" title="{{ user.username }}">
                         {{ user.username }}
                     </span>
-                    <form method="post" action="{% url 'portal:logout' %}">
+                    <form method="post" action="{% url 'portal:logout' %}" class="shrink-0">
                         {% csrf_token %}
                         <button type="submit" class="btn-link text-sm font-semibold underline">Log Out</button>
                     </form>
-                {% endif %}
+                </div>
             </div>
-        </header>
+        {% endif %}
+    </aside>
 
+    <div class="min-w-0 flex-1">
         <div class="mx-auto w-full max-w-screen-xl px-4 py-6 sm:px-6 lg:px-8 xl:px-12">
             {% if messages %}
                 <div id="message-container" class="mb-6 space-y-2 transition-opacity duration-500 ease-in-out">
