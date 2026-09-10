@@ -1,38 +1,41 @@
-<article class="simulation-card" data-simulation="travel-time">
-    <header class="simulation-card__header">
-        <p class="simulation-card__category">Travel</p>
-        <h3 class="text-base sm:text-lg font-semibold text-slate-600">Travel Time Calculator</h3>
-        <p class="simulation-card__description text-sm text-gray-600">
+<article class="simulation-card flex h-full flex-col rounded-lg border border-slate-200 bg-slate-50/70 p-5 transition hover:border-slate-300 hover:bg-white hover:shadow-sm">
+    <header class="mb-5">
+        <div class="mb-3 flex items-center justify-between gap-3">
+            <span class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Trajectory</span>
+            <span class="rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] font-semibold text-slate-500">Travel</span>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-800">Travel Time Calculator</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">
             Estimate travel time to a known star system at a selected percentage of light speed.
         </p>
     </header>
 
-    <form class="simulation-form simulation-card__form"
+    <form class="simulation-form flex flex-1 flex-col"
           data-api-endpoint="/simulations/travel-time/"
           data-csrf-token="{{ csrf_token }}"
           data-sim-type="travel">
-        <div class="simulation-card__controls grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div class="space-y-4">
             <div>
-                <label for="travel-system-select" class="block text-sm font-medium text-gray-700">Destination Star System</label>
+                <label for="travel-system-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Destination Star System</label>
                 <select id="travel-system-select" name="star_system_id"
-                        class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                        class="mt-2 block w-full rounded-md border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
                     {% for system in travel_sim_star_systems %}
                         <option value="{{ system.pk }}">{{ system.name }}</option>
                     {% endfor %}
                 </select>
             </div>
             <div>
-                <label for="speed-percentage" class="block text-sm font-medium text-gray-700">Speed (% of Light)</label>
+                <label for="speed-percentage" class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Speed (% of Light)</label>
                 <input type="number" name="speed_percentage" id="speed-percentage" value="100" min="1" max="100"
-                       class="mt-1 block w-full px-3 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm">
+                       class="mt-2 block w-full rounded-md border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200">
             </div>
         </div>
 
-        <footer class="simulation-card__actions mt-4">
+        <div class="mt-auto pt-6">
             <button type="submit"
-                    class="w-full px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed">
-                Run Travel Sim
+                    class="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-black focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                Run Travel Simulation
             </button>
-        </footer>
+        </div>
     </form>
 </article>
