@@ -2,12 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // auto-hiding messages
     const messageContainer = document.getElementById('message-container');
     if (messageContainer) {
-        // Wait for 3 seconds (3000 milliseconds)
         setTimeout(function () {
-            // Start fading the message out
             messageContainer.style.opacity = '0';
-
-            // After the fade-out transition (500ms), hide it completely
             setTimeout(function () {
                 messageContainer.style.display = 'none';
             }, 500);
@@ -18,6 +14,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const historyTableBody = document.getElementById('history-table-body');
     const simMessageDisplay = document.getElementById('simulation-message-display');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const simulationTypeMap = {
+        travel: 'TRAVEL_TIME',
+        season: 'SEASONAL_TEMPS',
+        tidal: 'TIDAL_LOCKING',
+        lifetime: 'STAR_LIFETIME',
+    };
+
+    const activeSimulationForms = new Map();
+    const minimumVisibleStateMs = 1500;
+    const pendingDetectionGraceMs = 6000;
 
     simForms.forEach(form => {
         form.addEventListener('submit', handleSimSubmit);
@@ -44,88 +51,139 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }));
 
-    function setSimulationSubmitting(form, isSubmitting) {
-        const submitButton = form.querySelector('button[type="submit"]');
-        const card = form.closest('.simulation-card');
+    function getSubmitButton(form) {
+        return form.querySelector('button[type="submit"]');
+    }
 
+    function getSimulationCard(form) {
+        return form.closest('.simulation-card');
+    }
+
+    function createSpinner() {
+        const spinner = document.createElement('span');
+        spinner.className = 'simulation-submit-spinner';
+        spinner.setAttribute('aria-hidden', 'true');
+
+        Object.assign(spinner.style, {
+            width: '0.9rem',
+            height: '0.9rem',
+            flexShrink: '0',
+            borderRadius: '9999px',
+            border: '1.5px solid rgba(165, 243, 252, 0.28)',
+            borderTopColor: '#a5f3fc',
+        });
+
+        if (!prefersReducedMotion.matches) {
+            spinner.animate(
+                [
+                    {transform: 'rotate(0deg)'},
+                    {transform: 'rotate(360deg)'},
+                ],
+                {
+                    duration: 700,
+                    iterations: Infinity,
+                    easing: 'linear',
+                },
+            );
+        }
+
+        return spinner;
+    }
+
+    function setButtonContent(button, label, {showSpinner = false} = {}) {
+        button.replaceChildren();
+
+        if (showSpinner) {
+            button.appendChild(createSpinner());
+        }
+
+        const labelNode = document.createElement('span');
+        labelNode.textContent = label;
+        button.appendChild(labelNode);
+    }
+
+    function setSimulationState(form, state) {
+        const submitButton = getSubmitButton(form);
+        const card = getSimulationCard(form);
         if (!submitButton) return;
 
-        if (isSubmitting) {
-            if (form.dataset.submitting === 'true') return;
-
-            form.dataset.submitting = 'true';
+        if (!submitButton.dataset.originalContent) {
             submitButton.dataset.originalContent = submitButton.innerHTML;
-            submitButton.disabled = true;
-            submitButton.setAttribute('aria-disabled', 'true');
-            submitButton.innerHTML = `
-                <span class="simulation-submit-spinner" aria-hidden="true"></span>
-                <span>Starting simulation…</span>
-            `;
+        }
 
-            const spinner = submitButton.querySelector('.simulation-submit-spinner');
-            if (spinner) {
-                Object.assign(spinner.style, {
-                    width: '0.9rem',
-                    height: '0.9rem',
-                    flexShrink: '0',
-                    borderRadius: '9999px',
-                    border: '1.5px solid rgba(165, 243, 252, 0.28)',
-                    borderTopColor: '#a5f3fc',
-                });
+        if (state === 'idle') {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-disabled');
 
-                if (!prefersReducedMotion.matches) {
-                    spinner.animate(
-                        [
-                            {transform: 'rotate(0deg)'},
-                            {transform: 'rotate(360deg)'},
-                        ],
-                        {
-                            duration: 700,
-                            iterations: Infinity,
-                            easing: 'linear',
-                        },
-                    );
-                }
+            if (submitButton.dataset.originalContent) {
+                submitButton.innerHTML = submitButton.dataset.originalContent;
+                delete submitButton.dataset.originalContent;
             }
+
+            delete form.dataset.runningState;
+            delete form.dataset.submitting;
 
             if (card) {
-                card.setAttribute('aria-busy', 'true');
-                card.dataset.state = 'submitting';
-                card.style.borderColor = 'rgba(103, 232, 249, 0.38)';
-                card.style.boxShadow = '0 0 0 1px rgba(34, 211, 238, 0.05), 0 18px 45px rgba(0, 0, 0, 0.26), inset 0 0 24px rgba(34, 211, 238, 0.025)';
+                card.removeAttribute('aria-busy');
+                delete card.dataset.state;
+                card.style.removeProperty('border-color');
+                card.style.removeProperty('box-shadow');
+                card.style.removeProperty('background');
             }
-
             return;
         }
 
-        delete form.dataset.submitting;
-        submitButton.disabled = false;
-        submitButton.removeAttribute('aria-disabled');
-
-        if (submitButton.dataset.originalContent) {
-            submitButton.innerHTML = submitButton.dataset.originalContent;
-            delete submitButton.dataset.originalContent;
-        }
+        form.dataset.runningState = state;
+        submitButton.disabled = true;
+        submitButton.setAttribute('aria-disabled', 'true');
 
         if (card) {
-            card.removeAttribute('aria-busy');
-            delete card.dataset.state;
-            card.style.removeProperty('border-color');
-            card.style.removeProperty('box-shadow');
+            card.setAttribute('aria-busy', 'true');
+            card.dataset.state = state;
+            card.style.borderColor = 'rgba(103, 232, 249, 0.46)';
+            card.style.boxShadow = '0 0 0 1px rgba(34, 211, 238, 0.08), 0 18px 45px rgba(0, 0, 0, 0.28), inset 0 0 30px rgba(34, 211, 238, 0.04)';
+            card.style.background = 'linear-gradient(180deg, rgba(12, 35, 53, 0.97), rgba(6, 20, 34, 0.99))';
         }
+
+        if (state === 'starting') {
+            setButtonContent(submitButton, 'Starting simulation…', {showSpinner: true});
+        } else if (state === 'queued') {
+            setButtonContent(submitButton, 'Queued · Tracking', {showSpinner: true});
+        } else if (state === 'running') {
+            setButtonContent(submitButton, 'Simulation running…', {showSpinner: true});
+        } else if (state === 'complete') {
+            setButtonContent(submitButton, 'Simulation complete');
+        }
+    }
+
+    function resetSimulationAfterMinimumDisplay(form) {
+        const active = activeSimulationForms.get(form.dataset.simType);
+        const startedAt = active?.startedAt || Date.now();
+        const delay = Math.max(0, minimumVisibleStateMs - (Date.now() - startedAt));
+
+        setTimeout(() => {
+            setSimulationState(form, 'idle');
+            activeSimulationForms.delete(form.dataset.simType);
+        }, delay);
     }
 
     function handleSimSubmit(event) {
         event.preventDefault();
 
         const form = event.target;
-        if (form.dataset.submitting === 'true') return;
+        if (form.dataset.submitting === 'true' || activeSimulationForms.has(form.dataset.simType)) return;
 
         if (simMessageDisplay) {
             simMessageDisplay.innerHTML = '';
         }
 
-        setSimulationSubmitting(form, true);
+        form.dataset.submitting = 'true';
+        activeSimulationForms.set(form.dataset.simType, {
+            form,
+            startedAt: Date.now(),
+            seenPending: false,
+        });
+        setSimulationState(form, 'starting');
 
         const endpoint = form.dataset.apiEndpoint;
         const csrfToken = form.dataset.csrfToken;
@@ -147,26 +205,62 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .then(data => {
+                delete form.dataset.submitting;
+                setSimulationState(form, 'queued');
                 displaySimulationMessage(`Simulation started successfully! Task ID: ${data.task_id}`, 'success');
+                updateHistoryTable();
                 startPolling();
             })
             .catch(error => {
-                // network error, fetch fails, api errors
                 displaySimulationMessage(error, 'error');
-            })
-            .finally(() => {
-                setSimulationSubmitting(form, false);
+                resetSimulationAfterMinimumDisplay(form);
             });
+    }
+
+    function syncActiveSimulationStates(results) {
+        activeSimulationForms.forEach((active, simType) => {
+            const historyType = simulationTypeMap[simType];
+            const hasPending = results.some(run => (
+                run.simulation_type === historyType && run.status === 'PENDING'
+            ));
+
+            if (hasPending) {
+                active.seenPending = true;
+                setSimulationState(active.form, 'running');
+                return;
+            }
+
+            const elapsedMs = Date.now() - active.startedAt;
+
+            if (active.seenPending) {
+                setSimulationState(active.form, 'complete');
+                setTimeout(() => {
+                    setSimulationState(active.form, 'idle');
+                    activeSimulationForms.delete(simType);
+                }, 1200);
+                return;
+            }
+
+            if (elapsedMs >= pendingDetectionGraceMs) {
+                setSimulationState(active.form, 'complete');
+                setTimeout(() => {
+                    setSimulationState(active.form, 'idle');
+                    activeSimulationForms.delete(simType);
+                }, 1200);
+            }
+        });
     }
 
     function updateHistoryTable(url = initialHistoryUrl) {
         fetch(url)
             .then(response => {
                 if (!response.ok) return null;
-                return response.json()
+                return response.json();
             })
             .then(data => {
                 if (!historyTableBody || !data) return;
+
+                syncActiveSimulationStates(data.results);
 
                 if (data.results.length === 0) {
                     historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-10 text-center text-sm text-slate-500">No simulation history found.</td></tr>`;
@@ -178,8 +272,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 updatePaginationControls(data);
 
                 let isAnySimRunning = false;
-
                 let tableHtml = '';
+
                 data.results.forEach(run => {
                     if (run.status === 'PENDING') {
                         isAnySimRunning = true;
@@ -219,9 +313,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         </tr>
                     `;
                 });
+
                 historyTableBody.innerHTML = tableHtml;
 
-                if (isAnySimRunning) {
+                if (isAnySimRunning || activeSimulationForms.size > 0) {
                     startPolling();
                 } else {
                     stopPolling();
@@ -282,16 +377,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function displaySimulationMessage(data, level) {
         if (!simMessageDisplay) return;
 
-        let messageHtml = '';
         const bgColor = level === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
-
         let messageContent = '';
 
-        // Handle API errors
         if (level === 'error' && data && data.details) {
             const details = data.details;
             if (typeof details === 'object' && details !== null) {
-                let detailMessages = [];
+                const detailMessages = [];
                 for (const [field, messages] of Object.entries(details)) {
                     const fieldName = field.charAt(0).toUpperCase() + field.slice(1).replace(/_/g, ' ');
                     detailMessages.push(`<strong>${fieldName}:</strong> ${messages.join(', ')}`);
@@ -306,8 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
             messageContent = 'An unexpected error occurred. Please try again.';
         }
 
-        messageHtml = `<div class="p-4 rounded-md ${bgColor}" role="alert">${messageContent}</div>`;
-        simMessageDisplay.innerHTML = messageHtml;
+        simMessageDisplay.innerHTML = `<div class="p-4 rounded-md ${bgColor}" role="alert">${messageContent}</div>`;
 
         setTimeout(() => {
             if (simMessageDisplay) simMessageDisplay.innerHTML = '';
@@ -319,24 +410,24 @@ document.addEventListener('DOMContentLoaded', function () {
         if (resultData.error) {
             return `<span class="text-red-600">${resultData.error}</span>`;
         }
-        const renderer = resultRenderers[simType] || resultRenderers['default'];
+        const renderer = resultRenderers[simType] || resultRenderers.default;
         return renderer(resultData);
     }
 
     const resultRenderers = {
-        'TRAVEL_TIME': (result) => `
+        TRAVEL_TIME: (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Destination:</strong> ${result.star_system_name} <br>
             <strong>Travel Time:</strong> ${result.travel_time_years} years
         `,
-        'SEASONAL_TEMPS': (result) => `
+        SEASONAL_TEMPS: (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Hottest Temp (Periastron):</strong> ${result.periastron_temp_k} K <br>
             <strong>Coldest Temp (Apoastron):</strong> ${result.apoastron_temp_k} K <br>
             <strong>Seasonal Difference:</strong> ${result.seasonal_temp_difference_k} K
         `,
-        'TIDAL_LOCKING': (result) => `
+        TIDAL_LOCKING: (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Star:</strong> ${result.star_name} <br>
@@ -345,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <strong>Star Age Years:</strong> ${result.star_age_years} <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
-        'STAR_LIFETIME': (result) => `
+        STAR_LIFETIME: (result) => `
             <strong>Status:</strong> SUCCESS <br>
             <strong>Star:</strong> ${result.star_name} <br>
             <strong>Star Solar Mass:</strong> ${result.star_mass_solar} <br>
@@ -355,6 +446,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <strong>Percent Lifespan Complete:</strong> ${result.percent_lifespan_complete} % <br>
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
-        'default': (result) => `Task finished with an unknown result type.`
+        default: () => 'Task finished with an unknown result type.',
     };
 });
