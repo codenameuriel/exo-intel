@@ -29,12 +29,16 @@
         <nav class="px-3 pb-5" aria-label="Portal navigation">
             <ul class="space-y-1">
                 <li>
-                    <a href="{% url 'portal:dashboard' %}" class="block rounded-md px-3 py-2 text-sm font-semibold text-slate-700">
+                    <a href="{% url 'portal:dashboard' %}"
+                       class="block rounded-md px-3 py-2 text-sm font-semibold {% if request.resolver_match.url_name == 'dashboard' %}bg-slate-100 text-slate-900{% else %}text-slate-700{% endif %}"
+                       {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}>
                         Overview
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'portal:simulations' %}" class="block rounded-md px-3 py-2 text-sm font-semibold text-slate-700">
+                    <a href="{% url 'portal:simulations' %}"
+                       class="block rounded-md px-3 py-2 text-sm font-semibold {% if request.resolver_match.url_name == 'simulations' %}bg-slate-100 text-slate-900{% else %}text-slate-700{% endif %}"
+                       {% if request.resolver_match.url_name == 'simulations' %}aria-current="page"{% endif %}>
                         Simulations
                     </a>
                 </li>
