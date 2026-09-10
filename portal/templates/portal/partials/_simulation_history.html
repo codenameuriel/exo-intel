@@ -1,3 +1,102 @@
+<style>
+    #simulation-history .history-pagination button {
+        border-color: rgba(103, 232, 249, 0.11) !important;
+        background: rgba(3, 10, 20, 0.72) !important;
+        color: #607985 !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.012);
+    }
+
+    #simulation-history .history-pagination button:hover:not(:disabled) {
+        border-color: rgba(103, 232, 249, 0.22) !important;
+        background: rgba(8, 24, 38, 0.82) !important;
+        color: #86b9c5 !important;
+    }
+
+    #simulation-history .history-pagination button:disabled {
+        color: #354b55 !important;
+        background: rgba(2, 8, 17, 0.52) !important;
+    }
+
+    #history-table-body td {
+        color: #708894 !important;
+    }
+
+    #history-table-body td:first-child {
+        color: #a9bec7 !important;
+    }
+
+    #history-table-body [aria-label^="Simulation result"] {
+        border: 1px solid rgba(103, 232, 249, 0.055);
+        background: rgba(2, 8, 17, 0.52) !important;
+        color: #68838e !important;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.01);
+    }
+
+    #history-table-body [aria-label^="Simulation result"] strong {
+        color: #8da6af;
+        font-weight: 500;
+    }
+
+    #history-table-body .bg-yellow-100 {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    #history-table-body .bg-yellow-100::before {
+        content: '';
+        width: 0.42rem;
+        height: 0.42rem;
+        flex: 0 0 auto;
+        border-radius: 9999px;
+        background: #facc15;
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.28);
+        animation: simulation-pending-pulse 1.5s ease-out infinite;
+    }
+
+    #history-table-body .bg-green-100::before,
+    #history-table-body .bg-red-100::before {
+        content: '';
+        width: 0.38rem;
+        height: 0.38rem;
+        display: inline-block;
+        margin-right: 0.42rem;
+        border-radius: 9999px;
+        vertical-align: 0.06em;
+    }
+
+    #history-table-body .bg-green-100::before {
+        background: #6ee7b7;
+        box-shadow: 0 0 6px rgba(110, 231, 183, 0.28);
+    }
+
+    #history-table-body .bg-red-100::before {
+        background: #fca5a5;
+        box-shadow: 0 0 6px rgba(252, 165, 165, 0.22);
+    }
+
+    @keyframes simulation-pending-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.28);
+            opacity: 1;
+        }
+        70% {
+            box-shadow: 0 0 0 5px rgba(250, 204, 21, 0);
+            opacity: 0.72;
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #history-table-body .bg-yellow-100::before {
+            animation: none;
+        }
+    }
+</style>
+
 <section id="simulation-history" class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
     <div class="flex flex-col gap-4 border-b border-slate-200 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
         <div>
@@ -7,11 +106,11 @@
         </div>
 
         <div class="history-pagination flex items-center gap-2 self-start lg:self-auto">
-            <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
+            <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
                 &larr; Previous
             </button>
             <span class="history-page-info min-w-24 text-center text-xs font-medium text-slate-500"></span>
-            <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
+            <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
                 Next &rarr;
             </button>
         </div>
@@ -36,11 +135,11 @@
     </div>
 
     <div class="history-pagination flex flex-col gap-3 border-t border-slate-200 bg-slate-50/50 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
+        <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
             &larr; Previous
         </button>
         <span class="history-page-info text-center text-xs font-medium text-slate-500"></span>
-        <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40">
+        <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
             Next &rarr;
         </button>
     </div>
