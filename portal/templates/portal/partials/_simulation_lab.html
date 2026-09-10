@@ -1,38 +1,47 @@
-<section id="simulation-lab" class="bg-white p-4 sm:p-6 rounded-md">
-    <h2 class="text-xl sm:text-2xl font-semibold text-slate-700 mb-2 sm:mb-4">Simulation Lab</h2>
-    <p class="text-gray-600 text-sm sm:text-base mb-8 sm:mb-12">
+<section id="simulation-lab" style="background-color: var(--brand-bg); border: 1px solid var(--brand-border); border-radius: 0.75rem; padding: 1.5rem;">
+    <h2 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-4" style="color: var(--brand-primary);">Simulation Lab</h2>
+    <p class="text-sm sm:text-base mb-6 sm:mb-8" style="color: var(--brand-primary); opacity: 0.7;">
         Run simulations based on real exoplanet data. All simulations are run as background jobs.
     </p>
 
     <div id="simulation-message-display" class="mb-4"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 border-b border-gray-200 pb-6 sm:pb-8 mb-6 sm:mb-8">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; border-bottom: 1px solid var(--brand-border); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+        @media (min-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+        }
+        </style>
+
         <!-- Travel Time Simulation -->
         <div>
-            <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Travel Time Calculator</h3>
+            <h3 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4" style="color: var(--brand-primary);">Travel Time Calculator</h3>
             <form class="simulation-form"
                   data-api-endpoint="/simulations/travel-time/"
                   data-csrf-token="{{ csrf_token }}"
                   data-sim-type="travel">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                    @media (min-width: 640px) {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                    </style>
                     <div>
-                        <label for="travel-system-select" class="block text-sm font-medium text-gray-700">Destination
+                        <label for="travel-system-select" class="form-label">Destination
                             Star System</label>
                         <select id="travel-system-select" name="star_system_id"
-                                class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                                class="form-input">
                             {% for system in travel_sim_star_systems %}
                                 <option value="{{ system.pk }}">{{ system.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div>
-                        <label for="speed-percentage" class="block text-sm font-medium text-gray-700">Speed (% of
+                        <label for="speed-percentage" class="form-label">Speed (% of
                             Light)</label>
                         <input type="number" name="speed_percentage" id="speed-percentage" value="100" min="1" max="100"
-                               class="mt-1 block w-full px-3 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-black focus:border-black sm:text-sm">
+                               class="form-input">
                     </div>
                     <button type="submit"
-                            class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed">
+                            class="btn-primary" style="grid-column: 1 / -1;">
                         Run Travel Sim
                     </button>
                 </div>
@@ -41,25 +50,25 @@
 
         <!-- Planetary Seasonality Simulation -->
         <div>
-            <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Planetary Seasonality
+            <h3 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4" style="color: var(--brand-primary);">Planetary Seasonality
                 Simulator</h3>
             <form class="simulation-form"
                   data-api-endpoint="/simulations/seasonal-temps/"
                   data-csrf-token="{{ csrf_token }}"
                   data-sim-type="season">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div class="sm:col-span-2">
-                        <label for="season-planet-select" class="block text-sm font-medium text-gray-700">Select
+                <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                    <div style="grid-column: 1 / -1;">
+                        <label for="season-planet-select" class="form-label">Select
                             Planet</label>
                         <select id="season-planet-select" name="planet_id"
-                                class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                                class="form-input">
                             {% for planet in seasonality_sim_planets %}
                                 <option value="{{ planet.pk }}">{{ planet.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <button type="submit"
-                            class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
+                            class="btn-primary" style="grid-column: 1 / -1;">
                         Run Season Sim
                     </button>
                 </div>
@@ -68,25 +77,25 @@
 
         <!-- Tidal Locking Simulation -->
         <div>
-            <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Planetary Tidal Locking
+            <h3 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4" style="color: var(--brand-primary);">Planetary Tidal Locking
                 Simulator</h3>
             <form class="simulation-form"
                   data-api-endpoint="/simulations/tidal-locking/"
                   data-csrf-token="{{ csrf_token }}"
                   data-sim-type="tidal">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div class="sm:col-span-2">
-                        <label for="tidal-planet-select" class="block text-sm font-medium text-gray-700">Select
+                <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                    <div style="grid-column: 1 / -1;">
+                        <label for="tidal-planet-select" class="form-label">Select
                             Planet</label>
                         <select id="tidal-planet-select" name="planet_id"
-                                class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                                class="form-input">
                             {% for planet in tidal_locking_sim_planets %}
                                 <option value="{{ planet.pk }}">{{ planet.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <button type="submit"
-                            class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
+                            class="btn-primary" style="grid-column: 1 / -1;">
                         Run Tidal Locking Sim
                     </button>
                 </div>
@@ -95,24 +104,24 @@
 
         <!-- Star Lifetime Simulation -->
         <div>
-            <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Star Lifetime Simulator</h3>
+            <h3 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4" style="color: var(--brand-primary);">Star Lifetime Simulator</h3>
             <form class="simulation-form"
                   data-api-endpoint="/simulations/star-lifetime/"
                   data-csrf-token="{{ csrf_token }}"
                   data-sim-type="lifetime">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div class="sm:col-span-2">
-                        <label for="lifetime-star-select" class="block text-sm font-medium text-gray-700">Select
+                <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                    <div style="grid-column: 1 / -1;">
+                        <label for="lifetime-star-select" class="form-label">Select
                             Star</label>
                         <select id="lifetime-star-select" name="star_id"
-                                class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                                class="form-input">
                             {% for star in star_lifetime_sim_stars %}
                                 <option value="{{ star.pk }}">{{ star.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <button type="submit"
-                            class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
+                            class="btn-primary" style="grid-column: 1 / -1;">
                         Run Star Lifetime Sim
                     </button>
                 </div>
@@ -121,50 +130,60 @@
     </div>
 
     <div id="simulation-history">
-        <h3 class="text-lg sm:text-xl font-semibold text-slate-600 mb-3 sm:mb-4">Simulation History</h3>
+        <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4" style="color: var(--brand-primary);">Simulation History</h3>
 
-        <div class="history-pagination mb-3 sm:mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 sm:justify-between">
-            <button class="history-prev-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+        <div class="history-pagination mb-3 sm:mb-4" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            @media (min-width: 640px) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            </style>
+            <button class="history-prev-btn w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-md btn-secondary">
                 &larr; Previous
             </button>
-            <span class="history-page-info text-center sm:text-left text-sm text-gray-600 px-1"></span>
-            <button class="history-next-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+            <span class="history-page-info text-center text-sm" style="color: var(--brand-primary); opacity: 0.5;"></span>
+            <button class="history-next-btn w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-md btn-secondary">
                 Next &rarr;
             </button>
         </div>
 
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white min-w-[720px]">
-                <thead class="bg-gray-50">
-                <tr>
-                    <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; min-width: 720px; background-color: var(--brand-bg);">
+                <thead>
+                <tr style="background-color: var(--user-bg); border-bottom: 1px solid var(--brand-border);">
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-size: 0.6875rem; font-weight: 500; color: var(--brand-primary); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.05em;">
                         Type
                     </th>
-                    <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-size: 0.6875rem; font-weight: 500; color: var(--brand-primary); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.05em;">
                         Status
                     </th>
-                    <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-size: 0.6875rem; font-weight: 500; color: var(--brand-primary); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.05em;">
                         Result
                     </th>
-                    <th class="px-4 sm:px-6 py-3 text-left text-[11px] sm:text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th style="padding: 1rem 1.5rem; text-align: left; font-size: 0.6875rem; font-weight: 500; color: var(--brand-primary); opacity: 0.5; text-transform: uppercase; letter-spacing: 0.05em;">
                         Submitted
                     </th>
                 </tr>
                 </thead>
-                <tbody id="history-table-body" class="divide-y divide-gray-200">
+                <tbody id="history-table-body" style="border-top: 1px solid var(--brand-border);">
                 <tr>
-                    <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">Loading history...</td>
+                    <td colspan="4" style="padding: 1.5rem; text-align: center; font-size: 0.875rem; color: var(--brand-primary); opacity: 0.5;">Loading history...</td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="history-pagination mt-3 sm:mt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 sm:justify-between">
-            <button class="history-prev-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+        <div class="history-pagination mt-3 sm:mt-4" style="display: flex; flex-direction: column; gap: 0.5rem;">
+            @media (min-width: 640px) {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            </style>
+            <button class="history-prev-btn w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-md btn-secondary">
                 &larr; Previous
             </button>
-            <span class="history-page-info text-center sm:text-left text-sm text-gray-600 px-1"></span>
-            <button class="history-next-btn w-full sm:w-auto px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+            <span class="history-page-info text-center text-sm" style="color: var(--brand-primary); opacity: 0.5;"></span>
+            <button class="history-next-btn w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-md btn-secondary">
                 Next &rarr;
             </button>
         </div>
