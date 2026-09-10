@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!historyTableBody || !data) return;
 
                 if (data.results.length === 0) {
-                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">No simulation history found.</td></tr>`;
+                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-10 text-center text-sm text-slate-500">No simulation history found.</td></tr>`;
                     return;
                 }
 
@@ -103,29 +103,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (run.status === 'PENDING') {
                         isAnySimRunning = true;
                     }
+
+                    const statusClasses = {
+                        SUCCESS: 'border-emerald-200 bg-emerald-50 text-emerald-700',
+                        PENDING: 'border-amber-200 bg-amber-50 text-amber-700',
+                        FAILURE: 'border-red-200 bg-red-50 text-red-700',
+                    };
+                    const statusClass = statusClasses[run.status] || 'border-slate-200 bg-slate-50 text-slate-600';
+
                     tableHtml += `
-                        <tr class="text-sm">
-                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">${run.simulation_type}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">
-                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                    ${run.status === 'SUCCESS' ? 'bg-green-100 text-green-800' : ''}
-                                    ${run.status === 'PENDING' ? 'bg-yellow-100 text-yellow-800' : ''}
-                                    ${run.status === 'FAILURE' ? 'bg-red-100 text-red-800' : ''}">
+                        <tr class="text-sm transition-colors hover:bg-slate-50/70">
+                            <td class="px-4 py-4 align-top sm:px-6">
+                                <span class="font-semibold text-slate-800">${run.simulation_type}</span>
+                            </td>
+                            <td class="px-4 py-4 align-top sm:px-6">
+                                <span class="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold tracking-wide ${statusClass}">
                                     ${run.status}
                                 </span>
                             </td>
-                            <td class="px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-700">
+                            <td class="px-4 py-4 align-top text-sm text-slate-600 sm:px-6">
                                 <div
-                                    class="max-w-full overflow-x-auto sm:overflow-visible whitespace-nowrap sm:whitespace-normal"
+                                    class="max-w-xl overflow-x-auto whitespace-nowrap rounded-md bg-slate-50 px-3 py-2 font-mono text-xs leading-5 text-slate-700 sm:whitespace-normal"
                                     role="region"
-                                    aria-label="Result (scroll horizontally on mobile)"
+                                    aria-label="Simulation result (scroll horizontally on mobile)"
                                     tabindex="0"
                                     style="-webkit-overflow-scrolling: touch;"
                                   >
-                                    <span class="font-mono">${formatResult(run.simulation_type, run.result)}</span>
+                                    ${formatResult(run.simulation_type, run.result)}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-500">${new Date(run.created_at).toLocaleString()}</td>
+                            <td class="px-4 py-4 align-top whitespace-nowrap text-xs text-slate-500 sm:px-6">
+                                ${new Date(run.created_at).toLocaleString()}
+                            </td>
                         </tr>
                     `;
                 });
@@ -139,13 +148,15 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => {
                 if (historyTableBody) {
-                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-4 text-center text-sm text-red-500">Error loading history. Are you logged in?</td></tr>`;
+                    historyTableBody.innerHTML = `<tr><td colspan="4" class="px-6 py-10 text-center text-sm text-red-600">Error loading simulation history. Are you logged in?</td></tr>`;
                 }
                 stopPolling();
             });
     }
 
-    updateHistoryTable();
+    if (historyTableBody) {
+        updateHistoryTable();
+    }
 
     function updatePaginationControls(data) {
         const totalItems = data.count;
