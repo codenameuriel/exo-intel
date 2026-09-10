@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const simForms = document.querySelectorAll('.simulation-form');
     const historyTableBody = document.getElementById('history-table-body');
     const simMessageDisplay = document.getElementById('simulation-message-display');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     simForms.forEach(form => {
         form.addEventListener('submit', handleSimSubmit);
@@ -43,11 +44,88 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }));
 
+    function setSimulationSubmitting(form, isSubmitting) {
+        const submitButton = form.querySelector('button[type="submit"]');
+        const card = form.closest('.simulation-card');
+
+        if (!submitButton) return;
+
+        if (isSubmitting) {
+            if (form.dataset.submitting === 'true') return;
+
+            form.dataset.submitting = 'true';
+            submitButton.dataset.originalContent = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-disabled', 'true');
+            submitButton.innerHTML = `
+                <span class="simulation-submit-spinner" aria-hidden="true"></span>
+                <span>Starting simulation…</span>
+            `;
+
+            const spinner = submitButton.querySelector('.simulation-submit-spinner');
+            if (spinner) {
+                Object.assign(spinner.style, {
+                    width: '0.9rem',
+                    height: '0.9rem',
+                    flexShrink: '0',
+                    borderRadius: '9999px',
+                    border: '1.5px solid rgba(165, 243, 252, 0.28)',
+                    borderTopColor: '#a5f3fc',
+                });
+
+                if (!prefersReducedMotion.matches) {
+                    spinner.animate(
+                        [
+                            {transform: 'rotate(0deg)'},
+                            {transform: 'rotate(360deg)'},
+                        ],
+                        {
+                            duration: 700,
+                            iterations: Infinity,
+                            easing: 'linear',
+                        },
+                    );
+                }
+            }
+
+            if (card) {
+                card.setAttribute('aria-busy', 'true');
+                card.dataset.state = 'submitting';
+                card.style.borderColor = 'rgba(103, 232, 249, 0.38)';
+                card.style.boxShadow = '0 0 0 1px rgba(34, 211, 238, 0.05), 0 18px 45px rgba(0, 0, 0, 0.26), inset 0 0 24px rgba(34, 211, 238, 0.025)';
+            }
+
+            return;
+        }
+
+        delete form.dataset.submitting;
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-disabled');
+
+        if (submitButton.dataset.originalContent) {
+            submitButton.innerHTML = submitButton.dataset.originalContent;
+            delete submitButton.dataset.originalContent;
+        }
+
+        if (card) {
+            card.removeAttribute('aria-busy');
+            delete card.dataset.state;
+            card.style.removeProperty('border-color');
+            card.style.removeProperty('box-shadow');
+        }
+    }
+
     function handleSimSubmit(event) {
         event.preventDefault();
 
         const form = event.target;
-        simMessageDisplay.innerHTML = '';
+        if (form.dataset.submitting === 'true') return;
+
+        if (simMessageDisplay) {
+            simMessageDisplay.innerHTML = '';
+        }
+
+        setSimulationSubmitting(form, true);
 
         const endpoint = form.dataset.apiEndpoint;
         const csrfToken = form.dataset.csrfToken;
@@ -75,6 +153,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => {
                 // network error, fetch fails, api errors
                 displaySimulationMessage(error, 'error');
+            })
+            .finally(() => {
+                setSimulationSubmitting(form, false);
             });
     }
 
