@@ -1,543 +1,81 @@
 [
     {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
         "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2001",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "TrES"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Mauna Kea Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "MEarth Project"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2006",
-        "disc_locale": "Space",
-        "disc_facility": "Spitzer Space Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Yunnan Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Mauna Kea Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2003",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Acton Sky Portal Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "MEarth Project"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Kitt Peak National Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2025",
+        "disc_year": "2014",
         "disc_locale": "Ground",
         "disc_facility": "SuperWASP"
     },
     {
-        "discoverymethod": "Imaging",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
         "discoverymethod": "Transit",
         "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Palomar Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1998",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Pulsar Timing",
-        "disc_year": "1992",
-        "disc_locale": "Ground",
-        "disc_facility": "Arecibo Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Lowell Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2014",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2001",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Space",
-        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Lowell Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Fred Lawrence Whipple Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2012",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "TrES"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
         "disc_locale": "Ground",
         "disc_facility": "United Kingdom Infrared Telescope"
     },
     {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
         "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
+        "disc_facility": "HATNet"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2001",
+        "disc_year": "2013",
         "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
+        "disc_facility": "Okayama Astrophysical Observatory"
     },
     {
         "discoverymethod": "Radial Velocity",
         "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
     },
     {
         "discoverymethod": "Microlensing",
-        "disc_year": "2005",
+        "disc_year": "2018",
         "disc_locale": "Ground",
         "disc_facility": "OGLE"
     },
     {
         "discoverymethod": "Microlensing",
-        "disc_year": "2017",
+        "disc_year": "2018",
         "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Pulsar Timing",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "Parkes Observatory"
+        "disc_facility": "KMTNet"
     },
     {
         "discoverymethod": "Imaging",
-        "disc_year": "2021",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
         "disc_locale": "Space",
-        "disc_facility": "Wide-field Infrared Survey Explorer (WISE) Satellite Mission"
+        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Thueringer Landessternwarte Tautenburg"
     },
     {
         "discoverymethod": "Disk Kinematics",
@@ -552,28 +90,10 @@
         "disc_facility": "Kepler"
     },
     {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT-South"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT"
-    },
-    {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2010",
+        "disc_year": "2013",
         "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
+        "disc_facility": "La Silla Observatory"
     },
     {
         "discoverymethod": "Radial Velocity",
@@ -582,1120 +102,70 @@
         "disc_facility": "Haute-Provence Observatory"
     },
     {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "1998",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Space",
-        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1999",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Qatar"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Transit",
         "disc_year": "2021",
         "disc_locale": "Multiple Locales",
         "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2024",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2026",
-        "disc_locale": "Space",
-        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "European Southern Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Thueringer Landessternwarte Tautenburg"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Palomar Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "XO"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2003",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2008",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2013",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Qatar"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "Spitzer Space Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT-North"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP-South"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2023",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "The 2 (Two) Micron All Sky Survey (2MASS)"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2003",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2020",
-        "disc_locale": "Space",
-        "disc_facility": "Hubble Space Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2006",
-        "disc_locale": "Space",
-        "disc_facility": "Hubble Space Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Pulsation Timing Variations",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Teide Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "XO"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2000",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Large Binocular Telescope Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT-North"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Xinglong Station"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2025",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Infrared Survey Facility"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2013",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Acton Sky Portal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "NASA Infrared Telescope Facility (IRTF)"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2014",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT-North"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2026",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1997",
-        "disc_locale": "Ground",
-        "disc_facility": "Fred Lawrence Whipple Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Thueringer Landessternwarte Tautenburg"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "TrES"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2012",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Fred Lawrence Whipple Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2015",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "James Webb Space Telescope (JWST)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Apache Point Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Cerro Tololo Inter-American Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2010",
-        "disc_locale": "Space",
-        "disc_facility": "Hubble Space Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2018",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
     },
     {
         "discoverymethod": "Transit",
         "disc_year": "2011",
         "disc_locale": "Ground",
-        "disc_facility": "Qatar"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2025",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
+        "disc_facility": "TrES"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
+        "disc_year": "2017",
         "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+        "disc_facility": "Calar Alto Observatory"
     },
     {
         "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2022",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2017",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
         "disc_year": "2024",
         "disc_locale": "Multiple Locales",
         "disc_facility": "Multiple Observatories"
     },
     {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2026",
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
         "disc_locale": "Ground",
-        "disc_facility": "MOA"
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2012",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
     },
     {
         "discoverymethod": "Radial Velocity",
@@ -1704,1678 +174,112 @@
         "disc_facility": "University of Canterbury Mt John Observatory"
     },
     {
-        "discoverymethod": "Imaging",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2024",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "Qatar"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2000",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2008",
-        "disc_locale": "Space",
-        "disc_facility": "Spitzer Space Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2026",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
         "discoverymethod": "Transit",
         "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2024",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP-North"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "Thueringer Landessternwarte Tautenburg"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1995",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Astrometry",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Mauna Kea Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2003",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2006",
-        "disc_locale": "Space",
-        "disc_facility": "Hubble Space Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2000",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Leoncito Astronomical Complex"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "WASP-South"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "Yunnan Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2001",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Orbital Brightness Modulation",
-        "disc_year": "2021",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
         "disc_locale": "Ground",
         "disc_facility": "HATNet"
     },
     {
-        "discoverymethod": "Imaging",
-        "disc_year": "2023",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2017",
-        "disc_locale": "Space",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
         "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Haleakala Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
+        "disc_year": "2011",
         "disc_locale": "Space",
         "disc_facility": "CoRoT"
     },
     {
-        "discoverymethod": "Transit",
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
         "disc_year": "2017",
         "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+        "disc_facility": "Multiple Observatories"
     },
     {
         "discoverymethod": "Transit",
-        "disc_year": "2025",
-        "disc_locale": "ground",
-        "disc_facility": "Zwicky Transient Facility"
-    },
-    {
-        "discoverymethod": "Pulsar Timing",
-        "disc_year": "2003",
-        "disc_locale": "Space",
-        "disc_facility": "Hubble Space Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Fred Lawrence Whipple Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
+        "disc_year": "2018",
         "disc_locale": "Space",
         "disc_facility": "K2"
     },
     {
         "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Apache Point Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2011",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2011",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP-South"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT-South"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2003",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2002",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Astrometry",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Very Long Baseline Array"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1999",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2005",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2011",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2013",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "SPECULOOS Southern Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2020",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP-North"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2023",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
         "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Orbital Brightness Modulation",
-        "disc_year": "2014",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2024",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2009",
-        "disc_locale": "Space",
-        "disc_facility": "CoRoT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Xinglong Station"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2024",
-        "disc_locale": "Space",
-        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Las Campanas Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2009",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2026",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Pulsation Timing Variations",
-        "disc_year": "2016",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP-South"
-    },
-    {
-        "discoverymethod": "Eclipse Timing Variations",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Winer Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1999",
-        "disc_locale": "Ground",
-        "disc_facility": "Fred Lawrence Whipple Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "Thueringer Landessternwarte Tautenburg"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2016",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "XO"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "James Webb Space Telescope (JWST)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2021",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2012",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "HATSouth"
-    },
-    {
-        "discoverymethod": "Astrometry",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "XO"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "European Southern Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Calar Alto Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2014",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "SPECULOOS Southern Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Large Binocular Telescope Observatory"
-    },
-    {
-        "discoverymethod": "Orbital Brightness Modulation",
-        "disc_year": "2013",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Cerro Tololo Inter-American Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1996",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2022",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "XO"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "United Kingdom Infrared Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "WASP-South"
-    },
-    {
-        "discoverymethod": "Pulsar Timing",
-        "disc_year": "2017",
-        "disc_locale": "Ground",
-        "disc_facility": "Multiple Facilities"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "HATNet"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "Mauna Kea Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2006",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "Cerro Tololo Inter-American Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Subaru Telescope"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2007",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Transit Timing Variations",
-        "disc_year": "2019",
-        "disc_locale": "Multiple Locales",
-        "disc_facility": "KOINet"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2012",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2026",
-        "disc_locale": "Space",
-        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
-        "disc_locale": "Ground",
-        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2001",
-        "disc_locale": "Ground",
-        "disc_facility": "W. M. Keck Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2018",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2025",
-        "disc_locale": "Ground",
-        "disc_facility": "OGLE"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2016",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2011",
         "disc_locale": "Ground",
         "disc_facility": "TrES"
     },
     {
-        "discoverymethod": "Imaging",
-        "disc_year": "2011",
-        "disc_locale": "Space",
-        "disc_facility": "Spitzer Space Telescope"
-    },
-    {
         "discoverymethod": "Transit",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2026",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Gemini Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2008",
+        "disc_year": "2004",
         "disc_locale": "Ground",
         "disc_facility": "OGLE"
     },
     {
-        "discoverymethod": "Transit",
-        "disc_year": "2010",
-        "disc_locale": "Ground",
-        "disc_facility": "SuperWASP"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2024",
+        "discoverymethod": "Orbital Brightness Modulation",
+        "disc_year": "2021",
         "disc_locale": "Space",
         "disc_facility": "Kepler"
     },
     {
-        "discoverymethod": "Pulsar Timing",
-        "disc_year": "1994",
-        "disc_locale": "Ground",
-        "disc_facility": "Arecibo Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2021",
-        "disc_locale": "Ground",
-        "disc_facility": "Paranal Observatory"
-    },
-    {
         "discoverymethod": "Radial Velocity",
         "disc_year": "2018",
         "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2008",
-        "disc_locale": "Ground",
-        "disc_facility": "Okayama Astrophysical Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2013",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2015",
-        "disc_locale": "Ground",
-        "disc_facility": "KELT"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2018",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
-    },
-    {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2023",
-        "disc_locale": "Space",
-        "disc_facility": "K2"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2019",
-        "disc_locale": "Space",
-        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+        "disc_facility": "HATSouth"
     },
     {
         "discoverymethod": "Radial Velocity",
         "disc_year": "2007",
         "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "European Southern Observatory"
+        "disc_facility": "Subaru Telescope"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
-        "disc_locale": "Ground",
-        "disc_facility": "La Silla Observatory"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2004",
-        "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Roque de los Muchachos Observatory"
-    },
-    {
-        "discoverymethod": "Transit",
-        "disc_year": "2020",
-        "disc_locale": "Ground",
-        "disc_facility": "Next-Generation Transit Survey (NGTS)"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2009",
-        "disc_locale": "Ground",
-        "disc_facility": "Lick Observatory"
-    },
-    {
-        "discoverymethod": "Astrometry",
-        "disc_year": "2025",
-        "disc_locale": "Space",
-        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "1996",
+        "disc_year": "2000",
         "disc_locale": "Ground",
         "disc_facility": "Multiple Observatories"
     },
     {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Space",
-        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
-    },
-    {
-        "discoverymethod": "Pulsar Timing",
-        "disc_year": "2017",
+        "discoverymethod": "Transit",
+        "disc_year": "2012",
         "disc_locale": "Ground",
-        "disc_facility": "Parkes Observatory"
-    },
-    {
-        "discoverymethod": "Imaging",
-        "disc_year": "2024",
-        "disc_locale": "Space",
-        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+        "disc_facility": "SuperWASP"
     },
     {
         "discoverymethod": "Transit",
-        "disc_year": "2023",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
         "disc_locale": "Space",
         "disc_facility": "Kepler"
     },
     {
-        "discoverymethod": "Microlensing",
-        "disc_year": "2025",
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
         "disc_locale": "Ground",
-        "disc_facility": "KMTNet"
+        "disc_facility": "Calar Alto Observatory"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
+        "disc_year": "2023",
         "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
     },
     {
         "discoverymethod": "Pulsar Timing",
@@ -3385,39 +289,99 @@
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2023",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2026",
+        "disc_locale": "Space",
+        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
         "disc_locale": "Ground",
         "disc_facility": "Multiple Observatories"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2024",
+        "disc_year": "2025",
         "disc_locale": "Ground",
-        "disc_facility": "McDonald Observatory"
+        "disc_facility": "Multiple Facilities"
     },
     {
         "discoverymethod": "Transit",
-        "disc_year": "2010",
+        "disc_year": "2025",
         "disc_locale": "Space",
-        "disc_facility": "CoRoT"
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
     },
     {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2011",
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
         "disc_locale": "Ground",
-        "disc_facility": "Anglo-Australian Telescope"
+        "disc_facility": "MEarth Project"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "1998",
+        "disc_year": "2006",
         "disc_locale": "Ground",
         "disc_facility": "W. M. Keck Observatory"
     },
     {
         "discoverymethod": "Transit",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "SPECULOOS Southern Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
         "disc_year": "2010",
-        "disc_locale": "Space",
-        "disc_facility": "Kepler"
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Pulsation Timing Variations",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT-North"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
     },
     {
         "discoverymethod": "Transit",
@@ -3427,39 +391,699 @@
     },
     {
         "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2009",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Pulsar Timing",
+        "disc_year": "1994",
+        "disc_locale": "Ground",
+        "disc_facility": "Arecibo Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2013",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Mauna Kea Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1999",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2018",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP-North"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Calar Alto Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Leoncito Astronomical Complex"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Haleakala Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2006",
+        "disc_locale": "Space",
+        "disc_facility": "Spitzer Space Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Acton Sky Portal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Large Binocular Telescope Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2024",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP-South"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Fred Lawrence Whipple Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2014",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2001",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
         "disc_year": "2019",
         "disc_locale": "Multiple Locales",
         "disc_facility": "Multiple Observatories"
     },
     {
         "discoverymethod": "Microlensing",
-        "disc_year": "2011",
+        "disc_year": "2014",
         "disc_locale": "Ground",
-        "disc_facility": "MOA"
-    },
-    {
-        "discoverymethod": "Radial Velocity",
-        "disc_year": "2019",
-        "disc_locale": "Ground",
-        "disc_facility": "Haute-Provence Observatory"
+        "disc_facility": "OGLE"
     },
     {
         "discoverymethod": "Radial Velocity",
         "disc_year": "2007",
         "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Pulsar Timing",
+        "disc_year": "1992",
+        "disc_locale": "Ground",
+        "disc_facility": "Arecibo Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
         "disc_facility": "Subaru Telescope"
     },
     {
         "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2025",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2025",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Pulsar Timing",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
         "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Pulsar Timing",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Parkes Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2000",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Pulsation Timing Variations",
+        "disc_year": "2016",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "United Kingdom Infrared Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2003",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Infrared Survey Facility"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
         "disc_locale": "Ground",
         "disc_facility": "Bohyunsan Optical Astronomical Observatory"
     },
     {
         "discoverymethod": "Radial Velocity",
-        "disc_year": "2022",
-        "disc_locale": "Multiple Locales",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Calar Alto Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
         "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2025",
+        "disc_locale": "ground",
+        "disc_facility": "Zwicky Transient Facility"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2013",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1996",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2025",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "Hubble Space Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
     },
     {
         "discoverymethod": "Radial Velocity",
@@ -3469,27 +1093,477 @@
     },
     {
         "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP-South"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1998",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "XO"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2003",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2003",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "WASP-South"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
         "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Thueringer Landessternwarte Tautenburg"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2024",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
         "disc_locale": "Ground",
         "disc_facility": "HATNet"
     },
     {
         "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2025",
+        "disc_locale": "Space",
+        "disc_facility": "James Webb Space Telescope (JWST)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
         "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Astrometry",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Pulsar Timing",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Parkes Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "SPECULOOS Southern Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2008",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Qatar"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2022",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2010",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "TrES"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "XO"
+    },
+    {
+        "discoverymethod": "Astrometry",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Apache Point Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2026",
+        "disc_locale": "Space",
+        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2024",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
         "disc_locale": "Ground",
         "disc_facility": "W. M. Keck Observatory"
     },
     {
         "discoverymethod": "Imaging",
-        "disc_year": "2019",
+        "disc_year": "2013",
         "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
+        "disc_facility": "Subaru Telescope"
     },
     {
-        "discoverymethod": "Eclipse Timing Variations",
+        "discoverymethod": "Transit",
         "disc_year": "2010",
         "disc_locale": "Ground",
-        "disc_facility": "Multiple Observatories"
+        "disc_facility": "Lowell Observatory"
     },
     {
         "discoverymethod": "Radial Velocity",
@@ -3498,10 +1572,1342 @@
         "disc_facility": "La Silla Observatory"
     },
     {
+        "discoverymethod": "Transit",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Cerro Tololo Inter-American Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2011",
+        "disc_locale": "Space",
+        "disc_facility": "Spitzer Space Telescope"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2024",
+        "disc_locale": "Space",
+        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "Spitzer Space Telescope"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2025",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2011",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Calar Alto Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Orbital Brightness Modulation",
+        "disc_year": "2014",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2024",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2006",
+        "disc_locale": "Space",
+        "disc_facility": "Hubble Space Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1998",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "XO"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Winer Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Mauna Kea Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "European Southern Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2002",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1999",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2011",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Apache Point Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Palomar Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2009",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2001",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT-North"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Lowell Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2002",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Teide Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2012",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2026",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Orbital Brightness Modulation",
+        "disc_year": "2013",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Palomar Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2016",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Qatar"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2003",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2012",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Okayama Astrophysical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2006",
+        "disc_locale": "Space",
+        "disc_facility": "Hubble Space Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1999",
+        "disc_locale": "Ground",
+        "disc_facility": "Fred Lawrence Whipple Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2003",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2002",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Qatar"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "European Southern Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Qatar"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Mauna Kea Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1997",
+        "disc_locale": "Ground",
+        "disc_facility": "Fred Lawrence Whipple Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP-North"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Calar Alto Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2008",
+        "disc_locale": "Space",
+        "disc_facility": "Spitzer Space Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2002",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "WASP-South"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Mauna Kea Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2025",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2001",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Thueringer Landessternwarte Tautenburg"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2026",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Fred Lawrence Whipple Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2017",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1996",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2023",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
         "discoverymethod": "Radial Velocity",
         "disc_year": "2013",
         "disc_locale": "Ground",
         "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP-South"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2013",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2023",
+        "disc_locale": "Space",
+        "disc_facility": "James Webb Space Telescope (JWST)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1998",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2026",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2000",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT-South"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2002",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "Kitt Peak National Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "Acton Sky Portal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "European Southern Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2024",
+        "disc_locale": "Space",
+        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "NASA Infrared Telescope Facility (IRTF)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Facilities"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Large Binocular Telescope Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "Thueringer Landessternwarte Tautenburg"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
     },
     {
         "discoverymethod": "Microlensing",
@@ -3510,8 +2916,602 @@
         "disc_facility": "OGLE"
     },
     {
+        "discoverymethod": "Transit",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "XO"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Cerro Tololo Inter-American Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Subaru Telescope"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "HATSouth"
+    },
+    {
+        "discoverymethod": "Pulsar Timing",
+        "disc_year": "2003",
+        "disc_locale": "Space",
+        "disc_facility": "Hubble Space Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "1995",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT-North"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2021",
+        "disc_locale": "Space",
+        "disc_facility": "CHaracterising ExOPlanets Satellite (CHEOPS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2019",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "KOINet"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2026",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Yunnan Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Calar Alto Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2017",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT-South"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2020",
+        "disc_locale": "Ground",
+        "disc_facility": "KMTNet"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
+        "disc_locale": "Space",
+        "disc_facility": "K2"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2023",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Astrometry",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Very Long Baseline Array"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2014",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2001",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2004",
+        "disc_locale": "Ground",
+        "disc_facility": "OGLE"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "XO"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Xinglong Station"
+    },
+    {
         "discoverymethod": "Radial Velocity",
         "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "La Silla Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2013",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "Fred Lawrence Whipple Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "The 2 (Two) Micron All Sky Survey (2MASS)"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "Next-Generation Transit Survey (NGTS)"
+    },
+    {
+        "discoverymethod": "Astrometry",
+        "disc_year": "2025",
+        "disc_locale": "Space",
+        "disc_facility": "European Space Agency (ESA) Gaia Satellite"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2023",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2014",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2020",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2006",
+        "disc_locale": "Ground",
+        "disc_facility": "TrES"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2010",
+        "disc_locale": "Space",
+        "disc_facility": "Hubble Space Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Xinglong Station"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Multiple Locales",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2018",
+        "disc_locale": "Space",
+        "disc_facility": "Transiting Exoplanet Survey Satellite (TESS)"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Gemini Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2021",
+        "disc_locale": "Space",
+        "disc_facility": "Wide-field Infrared Survey Explorer (WISE) Satellite Mission"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Bohyunsan Optical Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2025",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Imaging",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Paranal Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "SuperWASP"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2021",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2010",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "Haute-Provence Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2001",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2017",
+        "disc_locale": "Space",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Microlensing",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "MOA"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "McDonald Observatory"
+    },
+    {
+        "discoverymethod": "Transit Timing Variations",
+        "disc_year": "2023",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2016",
+        "disc_locale": "Ground",
+        "disc_facility": "Las Campanas Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2015",
+        "disc_locale": "Ground",
+        "disc_facility": "Cerro Tololo Inter-American Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2007",
+        "disc_locale": "Ground",
+        "disc_facility": "Lick Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Calar Alto Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2008",
+        "disc_locale": "Ground",
+        "disc_facility": "HATNet"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2019",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2024",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2025",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "Yunnan Astronomical Observatory"
+    },
+    {
+        "discoverymethod": "Eclipse Timing Variations",
+        "disc_year": "2015",
+        "disc_locale": "Space",
+        "disc_facility": "Kepler"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2009",
+        "disc_locale": "Ground",
+        "disc_facility": "MEarth Project"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2011",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2010",
+        "disc_locale": "Space",
+        "disc_facility": "CoRoT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2018",
+        "disc_locale": "Ground",
+        "disc_facility": "Roque de los Muchachos Observatory"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2005",
+        "disc_locale": "Ground",
+        "disc_facility": "Multiple Observatories"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2022",
+        "disc_locale": "Ground",
+        "disc_facility": "W. M. Keck Observatory"
+    },
+    {
+        "discoverymethod": "Transit",
+        "disc_year": "2012",
+        "disc_locale": "Ground",
+        "disc_facility": "KELT"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2002",
+        "disc_locale": "Ground",
+        "disc_facility": "Anglo-Australian Telescope"
+    },
+    {
+        "discoverymethod": "Radial Velocity",
+        "disc_year": "2002",
         "disc_locale": "Ground",
         "disc_facility": "La Silla Observatory"
     }
