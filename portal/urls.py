@@ -8,6 +8,7 @@ app_name = "portal"
 
 urlpatterns = [
     path("dashboard/", views.PortalDashboardView.as_view(), name="dashboard"),
+    path("simulations/", views.PortalSimulationsView.as_view(), name="simulations"),
     path("signup/", SignUpView.as_view(), name="signup"),
     path(
         "login/",
