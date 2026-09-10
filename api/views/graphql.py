@@ -1,4 +1,9 @@
-from drf_spectacular.utils import OpenApiExample, OpenApiResponse, extend_schema, inline_serializer
+from drf_spectacular.utils import (
+    OpenApiExample,
+    OpenApiResponse,
+    extend_schema,
+    inline_serializer,
+)
 from graphene_django.views import GraphQLView
 from rest_framework import serializers
 from rest_framework.authentication import SessionAuthentication
