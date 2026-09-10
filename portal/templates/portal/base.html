@@ -23,7 +23,15 @@
 <div class="min-h-screen lg:flex">
     <aside class="border-b border-gray-200 bg-white lg:w-64 lg:border-b-0 lg:border-r">
         <div class="px-4 py-5 sm:px-6">
-            <a href="{% url 'portal:dashboard' %}" class="font-bold text-slate-800">ExoIntel</a>
+            <a href="{% url 'portal:dashboard' %}" class="flex items-center gap-3 text-slate-800">
+                <span class="flex h-9 w-9 items-center justify-center rounded-md border border-gray-200 text-xs font-bold" aria-hidden="true">
+                    EX
+                </span>
+                <span class="min-w-0">
+                    <span class="block font-bold leading-tight">ExoIntel</span>
+                    <span class="block text-xs font-medium text-gray-500">Developer Portal</span>
+                </span>
+            </a>
         </div>
 
         <nav class="px-3 pb-5" aria-label="Portal navigation">
