@@ -27,11 +27,10 @@ COPY . .
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY docker/prepare.sh /usr/local/bin/prepare.sh
 
-RUN chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/prepare.sh
-
-# collect static files at build time
-RUN if [ "$ENVIRONMENT" = "production" ]; then \
-      poetry run python3 manage.py collectstatic --noinput; \
-    fi
+# set permissions and collect static files at build time
+RUN chmod +x /usr/local/bin/entrypoint.sh /usr/local/bin/prepare.sh \
+    && if [ "$ENVIRONMENT" = "production" ]; then \
+         poetry run python3 manage.py collectstatic --noinput; \
+       fi
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
