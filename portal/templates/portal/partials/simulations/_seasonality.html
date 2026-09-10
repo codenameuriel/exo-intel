@@ -1,0 +1,23 @@
+<div>
+    <h3 class="text-base sm:text-lg font-semibold text-slate-600 mb-3 sm:mb-4">Planetary Seasonality Simulator</h3>
+    <form class="simulation-form"
+          data-api-endpoint="/simulations/seasonal-temps/"
+          data-csrf-token="{{ csrf_token }}"
+          data-sim-type="season">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div class="sm:col-span-2">
+                <label for="season-planet-select" class="block text-sm font-medium text-gray-700">Select Planet</label>
+                <select id="season-planet-select" name="planet_id"
+                        class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-200 focus:outline-none focus:ring-black focus:border-black sm:text-sm rounded-md">
+                    {% for planet in seasonality_sim_planets %}
+                        <option value="{{ planet.pk }}">{{ planet.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit"
+                    class="w-full sm:col-span-2 px-6 py-3 font-semibold text-white bg-gray-900 rounded-md hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed">
+                Run Season Sim
+            </button>
+        </div>
+    </form>
+</div>
