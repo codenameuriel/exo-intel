@@ -161,6 +161,12 @@ def run_simulation_task(self, user_id, simulation_type, input_parameters):
         run.status = SimulationRun.Status.FAILURE
         run.result = {"error": message}
         raise TaskError(message) from e
+    except Exception as e:
+        message = "An unexpected error occurred while running the simulation."
+        logger.error(message, exc_info=True)
+        run.status = SimulationRun.Status.FAILURE
+        run.result = {"error": message}
+        raise TaskError(message) from e
     finally:
         SimulationRun.objects.filter(pk=run.pk).update(
             status=run.status, result=run.result, completed_at=Now()
