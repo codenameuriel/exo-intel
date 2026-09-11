@@ -72,7 +72,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"
 
 # Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/5.2/topics/auth/passwords/#password-validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
@@ -146,6 +146,9 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
 }
 
+# Simulation lifecycle
+SIMULATION_PENDING_TIMEOUT_SECONDS = 120
+
 # Celery settings
 CELERY_BEAT_SCHEDULE = {
     # "run-full-nightly-import": {
@@ -156,7 +159,11 @@ CELERY_BEAT_SCHEDULE = {
     "run-full-nightly-canonical-import": {
         "task": "tasks.tasks.full_nightly_canonical_import",
         "schedule": crontab(hour=0, minute=0),
-    }
+    },
+    "reconcile-stale-simulation-runs": {
+        "task": "tasks.tasks.reconcile_stale_simulation_runs",
+        "schedule": crontab(minute="*"),
+    },
 }
 
 # Graphene-Django settings

@@ -1,10 +1,13 @@
 import time
+from datetime import timedelta
 
 from celery import chain, shared_task
 from celery.utils.log import get_task_logger
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import Error as DatabaseError
 from django.db.models.functions import Now
+from django.utils import timezone
 
 from api.canonical_data_importer import run_canonical_data_import
 from api.importer import run_import
@@ -97,6 +100,27 @@ def import_nasa_data_task(nasa_table, app_table):
     logger.info(f"Final result: {result}")
 
     return result
+
+
+@shared_task
+def reconcile_stale_simulation_runs():
+    """Mark pending simulation runs as timed out once they exceed the stale threshold."""
+    timeout_seconds = settings.SIMULATION_PENDING_TIMEOUT_SECONDS
+    cutoff = timezone.now() - timedelta(seconds=timeout_seconds)
+
+    updated_count = SimulationRun.objects.filter(
+        status=SimulationRun.Status.PENDING,
+        created_at__lt=cutoff,
+    ).update(
+        status=SimulationRun.Status.TIMED_OUT,
+        result={"error": "Simulation timed out before completion."},
+        completed_at=Now(),
+    )
+
+    if updated_count:
+        logger.warning("Marked %s stale simulation run(s) as timed out.", updated_count)
+
+    return updated_count
 
 
 @shared_task(bind=True)

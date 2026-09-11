@@ -7,6 +7,7 @@ class SimulationRun(models.Model):
         PENDING = "PENDING", "Pending"
         SUCCESS = "SUCCESS", "Success"
         FAILURE = "FAILURE", "Failure"
+        TIMED_OUT = "TIMED_OUT", "Timed Out"
 
     class SimulationType(models.TextChoices):
         TRAVEL_TIME = "TRAVEL_TIME", "Travel Time"
