@@ -28,8 +28,8 @@
             font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
             color: var(--exo-text);
             background:
-                radial-gradient(circle at 78% 8%, rgba(34, 211, 238, 0.06), transparent 28rem),
-                radial-gradient(circle at 55% 48%, rgba(14, 165, 233, 0.035), transparent 36rem),
+                radial-gradient(circle at 78% 8%, rgba(34, 211, 238, 0.045), transparent 28rem),
+                radial-gradient(circle at 55% 48%, rgba(14, 165, 233, 0.025), transparent 36rem),
                 var(--exo-bg);
         }
 
@@ -38,12 +38,14 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            opacity: 0.18;
+            opacity: 0.58;
             background-image:
-                radial-gradient(circle at 18% 23%, rgba(255,255,255,.7) 0 1px, transparent 1px),
-                radial-gradient(circle at 71% 31%, rgba(103,232,249,.5) 0 1px, transparent 1px),
-                radial-gradient(circle at 38% 76%, rgba(255,255,255,.45) 0 1px, transparent 1px);
-            background-size: 137px 149px, 211px 197px, 173px 223px;
+                linear-gradient(90deg, rgba(3,7,17,.94) 0%, rgba(3,7,17,.68) 34%, rgba(3,7,17,.2) 72%, rgba(3,7,17,.08) 100%),
+                linear-gradient(180deg, rgba(3,7,17,.04) 0%, rgba(3,7,17,.12) 54%, rgba(3,7,17,.88) 100%),
+                url("{% static 'images/portal-space-backdrop.svg' %}");
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
         }
 
         .exo-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
