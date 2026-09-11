@@ -66,14 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
         Object.assign(clock.style, {
             alignSelf: 'flex-start',
             flexShrink: '0',
-            minWidth: '11.5rem',
-            padding: '0.6rem 0.75rem',
+            width: '12.75rem',
+            padding: '0.7rem 0.85rem 0.65rem',
             border: '1px solid rgba(103, 232, 249, 0.11)',
             borderRadius: '0.5rem',
             background: 'rgba(3, 10, 20, 0.48)',
             boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.012)',
             backdropFilter: 'blur(10px)',
-            textAlign: 'right',
             fontFamily: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
         });
 
@@ -84,16 +83,21 @@ document.addEventListener('DOMContentLoaded', function () {
             fontSize: '0.6rem',
             fontWeight: '500',
             letterSpacing: '0.14em',
+            lineHeight: '1',
+            textAlign: 'right',
             textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
         });
 
         const timeRow = document.createElement('div');
         Object.assign(timeRow.style, {
-            display: 'flex',
+            display: 'grid',
+            gridTemplateColumns: '1fr auto',
             alignItems: 'baseline',
-            justifyContent: 'flex-end',
-            gap: '0.5rem',
-            marginTop: '0.3rem',
+            columnGap: '0.65rem',
+            marginTop: '0.45rem',
+            paddingTop: '0.4rem',
+            borderTop: '1px solid rgba(103, 232, 249, 0.07)',
         });
 
         const timeLine = document.createElement('span');
@@ -102,17 +106,25 @@ document.addEventListener('DOMContentLoaded', function () {
             color: '#b8d5dc',
             fontSize: '0.85rem',
             fontWeight: '500',
-            letterSpacing: '0.055em',
+            letterSpacing: '0.045em',
+            lineHeight: '1',
+            textAlign: 'right',
+            whiteSpace: 'nowrap',
+            fontVariantNumeric: 'tabular-nums',
         });
 
         const zoneLine = document.createElement('span');
         zoneLine.dataset.clockZone = 'true';
         Object.assign(zoneLine.style, {
+            minWidth: '2.2rem',
             color: '#4d6572',
             fontSize: '0.55rem',
             fontWeight: '600',
-            letterSpacing: '0.12em',
+            letterSpacing: '0.1em',
+            lineHeight: '1',
+            textAlign: 'left',
             textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
         });
 
         timeRow.append(timeLine, zoneLine);
