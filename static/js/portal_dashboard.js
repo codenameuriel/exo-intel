@@ -33,7 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const activeSimulationForms = new Map();
     const minimumVisibleStateMs = 1500;
-    const pendingDetectionGraceMs = 6000;
+    // Backend marks runs stale after two minutes and Beat reconciles once per minute.
+    // This extra minute keeps browser polling bounded while allowing reconciliation to land.
+    const pendingPollingMaxAgeMs = 3 * 60 * 1000;
 
     simForms.forEach(form => {
         form.addEventListener('submit', handleSimSubmit);
@@ -269,6 +271,10 @@ document.addEventListener('DOMContentLoaded', function () {
             setButtonContent(submitButton, 'Simulation running…', {showSpinner: true});
         } else if (state === 'complete') {
             setButtonContent(submitButton, 'Simulation complete');
+        } else if (state === 'failed') {
+            setButtonContent(submitButton, 'Simulation failed');
+        } else if (state === 'timed-out') {
+            setButtonContent(submitButton, 'Simulation timed out');
         }
     }
 
@@ -281,6 +287,23 @@ document.addEventListener('DOMContentLoaded', function () {
             setSimulationState(form, 'idle');
             activeSimulationForms.delete(form.dataset.simType);
         }, delay);
+    }
+
+    function finishActiveSimulation(simType, active, state) {
+        setSimulationState(active.form, state);
+        setTimeout(() => {
+            setSimulationState(active.form, 'idle');
+            activeSimulationForms.delete(simType);
+        }, 1200);
+    }
+
+    function isRecentPendingRun(run) {
+        if (run.status !== 'PENDING') return false;
+
+        const createdAtMs = Date.parse(run.created_at);
+        if (!Number.isFinite(createdAtMs)) return false;
+
+        return Date.now() - createdAtMs < pendingPollingMaxAgeMs;
     }
 
     function handleSimSubmit(event) {
@@ -297,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
         activeSimulationForms.set(form.dataset.simType, {
             form,
             startedAt: Date.now(),
-            seenPending: false,
+            taskId: null,
         });
         setSimulationState(form, 'starting');
 
@@ -321,6 +344,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .then(data => {
+                const active = activeSimulationForms.get(form.dataset.simType);
+                if (active) {
+                    active.taskId = data.task_id;
+                }
+
                 delete form.dataset.submitting;
                 setSimulationState(form, 'queued');
                 displaySimulationMessage(`Simulation started successfully! Task ID: ${data.task_id}`, 'success');
@@ -335,34 +363,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function syncActiveSimulationStates(results) {
         activeSimulationForms.forEach((active, simType) => {
-            const historyType = simulationTypeMap[simType];
-            const hasPending = results.some(run => (
-                run.simulation_type === historyType && run.status === 'PENDING'
-            ));
-
-            if (hasPending) {
-                active.seenPending = true;
-                setSimulationState(active.form, 'running');
-                return;
-            }
-
             const elapsedMs = Date.now() - active.startedAt;
+            const matchingRun = active.taskId
+                ? results.find(run => run.task_id === active.taskId)
+                : null;
 
-            if (active.seenPending) {
-                setSimulationState(active.form, 'complete');
-                setTimeout(() => {
-                    setSimulationState(active.form, 'idle');
-                    activeSimulationForms.delete(simType);
-                }, 1200);
-                return;
+            if (matchingRun) {
+                if (isRecentPendingRun(matchingRun)) {
+                    setSimulationState(active.form, 'running');
+                    return;
+                }
+
+                if (matchingRun.status === 'SUCCESS') {
+                    finishActiveSimulation(simType, active, 'complete');
+                    return;
+                }
+
+                if (matchingRun.status === 'FAILURE') {
+                    finishActiveSimulation(simType, active, 'failed');
+                    return;
+                }
+
+                if (matchingRun.status === 'TIMED_OUT') {
+                    finishActiveSimulation(simType, active, 'timed-out');
+                    return;
+                }
             }
 
-            if (elapsedMs >= pendingDetectionGraceMs) {
-                setSimulationState(active.form, 'complete');
-                setTimeout(() => {
-                    setSimulationState(active.form, 'idle');
-                    activeSimulationForms.delete(simType);
-                }, 1200);
+            if (elapsedMs >= pendingPollingMaxAgeMs) {
+                finishActiveSimulation(simType, active, 'timed-out');
             }
         });
     }
@@ -370,6 +399,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function getSimulationTypeLabel(simulationType) {
         return simulationTypeLabels[simulationType]
             || simulationType.toLowerCase().replaceAll('_', ' ').replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function getStatusLabel(status) {
+        return status.replaceAll('_', ' ');
     }
 
     function updateHistoryTable(url = initialHistoryUrl) {
@@ -392,18 +425,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 historyNextUrl = data.next;
                 updatePaginationControls(data);
 
-                let isAnySimRunning = false;
+                let hasRecentPendingRun = false;
                 let tableHtml = '';
 
                 data.results.forEach(run => {
-                    if (run.status === 'PENDING') {
-                        isAnySimRunning = true;
+                    if (isRecentPendingRun(run)) {
+                        hasRecentPendingRun = true;
                     }
 
                     const statusClasses = {
                         SUCCESS: 'border-emerald-200 bg-emerald-50 text-emerald-700',
                         PENDING: 'border-amber-200 bg-amber-50 text-amber-700',
                         FAILURE: 'border-red-200 bg-red-50 text-red-700',
+                        TIMED_OUT: 'border-orange-200 bg-orange-50 text-orange-700',
                     };
                     const statusClass = statusClasses[run.status] || 'border-slate-200 bg-slate-50 text-slate-600';
 
@@ -414,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             </td>
                             <td class="px-4 py-4 align-top sm:px-6">
                                 <span class="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold tracking-wide ${statusClass}">
-                                    ${run.status}
+                                    ${getStatusLabel(run.status)}
                                 </span>
                             </td>
                             <td class="px-4 py-4 align-top text-sm text-slate-600 sm:px-6">
@@ -437,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 historyTableBody.innerHTML = tableHtml;
 
-                if (isAnySimRunning || activeSimulationForms.size > 0) {
+                if (hasRecentPendingRun || activeSimulationForms.size > 0) {
                     startPolling();
                 } else {
                     stopPolling();
