@@ -25,19 +25,6 @@ class DashboardTelemetry:
     last_completed_at: datetime | None
     last_completed_type: str | None
 
-    def as_dict(self) -> dict[str, int | str | datetime | None]:
-        return {
-            "simulations_total": self.simulations_total,
-            "simulations_today": self.simulations_today,
-            "pending": self.pending,
-            "successful": self.successful,
-            "failed": self.failed,
-            "failures_today": self.failures_today,
-            "active_api_keys": self.active_api_keys,
-            "last_completed_at": self.last_completed_at,
-            "last_completed_type": self.last_completed_type,
-        }
-
 
 def get_dashboard_telemetry(
     user: User,
