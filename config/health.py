@@ -66,7 +66,7 @@ def health(request):
         {
             "status": overall_status,
             "service": "exo-intel",
-            "version": settings.SPECTACULAR_SETTINGS.get("VERSION", "unknown"),
+            "version": settings.APP_VERSION,
             "environment": get_environment(),
             "checks": checks,
         }
