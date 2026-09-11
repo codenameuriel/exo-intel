@@ -437,9 +437,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         SUCCESS: 'border-emerald-200 bg-emerald-50 text-emerald-700',
                         PENDING: 'border-amber-200 bg-amber-50 text-amber-700',
                         FAILURE: 'border-red-200 bg-red-50 text-red-700',
-                        TIMED_OUT: 'border-orange-200 bg-orange-50 text-orange-700',
+                        TIMED_OUT: 'border-amber-300/30 bg-amber-400/10 text-amber-200 shadow-[inset_0_0_12px_rgba(251,191,36,0.05)]',
                     };
                     const statusClass = statusClasses[run.status] || 'border-slate-200 bg-slate-50 text-slate-600';
+                    const resultContainerClass = run.status === 'TIMED_OUT'
+                        ? 'border border-amber-300/15 bg-amber-400/[0.06] text-amber-100'
+                        : 'bg-slate-50 text-slate-700';
 
                     tableHtml += `
                         <tr class="text-sm transition-colors hover:bg-slate-50/70">
@@ -453,13 +456,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             </td>
                             <td class="px-4 py-4 align-top text-sm text-slate-600 sm:px-6">
                                 <div
-                                    class="max-w-xl overflow-x-auto whitespace-nowrap rounded-md bg-slate-50 px-3 py-2 font-mono text-xs leading-5 text-slate-700 sm:whitespace-normal"
+                                    class="max-w-xl overflow-x-auto whitespace-nowrap rounded-md px-3 py-2 font-mono text-xs leading-5 sm:whitespace-normal ${resultContainerClass}"
                                     role="region"
                                     aria-label="Simulation result (scroll horizontally on mobile)"
                                     tabindex="0"
                                     style="-webkit-overflow-scrolling: touch;"
                                   >
-                                    ${formatResult(run.simulation_type, run.result)}
+                                    ${formatResult(run.simulation_type, run.result, run.status)}
                                 </div>
                             </td>
                             <td class="px-4 py-4 align-top whitespace-nowrap text-xs text-slate-500 sm:px-6">
@@ -560,8 +563,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 4000);
     }
 
-    function formatResult(simType, resultData) {
+    function formatResult(simType, resultData, status) {
         if (!resultData) return 'N/A';
+        if (status === 'TIMED_OUT') {
+            return `
+                <span class="inline-flex items-start gap-2 text-amber-200">
+                    <span class="mt-[0.35rem] h-1.5 w-1.5 flex-none rounded-full bg-amber-300/80" aria-hidden="true"></span>
+                    <span>
+                        <strong class="font-semibold text-amber-100">Execution window exceeded.</strong>
+                        <span class="text-amber-200/75"> ${resultData.error || 'Simulation did not complete before the timeout threshold.'}</span>
+                    </span>
+                </span>
+            `;
+        }
         if (resultData.error) {
             return `<span class="text-red-600">${resultData.error}</span>`;
         }
