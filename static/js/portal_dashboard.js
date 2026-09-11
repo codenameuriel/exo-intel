@@ -24,6 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
         lifetime: 'STAR_LIFETIME',
     };
 
+    const simulationTypeLabels = {
+        TRAVEL_TIME: 'Travel Time',
+        SEASONAL_TEMPS: 'Seasonal Temps',
+        TIDAL_LOCKING: 'Tidal Locking',
+        STAR_LIFETIME: 'Star Lifetime',
+    };
+
     const activeSimulationForms = new Map();
     const minimumVisibleStateMs = 1500;
     const pendingDetectionGraceMs = 6000;
@@ -360,6 +367,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function getSimulationTypeLabel(simulationType) {
+        return simulationTypeLabels[simulationType]
+            || simulationType.toLowerCase().replaceAll('_', ' ').replace(/\b\w/g, char => char.toUpperCase());
+    }
+
     function updateHistoryTable(url = initialHistoryUrl) {
         fetch(url)
             .then(response => {
@@ -398,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     tableHtml += `
                         <tr class="text-sm transition-colors hover:bg-slate-50/70">
                             <td class="px-4 py-4 align-top sm:px-6">
-                                <span class="font-semibold text-slate-800">${run.simulation_type}</span>
+                                <span class="font-semibold text-slate-800">${getSimulationTypeLabel(run.simulation_type)}</span>
                             </td>
                             <td class="px-4 py-4 align-top sm:px-6">
                                 <span class="inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold tracking-wide ${statusClass}">
