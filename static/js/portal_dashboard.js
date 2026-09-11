@@ -84,17 +84,17 @@ document.addEventListener('DOMContentLoaded', function () {
             fontWeight: '500',
             letterSpacing: '0.14em',
             lineHeight: '1',
-            textAlign: 'right',
+            textAlign: 'left',
             textTransform: 'uppercase',
             whiteSpace: 'nowrap',
         });
 
         const timeRow = document.createElement('div');
         Object.assign(timeRow.style, {
-            display: 'grid',
-            gridTemplateColumns: '1fr auto',
+            display: 'flex',
             alignItems: 'baseline',
-            columnGap: '0.65rem',
+            justifyContent: 'flex-start',
+            gap: '0.28rem',
             marginTop: '0.45rem',
             paddingTop: '0.4rem',
             borderTop: '1px solid rgba(103, 232, 249, 0.07)',
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fontWeight: '500',
             letterSpacing: '0.045em',
             lineHeight: '1',
-            textAlign: 'right',
+            textAlign: 'left',
             whiteSpace: 'nowrap',
             fontVariantNumeric: 'tabular-nums',
         });
@@ -116,11 +116,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const zoneLine = document.createElement('span');
         zoneLine.dataset.clockZone = 'true';
         Object.assign(zoneLine.style, {
-            minWidth: '2.2rem',
             color: '#4d6572',
             fontSize: '0.55rem',
             fontWeight: '600',
-            letterSpacing: '0.1em',
+            letterSpacing: '0.08em',
             lineHeight: '1',
             textAlign: 'left',
             textTransform: 'uppercase',
