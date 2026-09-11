@@ -110,6 +110,99 @@
         }
     }
 
+    @media (max-width: 639px) {
+        #simulation-history .history-pagination {
+            width: 100%;
+        }
+
+        #simulation-history .history-pagination button {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+
+        #simulation-history .history-page-info {
+            min-width: 4.5rem;
+            flex: 0 0 auto;
+        }
+
+        #simulation-history .history-table-wrap {
+            overflow: visible;
+        }
+
+        #simulation-history .history-table {
+            min-width: 0 !important;
+            width: 100%;
+        }
+
+        #simulation-history .history-table thead {
+            display: none;
+        }
+
+        #simulation-history .history-table tbody,
+        #simulation-history .history-table tr,
+        #simulation-history .history-table td {
+            display: block;
+            width: 100%;
+        }
+
+        #simulation-history .history-table tbody {
+            display: grid;
+            gap: 0.75rem;
+            padding: 0.75rem;
+        }
+
+        #simulation-history .history-table tbody tr {
+            overflow: hidden;
+            border: 1px solid rgba(103, 232, 249, 0.08) !important;
+            border-radius: 0.5rem;
+            background: rgba(3, 10, 20, 0.54) !important;
+        }
+
+        #simulation-history .history-table td {
+            display: grid;
+            grid-template-columns: minmax(5.5rem, 0.34fr) minmax(0, 1fr);
+            gap: 0.75rem;
+            align-items: start;
+            padding: 0.75rem 0.875rem !important;
+            border-bottom: 1px solid rgba(103, 232, 249, 0.055);
+        }
+
+        #simulation-history .history-table td:last-child {
+            border-bottom: 0;
+        }
+
+        #simulation-history .history-table td::before {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            line-height: 1.5;
+            text-transform: uppercase;
+            color: #4d6572;
+        }
+
+        #simulation-history .history-table td:nth-child(1)::before { content: 'Type'; }
+        #simulation-history .history-table td:nth-child(2)::before { content: 'Status'; }
+        #simulation-history .history-table td:nth-child(3)::before { content: 'Result'; }
+        #simulation-history .history-table td:nth-child(4)::before { content: 'Submitted'; }
+
+        #simulation-history .history-table td[colspan] {
+            display: block;
+            padding: 1.5rem 1rem !important;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+        #simulation-history .history-table td[colspan]::before {
+            content: none;
+        }
+
+        #history-table-body [aria-label^="Simulation result"] {
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
         #history-table-body .bg-amber-50::before {
             animation: none;
@@ -136,8 +229,8 @@
         </div>
     </div>
 
-    <div class="overflow-x-auto">
-        <table class="min-w-[760px] w-full border-collapse">
+    <div class="history-table-wrap overflow-x-auto">
+        <table class="history-table min-w-[760px] w-full border-collapse">
             <thead class="bg-slate-50/80">
             <tr class="border-b border-slate-200">
                 <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Type</th>
