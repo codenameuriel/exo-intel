@@ -1,4 +1,92 @@
-<section class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-5 sm:p-6">
+<style>
+    @media (max-width: 639px) {
+        .api-key-table-wrap {
+            overflow: visible;
+            border: 0 !important;
+        }
+
+        .api-key-table {
+            min-width: 0 !important;
+            width: 100%;
+        }
+
+        .api-key-table thead {
+            display: none;
+        }
+
+        .api-key-table tbody,
+        .api-key-table tr,
+        .api-key-table td {
+            display: block;
+            width: 100%;
+        }
+
+        .api-key-table tbody {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .api-key-table tr {
+            overflow: hidden;
+            border: 1px solid rgba(103, 232, 249, 0.08);
+            border-radius: 0.5rem;
+            background: rgba(3, 10, 20, 0.54);
+        }
+
+        .api-key-table td {
+            display: grid;
+            grid-template-columns: minmax(5.5rem, 0.34fr) minmax(0, 1fr);
+            gap: 0.75rem;
+            align-items: start;
+            padding: 0.75rem 0.875rem !important;
+            border-bottom: 1px solid rgba(103, 232, 249, 0.055);
+        }
+
+        .api-key-table td:last-child {
+            border-bottom: 0;
+        }
+
+        .api-key-table td::before {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            line-height: 1.5;
+            text-transform: uppercase;
+            color: #4d6572;
+        }
+
+        .api-key-table td:nth-child(1)::before { content: 'Name'; }
+        .api-key-table td:nth-child(2)::before { content: 'Key'; }
+        .api-key-table td:nth-child(3)::before { content: 'Created'; }
+        .api-key-table td:nth-child(4)::before { content: 'Actions'; }
+
+        .api-key-table .api-key-empty {
+            display: block;
+            padding: 1.5rem 1rem !important;
+            text-align: center;
+            border-bottom: 0;
+        }
+
+        .api-key-table .api-key-empty::before {
+            content: none;
+        }
+
+        .api-key-table td > form {
+            justify-self: start;
+        }
+
+        .api-key-table td > form button {
+            display: inline-flex;
+            min-height: 2.25rem;
+            min-width: 2.25rem;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+</style>
+
+<section class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-4 sm:p-6">
     <div class="mb-6">
         <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cyan-300/65">Credentials</p>
         <h2 class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">API Key Management</h2>
@@ -36,8 +124,8 @@
         </div>
     {% endif %}
 
-    <div class="overflow-x-auto rounded-md border border-cyan-300/[0.08]">
-        <table class="min-w-[720px] w-full border-collapse bg-transparent">
+    <div class="api-key-table-wrap overflow-x-auto rounded-md border border-cyan-300/[0.08]">
+        <table class="api-key-table min-w-[720px] w-full border-collapse bg-transparent">
             <thead class="bg-[#050c16]/80">
             <tr class="border-b border-cyan-300/[0.08]">
                 <th class="exo-mono px-4 py-3 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-slate-600 sm:px-6">Name</th>
@@ -74,7 +162,7 @@
                 </tr>
             {% empty %}
                 <tr>
-                    <td colspan="4" class="px-6 py-8 text-center text-sm text-slate-600">You have not generated any API keys yet.</td>
+                    <td colspan="4" class="api-key-empty px-6 py-8 text-center text-sm text-slate-600">You have not generated any API keys yet.</td>
                 </tr>
             {% endfor %}
             </tbody>
