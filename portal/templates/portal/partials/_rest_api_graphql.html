@@ -1,25 +1,35 @@
-<section class="grid grid-cols-1 gap-4 md:grid-cols-2">
-    <div class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-5 sm:p-6">
+<section class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-5 sm:p-6">
+    <div class="mb-6">
         <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cyan-300/65">Interface</p>
-        <h2 class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">REST API</h2>
-        <p class="mt-2 text-sm leading-6 text-slate-500">
-            Use the browsable REST API to explore planets, stars, and systems.
+        <h2 class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">API Explorer</h2>
+        <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-500">
+            Open the browsable REST API or GraphQL IDE to inspect and query ExoIntel data directly.
         </p>
-        <a href="/api/rest/" target="_blank" rel="noopener"
-           class="mt-5 inline-flex w-full items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.06] px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:w-auto">
-            Launch REST API
-        </a>
     </div>
 
-    <div class="rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-5 sm:p-6">
-        <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cyan-300/65">Interface</p>
-        <h2 class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">GraphQL IDE</h2>
-        <p class="mt-2 text-sm leading-6 text-slate-500">
-            Craft precise queries to retrieve exactly the data you need.
-        </p>
-        <a href="{% url 'api:graphql' %}" target="_blank" rel="noopener"
-           class="mt-5 inline-flex w-full items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.06] px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1] sm:w-auto">
-            Launch GraphQL
-        </a>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="rounded-md border border-cyan-300/[0.08] bg-[#050c16]/70 p-4">
+            <p class="exo-mono text-[10px] uppercase tracking-[0.16em] text-slate-600">Browsable API</p>
+            <h3 class="mt-2 text-base font-semibold text-slate-200">REST API</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-500">
+                Explore planets, stars, and systems through the browsable REST interface.
+            </p>
+            <a href="/api/rest/" target="_blank" rel="noopener"
+               class="mt-4 inline-flex items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.06] px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1]">
+                Launch REST API
+            </a>
+        </div>
+
+        <div class="rounded-md border border-cyan-300/[0.08] bg-[#050c16]/70 p-4">
+            <p class="exo-mono text-[10px] uppercase tracking-[0.16em] text-slate-600">Query Interface</p>
+            <h3 class="mt-2 text-base font-semibold text-slate-200">GraphQL IDE</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-500">
+                Craft precise GraphQL queries and request exactly the fields you need.
+            </p>
+            <a href="{% url 'api:graphql' %}" target="_blank" rel="noopener"
+               class="mt-4 inline-flex items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.06] px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300/45 hover:bg-cyan-300/[0.1]">
+                Launch GraphQL
+            </a>
+        </div>
     </div>
 </section>
