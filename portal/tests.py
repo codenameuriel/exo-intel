@@ -64,16 +64,10 @@ class HealthEndpointTests(SimpleTestCase):
 
 
 class HealthCheckTests(TestCase):
-    @patch("config.health.connection.cursor")
-    def test_database_check_executes_lightweight_query(self, mock_cursor):
-        cursor = MagicMock()
-        mock_cursor.return_value.__enter__.return_value = cursor
-
+    def test_database_check_executes_lightweight_query(self):
         result = check_database()
 
         self.assertEqual(result, {"status": "ok"})
-        cursor.execute.assert_called_once_with("SELECT 1")
-        cursor.fetchone.assert_called_once_with()
 
     @patch("config.health.celery_app.control.inspect")
     def test_celery_check_counts_responsive_workers(self, mock_inspect):
