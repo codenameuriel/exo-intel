@@ -442,7 +442,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     const statusClass = statusClasses[run.status] || 'border-slate-200 bg-slate-50 text-slate-600';
                     const resultContainerClass = run.status === 'TIMED_OUT'
                         ? 'border border-amber-300/15 bg-amber-400/[0.06] text-amber-100'
-                        : 'bg-slate-50 text-slate-700';
+                        : run.status === 'SUCCESS'
+                            ? 'border border-emerald-300/15 bg-emerald-400/[0.045] text-slate-200'
+                            : 'bg-slate-50 text-slate-700';
 
                     tableHtml += `
                         <tr class="text-sm transition-colors hover:bg-slate-50/70">
@@ -580,24 +582,34 @@ document.addEventListener('DOMContentLoaded', function () {
             return `<span class="text-red-600">${resultData.error}</span>`;
         }
         const renderer = resultRenderers[simType] || resultRenderers.default;
-        return renderer(resultData);
+        const renderedResult = renderer(resultData);
+
+        if (status === 'SUCCESS') {
+            return `
+                <span class="flex items-start gap-2.5">
+                    <span class="mt-[0.4rem] h-1.5 w-1.5 flex-none rounded-full bg-emerald-300/85 shadow-[0_0_8px_rgba(110,231,183,0.28)]" aria-hidden="true"></span>
+                    <span class="min-w-0 text-slate-300 [&_strong]:font-semibold [&_strong]:text-emerald-100/90">
+                        ${renderedResult}
+                    </span>
+                </span>
+            `;
+        }
+
+        return renderedResult;
     }
 
     const resultRenderers = {
         TRAVEL_TIME: (result) => `
-            <strong>Status:</strong> SUCCESS <br>
             <strong>Destination:</strong> ${result.star_system_name} <br>
             <strong>Travel Time:</strong> ${result.travel_time_years} years
         `,
         SEASONAL_TEMPS: (result) => `
-            <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Hottest Temp (Periastron):</strong> ${result.periastron_temp_k} K <br>
             <strong>Coldest Temp (Apoastron):</strong> ${result.apoastron_temp_k} K <br>
             <strong>Seasonal Difference:</strong> ${result.seasonal_temp_difference_k} K
         `,
         TIDAL_LOCKING: (result) => `
-            <strong>Status:</strong> SUCCESS <br>
             <strong>Planet:</strong> ${result.planet_name} <br>
             <strong>Star:</strong> ${result.star_name} <br>
             <strong>Is Likely Tidally Locked:</strong> ${result.is_locked ? 'True' : 'False'} <br>
@@ -606,7 +618,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <strong>Conclusion:</strong> ${result.conclusion}
          `,
         STAR_LIFETIME: (result) => `
-            <strong>Status:</strong> SUCCESS <br>
             <strong>Star:</strong> ${result.star_name} <br>
             <strong>Star Solar Mass:</strong> ${result.star_mass_solar} <br>
             <strong>Star Age:</strong> ${result.star_age_gyr} GYR <br>
