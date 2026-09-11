@@ -6,13 +6,13 @@ from django.urls import reverse
 from django.utils import timezone
 
 from api_keys.models import APIKey
-from portal.telemetry import get_portal_telemetry
+from portal.telemetry import get_dashboard_telemetry
 from simulations.models import SimulationRun
 
 User = get_user_model()
 
 
-class PortalTelemetryTests(TestCase):
+class DashboardTelemetryTests(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="operator", password="test-pass")
         self.other_user = User.objects.create_user(
@@ -65,7 +65,7 @@ class PortalTelemetryTests(TestCase):
         APIKey.objects.create(user=self.user, name="Secondary")
         APIKey.objects.create(user=self.other_user, name="Other")
 
-        telemetry = get_portal_telemetry(self.user)
+        telemetry = get_dashboard_telemetry(self.user)
 
         self.assertEqual(telemetry.simulations_total, 3)
         self.assertEqual(telemetry.simulations_today, 3)
