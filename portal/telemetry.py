@@ -14,7 +14,7 @@ User = get_user_model()
 
 
 @dataclass(frozen=True)
-class PortalTelemetry:
+class DashboardTelemetry:
     simulations_total: int
     simulations_today: int
     pending: int
@@ -39,12 +39,12 @@ class PortalTelemetry:
         }
 
 
-def get_portal_telemetry(
+def get_dashboard_telemetry(
     user: User,
     *,
     active_api_keys: int | None = None,
-) -> PortalTelemetry:
-    """Return user-scoped operational metrics for the developer portal."""
+) -> DashboardTelemetry:
+    """Return user-scoped operational metrics for the portal dashboard."""
 
     today = timezone.localdate()
     simulations = SimulationRun.objects.filter(user=user)
@@ -77,7 +77,7 @@ def get_portal_telemetry(
     if active_api_keys is None:
         active_api_keys = APIKey.objects.filter(user=user).count()
 
-    return PortalTelemetry(
+    return DashboardTelemetry(
         **counts,
         active_api_keys=active_api_keys,
         last_completed_at=(last_completed or {}).get("completed_at"),
