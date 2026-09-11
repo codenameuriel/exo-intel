@@ -46,7 +46,7 @@
             <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Last Completed Run</p>
             {% if telemetry.last_completed_at %}
                 <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span class="exo-mono text-xs font-medium tracking-[0.08em] text-slate-200">{{ telemetry.last_completed_type }}</span>
+                    <span class="exo-mono text-xs font-medium tracking-[0.08em] text-slate-200">{{ telemetry.last_completed_type_label }}</span>
                     <span class="text-xs text-slate-500">{{ telemetry.last_completed_at|date:"M j, Y · H:i T" }}</span>
                 </div>
             {% else %}
