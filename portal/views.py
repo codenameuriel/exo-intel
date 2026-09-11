@@ -10,7 +10,7 @@ from rest_framework.reverse import reverse_lazy
 from api.models import Planet, Star, StarSystem
 from api_keys.models import APIKey
 from portal.forms import SignupForm
-from portal.telemetry import get_portal_telemetry
+from portal.telemetry import get_dashboard_telemetry
 
 
 class SignUpView(CreateView):
@@ -37,7 +37,7 @@ class PortalDashboardView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         api_keys = list(APIKey.objects.filter(user=request.user))
-        telemetry = get_portal_telemetry(
+        telemetry = get_dashboard_telemetry(
             request.user,
             active_api_keys=len(api_keys),
         )
