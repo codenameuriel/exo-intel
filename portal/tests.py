@@ -7,7 +7,7 @@ from config.health import check_celery_worker, check_database
 
 
 class HealthEndpointTests(SimpleTestCase):
-    @override_settings(SPECTACULAR_SETTINGS={"VERSION": "9.9.9"})
+    @override_settings(APP_VERSION="9.9.9")
     @patch.dict("os.environ", {"ENVIRONMENT": "test"}, clear=False)
     @patch("config.health.check_celery_worker")
     @patch("config.health.check_database")
