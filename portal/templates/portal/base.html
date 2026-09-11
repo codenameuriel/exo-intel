@@ -25,6 +25,8 @@
         html { background: var(--exo-bg); }
 
         body {
+            position: relative;
+            isolation: isolate;
             font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
             color: var(--exo-text);
             background:
@@ -38,16 +40,13 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
-            background-image:
-                linear-gradient(90deg, rgba(3,7,17,.97) 0%, rgba(3,7,17,.88) 22%, rgba(3,7,17,.53) 48%, rgba(3,7,17,.26) 72%, rgba(3,7,17,.34) 100%),
-                linear-gradient(180deg, rgba(3,7,17,.22) 0%, rgba(3,7,17,.16) 24%, rgba(3,7,17,.48) 64%, rgba(3,7,17,.94) 100%),
-                url("https://eol.jsc.nasa.gov/DatabaseImages/ESC/large/STS112/STS112-E-5772.JPG");
+            z-index: -2;
+            background-image: url("{% static 'images/glowing_spiral_galaxy_in_deep_space.png' %}");
             background-repeat: no-repeat;
-            background-position: center 28%;
+            background-position: center top;
             background-size: cover;
-            opacity: .78;
-            filter: saturate(.72) contrast(1.08) brightness(.58);
+            opacity: .9;
+            filter: saturate(1.1) contrast(1.1);
         }
 
         body::after {
@@ -55,10 +54,10 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
             background:
-                radial-gradient(circle at 80% 12%, rgba(98, 216, 241, .065), transparent 22rem),
-                linear-gradient(180deg, transparent 0%, transparent 44%, rgba(3,7,17,.28) 68%, rgba(3,7,17,.76) 100%);
+                linear-gradient(90deg, rgba(3,7,17,.82) 0%, rgba(3,7,17,.48) 32%, rgba(3,7,17,.12) 70%, rgba(3,7,17,.04) 100%),
+                linear-gradient(180deg, rgba(3,7,17,.04) 0%, rgba(3,7,17,.08) 55%, rgba(3,7,17,.72) 100%);
         }
 
         body > .relative {
