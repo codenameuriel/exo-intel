@@ -28,8 +28,8 @@
             font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
             color: var(--exo-text);
             background:
-                radial-gradient(circle at 78% 8%, rgba(34, 211, 238, 0.045), transparent 28rem),
-                radial-gradient(circle at 55% 48%, rgba(14, 165, 233, 0.025), transparent 36rem),
+                radial-gradient(circle at 82% 7%, rgba(103, 232, 249, 0.055), transparent 24rem),
+                radial-gradient(circle at 58% 42%, rgba(14, 165, 233, 0.022), transparent 38rem),
                 var(--exo-bg);
         }
 
@@ -38,14 +38,32 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            opacity: 0.58;
+            z-index: 0;
             background-image:
-                linear-gradient(90deg, rgba(3,7,17,.94) 0%, rgba(3,7,17,.68) 34%, rgba(3,7,17,.2) 72%, rgba(3,7,17,.08) 100%),
-                linear-gradient(180deg, rgba(3,7,17,.04) 0%, rgba(3,7,17,.12) 54%, rgba(3,7,17,.88) 100%),
-                url("{% static 'images/portal-space-backdrop.svg' %}");
+                linear-gradient(90deg, rgba(3,7,17,.97) 0%, rgba(3,7,17,.88) 22%, rgba(3,7,17,.53) 48%, rgba(3,7,17,.26) 72%, rgba(3,7,17,.34) 100%),
+                linear-gradient(180deg, rgba(3,7,17,.22) 0%, rgba(3,7,17,.16) 24%, rgba(3,7,17,.48) 64%, rgba(3,7,17,.94) 100%),
+                url("https://eol.jsc.nasa.gov/DatabaseImages/ESC/large/STS112/STS112-E-5772.JPG");
             background-repeat: no-repeat;
-            background-position: center top;
+            background-position: center 28%;
             background-size: cover;
+            opacity: .78;
+            filter: saturate(.72) contrast(1.08) brightness(.58);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 80% 12%, rgba(98, 216, 241, .065), transparent 22rem),
+                linear-gradient(180deg, transparent 0%, transparent 44%, rgba(3,7,17,.28) 68%, rgba(3,7,17,.76) 100%);
+        }
+
+        body > .relative {
+            position: relative;
+            z-index: 1;
         }
 
         .exo-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
