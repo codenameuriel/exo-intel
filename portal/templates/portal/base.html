@@ -43,10 +43,10 @@
             z-index: -2;
             background-image: url("{% static 'images/glowing_spiral_galaxy_in_deep_space.png' %}");
             background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
-            opacity: .9;
-            filter: saturate(1.1) contrast(1.1);
+            background-position: right top;
+            background-size: auto 100%;
+            opacity: .80;
+            filter: saturate(1.06) contrast(1.08);
         }
 
         body::after {
@@ -56,7 +56,7 @@
             pointer-events: none;
             z-index: -1;
             background:
-                linear-gradient(90deg, rgba(3,7,17,.82) 0%, rgba(3,7,17,.48) 32%, rgba(3,7,17,.12) 70%, rgba(3,7,17,.04) 100%),
+                linear-gradient(90deg, rgba(3,7,17,.48) 0%, rgba(3,7,17,.16) 32%, rgba(3,7,17,.12) 70%, rgba(3,7,17,.04) 100%),
                 linear-gradient(180deg, rgba(3,7,17,.04) 0%, rgba(3,7,17,.08) 55%, rgba(3,7,17,.72) 100%);
         }
 
