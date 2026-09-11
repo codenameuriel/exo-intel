@@ -42,7 +42,7 @@ class SimulationEngine:
         except StarSystem.DoesNotExist:
             raise SimulationError(f"StarSystem with ID {star_system_id} not found.")
 
-        if star_system.distance is None:
+        if star_system.distance_parsecs is None:
             raise SimulationError(
                 "Cannot calculate travel time: Star system is missing distance data."
             )
