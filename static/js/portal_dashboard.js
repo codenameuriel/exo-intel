@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 3000);
     }
 
+    initMissionClock();
+
     const simForms = document.querySelectorAll('.simulation-form');
     const historyTableBody = document.getElementById('history-table-body');
     const simMessageDisplay = document.getElementById('simulation-message-display');
@@ -50,6 +52,102 @@ document.addEventListener('DOMContentLoaded', function () {
             updateHistoryTable(historyNextUrl);
         }
     }));
+
+    function initMissionClock() {
+        const pageHeader = document.querySelector('header.mb-7');
+        const headerRow = pageHeader?.firstElementChild;
+        if (!headerRow || document.getElementById('mission-clock')) return;
+
+        const clock = document.createElement('div');
+        clock.id = 'mission-clock';
+        clock.setAttribute('role', 'group');
+        clock.setAttribute('aria-label', 'Local date and time');
+
+        Object.assign(clock.style, {
+            alignSelf: 'flex-start',
+            flexShrink: '0',
+            minWidth: '11.5rem',
+            padding: '0.6rem 0.75rem',
+            border: '1px solid rgba(103, 232, 249, 0.11)',
+            borderRadius: '0.5rem',
+            background: 'rgba(3, 10, 20, 0.48)',
+            boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.012)',
+            backdropFilter: 'blur(10px)',
+            textAlign: 'right',
+            fontFamily: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
+        });
+
+        const dateLine = document.createElement('div');
+        dateLine.dataset.clockDate = 'true';
+        Object.assign(dateLine.style, {
+            color: '#607985',
+            fontSize: '0.6rem',
+            fontWeight: '500',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+        });
+
+        const timeRow = document.createElement('div');
+        Object.assign(timeRow.style, {
+            display: 'flex',
+            alignItems: 'baseline',
+            justifyContent: 'flex-end',
+            gap: '0.5rem',
+            marginTop: '0.3rem',
+        });
+
+        const timeLine = document.createElement('span');
+        timeLine.dataset.clockTime = 'true';
+        Object.assign(timeLine.style, {
+            color: '#b8d5dc',
+            fontSize: '0.85rem',
+            fontWeight: '500',
+            letterSpacing: '0.055em',
+        });
+
+        const zoneLine = document.createElement('span');
+        zoneLine.dataset.clockZone = 'true';
+        Object.assign(zoneLine.style, {
+            color: '#4d6572',
+            fontSize: '0.55rem',
+            fontWeight: '600',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+        });
+
+        timeRow.append(timeLine, zoneLine);
+        clock.append(dateLine, timeRow);
+        headerRow.appendChild(clock);
+
+        function updateClock() {
+            const now = new Date();
+
+            const dateParts = new Intl.DateTimeFormat(undefined, {
+                weekday: 'short',
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric',
+            }).formatToParts(now);
+
+            const getDatePart = type => dateParts.find(part => part.type === type)?.value || '';
+            dateLine.textContent = `${getDatePart('weekday')} · ${getDatePart('month')} ${getDatePart('day')} ${getDatePart('year')}`;
+
+            timeLine.textContent = new Intl.DateTimeFormat(undefined, {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true,
+            }).format(now);
+
+            const zoneParts = new Intl.DateTimeFormat(undefined, {
+                timeZoneName: 'short',
+            }).formatToParts(now);
+            zoneLine.textContent = zoneParts.find(part => part.type === 'timeZoneName')?.value || 'LOCAL';
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
 
     function getSubmitButton(form) {
         return form.querySelector('button[type="submit"]');
