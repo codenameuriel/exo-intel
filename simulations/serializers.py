@@ -15,6 +15,7 @@ class SimulationRunSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "user",
+            "task_id",
             "status",
             "simulation_type",
             "result",

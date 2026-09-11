@@ -1,8 +1,11 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 
 from api.models import StarSystem
 from simulations.engine import SimulationEngine
 from simulations.exceptions import SimulationError
+from simulations.models import SimulationRun
+from simulations.serializers import SimulationRunSerializer
 
 
 class TravelTimeSimulationTests(TestCase):
@@ -32,3 +35,17 @@ class TravelTimeSimulationTests(TestCase):
                 star_system_id=star_system.pk,
                 speed_percentage=50,
             )
+
+
+class SimulationRunSerializerTests(TestCase):
+    def test_exposes_task_id_for_exact_client_tracking(self):
+        user = User.objects.create_user(username="operator", password="test-pass")
+        run = SimulationRun.objects.create(
+            user=user,
+            task_id="tracked-task-id",
+            simulation_type=SimulationRun.SimulationType.TRAVEL_TIME,
+        )
+
+        data = SimulationRunSerializer(run).data
+
+        self.assertEqual(data["task_id"], "tracked-task-id")
