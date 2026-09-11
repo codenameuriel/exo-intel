@@ -22,9 +22,7 @@
             --exo-dim: #4d6572;
         }
 
-        html {
-            background: var(--exo-bg);
-        }
+        html { background: var(--exo-bg); }
 
         body {
             font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
@@ -48,9 +46,7 @@
             background-size: 137px 149px, 211px 197px, 173px 223px;
         }
 
-        .exo-mono {
-            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-        }
+        .exo-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
 
         .btn-link {
             color: var(--exo-muted);
@@ -58,9 +54,7 @@
             transition: color .15s ease-in-out;
         }
 
-        .btn-link:hover {
-            color: var(--exo-cyan);
-        }
+        .btn-link:hover { color: var(--exo-cyan); }
 
         .simulation-card {
             border-color: var(--exo-border) !important;
@@ -76,15 +70,11 @@
 
         .simulation-card h3,
         #simulation-control h2,
-        #simulation-history h2 {
-            color: var(--exo-text) !important;
-        }
+        #simulation-history h2 { color: var(--exo-text) !important; }
 
         .simulation-card p,
         #simulation-control p,
-        #simulation-history p {
-            color: var(--exo-muted) !important;
-        }
+        #simulation-history p { color: var(--exo-muted) !important; }
 
         .simulation-card header > div > span:first-child,
         #simulation-control > div:first-child > p,
@@ -142,40 +132,22 @@
 
         #simulation-history > div,
         #simulation-history thead tr,
-        #simulation-history .history-pagination {
-            border-color: var(--exo-border) !important;
-        }
+        #simulation-history .history-pagination { border-color: var(--exo-border) !important; }
 
         #simulation-history thead,
         #simulation-history tbody,
-        #simulation-history .history-pagination {
-            background: rgba(3,10,20,.42) !important;
-        }
+        #simulation-history .history-pagination { background: rgba(3,10,20,.42) !important; }
 
         #simulation-history th {
             color: #668793 !important;
             font-family: 'JetBrains Mono', ui-monospace, monospace;
         }
 
-        #history-table-body {
-            background: transparent !important;
-        }
-
-        #history-table-body tr {
-            border-color: rgba(103,232,249,.07) !important;
-        }
-
-        #history-table-body tr:hover {
-            background: rgba(34,211,238,.025) !important;
-        }
-
-        #history-table-body td {
-            color: #8da6b1 !important;
-        }
-
-        #history-table-body td:first-child {
-            color: #d5e8ee !important;
-        }
+        #history-table-body { background: transparent !important; }
+        #history-table-body tr { border-color: rgba(103,232,249,.07) !important; }
+        #history-table-body tr:hover { background: rgba(34,211,238,.025) !important; }
+        #history-table-body td { color: #8da6b1 !important; }
+        #history-table-body td:first-child { color: #d5e8ee !important; }
 
         #history-table-body .bg-green-100 {
             background: rgba(52,211,153,.09) !important;
@@ -221,11 +193,9 @@
 <body class="text-slate-100">
 <div class="relative min-h-screen lg:flex">
     <aside class="flex flex-col border-b border-cyan-300/10 bg-[#050b14]/95 lg:sticky lg:top-0 lg:min-h-screen lg:w-64 lg:self-start lg:border-b-0 lg:border-r">
-        <div class="border-b border-cyan-300/10 px-4 py-5 sm:px-6">
+        <div class="border-b border-cyan-300/10 px-4 py-5 sm:px-5">
             <a href="{% url 'portal:dashboard' %}" class="group flex items-center gap-3 text-slate-100">
-                <span class="exo-mono flex h-9 w-9 items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.04] text-xs font-semibold tracking-wider text-cyan-200 shadow-[inset_0_0_18px_rgba(34,211,238,0.04)]" aria-hidden="true">
-                    EX
-                </span>
+                <span class="exo-mono flex h-9 w-9 items-center justify-center rounded-md border border-cyan-300/25 bg-cyan-300/[0.04] text-xs font-semibold tracking-wider text-cyan-200 shadow-[inset_0_0_18px_rgba(34,211,238,0.04)]" aria-hidden="true">EX</span>
                 <span class="min-w-0">
                     <span class="block font-semibold leading-tight tracking-wide text-slate-100">ExoIntel</span>
                     <span class="exo-mono mt-1 block text-[10px] uppercase tracking-[0.16em] text-slate-500">Backend Operations</span>
@@ -233,67 +203,67 @@
             </a>
         </div>
 
-        <nav class="flex-1 px-3 py-5" aria-label="Portal navigation">
-            <p class="exo-mono px-3 pb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-600">Navigation</p>
+        <nav class="flex-1 px-3 py-4" aria-label="Portal navigation">
+            <p class="exo-mono px-3 pb-2 text-[9px] font-medium uppercase tracking-[0.22em] text-slate-600">Navigation</p>
             <ul class="space-y-1">
                 <li>
                     <a href="{% url 'portal:dashboard' %}"
                        class="group flex items-center gap-3 rounded-md border px-3 py-2 text-sm font-medium transition {% if request.resolver_match.url_name == 'dashboard' %}border-cyan-300/15 bg-cyan-300/[0.055] text-cyan-100{% else %}border-transparent text-slate-400 hover:border-cyan-300/10 hover:bg-cyan-300/[0.025] hover:text-slate-200{% endif %}"
                        {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}>
-                        <span class="h-1.5 w-1.5 rounded-full {% if request.resolver_match.url_name == 'dashboard' %}bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,0.65)]{% else %}bg-slate-700{% endif %}"></span>
-                        Overview
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border {% if request.resolver_match.url_name == 'dashboard' %}border-cyan-300/20 bg-cyan-300/[0.06] text-cyan-200 shadow-[inset_0_0_12px_rgba(34,211,238,0.035)]{% else %}border-slate-800/80 bg-slate-900/30 text-slate-600 group-hover:border-cyan-300/10 group-hover:text-slate-400{% endif %}" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-3.5 w-3.5"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+                        </span>
+                        <span class="min-w-0 flex-1">Overview</span>
+                        {% if request.resolver_match.url_name == 'dashboard' %}<span class="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,0.65)]" aria-hidden="true"></span>{% endif %}
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'portal:simulations' %}"
                        class="group flex items-center gap-3 rounded-md border px-3 py-2 text-sm font-medium transition {% if request.resolver_match.url_name == 'simulations' %}border-cyan-300/15 bg-cyan-300/[0.055] text-cyan-100{% else %}border-transparent text-slate-400 hover:border-cyan-300/10 hover:bg-cyan-300/[0.025] hover:text-slate-200{% endif %}"
                        {% if request.resolver_match.url_name == 'simulations' %}aria-current="page"{% endif %}>
-                        <span class="h-1.5 w-1.5 rounded-full {% if request.resolver_match.url_name == 'simulations' %}bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,0.65)]{% else %}bg-slate-700{% endif %}"></span>
-                        Simulations
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border {% if request.resolver_match.url_name == 'simulations' %}border-cyan-300/20 bg-cyan-300/[0.06] text-cyan-200 shadow-[inset_0_0_12px_rgba(34,211,238,0.035)]{% else %}border-slate-800/80 bg-slate-900/30 text-slate-600 group-hover:border-cyan-300/10 group-hover:text-slate-400{% endif %}" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-3.5 w-3.5"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="8" ry="3.7" transform="rotate(-24 12 12)"/></svg>
+                        </span>
+                        <span class="min-w-0 flex-1">Simulations</span>
+                        {% if request.resolver_match.url_name == 'simulations' %}<span class="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(103,232,249,0.65)]" aria-hidden="true"></span>{% endif %}
                     </a>
                 </li>
             </ul>
 
-            <div class="mt-7 border-t border-cyan-300/10 pt-5">
-                <p class="exo-mono px-3 pb-2 text-[10px] font-medium uppercase tracking-[0.2em] text-slate-600">Developer</p>
-                <ul class="space-y-1">
-                    <li><a href="{% url 'portal:dashboard' %}#api-keys" class="block rounded-md px-3 py-2 text-sm text-slate-500 transition hover:bg-cyan-300/[0.025] hover:text-slate-300">API Keys</a></li>
-                    <li><a href="{% url 'portal:dashboard' %}#api-docs" class="block rounded-md px-3 py-2 text-sm text-slate-500 transition hover:bg-cyan-300/[0.025] hover:text-slate-300">API Docs</a></li>
-                    <li><a href="{% url 'portal:dashboard' %}#api-explorer" class="block rounded-md px-3 py-2 text-sm text-slate-500 transition hover:bg-cyan-300/[0.025] hover:text-slate-300">REST / GraphQL</a></li>
+            <div class="mt-6 border-t border-cyan-300/10 pt-4">
+                <p class="exo-mono px-3 pb-2 text-[9px] font-medium uppercase tracking-[0.22em] text-slate-600">Developer</p>
+                <ul class="space-y-0.5">
+                    <li><a href="{% url 'portal:dashboard' %}#api-keys" class="group flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-slate-500 transition hover:bg-cyan-300/[0.025] hover:text-slate-300"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-3.5 w-3.5 shrink-0 text-slate-700 transition group-hover:text-cyan-300/60" aria-hidden="true"><circle cx="8" cy="12" r="3"/><path d="M11 12h9m-3 0v3m-3-3v2"/></svg><span>API Keys</span></a></li>
+                    <li><a href="{% url 'portal:dashboard' %}#api-docs" class="group flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-slate-500 transition hover:bg-cyan-300/[0.025] hover:text-slate-300"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-3.5 w-3.5 shrink-0 text-slate-700 transition group-hover:text-cyan-300/60" aria-hidden="true"><path d="M6 4h9l3 3v13H6z"/><path d="M15 4v4h4M9 12h6M9 16h6"/></svg><span>API Docs</span></a></li>
+                    <li><a href="{% url 'portal:dashboard' %}#api-explorer" class="group flex items-center gap-2.5 rounded-md px-3 py-2 text-sm text-slate-500 transition hover:bg-cyan-300/[0.025] hover:text-slate-300"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-3.5 w-3.5 shrink-0 text-slate-700 transition group-hover:text-cyan-300/60" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-5 3 2-14"/></svg><span>REST / GraphQL</span></a></li>
                 </ul>
             </div>
         </nav>
 
         {% if user.is_authenticated %}
             <div class="border-t border-cyan-300/10 px-4 py-4 sm:px-5">
-                <div class="mb-3">
-                    <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-slate-600">System Status</p>
-                    <p class="mt-1 flex items-center gap-2 text-xs font-medium text-emerald-300/80">
-                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(110,231,183,0.5)]"></span>
-                        Authenticated
-                    </p>
+                <div class="mb-3 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="exo-mono text-[9px] font-medium uppercase tracking-[0.2em] text-slate-600">System Status</p>
+                        <p class="mt-1.5 flex items-center gap-2 text-xs font-medium text-emerald-300/75">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_7px_rgba(110,231,183,0.5)]"></span>
+                            Portal Online
+                        </p>
+                    </div>
+                    <span class="exo-mono rounded border border-cyan-300/[0.08] bg-cyan-300/[0.02] px-1.5 py-1 text-[8px] uppercase tracking-[0.14em] text-slate-600">SECURE</span>
                 </div>
 
                 <div class="rounded-lg border border-cyan-300/10 bg-cyan-300/[0.025] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.015)]">
                     <div class="flex items-center gap-2.5">
-                        <div class="exo-mono flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/[0.055] text-xs font-semibold uppercase text-cyan-200 shadow-[inset_0_0_14px_rgba(34,211,238,0.035)]" aria-hidden="true">
-                            {{ user.username|slice:":1" }}
-                        </div>
-
+                        <div class="exo-mono flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/[0.055] text-xs font-semibold uppercase text-cyan-200 shadow-[inset_0_0_14px_rgba(34,211,238,0.035)]" aria-hidden="true">{{ user.username|slice:":1" }}</div>
                         <div class="min-w-0 flex-1">
                             <p class="exo-mono text-[9px] font-medium uppercase tracking-[0.18em] text-slate-600">Operator</p>
                             <p class="truncate text-sm font-semibold text-slate-300" title="{{ user.username }}">{{ user.username }}</p>
                         </div>
-
                         <form method="post" action="{% url 'portal:logout' %}" class="shrink-0">
                             {% csrf_token %}
-                            <button type="submit"
-                                    class="group flex h-8 w-8 items-center justify-center rounded-md border border-transparent text-slate-600 transition hover:border-red-300/15 hover:bg-red-300/[0.04] hover:text-red-300 focus:outline-none focus:ring-1 focus:ring-red-300/25"
-                                    aria-label="Log out"
-                                    title="Log out">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 8l4 4-4 4m4-4H8m3 7H6.75A1.75 1.75 0 015 17.25V6.75C5 5.784 5.784 5 6.75 5H11"/>
-                                </svg>
+                            <button type="submit" class="group flex h-8 w-8 items-center justify-center rounded-md border border-transparent text-slate-600 transition hover:border-red-300/15 hover:bg-red-300/[0.04] hover:text-red-300 focus:outline-none focus:ring-1 focus:ring-red-300/25" aria-label="Log out" title="Log out">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="h-4 w-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 8l4 4-4 4m4-4H8m3 7H6.75A1.75 1.75 0 015 17.25V6.75C5 5.784 5.784 5 6.75 5H11"/></svg>
                             </button>
                         </form>
                     </div>
@@ -307,9 +277,7 @@
             {% if messages %}
                 <div id="message-container" class="mb-6 space-y-2 transition-opacity duration-500 ease-in-out">
                     {% for message in messages %}
-                        <div class="rounded-md border p-3 text-sm {% if message.tags == 'success' %}border-emerald-300/20 bg-emerald-300/[0.06] text-emerald-200{% else %}border-red-300/20 bg-red-300/[0.06] text-red-200{% endif %}" role="alert">
-                            {{ message }}
-                        </div>
+                        <div class="rounded-md border p-3 text-sm {% if message.tags == 'success' %}border-emerald-300/20 bg-emerald-300/[0.06] text-emerald-200{% else %}border-red-300/20 bg-red-300/[0.06] text-red-200{% endif %}" role="alert">{{ message }}</div>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -317,24 +285,16 @@
             <header class="mb-7 sm:mb-9">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div class="min-w-0">
-                        <div class="exo-mono text-cyan-300/75 [&_p]:!text-cyan-300/75 [&_p]:!tracking-[0.18em]">
-                            {% block page_eyebrow %}{% endblock %}
-                        </div>
-                        <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">
-                            {% block page_title %}{% endblock %}
-                        </h1>
-                        <div class="[&_p]:!text-slate-500">
-                            {% block page_description %}{% endblock %}
-                        </div>
+                        <div class="exo-mono text-cyan-300/75 [&_p]:!text-cyan-300/75 [&_p]:!tracking-[0.18em]">{% block page_eyebrow %}{% endblock %}</div>
+                        <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">{% block page_title %}{% endblock %}</h1>
+                        <div class="[&_p]:!text-slate-500">{% block page_description %}{% endblock %}</div>
                     </div>
                     {% block page_actions %}{% endblock %}
                 </div>
                 <div class="mt-5 h-px bg-gradient-to-r from-cyan-300/20 via-cyan-300/[0.05] to-transparent"></div>
             </header>
 
-            <main>
-                {% block content %}{% endblock %}
-            </main>
+            <main>{% block content %}{% endblock %}</main>
         </div>
     </div>
 </div>
