@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-from django.test import SimpleTestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from django.urls import reverse
 
 from config.health import check_celery_worker, check_database
@@ -63,7 +63,7 @@ class HealthEndpointTests(SimpleTestCase):
         self.assertEqual(response.status_code, 405)
 
 
-class HealthCheckTests(SimpleTestCase):
+class HealthCheckTests(TestCase):
     @patch("config.health.connection.cursor")
     def test_database_check_executes_lightweight_query(self, mock_cursor):
         cursor = MagicMock()
