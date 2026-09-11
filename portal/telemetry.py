@@ -39,7 +39,11 @@ class PortalTelemetry:
         }
 
 
-def get_portal_telemetry(user: User) -> PortalTelemetry:
+def get_portal_telemetry(
+    user: User,
+    *,
+    active_api_keys: int | None = None,
+) -> PortalTelemetry:
     """Return user-scoped operational metrics for the developer portal."""
 
     today = timezone.localdate()
@@ -70,9 +74,12 @@ def get_portal_telemetry(user: User) -> PortalTelemetry:
         .first()
     )
 
+    if active_api_keys is None:
+        active_api_keys = APIKey.objects.filter(user=user).count()
+
     return PortalTelemetry(
         **counts,
-        active_api_keys=APIKey.objects.filter(user=user).count(),
+        active_api_keys=active_api_keys,
         last_completed_at=(last_completed or {}).get("completed_at"),
         last_completed_type=(last_completed or {}).get("simulation_type"),
     )
