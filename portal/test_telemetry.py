@@ -75,10 +75,7 @@ class DashboardTelemetryTests(TestCase):
         self.assertEqual(telemetry.failures_today, 1)
         self.assertEqual(telemetry.active_api_keys, 2)
         self.assertEqual(telemetry.last_completed_at, now - timedelta(minutes=10))
-        self.assertEqual(
-            telemetry.last_completed_type,
-            SimulationRun.SimulationType.STAR_LIFETIME,
-        )
+        self.assertEqual(telemetry.last_completed_type_label, "Star Lifetime")
 
     def test_dashboard_exposes_telemetry_without_extra_api_key_count_query(self):
         APIKey.objects.create(user=self.user, name="Primary")
