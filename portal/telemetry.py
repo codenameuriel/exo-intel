@@ -23,7 +23,7 @@ class DashboardTelemetry:
     failures_today: int
     active_api_keys: int
     last_completed_at: datetime | None
-    last_completed_type: str | None
+    last_completed_type_label: str | None
 
 
 def get_dashboard_telemetry(
@@ -64,9 +64,12 @@ def get_dashboard_telemetry(
     if active_api_keys is None:
         active_api_keys = APIKey.objects.filter(user=user).count()
 
+    last_completed_type = (last_completed or {}).get("simulation_type")
+    simulation_type_labels = dict(SimulationRun.SimulationType.choices)
+
     return DashboardTelemetry(
         **counts,
         active_api_keys=active_api_keys,
         last_completed_at=(last_completed or {}).get("completed_at"),
-        last_completed_type=(last_completed or {}).get("simulation_type"),
+        last_completed_type_label=simulation_type_labels.get(last_completed_type),
     )
