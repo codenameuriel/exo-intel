@@ -1,0 +1,102 @@
+/* Final color normalization for the ExoIntel black + ExoView-blue theme. */
+
+/* Legacy cyan utility classes now resolve to the ExoView selection blue family. */
+[class*="text-cyan-"] {
+    color: #8abcf4 !important;
+}
+
+[class*="border-cyan-"] {
+    border-color: rgb(119 166 224 / 16%) !important;
+}
+
+[class*="bg-cyan-"] {
+    background-color: rgb(96 165 250 / 6%) !important;
+}
+
+[class*="from-cyan-"] {
+    --tw-gradient-from: rgb(96 165 250 / 26%) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(96 165 250 / 0%) var(--tw-gradient-to-position) !important;
+}
+
+[class*="via-cyan-"] {
+    --tw-gradient-to: rgb(96 165 250 / 0%) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), rgb(119 166 224 / 7%) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+[class*="hover:text-cyan-"]:hover,
+[class*="group-hover:text-cyan-"]:hover {
+    color: #9bc5f6 !important;
+}
+
+/* Old navy utility surfaces are normalized to neutral charcoal-black. */
+[class*="bg-[#07101d]"] {
+    background-color: #0b0c0e !important;
+}
+
+[class*="bg-[#06101d]"] {
+    background-color: #090a0c !important;
+}
+
+[class*="bg-[#050c16]"] {
+    background-color: #08090b !important;
+}
+
+[class*="bg-[#020812]"] {
+    background-color: #050506 !important;
+}
+
+[class*="bg-[#030a14]"] {
+    background-color: #060607 !important;
+}
+
+/* Keep blue as an accent, not a surface tint. */
+.portal-sidebar,
+#mission-clock,
+#api-keys > section,
+#api-docs > section,
+#api-explorer > section,
+main > section[aria-labelledby="telemetry-heading"],
+#simulation-control,
+#simulation-history,
+.simulation-card,
+.portal-operator-card {
+    background-color: transparent !important;
+}
+
+/* Simulation icon tiles were a visible source of leftover cyan. */
+.simulation-card header [class*="text-cyan"],
+.simulation-card header [class*="border-cyan"],
+.simulation-card header [class*="bg-cyan"] {
+    color: #8abcf4 !important;
+    border-color: rgb(96 165 250 / 22%) !important;
+    background-color: rgb(96 165 250 / 6%) !important;
+}
+
+/* Blue should feel precise rather than luminous. */
+.portal-brand > a > span:first-child,
+.portal-nav-icon.is-active,
+.portal-operator-card > div > div:first-child,
+.simulation-card header [class*="bg-cyan"] {
+    box-shadow: none !important;
+}
+
+/* Neutralize legacy cyan table/grid separators that were reading teal. */
+.api-key-table-wrap,
+.api-key-table thead tr,
+.api-key-table tbody,
+.history-table-wrap,
+.history-table thead tr,
+.history-table tbody,
+#history-table-body tr,
+main > section[aria-labelledby="telemetry-heading"] > div:last-child,
+main > section[aria-labelledby="telemetry-heading"] > div:last-child > div:first-child {
+    border-color: rgb(119 166 224 / 10%) !important;
+}
+
+/* Preserve semantic states; only interaction/identity uses blue. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline-color: #60a5fa !important;
+}
