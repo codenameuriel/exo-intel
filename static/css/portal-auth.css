@@ -82,16 +82,34 @@ body {
     border-radius: 0.4rem;
     background: #060709;
     color: #d7dee7;
+    caret-color: #d7dee7;
     padding: 0.75rem;
     font-size: 0.875rem;
     outline: none;
     transition: border-color .15s ease, background-color .15s ease;
 }
 
+.auth-input::placeholder {
+    color: #555f6b;
+}
+
 .auth-input:focus {
     border-color: rgb(96 165 250 / 55%);
     background: #08090b;
     box-shadow: 0 0 0 2px rgb(96 165 250 / 10%);
+}
+
+/* Keep browser autofill consistent with the dark authentication theme. */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus,
+.auth-input:-webkit-autofill:active {
+    -webkit-text-fill-color: #d7dee7 !important;
+    caret-color: #d7dee7;
+    border-color: rgb(96 165 250 / 18%);
+    box-shadow: 0 0 0 1000px #060709 inset !important;
+    -webkit-box-shadow: 0 0 0 1000px #060709 inset !important;
+    transition: background-color 9999s ease-out 0s;
 }
 
 .auth-button {
