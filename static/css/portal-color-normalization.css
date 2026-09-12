@@ -9,6 +9,18 @@
     --exo-cyan-strong: #60a5fa;
 }
 
+/* Use the ExoView instrument typeface consistently throughout the portal. */
+html,
+body,
+body *,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
 /* Legacy cyan utility classes now resolve to ExoView's actual selection blue. */
 [class*="text-cyan-"] {
     color: #60a5fa !important;
