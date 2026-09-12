@@ -1,12 +1,21 @@
 /* Final color normalization for the ExoIntel black + ExoView-blue theme. */
 
-/* Legacy cyan utility classes now resolve to the ExoView selection blue family. */
+:root {
+    /* Keep identity accents on ExoView's true selection blue, not pale cyan. */
+    --exo-blue: #60a5fa;
+    --exo-blue-soft: #60a5fa;
+    --exo-blue-pale: #8fb8ee;
+    --exo-cyan: #60a5fa;
+    --exo-cyan-strong: #60a5fa;
+}
+
+/* Legacy cyan utility classes now resolve to ExoView's actual selection blue. */
 [class*="text-cyan-"] {
-    color: #8abcf4 !important;
+    color: #60a5fa !important;
 }
 
 [class*="border-cyan-"] {
-    border-color: rgb(119 166 224 / 16%) !important;
+    border-color: rgb(96 165 250 / 18%) !important;
 }
 
 [class*="bg-cyan-"] {
@@ -14,18 +23,25 @@
 }
 
 [class*="from-cyan-"] {
-    --tw-gradient-from: rgb(96 165 250 / 26%) var(--tw-gradient-from-position) !important;
+    --tw-gradient-from: rgb(96 165 250 / 24%) var(--tw-gradient-from-position) !important;
     --tw-gradient-to: rgb(96 165 250 / 0%) var(--tw-gradient-to-position) !important;
 }
 
 [class*="via-cyan-"] {
     --tw-gradient-to: rgb(96 165 250 / 0%) var(--tw-gradient-to-position) !important;
-    --tw-gradient-stops: var(--tw-gradient-from), rgb(119 166 224 / 7%) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), rgb(96 165 250 / 6%) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
 }
 
 [class*="hover:text-cyan-"]:hover,
 [class*="group-hover:text-cyan-"]:hover {
-    color: #9bc5f6 !important;
+    color: #78acf3 !important;
+}
+
+/* Shared page eyebrow was inheriting the older pale blue and reading cyan. */
+.portal-page-header > div:first-child > div:first-child > div:first-child,
+.portal-page-header > div:first-child > div:first-child > div:first-child p,
+.portal-page-header [class*="text-cyan"] {
+    color: #60a5fa !important;
 }
 
 /* Old navy utility surfaces are normalized to neutral charcoal-black. */
@@ -63,12 +79,26 @@ main > section[aria-labelledby="telemetry-heading"],
     background-color: transparent !important;
 }
 
-/* Simulation icon tiles were a visible source of leftover cyan. */
+/* Overview identity labels should use the same true blue. */
+#api-keys [class*="text-cyan"],
+#api-docs [class*="text-cyan"],
+#api-explorer [class*="text-cyan"],
+main > section[aria-labelledby="telemetry-heading"] [class*="text-cyan"] {
+    color: #60a5fa !important;
+}
+
+/* Simulation icon tiles and instrument labels were another visible cyan holdout. */
 .simulation-card header [class*="text-cyan"],
 .simulation-card header [class*="border-cyan"],
-.simulation-card header [class*="bg-cyan"] {
-    color: #8abcf4 !important;
+.simulation-card header [class*="bg-cyan"],
+.simulation-card header > div > span:first-child,
+#simulation-control > div:first-child > p,
+#simulation-history > div:first-child p:first-child {
+    color: #60a5fa !important;
     border-color: rgb(96 165 250 / 22%) !important;
+}
+
+.simulation-card header [class*="bg-cyan"] {
     background-color: rgb(96 165 250 / 6%) !important;
 }
 
@@ -77,6 +107,24 @@ main > section[aria-labelledby="telemetry-heading"],
 .portal-nav-icon.is-active,
 .portal-operator-card > div > div:first-child,
 .simulation-card header [class*="bg-cyan"] {
+    box-shadow: none !important;
+}
+
+/* Keep buttons/active controls blue without drifting toward teal. */
+.portal-brand > a > span:first-child,
+.portal-nav-icon.is-active,
+.portal-operator-card > div > div:first-child,
+.simulation-card header > div > span:last-child,
+.simulation-card button[type="submit"],
+#api-keys button,
+#api-docs a,
+#api-explorer a,
+main > section[aria-labelledby="telemetry-heading"] a {
+    color: #78acf3 !important;
+}
+
+.portal-nav-link.is-active > span:last-child {
+    background: #60a5fa !important;
     box-shadow: none !important;
 }
 
@@ -90,7 +138,17 @@ main > section[aria-labelledby="telemetry-heading"],
 #history-table-body tr,
 main > section[aria-labelledby="telemetry-heading"] > div:last-child,
 main > section[aria-labelledby="telemetry-heading"] > div:last-child > div:first-child {
-    border-color: rgb(119 166 224 / 10%) !important;
+    border-color: rgb(96 165 250 / 10%) !important;
+}
+
+/* Catch legacy dark-blue inline surfaces that are not covered by the common utilities. */
+#api-keys pre,
+#api-keys code,
+#api-explorer pre,
+#api-explorer code,
+#simulation-history [aria-label^="Simulation result"],
+.history-pagination button {
+    background-color: #07080a !important;
 }
 
 /* Preserve semantic states; only interaction/identity uses blue. */
