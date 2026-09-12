@@ -1,0 +1,334 @@
+/* ExoView-derived visual theme for the ExoIntel operations portal. */
+:root {
+    --exo-bg: #050505;
+    --exo-surface: #090a0c;
+    --exo-surface-raised: #0d0f12;
+    --exo-surface-soft: #12151a;
+    --exo-surface-steel: #1a2028;
+    --exo-border: rgb(119 166 224 / 14%);
+    --exo-border-strong: rgb(119 166 224 / 28%);
+    --exo-blue: #60a5fa;
+    --exo-blue-soft: #8abcf4;
+    --exo-blue-pale: #a0c9f1;
+    --exo-text: #dce4ee;
+    --exo-muted: #7b8796;
+    --exo-dim: #555f6b;
+    --exo-cyan: var(--exo-blue-soft);
+    --exo-cyan-strong: var(--exo-blue);
+}
+
+html,
+body {
+    background: var(--exo-bg);
+}
+
+body {
+    color: var(--exo-text);
+    background:
+        radial-gradient(circle at 84% 0%, rgb(96 165 250 / 2.4%), transparent 28rem),
+        linear-gradient(180deg, #050505 0%, #030303 100%);
+}
+
+body::before {
+    content: none;
+    background: none;
+}
+
+body::after {
+    background:
+        linear-gradient(90deg, rgb(0 0 0 / 18%) 0%, transparent 42%),
+        linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 30%) 100%);
+}
+
+.portal-sidebar {
+    border-color: rgb(119 166 224 / 10%) !important;
+    background: linear-gradient(180deg, rgb(11 12 14 / 99%), rgb(6 7 8 / 99%));
+    box-shadow: inset -1px 0 0 rgb(255 255 255 / 1.5%);
+}
+
+.portal-brand,
+.portal-sidebar-footer,
+.portal-nav > div {
+    border-color: rgb(119 166 224 / 10%) !important;
+}
+
+.portal-nav {
+    background: rgb(0 0 0 / 14%);
+}
+
+.portal-sidebar [class*="text-cyan"] {
+    color: #8abcf4 !important;
+}
+
+.portal-sidebar [class*="border-cyan"] {
+    border-color: rgb(119 166 224 / 16%) !important;
+}
+
+.portal-sidebar [class*="bg-cyan"] {
+    background-color: rgb(96 165 250 / 6%) !important;
+}
+
+.portal-brand > a > span:first-child {
+    border-color: rgb(96 165 250 / 28%) !important;
+    background: rgb(96 165 250 / 7%) !important;
+    color: #9bc5f6 !important;
+    box-shadow: inset 0 0 18px rgb(96 165 250 / 3%) !important;
+}
+
+.portal-nav-link.is-active {
+    border-color: rgb(96 165 250 / 22%);
+    background: linear-gradient(90deg, rgb(96 165 250 / 9%), rgb(96 165 250 / 2.5%));
+    color: #dbeafe;
+}
+
+.portal-nav-link.is-active > span:last-child {
+    background: #60a5fa !important;
+    box-shadow: 0 0 8px rgb(96 165 250 / 45%) !important;
+}
+
+.portal-nav-icon.is-active {
+    border-color: rgb(96 165 250 / 28%);
+    background: rgb(96 165 250 / 8%) !important;
+    color: #93c5fd;
+    box-shadow: inset 0 0 12px rgb(96 165 250 / 4%);
+}
+
+.portal-nav-link:not(.is-active):hover,
+.portal-developer-link:hover {
+    border-color: rgb(119 166 224 / 12%) !important;
+    background: rgb(96 165 250 / 3%) !important;
+    color: #bcc8d6 !important;
+}
+
+.portal-developer-link:hover svg {
+    color: #79aef0 !important;
+}
+
+.portal-operator-card {
+    border-color: rgb(119 166 224 / 12%) !important;
+    background: linear-gradient(135deg, rgb(16 17 20 / 92%), rgb(8 9 11 / 88%)) !important;
+}
+
+.portal-operator-card > div > div:first-child {
+    border-color: rgb(96 165 250 / 24%) !important;
+    background: rgb(96 165 250 / 7%) !important;
+    color: #9bc5f6 !important;
+}
+
+.portal-page-header h1 {
+    color: #e5e9ef !important;
+}
+
+.portal-page-header > div:first-child > div:first-child > div:first-child,
+.portal-page-header [class*="text-cyan"] {
+    color: #8abcf4 !important;
+}
+
+.portal-page-header > div:last-child {
+    background: linear-gradient(90deg, rgb(96 165 250 / 28%), rgb(119 166 224 / 6%), transparent) !important;
+}
+
+#mission-clock {
+    border-color: rgb(119 166 224 / 13%) !important;
+    background: linear-gradient(135deg, rgb(14 15 18 / 94%), rgb(7 8 10 / 88%)) !important;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 2.5%) !important;
+}
+
+#api-keys > section,
+#api-docs > section,
+#api-explorer > section,
+main > section[aria-labelledby="telemetry-heading"] {
+    border-color: rgb(119 166 224 / 14%) !important;
+    background: linear-gradient(135deg, rgb(13 14 16 / 96%), rgb(7 8 10 / 94%)) !important;
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 2.5%),
+        0 10px 28px rgb(0 0 0 / 26%);
+}
+
+#api-keys > section > div,
+#api-docs > section > div,
+#api-explorer > section > div,
+main > section[aria-labelledby="telemetry-heading"] > div {
+    border-color: rgb(119 166 224 / 11%);
+}
+
+#api-docs section > div.grid > div,
+#api-explorer section > div.grid > div,
+#api-keys .api-key-table-wrap,
+main > section[aria-labelledby="telemetry-heading"] > div:last-child {
+    border-color: rgb(119 166 224 / 11%) !important;
+    background: rgb(7 8 10 / 92%) !important;
+}
+
+#api-keys [class*="text-cyan"],
+#api-docs [class*="text-cyan"],
+#api-explorer [class*="text-cyan"],
+main > section[aria-labelledby="telemetry-heading"] [class*="text-cyan"] {
+    color: #8abcf4 !important;
+}
+
+#api-keys [class*="border-cyan"],
+#api-docs [class*="border-cyan"],
+#api-explorer [class*="border-cyan"],
+main > section[aria-labelledby="telemetry-heading"] [class*="border-cyan"] {
+    border-color: rgb(119 166 224 / 15%) !important;
+}
+
+#api-keys button,
+#api-docs a,
+#api-explorer a,
+main > section[aria-labelledby="telemetry-heading"] a {
+    border-color: rgb(96 165 250 / 28%) !important;
+    background: rgb(96 165 250 / 7%) !important;
+    color: #9bc5f6 !important;
+}
+
+#api-keys button:hover,
+#api-docs a:hover,
+#api-explorer a:hover,
+main > section[aria-labelledby="telemetry-heading"] a:hover {
+    border-color: rgb(96 165 250 / 45%) !important;
+    background: rgb(96 165 250 / 11%) !important;
+    color: #dbeafe !important;
+}
+
+main > section[aria-labelledby="telemetry-heading"] > div:last-child > div:first-child {
+    background: rgb(119 166 224 / 7%) !important;
+}
+
+main > section[aria-labelledby="telemetry-heading"] > div:last-child > div:first-child > div {
+    background: #08090b !important;
+}
+
+main > section[aria-labelledby="telemetry-heading"] .exo-mono.text-xs {
+    color: #7b8796;
+}
+
+#simulation-control,
+#simulation-history {
+    border-color: rgb(119 166 224 / 14%) !important;
+    background: linear-gradient(135deg, rgb(13 14 16 / 96%), rgb(7 8 10 / 94%)) !important;
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 2.5%),
+        0 12px 32px rgb(0 0 0 / 28%);
+}
+
+.simulation-card {
+    border-color: rgb(119 166 224 / 12%) !important;
+    background: linear-gradient(145deg, rgb(15 16 18 / 96%), rgb(8 9 11 / 96%)) !important;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 2%);
+}
+
+.simulation-card:hover {
+    border-color: rgb(96 165 250 / 28%) !important;
+    background: linear-gradient(145deg, rgb(18 20 24 / 98%), rgb(9 10 12 / 98%)) !important;
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 2.5%),
+        0 14px 30px rgb(0 0 0 / 26%);
+}
+
+.simulation-card header > div > span:first-child,
+#simulation-control > div:first-child > p,
+#simulation-history > div:first-child p:first-child {
+    color: #8abcf4 !important;
+}
+
+.simulation-card header > div > span:last-child {
+    border-color: rgb(119 166 224 / 18%) !important;
+    background: rgb(96 165 250 / 6%) !important;
+    color: #9bc5f6 !important;
+}
+
+.simulation-card label {
+    color: #8793a1 !important;
+}
+
+.simulation-card select,
+.simulation-card input {
+    border-color: rgb(119 166 224 / 13%) !important;
+    background: #060709 !important;
+    color: #c5ced9 !important;
+}
+
+.simulation-card select:focus,
+.simulation-card input:focus {
+    border-color: rgb(96 165 250 / 55%) !important;
+    --tw-ring-color: rgb(96 165 250 / 12%) !important;
+}
+
+.simulation-card button[type="submit"] {
+    border-color: rgb(96 165 250 / 32%) !important;
+    background: rgb(96 165 250 / 8%) !important;
+    color: #9bc5f6 !important;
+    box-shadow: inset 0 0 18px rgb(96 165 250 / 2.5%);
+}
+
+.simulation-card button[type="submit"]:hover {
+    border-color: rgb(96 165 250 / 48%) !important;
+    background: rgb(96 165 250 / 13%) !important;
+    color: #dbeafe !important;
+}
+
+#simulation-history > div,
+#simulation-history thead tr,
+#simulation-history .history-pagination {
+    border-color: rgb(119 166 224 / 11%) !important;
+}
+
+#simulation-history thead,
+#simulation-history tbody,
+#simulation-history .history-pagination {
+    background: rgb(7 8 10 / 88%) !important;
+}
+
+#history-table-body tr {
+    border-color: rgb(119 166 224 / 7%) !important;
+}
+
+#history-table-body tr:hover {
+    background: rgb(96 165 250 / 2.2%) !important;
+}
+
+#history-table-body [aria-label^="Simulation result"] {
+    border-color: rgb(119 166 224 / 8%) !important;
+    background: rgb(6 7 9 / 94%) !important;
+    color: #788491 !important;
+}
+
+#history-table-body [aria-label^="Simulation result"] strong {
+    color: #a1acb9 !important;
+}
+
+.history-pagination button {
+    border-color: rgb(119 166 224 / 11%) !important;
+    background: rgb(7 8 10 / 94%) !important;
+    color: #778390 !important;
+}
+
+.history-pagination button:hover:not(:disabled) {
+    border-color: rgb(96 165 250 / 28%) !important;
+    background: rgb(96 165 250 / 6%) !important;
+    color: #9bc5f6 !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline-color: #60a5fa;
+}
+
+::selection {
+    background: rgb(96 165 250 / 26%);
+    color: #eff6ff;
+}
+
+@media (max-width: 1023px) {
+    .portal-sidebar {
+        background: rgb(8 9 11 / 97%);
+    }
+
+    .portal-nav {
+        background: rgb(3 3 4 / 82%);
+    }
+}
