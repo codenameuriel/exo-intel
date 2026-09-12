@@ -1,229 +1,17 @@
-<style>
-    #simulation-history .history-pagination button {
-        border-color: rgba(103, 232, 249, 0.11) !important;
-        background: rgba(3, 10, 20, 0.72) !important;
-        color: #607985 !important;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.012);
-    }
-
-    #simulation-history .history-pagination button:hover:not(:disabled) {
-        border-color: rgba(103, 232, 249, 0.22) !important;
-        background: rgba(8, 24, 38, 0.82) !important;
-        color: #86b9c5 !important;
-    }
-
-    #simulation-history .history-pagination button:disabled {
-        color: #354b55 !important;
-        background: rgba(2, 8, 17, 0.52) !important;
-    }
-
-    #history-table-body td {
-        color: #708894 !important;
-    }
-
-    #history-table-body td:first-child,
-    #history-table-body td:first-child span {
-        color: #708894 !important;
-    }
-
-    #history-table-body td:first-child span {
-        font-weight: 500 !important;
-    }
-
-    #history-table-body [aria-label^="Simulation result"] {
-        border: 1px solid rgba(103, 232, 249, 0.055);
-        background: rgba(2, 8, 17, 0.52) !important;
-        color: #68838e !important;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.01);
-    }
-
-    #history-table-body [aria-label^="Simulation result"] strong {
-        color: #8da6af;
-        font-weight: 500;
-    }
-
-    #history-table-body .bg-emerald-50,
-    #history-table-body .bg-amber-50,
-    #history-table-body .bg-red-50 {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        background: rgba(4, 12, 22, 0.72) !important;
-        border-width: 1px;
-        border-style: solid;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.012);
-    }
-
-    #history-table-body .bg-emerald-50 {
-        border-color: rgba(110, 231, 183, 0.18) !important;
-        color: #79bca8 !important;
-    }
-
-    #history-table-body .bg-amber-50 {
-        border-color: rgba(250, 204, 21, 0.18) !important;
-        color: #bcae72 !important;
-    }
-
-    #history-table-body .bg-red-50 {
-        border-color: rgba(252, 165, 165, 0.16) !important;
-        color: #b88787 !important;
-    }
-
-    #history-table-body .bg-emerald-50::before,
-    #history-table-body .bg-amber-50::before,
-    #history-table-body .bg-red-50::before {
-        content: '';
-        width: 0.4rem;
-        height: 0.4rem;
-        flex: 0 0 auto;
-        border-radius: 9999px;
-    }
-
-    #history-table-body .bg-emerald-50::before {
-        background: #6ee7b7;
-        box-shadow: 0 0 6px rgba(110, 231, 183, 0.24);
-    }
-
-    #history-table-body .bg-amber-50::before {
-        background: #facc15;
-        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.24);
-        animation: simulation-pending-pulse 1.5s ease-out infinite;
-    }
-
-    #history-table-body .bg-red-50::before {
-        background: #fca5a5;
-        box-shadow: 0 0 6px rgba(252, 165, 165, 0.18);
-    }
-
-    @keyframes simulation-pending-pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.24);
-            opacity: 1;
-        }
-        70% {
-            box-shadow: 0 0 0 5px rgba(250, 204, 21, 0);
-            opacity: 0.72;
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
-            opacity: 1;
-        }
-    }
-
-    @media (max-width: 639px) {
-        #simulation-history .history-pagination {
-            width: 100%;
-        }
-
-        #simulation-history .history-pagination button {
-            flex: 1 1 0;
-            min-width: 0;
-        }
-
-        #simulation-history .history-page-info {
-            min-width: 4.5rem;
-            flex: 0 0 auto;
-        }
-
-        #simulation-history .history-table-wrap {
-            overflow: visible;
-        }
-
-        #simulation-history .history-table {
-            min-width: 0 !important;
-            width: 100%;
-        }
-
-        #simulation-history .history-table thead {
-            display: none;
-        }
-
-        #simulation-history .history-table tbody,
-        #simulation-history .history-table tr,
-        #simulation-history .history-table td {
-            display: block;
-            width: 100%;
-        }
-
-        #simulation-history .history-table tbody {
-            display: grid;
-            gap: 0.75rem;
-            padding: 0.75rem;
-        }
-
-        #simulation-history .history-table tbody tr {
-            overflow: hidden;
-            border: 1px solid rgba(103, 232, 249, 0.08) !important;
-            border-radius: 0.5rem;
-            background: rgba(3, 10, 20, 0.54) !important;
-        }
-
-        #simulation-history .history-table td {
-            display: grid;
-            grid-template-columns: minmax(5.5rem, 0.34fr) minmax(0, 1fr);
-            gap: 0.75rem;
-            align-items: start;
-            padding: 0.75rem 0.875rem !important;
-            border-bottom: 1px solid rgba(103, 232, 249, 0.055);
-        }
-
-        #simulation-history .history-table td:last-child {
-            border-bottom: 0;
-        }
-
-        #simulation-history .history-table td::before {
-            font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: 0.58rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            line-height: 1.5;
-            text-transform: uppercase;
-            color: #4d6572;
-        }
-
-        #simulation-history .history-table td:nth-child(1)::before { content: 'Type'; }
-        #simulation-history .history-table td:nth-child(2)::before { content: 'Status'; }
-        #simulation-history .history-table td:nth-child(3)::before { content: 'Result'; }
-        #simulation-history .history-table td:nth-child(4)::before { content: 'Submitted'; }
-
-        #simulation-history .history-table td[colspan] {
-            display: block;
-            padding: 1.5rem 1rem !important;
-            text-align: center;
-            border-bottom: 0;
-        }
-
-        #simulation-history .history-table td[colspan]::before {
-            content: none;
-        }
-
-        #history-table-body [aria-label^="Simulation result"] {
-            max-width: 100%;
-            overflow-wrap: anywhere;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        #history-table-body .bg-amber-50::before {
-            animation: none;
-        }
-    }
-</style>
-
 <section id="simulation-history" class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
     <div class="flex flex-col gap-4 border-b border-slate-200 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
         <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Activity Log</p>
-            <h2 class="mt-2 text-xl font-semibold text-slate-800">Simulation History</h2>
-            <p class="mt-2 text-sm text-slate-600">Track recent simulation jobs, their status, and returned results.</p>
+            <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">Activity Log</p>
+            <h2 class="mt-2 text-xl font-semibold text-slate-800 sm:text-2xl">Simulation History</h2>
+            <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">Track recent simulation jobs, their status, and returned results.</p>
         </div>
 
         <div class="history-pagination flex items-center gap-2 self-start lg:self-auto">
-            <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
+            <button class="history-prev-btn exo-mono inline-flex h-9 items-center justify-center rounded-md border px-3 text-[10px] font-medium uppercase tracking-[0.12em] transition disabled:cursor-not-allowed">
                 &larr; Previous
             </button>
-            <span class="history-page-info min-w-24 text-center text-xs font-medium text-slate-500"></span>
-            <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
+            <span class="history-page-info exo-mono min-w-24 text-center text-[10px] font-medium tracking-wide text-slate-500"></span>
+            <button class="history-next-btn exo-mono inline-flex h-9 items-center justify-center rounded-md border px-3 text-[10px] font-medium uppercase tracking-[0.12em] transition disabled:cursor-not-allowed">
                 Next &rarr;
             </button>
         </div>
@@ -233,10 +21,10 @@
         <table class="history-table min-w-[760px] w-full border-collapse">
             <thead class="bg-slate-50/80">
             <tr class="border-b border-slate-200">
-                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Type</th>
-                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Status</th>
-                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Result</th>
-                <th class="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500 sm:px-6">Submitted</th>
+                <th class="exo-mono px-4 py-3 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-slate-500 sm:px-6">Type</th>
+                <th class="exo-mono px-4 py-3 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-slate-500 sm:px-6">Status</th>
+                <th class="exo-mono px-4 py-3 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-slate-500 sm:px-6">Result</th>
+                <th class="exo-mono px-4 py-3 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-slate-500 sm:px-6">Submitted</th>
             </tr>
             </thead>
             <tbody id="history-table-body" class="divide-y divide-slate-100 bg-white">
@@ -248,11 +36,11 @@
     </div>
 
     <div class="history-pagination flex flex-col gap-3 border-t border-slate-200 bg-slate-50/50 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <button class="history-prev-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
+        <button class="history-prev-btn exo-mono inline-flex h-9 items-center justify-center rounded-md border px-3 text-[10px] font-medium uppercase tracking-[0.12em] transition disabled:cursor-not-allowed">
             &larr; Previous
         </button>
-        <span class="history-page-info text-center text-xs font-medium text-slate-500"></span>
-        <button class="history-next-btn inline-flex h-9 items-center justify-center rounded-md border px-3 text-xs font-medium transition disabled:cursor-not-allowed">
+        <span class="history-page-info exo-mono text-center text-[10px] font-medium tracking-wide text-slate-500"></span>
+        <button class="history-next-btn exo-mono inline-flex h-9 items-center justify-center rounded-md border px-3 text-[10px] font-medium uppercase tracking-[0.12em] transition disabled:cursor-not-allowed">
             Next &rarr;
         </button>
     </div>
