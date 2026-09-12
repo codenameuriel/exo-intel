@@ -1,60 +1,56 @@
-<section class="mb-8 overflow-hidden rounded-lg border border-cyan-300/10 bg-[#06101d]/85 shadow-[0_18px_45px_rgba(0,0,0,0.18)]" aria-labelledby="telemetry-heading">
-    <div class="flex flex-col gap-3 border-b border-cyan-300/10 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
-        <div>
-            <div class="flex items-center gap-2">
-                <span class="h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.55)]" aria-hidden="true"></span>
-                <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-300/65">Live Operations</p>
+<section class="mb-8 rounded-lg border border-cyan-300/10 bg-[#07101d]/80 p-4 sm:p-6" aria-labelledby="telemetry-heading">
+    <div class="mb-6">
+        <p class="exo-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cyan-300/65">Live Operations</p>
+        <h2 id="telemetry-heading" class="mt-2 text-xl font-semibold text-slate-100 sm:text-2xl">Dashboard Telemetry</h2>
+    </div>
+
+    <div class="overflow-hidden rounded-md border border-cyan-300/[0.08] bg-[#050c16]/70">
+        <div class="grid grid-cols-2 gap-px bg-cyan-300/[0.08] sm:grid-cols-4 lg:grid-cols-7">
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Total Runs</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums text-slate-100">{{ telemetry.simulations_total }}</p>
             </div>
-            <h2 id="telemetry-heading" class="mt-2 text-sm font-semibold text-slate-100">Dashboard Telemetry</h2>
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Today</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums text-cyan-100">{{ telemetry.simulations_today }}</p>
+            </div>
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Pending</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums {% if telemetry.pending %}text-amber-200{% else %}text-slate-300{% endif %}">{{ telemetry.pending }}</p>
+            </div>
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Successful</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums text-emerald-200">{{ telemetry.successful }}</p>
+            </div>
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Failed</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums {% if telemetry.failed %}text-rose-200{% else %}text-slate-300{% endif %}">{{ telemetry.failed }}</p>
+            </div>
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Failures Today</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums {% if telemetry.failures_today %}text-rose-200{% else %}text-slate-300{% endif %}">{{ telemetry.failures_today }}</p>
+            </div>
+            <div class="bg-[#050c16] px-4 py-4">
+                <p class="exo-mono text-xs tracking-wide text-slate-500">API Keys</p>
+                <p class="exo-mono mt-2 text-xl font-medium tracking-wide tabular-nums text-cyan-100">{{ telemetry.active_api_keys }}</p>
+            </div>
         </div>
-        <p class="exo-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">User-scoped activity</p>
-    </div>
 
-    <div class="grid grid-cols-2 gap-px border-b border-cyan-300/10 bg-cyan-300/10 sm:grid-cols-4 lg:grid-cols-7">
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Total Runs</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums text-slate-100">{{ telemetry.simulations_total }}</p>
+        <div class="flex flex-col gap-3 border-t border-cyan-300/[0.08] px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+                <p class="exo-mono text-xs tracking-wide text-slate-500">Last Completed Run</p>
+                {% if telemetry.last_completed_at %}
+                    <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span class="exo-mono text-xs font-medium tracking-wide text-slate-200">{{ telemetry.last_completed_type_label }}</span>
+                        <span class="text-xs text-slate-500">{{ telemetry.last_completed_at|date:"M j, Y · H:i T" }}</span>
+                    </div>
+                {% else %}
+                    <p class="mt-1.5 text-xs text-slate-500">No completed simulations yet.</p>
+                {% endif %}
+            </div>
+            <a href="{% url 'portal:simulations' %}" class="exo-mono inline-flex min-h-9 items-center justify-center rounded-md border border-cyan-300/15 bg-cyan-300/[0.04] px-3 text-[10px] font-medium uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.08]">
+                Open Simulations
+            </a>
         </div>
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Today</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums text-cyan-100">{{ telemetry.simulations_today }}</p>
-        </div>
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Pending</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums {% if telemetry.pending %}text-amber-200{% else %}text-slate-300{% endif %}">{{ telemetry.pending }}</p>
-        </div>
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Successful</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums text-emerald-200">{{ telemetry.successful }}</p>
-        </div>
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Failed</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums {% if telemetry.failed %}text-rose-200{% else %}text-slate-300{% endif %}">{{ telemetry.failed }}</p>
-        </div>
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Failures Today</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums {% if telemetry.failures_today %}text-rose-200{% else %}text-slate-300{% endif %}">{{ telemetry.failures_today }}</p>
-        </div>
-        <div class="bg-[#06101d] px-4 py-4">
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">API Keys</p>
-            <p class="mt-2 text-xl font-semibold tabular-nums text-cyan-100">{{ telemetry.active_api_keys }}</p>
-        </div>
-    </div>
-
-    <div class="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
-        <div>
-            <p class="exo-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">Last Completed Run</p>
-            {% if telemetry.last_completed_at %}
-                <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <span class="exo-mono text-xs font-medium tracking-[0.08em] text-slate-200">{{ telemetry.last_completed_type_label }}</span>
-                    <span class="text-xs text-slate-500">{{ telemetry.last_completed_at|date:"M j, Y · H:i T" }}</span>
-                </div>
-            {% else %}
-                <p class="mt-1.5 text-xs text-slate-500">No completed simulations yet.</p>
-            {% endif %}
-        </div>
-        <a href="{% url 'portal:simulations' %}" class="exo-mono inline-flex min-h-9 items-center justify-center rounded-md border border-cyan-300/15 bg-cyan-300/[0.04] px-3 text-[10px] font-medium uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-300/30 hover:bg-cyan-300/[0.08]">
-            Open Simulations
-        </a>
     </div>
 </section>
