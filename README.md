@@ -1,117 +1,95 @@
-# 🪐 ExoIntel: Exoplanet API & Simulation Platform
+# ExoIntel
 
-A multienvironment Django backend providing REST and GraphQL APIs for the NASA Exoplanet Archive, a developer portal and
-an asynchronous simulation engine.
+ExoIntel is a Django backend for exploring exoplanet and star-system data. It provides REST and GraphQL APIs, API-key authentication, a developer portal, and background simulation jobs powered by Celery and Redis.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+ExoIntel is also the backend data source for [ExoView](https://github.com/codenameuriel/exo-view).
 
----
+## Features
 
-## ✨ Key Features
+- Read-only REST API for planets, stars, and star systems
+- GraphQL API for client-driven queries
+- API-key authentication and rate limiting
+- Developer portal for account and API-key management
+- Background simulation jobs with Celery and Redis
+- Simulation history and task tracking
+- Docker-based local and production workflows
 
-- **Dual API Paradigms:**
-  - A fully-featured, read-only **REST API** with advanced filtering, searching, and pagination.
-  - A powerful, paginated **GraphQL API** for precise, client-driven data queries.
+## Tech Stack
 
-- **Professional API Security:**
-  - Tiered access model with **API Key authentication** for programmatic use and **Session authentication** for the
-    developer portal.
-  - **Dynamic, tiered rate limiting** to protect resources, with different limits for anonymous and authenticated
-    users.
+- Python 3.10+
+- Django 5.2
+- Django REST Framework
+- Graphene-Django
+- Celery
+- Redis
+- SQLite for local development
+- PostgreSQL for production
+- Docker and Docker Compose
+- Poetry
+- Gunicorn
 
-- **Asynchronous Simulation Engine:**
-  - A robust simulation engine for running complex, long-running scientific calculations (e.g., interstellar travel
-    time, planetary seasonality, tidal locking probability).
-  - Powered by a **Celery and Redis** background task queue for non-blocking execution.
+## Getting Started
 
-- **Real-Time Task Tracking:**
-  - A persistent, database-backed **simulation history tracker**.
-  - A developer dashboard with a **real-time polling UI** to monitor the status of pending and completed jobs.
+The simplest local setup uses Docker Compose.
 
-- **Developer Portal & Tools:**
-  - A custom-styled developer portal with a secure login/signup flow and dashboard.
-  - A self-service interface for developers to **create and manage their own API keys**.
+### 1. Clone the repository
 
-- **Production-Ready Architecture:**
-  - **Containerized** with **Docker** using a `Dockerfile`, ensuring a consistent and reproducible environment.
-  - Orchestrated with **Docker Compose** to manage the multi-service application (web, database, cache, workers) for
-    local development and
-    production environments.
-  - **Cloud-Native Deployment** with PaaS provider Render, using a declarative configuration approach via
-    `render.yaml` file
-  - Professional dependency management with **Poetry**.
-  - Environment-specific configurations for seamless local, Docker, and production workflows using `django-environ`.
+```bash
+git clone https://github.com/codenameuriel/exo-intel.git
+cd exo-intel
+```
 
-## 🚀 Live Demo & Documentation
-
-- **Live Portal:** [exo-intel.onrender.com/portal/signup](exo-intel.onrender.com/portal/signup/)
-- **REST API Docs (Swagger):** [exo-intel.onrender.com/api/docs](exo-intel.onrender.com/api/docs/)
-- **REST API Docs (ReDoc):** [exo-intel.onrender.com/api/redoc](exo-intel.onrender.com/api/redoc/)
-
-## 🛠️ Tech Stack
-
-- **Backend:** Python, Django, Django REST Framework
-- **Database:** PostgreSQL (production), SQLite (local)
-- **Async Tasks:** Celery, Redis
-- **GraphQL:** Graphene-Django
-- **Containerization:** Docker, Docker Compose
-- **Dependency Management:** Poetry
-- **Server:** Gunicorn
-
-## Local Docker setup
-
-Docker Compose runs Django, Redis, a Celery worker, and Celery Beat. Django uses SQLite locally. You do not need Poetry installed on the host.
-
-1. Create the local environment file on a fresh checkout:
+### 2. Create the local environment file
 
 ```bash
 cp .env.example .env.docker.local
 python3 -c 'import secrets; print(secrets.token_urlsafe(50))'
 ```
 
-Put the generated value in `SECRET_KEY` inside `.env.docker.local`. This file is ignored by Git.
+Add the generated value to `SECRET_KEY` in `.env.docker.local`.
 
-1. Build and start the stack:
+### 3. Start the application
 
 ```bash
 docker compose -f docker-compose.local.yml -p exo-intel-local up --build
 ```
 
-The migration service runs before the web and Celery services. When startup finishes, open <http://localhost:8000/>.
+The local application runs at:
 
-1. Create an administrator in another terminal:
+```text
+http://localhost:8000
+```
+
+### 4. Create an administrator
 
 ```bash
 docker compose -f docker-compose.local.yml -p exo-intel-local exec web \
   poetry run python3 manage.py createsuperuser
 ```
 
-1. Load the bundled canonical NASA data if you want a populated API:
+### 5. Load exoplanet data
 
 ```bash
 docker compose -f docker-compose.local.yml -p exo-intel-local exec web \
   poetry run python3 manage.py import_canonical_data
 ```
 
-The portal is at <http://localhost:8000/portal/login/> and the default admin is at <http://localhost:8000/admin/>.
+## Main Endpoints
 
-Useful local commands:
-
-```bash
-# Follow logs
-docker compose -f docker-compose.local.yml -p exo-intel-local logs -f
-
-# Open a shell in the web container
-docker compose -f docker-compose.local.yml -p exo-intel-local exec web bash
-
-# Stop and remove the containers
-docker compose -f docker-compose.local.yml -p exo-intel-local down
+```text
+Portal:     http://localhost:8000/portal/login/
+Admin:      http://localhost:8000/admin/
+REST API:   http://localhost:8000/api/rest/
+GraphQL:    http://localhost:8000/api/graphql/
+API Docs:   http://localhost:8000/api/docs/
+Health:     http://localhost:8000/health/
 ```
 
-## Host development setup
+API documentation requires an authenticated session.
 
-Host development requires Python 3.10 or newer, Poetry, and Redis. The web server and Celery use `.env.local`.
+## Host Development
+
+For development outside Docker, install Python 3.10+, Poetry, and Redis.
 
 ```bash
 cp .env.local.example .env.local
@@ -120,37 +98,47 @@ poetry run poe migrate
 poetry run poe runserver
 ```
 
-The host web server listens at <http://localhost:7000/>. Start the Celery worker and Beat in another terminal:
+The host development server runs at:
+
+```text
+http://localhost:7000
+```
+
+Start the Celery worker and scheduler separately:
 
 ```bash
 poetry run poe celery:start
 ```
 
-Use `poetry run poe celery:logs` and `poetry run poe celery:stop` to inspect or stop those background processes.
-
-## Production Docker setup
-
-The production stack runs PostgreSQL, Redis, Gunicorn, a Celery worker, and Celery Beat. Its one-shot preparation service waits for PostgreSQL, applies migrations, and imports the bundled canonical data before the application starts.
+Useful commands:
 
 ```bash
-cp .env.docker.production.example .env.docker.production
-python3 -c 'import secrets; print(f"SECRET_KEY={secrets.token_urlsafe(50)}"); print(f"DATABASE_PASSWORD={secrets.token_urlsafe(32)}")'
+poetry run poe celery:logs
+poetry run poe celery:stop
+poetry run poe lint
 ```
 
-Put the generated `SECRET_KEY` value in `SECRET_KEY`. Put the generated URL-safe database password in both `POSTGRES_PASSWORD` and `DATABASE_URL`. Before exposing the service publicly, set the real hostnames and HTTPS origins and change `SECURE_COOKIES` to `True`. Then start it:
+## Project Structure
 
-```bash
-docker compose -f docker-compose.production.yml up --build -d
+```text
+api/           REST and GraphQL API layer
+api_keys/      API-key management
+config/        Django settings, URLs, and application configuration
+portal/        Developer portal
+simulations/   Simulation engine and domain logic
+tasks/         Background task tracking and Celery workflows
+data/          Bundled exoplanet data
+scripts/       Development and runtime scripts
 ```
 
-Gunicorn listens at <http://localhost:9000/>. Stop the stack without deleting PostgreSQL data with:
+## ExoView Integration
 
-```bash
-docker compose -f docker-compose.production.yml down
-```
+[ExoView](https://github.com/codenameuriel/exo-view) consumes ExoIntel through the GraphQL API using a server-side API key.
 
-📜 License
+For local integration, ExoView needs an ExoIntel GraphQL endpoint and API key configured in its environment.
 
-This project is under a proprietary license. You are welcome to view the source code and run the application locally for
-personal and educational purposes. However, you are not permitted to modify, redistribute, or use the code for any
-commercial purpose. Please see the `LICENSE.md` file for full details.
+## License
+
+This repository is source-available for personal, non-commercial, and educational use. Modification, redistribution, public forks, and commercial use are restricted.
+
+See [LICENSE.md](LICENSE.md) for the complete license terms.
