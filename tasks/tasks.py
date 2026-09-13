@@ -14,6 +14,7 @@ from api.importer import run_import
 from scripts.canonical_data_consolidater import run_canonical_data_consolidation
 from simulations.engine import SimulationEngine, SimulationError
 from simulations.models import SimulationRun
+
 from .exceptions import TaskError
 
 # use Celery logger for additional logging context
@@ -38,7 +39,9 @@ def canonical_data_consolidation():
         logger.info(f"--- Finished Canonical Data Consolidation: {result_message} ---")
         return result_message
     except Exception as e:
-        message = "An unexpected error occurred during the canonical data consolidation."
+        message = (
+            "An unexpected error occurred during the canonical data consolidation."
+        )
         logger.error(message, exc_info=True)
         raise TaskError(message) from e
 
@@ -142,11 +145,15 @@ def run_simulation_task(self, user_id, simulation_type, input_parameters):
         logger.error(message, exc_info=True)
         raise TaskError(message) from e
     except DatabaseError as e:
-        message = "A database error occurred while creating SimulationRun history record"
+        message = (
+            "A database error occurred while creating SimulationRun history record"
+        )
         logger.error(message, exc_info=True)
         raise TaskError(message) from e
     except Exception as e:
-        message = "An unexpected error occurred while creating SimulationRun history record"
+        message = (
+            "An unexpected error occurred while creating SimulationRun history record"
+        )
         logger.error(message, exc_info=True)
         raise TaskError(message) from e
 

@@ -55,4 +55,12 @@ class StarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Star
-        fields = ["id", "name", "system", "spectral_type", "mass_sun", "radius_sun", "effective_temperature_k"]
+        fields = [
+            "id",
+            "name",
+            "system",
+            "spectral_type",
+            "mass_sun",
+            "radius_sun",
+            "effective_temperature_k",
+        ]

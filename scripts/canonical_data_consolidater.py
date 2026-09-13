@@ -71,7 +71,7 @@ def get_publication_year_from_reference(reference_string):
     parser.feed(reference_string)
     clean_text = parser.text or reference_string
 
-    found_years = re.findall(r'\b(19|20)\d{2}\b', clean_text)
+    found_years = re.findall(r"\b(19|20)\d{2}\b", clean_text)
     if found_years:
         return max([int(year) for year in found_years])
 
@@ -83,7 +83,9 @@ def fetch_raw_nasa_data(nasa_table, app_table, logger=print):
     Fetches raw data from the NASA API for a given table and returns it as a
     list of dictionaries (one for each row).
     """
-    logger(f"Starting data extraction for '{app_table}' from NASA table '{nasa_table}'...")
+    logger(
+        f"Starting data extraction for '{app_table}' from NASA table '{nasa_table}'..."
+    )
 
     columns = TABLE_FIELD_SELECTION_CONFIG[nasa_table][app_table]
 
@@ -130,10 +132,15 @@ def transform_and_consolidate(raw_data, group_by_key, sort_config):
             # generate a sort key for each record by parsing the reference string
             for record in records:
                 record[sort_config["sort_key_name"]] = (
-                    get_publication_year_from_reference(record[sort_config["source_field_name"]])
+                    get_publication_year_from_reference(
+                        record[sort_config["source_field_name"]]
+                    )
                 )
 
-            records.sort(key=lambda r: int(r.get(sort_config["sort_key_name"]) or 0), reverse=True)
+            records.sort(
+                key=lambda r: int(r.get(sort_config["sort_key_name"]) or 0),
+                reverse=True,
+            )
 
         canonical_record = {}
         for record in records:
@@ -162,7 +169,9 @@ def extract_unique_from_raw_data(raw_data, unique_on_keys):
         if any(item is not None for item in unique_vals):
             unique_records.add(unique_vals)
 
-    record_list = [dict(zip(unique_on_keys, unique_vals)) for unique_vals in unique_records]
+    record_list = [
+        dict(zip(unique_on_keys, unique_vals)) for unique_vals in unique_records
+    ]
     return record_list
 
 
@@ -188,31 +197,60 @@ def run_canonical_data_consolidation(logger=print):
         star_sort_config = {
             "sort_key_name": "publication_year",
             "source_field_name": "st_refname",
-            "derive_sort_key": True
+            "derive_sort_key": True,
         }
         planet_sort_config = {
             "sort_key_name": "publication_year",
             "source_field_name": "pl_refname",
-            "derive_sort_key": True
+            "derive_sort_key": True,
         }
 
-        raw_star_data = fetch_raw_nasa_data(nasa_table="stellarhosts", app_table="stars", logger=logger)
-        raw_planet_data = fetch_raw_nasa_data(nasa_table="ps", app_table="planets", logger=logger)
+        raw_star_data = fetch_raw_nasa_data(
+            nasa_table="stellarhosts", app_table="stars", logger=logger
+        )
+        raw_planet_data = fetch_raw_nasa_data(
+            nasa_table="ps", app_table="planets", logger=logger
+        )
 
-        unique_star_system_keys = ["sy_name", "sy_snum", "sy_pnum", "sy_mnum", "sy_dist", "ra", "dec"]
-        raw_star_system_data = extract_unique_from_raw_data(raw_star_data, unique_star_system_keys)
+        unique_star_system_keys = [
+            "sy_name",
+            "sy_snum",
+            "sy_pnum",
+            "sy_mnum",
+            "sy_dist",
+            "ra",
+            "dec",
+        ]
+        raw_star_system_data = extract_unique_from_raw_data(
+            raw_star_data, unique_star_system_keys
+        )
 
-        unique_planet_discovery_keys = ["discoverymethod", "disc_year", "disc_locale", "disc_facility"]
-        canonical_discoveries = extract_unique_from_raw_data(raw_planet_data, unique_planet_discovery_keys)
+        unique_planet_discovery_keys = [
+            "discoverymethod",
+            "disc_year",
+            "disc_locale",
+            "disc_facility",
+        ]
+        canonical_discoveries = extract_unique_from_raw_data(
+            raw_planet_data, unique_planet_discovery_keys
+        )
 
-        canonical_planets = transform_and_consolidate(raw_planet_data, "pl_name", planet_sort_config)
-        canonical_stars = transform_and_consolidate(raw_star_data, "hostname", star_sort_config)
-        canonical_star_systems = transform_and_consolidate(raw_star_system_data, "sy_name", star_system_sort_config)
+        canonical_planets = transform_and_consolidate(
+            raw_planet_data, "pl_name", planet_sort_config
+        )
+        canonical_stars = transform_and_consolidate(
+            raw_star_data, "hostname", star_sort_config
+        )
+        canonical_star_systems = transform_and_consolidate(
+            raw_star_system_data, "sy_name", star_system_sort_config
+        )
 
         write_data_to_file(canonical_stars, "data/canonical_stars.json")
         write_data_to_file(canonical_planets, "data/canonical_planets.json")
         write_data_to_file(canonical_star_systems, "data/canonical_star_systems.json")
-        write_data_to_file(canonical_discoveries, "data/canonical_planet_discoveries.json")
+        write_data_to_file(
+            canonical_discoveries, "data/canonical_planet_discoveries.json"
+        )
 
         return "Successfully completed canonical data consolidation."
     except Exception as e:

@@ -4,7 +4,9 @@ from .managers import PlanetManager
 
 
 class StarSystem(models.Model):
-    name = models.CharField(max_length=100, unique=True, help_text="Name of the star system")
+    name = models.CharField(
+        max_length=100, unique=True, help_text="Name of the star system"
+    )
     num_stars = models.IntegerField(null=True, blank=True, help_text="Number of stars")
     num_planets = models.IntegerField(
         null=True, blank=True, help_text="Number of planets"
@@ -33,8 +35,12 @@ class Star(models.Model):
     spectral_type = models.CharField(
         max_length=30, null=True, blank=True, help_text="Spectral type"
     )
-    mass_sun = models.FloatField(null=True, blank=True, help_text="Mass in solar masses")
-    radius_sun = models.FloatField(null=True, blank=True, help_text="Radius in solar radii")
+    mass_sun = models.FloatField(
+        null=True, blank=True, help_text="Mass in solar masses"
+    )
+    radius_sun = models.FloatField(
+        null=True, blank=True, help_text="Radius in solar radii"
+    )
     effective_temperature_k = models.FloatField(
         null=True, blank=True, help_text="Effective temperature (K)"
     )

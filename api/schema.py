@@ -31,7 +31,14 @@ class StarSystemType(DjangoObjectType):
 
     class Meta:
         model = StarSystem
-        fields = ("id", "name", "distance_parsecs", "num_moons", "num_planets", "num_stars")
+        fields = (
+            "id",
+            "name",
+            "distance_parsecs",
+            "num_moons",
+            "num_planets",
+            "num_stars",
+        )
         interfaces = (graphene.relay.Node,)
         connection_class = CustomConnection
 
@@ -48,8 +55,16 @@ class StarType(DjangoObjectType):
 
     class Meta:
         model = Star
-        fields = ("id", "name", "mass_sun", "radius_sun", "luminosity_sun", "effective_temperature_k", "age_gya",
-                  "spectral_type")
+        fields = (
+            "id",
+            "name",
+            "mass_sun",
+            "radius_sun",
+            "luminosity_sun",
+            "effective_temperature_k",
+            "age_gya",
+            "spectral_type",
+        )
         interfaces = (graphene.relay.Node,)
         connection_class = CustomConnection
 
@@ -72,8 +87,17 @@ class PlanetType(DjangoObjectType):
 
     class Meta:
         model = Planet
-        fields = ("id", "name", "orbital_period_days", "radius_earth", "mass_earth", "equilibrium_temperature_k",
-                  "semi_major_axis_au", "insolation_flux_earth", "orbital_eccentricity")
+        fields = (
+            "id",
+            "name",
+            "orbital_period_days",
+            "radius_earth",
+            "mass_earth",
+            "equilibrium_temperature_k",
+            "semi_major_axis_au",
+            "insolation_flux_earth",
+            "orbital_eccentricity",
+        )
         interfaces = (graphene.relay.Node,)
         connection_class = CustomConnection
 
@@ -89,9 +113,13 @@ class Query(graphene.ObjectType):
     all_stars = DjangoFilterConnectionField(StarType, filterset_class=StarFilter)
 
     star_system_by_name = graphene.Field(lambda: StarSystemType, name=graphene.String())
-    all_star_systems = DjangoFilterConnectionField(StarSystemType, filterset_class=StarSystemFilter)
+    all_star_systems = DjangoFilterConnectionField(
+        StarSystemType, filterset_class=StarSystemFilter
+    )
 
-    search_star_systems = graphene.List(graphene.String, query=graphene.String(required=True))
+    search_star_systems = graphene.List(
+        graphene.String, query=graphene.String(required=True)
+    )
 
     def resolve_planet_by_name(self, info, name):
         return Planet.objects.filter(name=name).first()
@@ -109,10 +137,9 @@ class Query(graphene.ObjectType):
         if not query:
             return []
 
-        queryset = (
-            StarSystem.objects.filter(name__istartswith=query)
-            .values_list("name", flat=True)[:10]
-        )
+        queryset = StarSystem.objects.filter(name__istartswith=query).values_list(
+            "name", flat=True
+        )[:10]
 
         return list(queryset)
 

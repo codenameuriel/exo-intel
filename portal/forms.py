@@ -1,5 +1,5 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model, password_validation
+from django.contrib.auth.forms import UserCreationForm
 
 
 class SignupForm(UserCreationForm):
@@ -16,9 +16,7 @@ class SignupForm(UserCreationForm):
             "username",
             "email",
         )
-        help_texts = {
-            f: "" for f in fields
-        }
+        help_texts = {f: "" for f in fields}
         labels = {
             "username": "Username",
             "email": "Email",

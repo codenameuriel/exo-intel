@@ -3,7 +3,7 @@ from pathlib import Path
 
 from django.db import transaction
 
-from .models import PlanetDiscovery, StarSystem, Star, Planet
+from .models import Planet, PlanetDiscovery, Star, StarSystem
 
 APP_ROOT = Path(__file__).resolve().parent.parent
 
@@ -20,7 +20,7 @@ APP_TABLE_IMPORT_CONFIG = {
             "sy_dist": "distance_parsecs",
             "ra": "ra",
             "dec": "dec",
-        }
+        },
     },
     "planet_discoveries": {
         "model": PlanetDiscovery,
@@ -31,7 +31,7 @@ APP_TABLE_IMPORT_CONFIG = {
             "disc_year": "year",
             "disc_locale": "locale",
             "disc_facility": "facility",
-        }
+        },
     },
     "stars": {
         "model": Star,
@@ -52,7 +52,7 @@ APP_TABLE_IMPORT_CONFIG = {
                 "lookup_keys": ["sy_name"],
                 "lookup_fields": ["name"],
             }
-        }
+        },
     },
     "planets": {
         "model": Planet,
@@ -76,11 +76,16 @@ APP_TABLE_IMPORT_CONFIG = {
             },
             "discovery": {
                 "model": PlanetDiscovery,
-                "lookup_keys": ["discoverymethod", "disc_year", "disc_locale", "disc_facility"],
+                "lookup_keys": [
+                    "discoverymethod",
+                    "disc_year",
+                    "disc_locale",
+                    "disc_facility",
+                ],
                 "lookup_fields": ["method", "year", "locale", "facility"],
-            }
-        }
-    }
+            },
+        },
+    },
 }
 
 IMPORT_ORDER = [
@@ -104,15 +109,19 @@ def run_canonical_data_import(dry_run=False, logger=print):
         with transaction.atomic():
             for app_table in IMPORT_ORDER:
                 config = APP_TABLE_IMPORT_CONFIG[app_table]
-                import_message = _import_app_table_data_from_file(app_table, config, dry_run, logger)
+                import_message = _import_app_table_data_from_file(
+                    app_table, config, dry_run, logger
+                )
                 result_message += import_message
 
             if dry_run:
                 raise InterruptedError("[DRY RUN] No changes were made to the database")
     except InterruptedError as e:
-        logger(f"{str(e)}")
+        logger(f"{e!s}")
     except Exception as e:
-        raise Exception("An unexpected error occurred during the canonical data import") from e
+        raise Exception(
+            "An unexpected error occurred during the canonical data import"
+        ) from e
 
     logger("--- Finished Import from Canonical Data Files ---")
     logger(result_message)
@@ -191,8 +200,10 @@ def _link_relationships(defaults, canonical_record, relationships_config):
     for model_field, rel_config in relationships_config.items():
         related_model = rel_config["model"]
         lookup = {
-            field: canonical_record.get(key) for field, key in
-            zip(rel_config["lookup_fields"], rel_config["lookup_keys"])
+            field: canonical_record.get(key)
+            for field, key in zip(
+                rel_config["lookup_fields"], rel_config["lookup_keys"]
+            )
         }
         related_obj = related_model.objects.get(**lookup)
         defaults[model_field] = related_obj

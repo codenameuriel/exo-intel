@@ -1,5 +1,5 @@
-from drf_spectacular.utils import extend_schema, OpenApiResponse, inline_serializer
-from rest_framework import status, serializers
+from drf_spectacular.utils import OpenApiResponse, extend_schema, inline_serializer
+from rest_framework import serializers, status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -15,13 +15,14 @@ from simulations.serializers import (
     TravelTimeInputSerializer,
 )
 from tasks.tasks import run_simulation_task
+
 from .models import SimulationRun
 
 
 @extend_schema(
     summary="[INTERNAL] Get the user's history of simulation runs.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended."
+    "It is documented here for informational purposes. Direct use is not recommended.",
 )
 class SimulationHistoryView(ListAPIView):
     """
@@ -46,18 +47,22 @@ class SimulationHistoryView(ListAPIView):
 @extend_schema(
     summary="[INTERNAL] Run a simulation.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended.",
+    "It is documented here for informational purposes. Direct use is not recommended.",
     responses={
         202: OpenApiResponse(
             response=inline_serializer(
-                name='SimulationRunResponse',
+                name="SimulationRunResponse",
                 fields={
-                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
-                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
-                }
+                    "message": serializers.CharField(
+                        help_text="A message indicating that task has been started."
+                    ),
+                    "task_id": serializers.CharField(
+                        help_text="The unique ID of the Celery task."
+                    ),
+                },
             )
         )
-    }
+    },
 )
 class TravelTimeSimulationView(APIView):
     """
@@ -93,18 +98,22 @@ class TravelTimeSimulationView(APIView):
 @extend_schema(
     summary="[INTERNAL] Run a simulation.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended.",
+    "It is documented here for informational purposes. Direct use is not recommended.",
     responses={
         202: OpenApiResponse(
             response=inline_serializer(
-                name='SimulationRunResponse',
+                name="SimulationRunResponse",
                 fields={
-                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
-                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
-                }
+                    "message": serializers.CharField(
+                        help_text="A message indicating that task has been started."
+                    ),
+                    "task_id": serializers.CharField(
+                        help_text="The unique ID of the Celery task."
+                    ),
+                },
             )
         )
-    }
+    },
 )
 class SeasonalTempsSimulationView(APIView):
     """
@@ -140,18 +149,22 @@ class SeasonalTempsSimulationView(APIView):
 @extend_schema(
     summary="[INTERNAL] Run a simulation.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended.",
+    "It is documented here for informational purposes. Direct use is not recommended.",
     responses={
         202: OpenApiResponse(
             response=inline_serializer(
-                name='SimulationRunResponse',
+                name="SimulationRunResponse",
                 fields={
-                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
-                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
-                }
+                    "message": serializers.CharField(
+                        help_text="A message indicating that task has been started."
+                    ),
+                    "task_id": serializers.CharField(
+                        help_text="The unique ID of the Celery task."
+                    ),
+                },
             )
         )
-    }
+    },
 )
 class TidalLockingSimulationView(APIView):
     """
@@ -187,18 +200,22 @@ class TidalLockingSimulationView(APIView):
 @extend_schema(
     summary="[INTERNAL] Run a simulation.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended.",
+    "It is documented here for informational purposes. Direct use is not recommended.",
     responses={
         202: OpenApiResponse(
             response=inline_serializer(
-                name='SimulationRunResponse',
+                name="SimulationRunResponse",
                 fields={
-                    'message': serializers.CharField(help_text='A message indicating that task has been started.'),
-                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.')
-                }
+                    "message": serializers.CharField(
+                        help_text="A message indicating that task has been started."
+                    ),
+                    "task_id": serializers.CharField(
+                        help_text="The unique ID of the Celery task."
+                    ),
+                },
             )
         )
-    }
+    },
 )
 class StarLifetimeSimulationView(APIView):
     """

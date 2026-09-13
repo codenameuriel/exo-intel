@@ -1,6 +1,6 @@
 from celery.result import AsyncResult
-from drf_spectacular.utils import extend_schema, OpenApiResponse, inline_serializer
-from rest_framework import status, serializers
+from drf_spectacular.utils import OpenApiResponse, extend_schema, inline_serializer
+from rest_framework import serializers, status
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,19 +12,24 @@ from api_keys.permissions import IsAuthenticatedOrPublic
 @extend_schema(
     summary="[INTERNAL] Get the status of a background Celery task from the Celery result backend.",
     description="**Warning:** This is an internal endpoint. "
-                "It is documented here for informational purposes. Direct use is not recommended.",
+    "It is documented here for informational purposes. Direct use is not recommended.",
     responses={
         200: OpenApiResponse(
             description="The current result of the task.",
             response=inline_serializer(
-                name='TaskStatusResponse',
+                name="TaskStatusResponse",
                 fields={
-                    'task_id': serializers.CharField(help_text='The unique ID of the Celery task.'),
-                    'status': serializers.CharField(help_text='The current status of the task.'),
-                    'result': serializers.JSONField(
-                        help_text='Contains the simulation result on SUCCESS or an error object on FAILURE.'),
+                    "task_id": serializers.CharField(
+                        help_text="The unique ID of the Celery task."
+                    ),
+                    "status": serializers.CharField(
+                        help_text="The current status of the task."
+                    ),
+                    "result": serializers.JSONField(
+                        help_text="Contains the simulation result on SUCCESS or an error object on FAILURE."
+                    ),
                 },
-            )
+            ),
         ),
     },
 )

@@ -20,10 +20,13 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import include, path
 from django.views.generic import RedirectView
-from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
 
 from config.health import health
-
 
 urlpatterns = [
     path("", RedirectView.as_view(pattern_name="portal:login"), name="home"),
@@ -33,19 +36,15 @@ urlpatterns = [
     path("portal/", include("portal.urls")),
     path("tasks/", include("tasks.urls")),
     path("simulations/", include("simulations.urls")),
-    path(
-        "api/schema/",
-        login_required(SpectacularAPIView.as_view()),
-        name="schema"
-    ),
+    path("api/schema/", login_required(SpectacularAPIView.as_view()), name="schema"),
     path(
         "api/docs/",
         login_required(SpectacularSwaggerView.as_view(url_name="schema")),
-        name="swagger-ui"
+        name="swagger-ui",
     ),
     path(
         "api/redoc/",
         login_required(SpectacularRedocView.as_view(url_name="schema")),
-        name="redoc"
+        name="redoc",
     ),
 ]

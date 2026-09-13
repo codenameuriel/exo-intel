@@ -37,7 +37,14 @@ class StarSystemAdmin(ReadOnlyAdmin):
 
 @admin.register(Star)
 class StarAdmin(ReadOnlyAdmin):
-    list_display = ("name", "system", "spectral_type", "mass_sun", "radius_sun", "effective_temperature_k")
+    list_display = (
+        "name",
+        "system",
+        "spectral_type",
+        "mass_sun",
+        "radius_sun",
+        "effective_temperature_k",
+    )
     ordering = ("name",)
     search_fields = ("name", "system__name")
     list_filter = ("system", "spectral_type")
